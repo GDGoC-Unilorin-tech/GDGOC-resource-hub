@@ -1,0 +1,315 @@
+---
+title: "Set up and open your first page"
+description: "Create an HTML file, open it in your browser, and see your changes."
+---
+
+In the previous lesson, you learned that you write HTML in
+a code editor and view the result in a browser.
+
+Now you will do that yourself.
+
+## What you will learn
+
+By the end of this lesson, you will be able to:
+
+- Create a folder for your website.
+- Create and save an HTML file.
+- Open that file in a browser.
+- Edit your content and see the updated result.
+
+## What you need
+
+- A computer.
+- A browser, such as Chrome, Firefox, Edge, or Safari.
+- A plain-text code editor. This lesson uses Visual Studio Code.
+
+<Info>
+  If you do not have a code editor yet, install Visual Studio
+  Code before continuing. If you are using a shared or managed
+  computer, ask the person responsible for it for help with installation.
+</Info>
+
+## Create your first page
+
+<Steps>
+  <Step title="Create a project folder">
+
+    Create a folder called `my-first-website` in a location
+    you can find again, such as your Documents folder.
+
+    Keep the files for this website together inside that folder.
+
+  </Step>
+
+  <Step title="Open the folder in your editor">
+
+    Open Visual Studio Code.
+
+    Select **File → Open Folder**, choose `my-first-website`,
+    and open it.
+
+    You should see the folder in the editor's Explorer panel.
+
+  </Step>
+
+  <Step title="Create an HTML file">
+
+    In the Explorer panel, create a new file named:
+
+    ```text
+    index.html
+    ```
+
+    Make sure you create a file, not another folder.
+
+    <Note>
+      `index.html` is a common name for a website's entry page.
+      Other HTML files can have names such as `about.html`.
+    </Note>
+
+  </Step>
+
+  <Step title="Add your starting code">
+
+    Copy this complete example into `index.html`:
+
+    ```html
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My first web page</title>
+      </head>
+      <body>
+        <h1>Hello, web!</h1>
+        <p>I am learning to create websites with HTML.</p>
+      </body>
+    </html>
+    ```
+
+    You do not need to understand every line yet.
+    A later lesson explains this document structure.
+
+    For now, notice the heading inside `<h1>` and the
+    paragraph inside `<p>`.
+
+  </Step>
+
+  <Step title="Save your file">
+
+    Select **File → Save**.
+
+    You can also use:
+
+    - **Windows or Linux:** Ctrl + S.
+    - **macOS:** Command + S.
+
+  </Step>
+
+  <Step title="Open the page in your browser">
+
+    Find `index.html` using your computer's file manager.
+
+    Right-click it, choose **Open with**, and select your browser.
+    The exact menu wording may differ on your computer.
+
+    You should see your heading and paragraph.
+
+    Your browser's address may begin with `file:///`.
+    This means you are viewing a file on your computer.
+
+  </Step>
+</Steps>
+
+## What should you see?
+
+The browser tab should show:
+
+> My first web page
+
+The page itself should contain:
+
+> **Hello, web!**
+>
+> I am learning to create websites with HTML.
+
+<Note>
+  These quotes describe the expected result. Your browser
+  displays the actual page, using its default fonts and spacing.
+</Note>
+
+## Make your first change
+
+Return to your editor.
+
+Find this line:
+
+```html
+<h1>Hello, web!</h1>
+```
+
+Change the heading to introduce yourself:
+
+```html
+<h1>Hello, I am Amina!</h1>
+```
+
+Use your own name if you prefer.
+
+Then:
+
+1. Save the file.
+2. Return to the browser.
+3. Refresh the page using the browser's reload button.
+
+Your new heading should appear.
+
+<Tip>
+  Remember this workflow: **edit → save → refresh**.
+
+  When opening a file directly, refreshing the browser lets
+  you see the changes you saved.
+</Tip>
+
+## Understand the two titles
+
+Your starting code contains:
+
+```html
+<title>My first web page</title>
+```
+
+and:
+
+```html
+<h1>Hello, I am Amina!</h1>
+```
+
+They have different jobs:
+
+- `<title>` provides the document title, usually shown in the browser tab.
+- `<h1>` marks the main heading displayed inside this page.
+
+Try changing each one and observe where the change appears.
+
+## Practice challenge: Your first introduction
+
+Update `index.html` so it contains:
+
+1. A browser-tab title identifying it as your introduction page.
+2. A main heading introducing you.
+3. A paragraph explaining why you want to learn HTML.
+4. A second paragraph describing something you hope to build.
+
+Keep the rest of the starting document structure.
+
+For this exercise, each paragraph should use this pattern:
+
+```html
+<p>Your paragraph goes here.</p>
+```
+
+Save your changes and refresh the browser to check them.
+
+<Accordion title="Hint 1: Find the content to change">
+
+The browser-tab title is inside `<title>`.
+
+The visible heading and paragraphs are inside `<body>`.
+
+Change the text between the opening and closing tags.
+Keep the tags in place.
+
+</Accordion>
+
+<Accordion title="Hint 2: Add another paragraph">
+
+Place another paragraph underneath the existing one:
+
+```html
+<p>This is my first paragraph.</p>
+<p>This is my second paragraph.</p>
+```
+
+You will learn more about paragraphs in a later lesson.
+
+</Accordion>
+
+## If something goes wrong
+
+### The page still shows the old text
+
+Save the file in your editor, then refresh the browser.
+
+Also check that the file open in your browser is the same
+file you edited.
+
+### The file opens in an editor instead of a browser
+
+Use your file manager's **Open with** option and choose a browser.
+
+### The browser displays the HTML code as plain text
+
+Check that the file is named `index.html`, not `index.html.txt`.
+
+Some file managers hide extensions. Enable the option to show
+file extensions if you need to check the full name.
+
+### The page is blank
+
+Check that you saved the example in `index.html` and that
+your heading and paragraphs are inside `<body>`.
+
+<Warning>
+  Use a plain-text code editor for your HTML files.
+  A word processor's normal document format is not an HTML source file.
+</Warning>
+
+## Completion checklist
+
+- [ ] I created a `my-first-website` folder.
+- [ ] My folder contains a file named `index.html`.
+- [ ] I opened the file in a browser.
+- [ ] The browser tab shows my chosen title.
+- [ ] The page displays my heading and two paragraphs.
+- [ ] I changed the content, saved, and refreshed successfully.
+
+<Accordion title="View a suggested solution">
+
+Your introduction can use different words. This is one
+possible completed page:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amina's introduction</title>
+  </head>
+  <body>
+    <h1>Hello, I am Amina!</h1>
+    <p>I want to learn HTML so I can share my ideas on the web.</p>
+    <p>I hope to build a website for my campus club.</p>
+  </body>
+</html>
+```
+
+The document title identifies the page in the browser tab.
+The body contains one main heading and two separate paragraphs.
+
+The important result is that you can create, open, and update
+your own HTML file.
+
+</Accordion>
+
+## Next lesson
+
+You have created your first page. Next, you will learn how
+HTML elements, tags, and attributes work.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/beginner/b01-how-web-pages-work">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/beginner/b03-elements-tags-and-attributes">Next</a>
+</div>

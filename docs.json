@@ -14,65 +14,154 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Resource Hub",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Start Here",
             "pages": [
               "index",
-              "purpose-of-this-guide",
-              "how-to-contribute"
-            ]
+              "start-here/how-to-use-the-hub",
+              "start-here/choose-a-learning-path",
+              "start-here/set-up-your-learning-tools"
+            ],
+            "expanded": true
           },
           {
-            "group": "Learning Paths",
+            "group": "Web Development",
             "pages": [
-              "frontend-development",
-              "backend-development",
+              "web-development",
+              {
+                "group": "Frontend Development",
+                "pages": [
+                  "frontend-development",
+                  {
+                    "group": "HTML",
+                    "pages": [
+                      "web-development/frontend/html/overview",
+                      {
+                        "group": "Beginner",
+                        "pages": [
+                          "web-development/frontend/html/beginner/b01-how-web-pages-work",
+                          "web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page",
+                          "web-development/frontend/html/beginner/b03-elements-tags-and-attributes",
+                          "web-development/frontend/html/beginner/b04-the-html-document-skeleton",
+                          "web-development/frontend/html/beginner/b05-headings-and-paragraphs",
+                          "web-development/frontend/html/beginner/b06-meaningful-text-markup",
+                          "web-development/frontend/html/beginner/b07-lists",
+                          "web-development/frontend/html/beginner/b08-links-and-page-navigation",
+                          "web-development/frontend/html/beginner/b09-files-folders-and-relative-paths",
+                          "web-development/frontend/html/beginner/b10-images-and-text-alternatives",
+                          "web-development/frontend/html/beginner/b11-inspect-and-fix-your-html",
+                          "web-development/frontend/html/beginner/project"
+                        ],
+                        "expanded": true
+                      },
+                      {
+                        "group": "Intermediate",
+                        "pages": [
+                          "web-development/frontend/html/intermediate/i01-semantic-page-structure",
+                          "web-development/frontend/html/intermediate/i02-articles-sections-and-supporting-content",
+                          "web-development/frontend/html/intermediate/i03-accessible-content-and-keyboard-navigation",
+                          "web-development/frontend/html/intermediate/i04-data-tables",
+                          "web-development/frontend/html/intermediate/i05-forms-labels-and-submission-basics",
+                          "web-development/frontend/html/intermediate/i06-input-types-and-browser-validation",
+                          "web-development/frontend/html/intermediate/i07-choices-and-longer-responses",
+                          "web-development/frontend/html/intermediate/i08-clear-and-accessible-forms",
+                          "web-development/frontend/html/intermediate/i09-audio-video-and-captions",
+                          "web-development/frontend/html/intermediate/i10-quotations-code-and-dates",
+                          "web-development/frontend/html/intermediate/project"
+                        ],
+                        "expanded": true
+                      },
+                      {
+                        "group": "Advanced",
+                        "pages": [
+                          "web-development/frontend/html/advanced/a01-content-rules-and-browser-error-recovery",
+                          "web-development/frontend/html/advanced/a02-responsive-image-markup",
+                          "web-development/frontend/html/advanced/a03-image-loading-choices",
+                          "web-development/frontend/html/advanced/a04-native-disclosure-widgets",
+                          "web-development/frontend/html/advanced/a05-embedded-pages-and-boundaries",
+                          "web-development/frontend/html/advanced/a06-metadata-and-meaningful-document-context",
+                          "web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice",
+                          "web-development/frontend/html/advanced/a08-validate-and-audit-a-complete-website",
+                          "web-development/frontend/html/advanced/project"
+                        ],
+                        "expanded": true
+                      },
+                      "web-development/frontend/html/final-project",
+                      "web-development/frontend/html/further-learning"
+                    ],
+                    "expanded": true
+                  },
+                  "web-development/frontend/css/overview",
+                  "web-development/frontend/javascript/overview",
+                  "web-development/frontend/frameworks-and-libraries",
+                  "web-development/frontend/tools-and-workflow"
+                ],
+                "expanded": true
+              },
+              {
+                "group": "Backend Development",
+                "pages": [
+                  "backend-development",
+                  "web-development/backend/foundations",
+                  "web-development/backend/languages-and-frameworks",
+                  "web-development/backend/apis",
+                  "web-development/backend/authentication-and-security",
+                  "web-development/backend/testing-and-deployment"
+                ],
+                "expanded": true
+              },
+              {
+                "group": "Databases",
+                "pages": [
+                  "web-development/databases/overview",
+                  "web-development/databases/foundations",
+                  "web-development/databases/relational-databases-and-sql",
+                  "web-development/databases/non-relational-databases",
+                  "web-development/databases/data-modelling-and-tools"
+                ],
+                "expanded": true
+              }
+            ],
+            "expanded": true
+          },
+          {
+            "group": "Cloud Computing",
+            "pages": [
               "paths/cloud-computing",
-              "paths/machine-learning"
-            ]
+              "cloud-computing/foundations",
+              "cloud-computing/providers",
+              "cloud-computing/compute-storage-and-networking",
+              "cloud-computing/identity-and-security",
+              "cloud-computing/deployment-operations-and-automation"
+            ],
+            "expanded": true
           },
           {
-            "group": "Programming Languages",
+            "group": "Other Learning Paths",
             "pages": [
-              "languages/python",
-              "languages/javascript",
-              "languages/typescript",
-              "languages/dart"
-            ]
+              "other-learning-paths/overview",
+              "paths/machine-learning",
+              "other-learning-paths/frontend-resources",
+              "other-learning-paths/backend-resources"
+            ],
+            "expanded": true
           },
           {
-            "group": "Event Resources",
-            "pages": [
-              "events/devfest",
-              "events/info-session",
-              "events/hackathons",
-              "events/workshops"
-            ]
-          },
-          {
-            "group": "Tools & Platforms",
-            "pages": [
-              "tools/firebase",
-              "tools/flutter",
-              "tools/github",
-              "tools/google-cloud-platform"
-            ]
-          },
-          {
-            "group": "Career Growth",
-            "pages": [
-              "career/portfolio-tips",
-              "career/linkedin-guide",
-              "career/resume-template"
-            ]
-          },
-          {
-            "group": "Job Hunting",
+            "group": "Career Resources",
             "pages": [
               "job-hunting/resume"
-            ]
+            ],
+            "expanded": true
+          },
+          {
+            "group": "About and Contributing",
+            "pages": [
+              "purpose-of-this-guide",
+              "how-to-contribute"
+            ],
+            "expanded": true
           }
         ]
       }

@@ -1,0 +1,215 @@
+---
+title: "How web pages work"
+description: "Understand what makes up a web page and where HTML fits."
+---
+
+Every website you visit contains web pages. A page might show
+an article, a student profile, a shop, or a community event.
+
+Before you write your first page, let's understand the tools
+and technologies involved.
+
+<Info>
+  **No coding experience needed.** In this lesson, you will
+  explore a small example. The next lesson will guide you
+  through creating and opening your own HTML file.
+</Info>
+
+## What you will learn
+
+By the end of this lesson, you should be able to:
+
+- Explain the difference between a website and a web page.
+- Describe the roles of HTML, CSS, and JavaScript.
+- Distinguish a code editor from a browser.
+- Plan the content of a simple web page.
+
+## Websites and web pages
+
+A **web page** is a single document you can open in a browser.
+
+A **website** is a collection of related pages and resources.
+For example, a campus club website might contain:
+
+- A home page introducing the club.
+- An events page listing upcoming activities.
+- A membership page explaining how to join.
+
+Links help visitors move between these pages.
+
+## Three technologies you will meet
+
+### HTML: Content and structure
+
+HTML describes the content of a page and what that content means.
+
+For example, HTML can identify a piece of text as a heading,
+a paragraph, or a link.
+
+### CSS: Appearance and layout
+
+CSS controls how a page looks, including its colours, spacing,
+fonts, and layout.
+
+### JavaScript: Programmed behaviour
+
+JavaScript can add behaviour such as filtering a list of events
+or updating content after a visitor clicks a button.
+
+<Note>
+  Some interactions already work through HTML and the browser,
+  including following links. You do not need JavaScript for
+  every interaction.
+</Note>
+
+<Tip>
+  Focus on HTML first. You will learn CSS and JavaScript in
+  their own courses.
+</Tip>
+
+## Read your first HTML example
+
+The following is a small HTML snippet. You do not need to
+memorise the tags yet.
+
+```html
+<h1>Welcome to our campus club</h1>
+
+<p>We learn technology skills together.</p>
+
+<a href="events.html">Explore our events</a>
+```
+
+Here is what each part means:
+
+- `<h1>` identifies the main heading.
+- `<p>` identifies a paragraph.
+- `<a>` creates a link.
+- `href="events.html"` gives the link its destination.
+
+The words inside angle brackets are HTML **tags**. You will
+learn how to write them in later lessons.
+
+## What would the browser show?
+
+The browser interprets the snippet and displays:
+
+> **Welcome to our campus club**
+>
+> We learn technology skills together.
+>
+> A link labelled “Explore our events”.
+
+The browser normally displays the content rather than showing
+the HTML tags as text.
+
+<Note>
+  This is a description of the expected output, not a live
+  browser preview. The link would need an actual `events.html`
+  file at the destination to open that page.
+</Note>
+
+## Code editor versus browser
+
+A **code editor** is where you write and save your HTML.
+Visual Studio Code is one example.
+
+A **browser** reads your HTML and displays the resulting page.
+Chrome, Firefox, Edge, and Safari are examples.
+
+Your basic workflow will be:
+
+1. Write HTML in your editor.
+2. Save the file.
+3. Open it in your browser.
+4. Make a change and save again.
+5. Refresh the browser to see the change.
+
+## Practice challenge: Plan your first page
+
+Imagine you are creating a personal introduction page.
+
+Write your answers in a notebook or a text document:
+
+1. Choose a main heading for your page.
+2. Write a short paragraph introducing yourself.
+3. List three interests you want to include.
+4. Describe an image you would like to add.
+5. Decide which other page a link could lead to.
+6. Identify which technology you would use to:
+   - Structure the introduction.
+   - Change the heading's colour.
+   - Add a button that changes the introduction text.
+
+You do not need to write working HTML for this challenge.
+
+### Optional code experiment
+
+Look at the earlier HTML example. Rewrite its heading and
+paragraph so they introduce you instead of the campus club.
+
+Keep the tags in place and change only the text between them.
+
+<Accordion title="Need a hint?">
+
+A heading could be “Meet Amina”.
+
+Your paragraph could explain what you are studying and why
+you want to learn web development.
+
+Remember:
+
+- HTML describes content and structure.
+- CSS controls appearance.
+- JavaScript can change content in response to an action.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I can explain the difference between a website and a web page.
+- [ ] I can describe the roles of HTML, CSS, and JavaScript.
+- [ ] I know where I will write code and where I will view the result.
+- [ ] My page plan includes a heading, paragraph, interests, image, and link.
+- [ ] I have answered the three technology questions.
+
+<Accordion title="View a suggested solution">
+
+Your content will be different. This is one possible plan:
+
+- **Heading:** Meet Amina.
+- **Introduction:** I am a student learning to build websites.
+- **Interests:** Reading, football, and technology.
+- **Image:** A photo of me.
+- **Link destination:** A separate page about my learning goals.
+
+The technology choices are:
+
+1. **HTML** to structure the introduction.
+2. **CSS** to change the heading's colour.
+3. **JavaScript** to change the introduction text when a button is clicked.
+
+The optional code experiment could look like this:
+
+```html
+<h1>Meet Amina</h1>
+
+<p>I am a student learning to build websites.</p>
+
+<a href="learning-goals.html">Read about my learning goals</a>
+```
+
+The heading and paragraph now describe Amina. The link points
+to a planned page; that file still needs to be created.
+
+</Accordion>
+
+## Next lesson
+
+You now know where HTML fits. Next, you will create your
+first HTML file and open it in a browser.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page">Next</a>
+</div>

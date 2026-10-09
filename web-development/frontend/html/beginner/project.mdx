@@ -1,0 +1,468 @@
+---
+title: "Beginner project: Personal introduction website"
+description: "Bring your HTML fundamentals together by building a two-page website about yourself."
+---
+
+You have learned how to structure text, create links, organise
+files, and add images.
+
+Now you will combine those skills into a small website.
+
+<Info>
+  **Your goal:** Build two connected HTML pages introducing
+  yourself and your interests.
+
+  Use HTML only. Styling is not required for this project.
+</Info>
+
+## What you will practise
+
+- Creating complete HTML documents.
+- Organising content with headings and paragraphs.
+- Using lists and meaningful emphasis.
+- Linking between files and sections.
+- Adding an image with suitable alternative text.
+- Checking your files and fixing mistakes.
+
+## Project brief
+
+Create a personal introduction website with two pages:
+
+| Page | File | Purpose |
+| --- | --- | --- |
+| Home | `index.html` | Introduce yourself and your learning goals |
+| About | `about.html` | Share your interests and what you hope to build |
+
+You can write about yourself or invent a fictional person.
+
+<Tip>
+  Share only information you are comfortable making public.
+  You do not need to include your address, phone number,
+  or other private details.
+</Tip>
+
+## Organise your files
+
+Create a new folder called `personal-introduction`.
+
+Inside it, use this structure:
+
+```text
+personal-introduction/
+├── index.html
+├── about.html
+└── images/
+    └── profile.jpg
+```
+
+Use an image you created or have permission to use.
+A drawing or a photograph of an object can work too.
+
+<Note>
+  `profile.jpg` is an example filename, not a supplied image.
+
+  If your image is named `profile.png`, use that exact name
+  in your HTML. Renaming a file's extension does not convert
+  its image format.
+</Note>
+
+## Page requirements
+
+### Home page
+
+Your `index.html` must include:
+
+- A complete HTML document structure.
+- An appropriate browser-tab title.
+- One main heading introducing the person.
+- A short introduction paragraph.
+- A second paragraph explaining a learning goal.
+- Meaningful emphasis using `strong` or `em`.
+- An image with a suitable text alternative.
+- A link to `about.html`.
+- A link that jumps to a learning-goals section on the same page.
+
+### About page
+
+Your `about.html` must include:
+
+- A complete HTML document structure.
+- A browser-tab title different from the home page's title.
+- One main heading identifying the page.
+- A section describing interests.
+- An unordered list containing at least three interests.
+- A section describing learning plans.
+- An ordered list containing at least three learning steps.
+- A link back to `index.html`.
+
+Use section headings in a logical order.
+
+## Suggested workflow
+
+<Steps>
+  <Step title="Plan your content">
+
+    Write down your introduction, interests, learning goals,
+    and the image you want to use.
+
+    Decide which content belongs on each page.
+
+  </Step>
+
+  <Step title="Create the files">
+
+    Create the project folder, the two HTML files, and the
+    `images` folder.
+
+    Add your chosen image to the `images` folder.
+
+  </Step>
+
+  <Step title="Build the home page">
+
+    Start with a complete document skeleton.
+
+    Add the introduction, image, goals section, and links.
+
+  </Step>
+
+  <Step title="Build the about page">
+
+    Create another complete document.
+
+    Add your interests, learning steps, and a link back home.
+
+  </Step>
+
+  <Step title="Test both pages">
+
+    Open `index.html` in your browser.
+
+    Follow the link to the about page, then return home.
+    Check the image and the link to the goals section.
+
+  </Step>
+
+  <Step title="Review your markup">
+
+    Check your heading order, nesting, filenames, paths,
+    and image alternative text.
+
+    Save any corrections and refresh the browser.
+
+  </Step>
+</Steps>
+
+## Starter code
+
+If you need a starting point, use this document skeleton
+for each page.
+
+Change the title and add your own content inside `body`.
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your page title</title>
+  </head>
+  <body>
+    <!-- Add your page content here. -->
+  </body>
+</html>
+```
+
+<Note>
+  This example uses `lang="en"` for English content.
+  Choose the appropriate language value if you write
+  your pages in another language.
+</Note>
+
+## Expected result
+
+Your finished website should let a visitor:
+
+1. Read your introduction.
+2. See your chosen image.
+3. Jump to your learning goals.
+4. Open your about page.
+5. Read your interests and learning steps.
+6. Return to the home page.
+
+The browser's default appearance is enough.
+
+<Warning>
+  Do not use repeated spaces or line breaks to create a layout.
+  Use HTML to describe your content. You will learn layout
+  and styling in the CSS course.
+</Warning>
+
+## Hints
+
+<Accordion title="Hint 1: Connect the pages">
+
+Because both files are in the same folder, the home page
+can link to the about page like this:
+
+```html
+<a href="about.html">Read more about me</a>
+```
+
+The about page can link back using:
+
+```html
+<a href="index.html">Back to home</a>
+```
+
+</Accordion>
+
+<Accordion title="Hint 2: Link to the goals section">
+
+Create a link using a fragment:
+
+```html
+<a href="#learning-goals">Explore my learning goals</a>
+```
+
+Give the destination heading a matching ID:
+
+```html
+<h2 id="learning-goals">My learning goals</h2>
+```
+
+The ID does not include the `#`, and it must be unique
+within that page.
+
+</Accordion>
+
+<Accordion title="Hint 3: Add your image">
+
+If your image is named `profile.jpg` inside `images`,
+its relative path is:
+
+```html
+<img
+  src="images/profile.jpg"
+  alt="Describe your image according to its purpose"
+>
+```
+
+Replace the example alternative text with something suitable
+for your actual image.
+
+If you include `width` and `height`, use the image's actual
+dimensions. Do not guess them.
+
+</Accordion>
+
+<Accordion title="Hint 4: Organise the about page">
+
+Use an `h1` for the page's main heading and `h2` headings
+for its main sections.
+
+Use:
+
+- `ul` for interests without a required order.
+- `ol` for learning steps in a sequence.
+- `li` for each item inside either list.
+
+</Accordion>
+
+## Completion checklist
+
+### Document structure
+
+- [ ] Both files have a doctype and complete document structure.
+- [ ] Both pages declare the appropriate content language.
+- [ ] Both pages include character encoding and viewport metadata.
+- [ ] Each page has a descriptive, distinct browser-tab title.
+- [ ] Visible content is inside `body`.
+
+### Content
+
+- [ ] Each page has one clear main heading.
+- [ ] Section headings follow a logical hierarchy.
+- [ ] The home page contains an introduction and learning goal.
+- [ ] Emphasis is used to express meaning.
+- [ ] The about page includes at least three unordered interests.
+- [ ] The about page includes at least three ordered learning steps.
+
+### Images and navigation
+
+- [ ] The image loads and has suitable alternative text.
+- [ ] The home page links to the about page.
+- [ ] The about page links back home.
+- [ ] The goals link points to a matching, unique ID.
+- [ ] Filenames and relative paths match the actual files.
+
+### Review
+
+- [ ] I opened both pages in a browser.
+- [ ] I tested every link.
+- [ ] I checked my nesting and closing tags.
+- [ ] I can explain the main elements I used.
+- [ ] I attempted the project before opening the suggested solution.
+
+## Suggested solution
+
+Try the project before expanding this section.
+
+<Accordion title="View a suggested implementation">
+
+This example introduces a fictional learner named Amina.
+
+It assumes you have added an image named `profile.jpg`
+showing a notebook and pen. Use your own image and change
+the alternative text to match.
+
+### Home page: index.html
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amina's introduction</title>
+  </head>
+  <body>
+    <h1>Hello, I am Amina!</h1>
+
+    <p>
+      I am a student who enjoys exploring technology
+      and learning new skills.
+    </p>
+
+    <p>
+      My goal is to build a <strong>strong HTML foundation</strong>
+      before learning how to style my pages.
+    </p>
+
+    <figure>
+      <img
+        src="images/profile.jpg"
+        alt="An open notebook and pen ready for a study session"
+      >
+      <figcaption>
+        A fresh page for my web development journey.
+      </figcaption>
+    </figure>
+
+    <p>
+      <a href="about.html">Read about my interests and plans</a>
+    </p>
+
+    <p>
+      <a href="#learning-goals">Explore my learning goals</a>
+    </p>
+
+    <h2 id="learning-goals">My learning goals</h2>
+
+    <p>
+      I want to create clear, useful web pages and eventually
+      build a website for my campus club.
+    </p>
+  </body>
+</html>
+```
+
+### About page: about.html
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Amina: Interests and learning plans</title>
+  </head>
+  <body>
+    <h1>About Amina</h1>
+
+    <p>
+      I enjoy activities that help me learn, create,
+      and connect with other people.
+    </p>
+
+    <h2>My interests</h2>
+
+    <ul>
+      <li>Reading stories</li>
+      <li>Playing football</li>
+      <li>Exploring technology</li>
+    </ul>
+
+    <h2>My learning plan</h2>
+
+    <p>
+      I want to learn <em>one step at a time</em>
+      and practise what I discover.
+    </p>
+
+    <ol>
+      <li>Complete the HTML lessons and challenges.</li>
+      <li>Build and review a complete HTML website.</li>
+      <li>Learn CSS to style my pages.</li>
+    </ol>
+
+    <p>
+      <a href="index.html">Back to my introduction</a>
+    </p>
+  </body>
+</html>
+```
+
+### Why this solution meets the requirements
+
+- Both files contain complete HTML documents.
+- Each page has a distinct title and a clear main heading.
+- The home page includes meaningful emphasis and an image.
+- Relative links connect the two pages.
+- The fragment link matches the goals heading's ID.
+- The about page uses unordered and ordered lists appropriately.
+
+Your content and structure can differ while still meeting
+the checklist.
+
+</Accordion>
+
+## Reflect on your work
+
+Before continuing, answer these questions:
+
+1. What is the difference between your page title and main heading?
+2. How does the browser find your image?
+3. Why does the fragment link use `#learning-goals`?
+4. Why did you choose different list types?
+5. What did you check when something did not work?
+
+<Check>
+  When your website meets the checklist and you can explain
+  your markup, you are ready to begin Intermediate HTML.
+</Check>
+
+## Share your achievement on LinkedIn
+
+Finished your website? Celebrate your progress with the template below. The orange button copies it and opens LinkedIn. Paste the text, add your project link, and review it before publishing.
+
+To tag the community, retype `@GDGOC Unilorin` in LinkedIn and select the organization from the suggestions. The copied name alone does not create a clickable mention. You can check the [GDGOC Unilorin LinkedIn page](https://www.linkedin.com/company/gdgocunilorin/) to identify the right organization.
+
+<div className="progress-share" data-share-skill="Beginner HTML">
+  <div className="share-draft" data-share-draft="">I completed the Beginner HTML project on the GDGOC Unilorin Resource Hub!&#10;&#10;I built a two-page personal introduction website using HTML. I practised document structure, headings, paragraphs, lists, links, images, and checking my work in the browser.&#10;&#10;My next step: Intermediate HTML. I am excited to keep learning and building!&#10;&#10;My project: [Add your project or repository link]&#10;&#10;Thank you, @GDGOC Unilorin, for supporting my learning journey!&#10;https://www.linkedin.com/company/gdgocunilorin/&#10;&#10;#GDGOCUnilorin #HTML #LearningInPublic #WebDevelopment</div>
+  <a className="hub-cta" data-share-progress="" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgdgocunilorin.mintlify.app%2Fweb-development%2Ffrontend%2Fhtml%2Fbeginner%2Fproject" target="_blank" rel="noopener noreferrer">Share your achievement on LinkedIn</a>
+  <p data-share-status="" role="status" aria-live="polite"></p>
+</div>
+
+If clipboard access is unavailable, select and copy the template manually.
+
+## Continue learning
+
+Next, you will learn how semantic HTML describes the major
+regions of a page.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/beginner/b11-inspect-and-fix-your-html">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/intermediate/i01-semantic-page-structure">Next</a>
+</div>
