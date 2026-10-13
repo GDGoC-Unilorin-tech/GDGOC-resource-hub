@@ -1,32 +1,89 @@
 ---
 title: "Validate and audit a complete website"
-description: 'Curriculum outline for lesson development'
+description: "Run a repeatable review."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Run a repeatable review.
+- Keep evidence of defects and repairs.
+- Explain the limits of automated and manual checks.
 
-Markup validation; manual keyboard and content review; link and asset checks; separating validity from accessibility; documenting repairs.
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Audit systematically
+
+Review each page rather than only the home page. Start with document structure, then headings, regions, unique IDs, links, images, tables, forms, and media. Inspect source and the parsed DOM.
+
+Use a markup checker to detect syntax and content-model problems. The final reference page includes the Nu HTML Checker. For private files, review locally rather than uploading confidential material. Valid markup does not prove good alternative text or complete accessibility.
+
+## Test actual journeys
+
+Navigate with Tab and Shift+Tab. Activate links and disclosure controls. Try invalid and valid fictional form entries. Confirm captions and transcripts. Test a narrow viewport and record image overflow for the later CSS stage rather than claiming an HTML-only site has a polished responsive layout.
+
+## Keep a review log
+
+Record the page, reproducible problem, expected result, repair, and retest. A screenshot alone does not explain the HTML decision. Maintain an honest list of remaining issues.
+
+## Worked example
+
+```html
+<table>
+  <caption>Portfolio audit log</caption>
+  <thead><tr><th scope="col">Page</th><th scope="col">Issue</th><th scope="col">Repair and retest</th></tr></thead>
+  <tbody><tr><th scope="row">About</th><td>Home link used the wrong path</td><td>Corrected href; opened home successfully</td></tr></tbody>
+</table>
+```
+
+This is a log format, not proof that the course has run the checks for your site. Fill it with your own observations.
+
+<Note>Do not mark an untested item as passed. Record Not tested and explain why.</Note>
 
 ## Practice challenge
 
-Audit a supplied multi-page site, repair its HTML defects, and produce a short findings checklist.
+Audit every portfolio page, repair at least one deliberately introduced defect, and document checks of links, keyboard operation, images, forms, and media. Demonstrate a visitor journey and state two review limitations.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Listed markup defects are repaired; keyboard checks are recorded; links and media are checked; learner states the limits of their audit.
+<Accordion title="Need a hint?">
+Use the checklist in small passes: first links, then structure, then interaction and media.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] Every page has a recorded review.
+- [ ] At least one defect has repair and retest evidence.
+- [ ] The demonstration covers a complete visitor journey.
+- [ ] My report explains the limits of the checks performed.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<h1>Portfolio review</h1>
+<ul>
+  <li>Checked home, about, projects, learning log, and contact.</li>
+  <li>Repaired a mismatched skip-link target and retested it.</li>
+  <li>Tested fictional invalid and valid practice-form entries.</li>
+  <li>Verified local captions over HTTP.</li>
+</ul>
+<h2>Limits</h2>
+<p>This is a learning review, not a full accessibility certification.</p>
+<p>Responsive visual layout will be developed in the CSS course.</p>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
-  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice">Previous</a>
-  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/project">Next</a>
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/checkpoint-native-features">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/checkpoint-audit-and-demonstrate">Next</a>
 </div>

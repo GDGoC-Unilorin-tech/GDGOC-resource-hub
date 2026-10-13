@@ -1,30 +1,90 @@
 ---
 title: "Choices and longer responses"
-description: 'Curriculum outline for lesson development'
+description: "Create single-choice and multiple-choice controls."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Create single-choice and multiple-choice controls.
+- Supply explicit choice values.
+- Collect longer text.
 
-Radio buttons, checkboxes, `select`, `option`, and `textarea`; shared radio names; explicit option values.
+## Before you begin
+
+Complete the Beginner stage project and earlier lessons in this module. Work in a copy of your growing portfolio.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## One choice or several?
+
+Radio inputs sharing a name form a group in which only one can be selected. Give each option a unique id, label, and explicit value. Related checkbox inputs allow independent selections; same-name checkbox values can repeat in submitted data.
+
+`select` contains `option` elements for a choice list. A required select can start with an empty-value prompt. `textarea` is for longer responses; its initial text goes between its tags, not in a value attribute.
+
+Unchecked checkboxes do not submit a value. Do not assume every displayed option will be present in a request. Keep labels visible.
+
+## Worked example
+
+```html
+<label><input type="radio" name="session" value="morning"> Morning</label>
+<label><input type="radio" name="session" value="afternoon"> Afternoon</label>
+<label><input type="checkbox" name="interest" value="html"> HTML</label>
+<label><input type="checkbox" name="interest" value="accessibility"> Accessibility</label>
+<label for="level">Experience</label>
+<select id="level" name="level" required>
+  <option value="">Choose an option</option>
+  <option value="new">New to coding</option>
+  <option value="practising">Already practising</option>
+</select>
+<label for="message">What would help you learn?</label>
+<textarea id="message" name="message" rows="4"></textarea>
+```
+
+Place these controls inside the practice form from the previous lesson. Click both radio options: selecting the second clears the first. Both checkboxes may remain selected.
+
+<Note>Do not use placeholder text as the only explanation of a field.</Note>
 
 ## Practice challenge
 
-Add a session choice, optional interests, and an accessibility-needs message to a registration form.
+Add a session radio group, two optional interests, an experience select, and a learning-needs message to your practice form. Use explicit values and labels.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Only one radio option can be selected in its group; checkboxes allow multiple choices; every control has a label.
+<Accordion title="Need a hint?">
+Radio buttons share a name to form a group. Their value attributes identify the individual choices.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] Only one session can be selected.
+- [ ] Both interests can be selected independently.
+- [ ] The select has a meaningful empty prompt and explicit values.
+- [ ] The textarea has a label and submission name.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<label><input type="radio" name="session" value="weekday" required> Weekday</label>
+<label><input type="radio" name="session" value="weekend"> Weekend</label>
+<label><input type="checkbox" name="interest" value="links"> Links</label>
+<label><input type="checkbox" name="interest" value="forms"> Forms</label>
+<label for="experience">Experience</label>
+<select id="experience" name="experience" required>
+  <option value="">Choose your experience</option>
+  <option value="beginner">Beginner</option>
+  <option value="returning">Returning learner</option>
+</select>
+<label for="needs">Learning needs</label>
+<textarea id="needs" name="needs" rows="4"></textarea>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i06-input-types-and-browser-validation">Previous</a>

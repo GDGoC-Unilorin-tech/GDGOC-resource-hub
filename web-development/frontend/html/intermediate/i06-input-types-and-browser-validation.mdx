@@ -1,30 +1,90 @@
 ---
 title: "Input types and browser validation"
-description: 'Curriculum outline for lesson development'
+description: "Choose input types by the data requested."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Choose input types by the data requested.
+- Apply native constraints.
+- Test both valid and invalid entries.
 
-Text, email, password, number, date, and file inputs; `required`, `min`, `max`, and length constraints; appropriate input choice.
+## Before you begin
+
+Complete the Beginner stage project and earlier lessons in this module. Work in a copy of your growing portfolio.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Types communicate expectations
+
+`text` accepts general text, `email` supplies email syntax checking, `date` represents a calendar date, `number` suits numeric quantities, `password` obscures characters visually, and `file` lets a user choose a file. Native controls differ between browsers and devices.
+
+Do not use number for telephone numbers or identifiers just because they contain digits. They may contain leading zeros or symbols and do not represent quantities.
+
+## Constraints
+
+`required` prevents an empty required field at submission. `min` and `max` constrain numbers or dates; `minlength` and `maxlength` apply to suitable text controls. A Boolean attribute such as required is enabled by its presence: writing required="false" still enables it.
+
+Native validation helps users but can be bypassed. It does not confirm an email account exists, encrypt a password, or replace server-side checks.
+
+## Worked example
+
+```html
+<form action="results.html" method="get">
+  <label for="email">Practice email</label>
+  <input id="email" name="email" type="email" required>
+  <label for="sessions">Sessions per week</label>
+  <input id="sessions" name="sessions" type="number" min="1" max="5" required>
+  <label for="goal">Learning goal</label>
+  <input id="goal" name="goal" type="text" minlength="10" maxlength="80" required>
+  <button type="submit">Check sample entries</button>
+</form>
+```
+
+Create results.html as in the previous lesson. Try empty fields, an invalid email, a quantity above five, and a short goal before valid fictional values.
+
+<Note>If experimenting with password or file inputs, use dummy values and harmless files only; do not submit them through this GET example.</Note>
 
 ## Practice challenge
 
-Build the input portion of an event registration form with suitable constraints.
+Build a practice workshop form with email, attendance date, one-to-four sessions, and a 10-to-80-character goal. Record at least three invalid tests and one valid test.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Types match the requested data; invalid examples trigger expected browser checks; password fields are not described as encryption.
+<Accordion title="Need a hint?">
+Attempt submission to trigger browser checks. Change one invalid value at a time.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] Types match the requested data.
+- [ ] Numeric and text constraints match the brief.
+- [ ] My test log includes three invalid and one valid case.
+- [ ] I can explain native validation limitations.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<form action="results.html" method="get">
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" required>
+  <label for="day">Attendance date</label>
+  <input id="day" name="day" type="date" required>
+  <label for="count">Number of sessions</label>
+  <input id="count" name="count" type="number" min="1" max="4" required>
+  <label for="goal">Goal</label>
+  <input id="goal" name="goal" minlength="10" maxlength="80" required>
+  <button type="submit">Check practice details</button>
+</form>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i05-forms-labels-and-submission-basics">Previous</a>

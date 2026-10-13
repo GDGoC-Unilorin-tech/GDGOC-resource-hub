@@ -1,32 +1,84 @@
 ---
 title: "Quotations, code, and dates"
-description: 'Curriculum outline for lesson development'
+description: "Mark quotations and work titles appropriately."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Mark quotations and work titles appropriately.
+- Display code as text.
+- Provide machine-readable dates.
 
-`blockquote`, `q`, `cite`, `pre`, `code`, `time`, and machine-readable date values; escaping code examples.
+## Before you begin
+
+Complete the Beginner stage project and earlier lessons in this module. Work in a copy of your growing portfolio.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Quotations and attribution
+
+`blockquote` marks an extended quotation; `q` marks an inline quotation. `cite` identifies a work's title, not a person's name. A blockquote cite attribute can identify a source URL, but it does not display attribution for the reader—write visible attribution too.
+
+## Show code without running it
+
+`code` identifies code and `pre` preserves whitespace. Escape angle brackets with character references when showing HTML source; otherwise the browser interprets the markup.
+
+## Dates humans and machines can read
+
+`time` can pair readable text with a valid `datetime` value. Use an unambiguous year-month-day value for a date. If you include a time-zone-specific instant, supply an appropriate offset rather than assuming every reader shares your location.
+
+## Worked example
+
+```html
+<p>Completed on <time datetime="2026-10-12">12 October 2026</time>.</p>
+<blockquote><p>Small practice sessions help me keep learning.</p></blockquote>
+<p>From my fictional journal, <cite>Learning Notes</cite>.</p>
+<pre><code>&lt;p&gt;Hello, HTML!&lt;/p&gt;</code></pre>
+```
+
+The quote is original fictional sample text. The browser displays the HTML snippet as text, preserving the code block whitespace.
+
+<Note>Do not use blockquote merely to indent ordinary text.</Note>
 
 ## Practice challenge
 
-Create an event recap containing a quotation, a displayed HTML snippet, and an event date.
+Add a learning-log entry with a date, an original quotation with visible attribution, an inline quote, and an HTML snippet displayed as code.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Code is displayed as text; quotation markup fits its use; `time` has an appropriate `datetime` value.
+<Accordion title="Need a hint?">
+Write &lt; instead of a literal opening angle bracket inside the displayed HTML snippet.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] datetime matches the displayed date.
+- [ ] Quotation attribution is visible.
+- [ ] cite names a work rather than its author.
+- [ ] HTML source displays as code instead of becoming a link.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<article>
+  <h2>My first linked pages</h2>
+  <p><time datetime="2026-10-12">12 October 2026</time></p>
+  <blockquote><p>I learn by trying and reviewing.</p></blockquote>
+  <p>From my journal, <cite>Practice Notes</cite>.</p>
+  <p>My reminder is <q>test every link</q>.</p>
+  <pre><code>&lt;a href="about.html"&gt;About&lt;/a&gt;</code></pre>
+</article>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
-  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i09-audio-video-and-captions">Previous</a>
-  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/intermediate/project">Next</a>
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i04-data-tables">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/intermediate/checkpoint-data-and-text">Next</a>
 </div>

@@ -1,32 +1,85 @@
 ---
 title: "Form boundaries and safe practice"
-description: 'Curriculum outline for lesson development'
+description: "Explain client and server responsibilities."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Explain client and server responsibilities.
+- Choose a method by intent.
+- Describe file-upload requirements and safe practice.
 
-What browser validation can and cannot guarantee; server validation; GET/POST visibility; file-upload encoding concepts; avoiding real sensitive data in practice forms.
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## HTML stops at a boundary
+
+A browser can collect values, check some constraints, and send a request. A server or service must receive, validate, authorise, and process that request. The static results page in this course does not send email or store messages.
+
+GET is appropriate for retrieval with shareable query parameters. POST commonly submits changes, but does not encrypt data by itself. HTTPS protects transport; server handling and storage still require appropriate controls. Password inputs only obscure their visible characters.
+
+## File uploads
+
+A real file-upload form normally uses POST and `enctype="multipart/form-data"`. The file input's accept attribute is a selection hint, not security validation. A server must validate file content, size, permissions, and storage. No upload endpoint is provided here.
+
+Use the following as a reading example, not a form you should submit. The destination is illustrative.
+
+## Worked example
+
+```html
+<!-- Reading example only: /upload is not implemented -->
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="work">Project file</label>
+  <input id="work" name="work" type="file" accept=".html" required>
+  <button type="submit">Upload project</button>
+</form>
+```
+
+The markup expresses request intent. It does not supply authentication, file validation, storage, or an upload service.
+
+<Note>A field marked required can be bypassed. Never trust browser checks as your only validation.</Note>
 
 ## Practice challenge
 
-Audit a form brief, select a suitable method for each supplied scenario, and document the processing still required.
+Audit your practice contact form. Write a requirements note choosing a method for a search, message submission, and file upload. List the backend work required before each feature is real. Do not submit sensitive data.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Learner identifies missing server handling; does not treat POST or password inputs as security guarantees; uses fictional sample data.
+<Accordion title="Need a hint?">
+Separate what the browser does from what the receiving service must do.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] Methods match retrieval versus submission intent.
+- [ ] The note distinguishes native and server validation.
+- [ ] File encoding and validation requirements are explained.
+- [ ] My practice page does not claim real processing or security guarantees.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<h2>Practice form limitations</h2>
+<p>This site does not send messages or store submissions.</p>
+<dl>
+  <dt>Search</dt><dd>GET plus actual query-processing logic.</dd>
+  <dt>Message</dt><dd>POST to an HTTPS service with server validation and appropriate controls.</dd>
+  <dt>Upload</dt><dd>POST multipart data with file validation and safe storage.</dd>
+</dl>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a06-metadata-and-meaningful-document-context">Previous</a>
-  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/a08-validate-and-audit-a-complete-website">Next</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/checkpoint-native-features">Next</a>
 </div>

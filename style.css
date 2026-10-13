@@ -260,15 +260,6 @@ button.hub-cta {
     }
 }
 
-/* Preserve dropdown presentation without synthetic navigation clicks. */
-#sidebar li.hub-collapsed > :not(button),
-#mobile-nav-content li.hub-collapsed > :not(button) {
-    display: none !important;
-}
-#sidebar li.hub-collapsed > button svg,
-#mobile-nav-content li.hub-collapsed > button svg {
-    transform: rotate(0deg);
-}
 .progress-share [data-share-draft] {
     white-space: pre-line;
     overflow-wrap: anywhere;
@@ -293,3 +284,20 @@ button.hub-cta {
 
 .progress-share .share-draft { margin: 1rem 0; padding: 1rem; border-left: 4px solid #4285F4; background: #E8F0FE; color: #174EA6; }
 .dark .progress-share .share-draft { background: #182A45; color: #AECBFA; }
+
+/* Keep module disclosure arrows clear in desktop and mobile navigation. */
+:is(#sidebar, #mobile-nav-content) button[aria-expanded] svg {
+    color: #000000 !important;
+    width: 16px !important;
+    height: 16px !important;
+    stroke-width: 3 !important;
+    opacity: 1 !important;
+    flex-shrink: 0;
+}
+:is(#sidebar, #mobile-nav-content) button[aria-expanded] svg path {
+    stroke: currentColor !important;
+    stroke-width: 3 !important;
+}
+.dark :is(#sidebar, #mobile-nav-content) button[aria-expanded] svg {
+    color: #F9AB00 !important;
+}

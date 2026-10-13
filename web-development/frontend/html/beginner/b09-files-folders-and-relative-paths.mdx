@@ -1,30 +1,80 @@
 ---
 title: "Files, folders, and relative paths"
-description: 'Curriculum outline for lesson development'
+description: "Organise files consistently."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Organise files consistently.
+- Resolve sibling, child, and parent paths.
+- Diagnose path mistakes.
 
-Project folders; `index.html`; sibling and child paths; `../`; file-name consistency; common broken-path mistakes.
+## Before you begin
+
+Complete the previous lesson in this module. Keep your editor and browser ready.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Paths start from a location
+
+For the relative paths used here, imagine standing in the folder containing the current HTML document. A sibling filename stays in that folder. `images/profile.png` enters a child folder; `../index.html` goes up one folder.
+
+Use forward slashes in web paths even on Windows. Keep filenames lowercase with hyphens and avoid spaces. Some deployed systems distinguish uppercase from lowercase even when your local computer does not.
+
+A root-relative path starts with `/` and refers to the site's root. It is useful for the hub's own routes, but does not behave like a project-folder-relative path when opening local files. Use relative paths in the downloadable practice projects.
+
+## Worked example
+
+```html
+<!-- From index.html at the project root -->
+<a href="pages/about.html">About me</a>
+
+<!-- From pages/about.html -->
+<a href="../index.html">Home</a>
+```
+
+Create a pages folder beside index.html, then place about.html in it. The return link climbs from pages to the project root.
+
+<Note>Do not paste a private absolute disk path into a website link.</Note>
 
 ## Practice challenge
 
-Arrange home and about pages plus an images folder, then connect the pages in both directions.
+Create index.html, pages/about.html, and pages/goals.html. Connect home to both nested pages; connect the nested pages to each other and home. Sketch the folder tree.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-File structure matches the plan; navigation works from both pages; paths refer to existing files.
+<Accordion title="Need a hint?">
+Draw where you start and where the target lives. Count how many parent folders you must climb.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] The three files match the planned folder tree.
+- [ ] Sibling links use sibling filenames.
+- [ ] Nested pages return home using ../.
+- [ ] All links work from their source page.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<!-- index.html -->
+<a href="pages/about.html">About</a>
+<a href="pages/goals.html">Goals</a>
+<!-- pages/about.html -->
+<a href="goals.html">Goals</a>
+<a href="../index.html">Home</a>
+<!-- pages/goals.html -->
+<a href="about.html">About</a>
+<a href="../index.html">Home</a>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/beginner/b08-links-and-page-navigation">Previous</a>

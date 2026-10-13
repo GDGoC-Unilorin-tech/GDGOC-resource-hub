@@ -1,32 +1,82 @@
 ---
 title: "Image loading choices"
-description: 'Curriculum outline for lesson development'
+description: "Reserve image space with dimensions."
 ---
 
-> Authoring draft: this page defines curriculum scope. Full teaching content and solutions are pending.
+## What you will learn
 
-## Learning scope
+- Reserve image space with dimensions.
+- Use lazy loading selectively.
+- Explain image loading decisions.
 
-Intrinsic dimensions; lazy loading below-the-fold images; why prominent images should not automatically be lazy loaded; descriptive file organisation.
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Reserve space before an image arrives
+
+Accurate width and height give the browser an aspect ratio so it can reserve space. This reduces content movement as the image loads. CSS may later resize the image, but its intrinsic proportions remain useful.
+
+## Load according to importance
+
+`loading="lazy"` asks the browser to defer loading an image until it is near the viewport. It is a hint, and browsers choose the threshold. It does not guarantee an offscreen image remains unloaded until you scroll.
+
+Do not automatically lazy-load the prominent image visible when the page opens. Defer suitable below-the-fold images instead. Compression, sensible dimensions, and appropriate formats also affect weight; HTML attributes cannot rescue enormous unnecessary assets.
+
+## Worked example
+
+```html
+<!-- Prominent introductory image -->
+<img src="images/study-wide.png" width="960" height="540"
+     alt="Learn, practise, build">
+
+<!-- An image later in a long page -->
+<img src="images/study-small.png" width="480" height="270"
+     loading="lazy" alt="A reminder of the three learning stages">
+```
+
+Use the second image only where its content is useful. Its smaller file and loading hint suit a later section; do not add duplicate decoration solely to demonstrate lazy loading.
+
+<Note>Do not promise a performance improvement without measuring the actual page.</Note>
 
 ## Practice challenge
 
-Review a gallery and assign dimensions and loading behaviour based on the images' placement.
+Review two image placements in your portfolio. Add accurate dimensions, choose which should be deferred, and write a short justification. Inspect Network requests without treating browser heuristics as a strict pass/fail rule.
 
-## Completion criteria
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
 
-Dimensions match assets; loading choices have reasons; the main introductory image is not indiscriminately lazy loaded.
+<Accordion title="Need a hint?">
+Review where the visitor first needs the image, not just how many images exist.
+</Accordion>
 
-## Content to develop
+## Completion checklist
 
-- Step-by-step explanation and code examples.
-- Optional hints.
-- Separately revealed suggested solution with explanation.
+- [ ] Dimensions match each file.
+- [ ] The introductory image is not indiscriminately lazy-loaded.
+- [ ] Deferred loading has a content/placement reason.
+- [ ] I documented the observed browser behaviour.
 
+<Accordion title="View a suggested solution">
 
----
+```html
+<img src="images/study-wide.png" width="960" height="540"
+     alt="My learning approach: learn, practise, build">
+<!-- Later, in a relevant supporting section: -->
+<img src="images/study-small.png" width="480" height="270"
+     loading="lazy" alt="Learn, practise, build reminder">
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a02-responsive-image-markup">Previous</a>
-  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/a04-native-disclosure-widgets">Next</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/checkpoint-reliable-documents">Next</a>
 </div>
