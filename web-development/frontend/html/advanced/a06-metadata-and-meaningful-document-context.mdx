@@ -1,0 +1,85 @@
+---
+title: "Metadata and meaningful document context"
+description: "Write page-specific titles and descriptions."
+---
+
+## What you will learn
+
+- Write page-specific titles and descriptions.
+- Declare document and passage languages.
+- Avoid misleading metadata claims.
+
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Context beyond visible content
+
+The title should identify a page within its site, such as “Projects | Amina”. Description metadata summarises the page. Search services may choose a different snippet; a description does not guarantee ranking or presentation.
+
+Keep encoding and viewport declarations from your earlier skeleton. Metadata does not replace visible content, good headings, or useful navigation.
+
+## Languages can change within a page
+
+Declare the primary language on html. Mark a passage in another language with its own lang attribute when you know the appropriate language tag. This can help pronunciation and processing.
+
+A canonical link declares a preferred public URL when you know the real production address. Do not invent a canonical URL for a local exercise. Stylesheet and favicon link metadata are optional here; styling comes later.
+
+## Worked example
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Amina's portfolio</title>
+  <meta name="description" content="Amina's HTML projects and lessons learned.">
+</head>
+<!-- Inside body: -->
+<p>A greeting in French: <span lang="fr">Bonjour !</span></p>
+```
+
+The span is an inline grouping for the language annotation; it does not provide a special visual style. Use a language tag only when it matches the actual content.
+
+<Note>Metadata should describe the content honestly; keyword repetition does not replace useful content.</Note>
+
+## Practice challenge
+
+Give your home, about, and projects pages distinct titles and relevant descriptions. Add a correctly identified short passage in another language, or explain why your monolingual page needs no language change.
+
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
+
+<Accordion title="Need a hint?">
+Summarise what is actually on each page in one sentence.
+</Accordion>
+
+## Completion checklist
+
+- [ ] Titles and descriptions match each page.
+- [ ] Encoding and viewport metadata remain present.
+- [ ] Primary and passage languages are accurate.
+- [ ] No invented canonical URL or guaranteed ranking claim is included.
+
+<Accordion title="View a suggested solution">
+
+```html
+<!-- Head of projects.html -->
+<title>HTML projects | My portfolio</title>
+<meta name="description" content="Two HTML projects with implementation notes.">
+<!-- Inside body: -->
+<p>My practice greeting is <span lang="fr">Bonjour !</span></p>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a05-embedded-pages-and-boundaries">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice">Next</a>
+</div>

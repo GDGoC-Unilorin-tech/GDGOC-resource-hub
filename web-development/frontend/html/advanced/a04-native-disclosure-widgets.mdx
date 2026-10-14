@@ -1,0 +1,81 @@
+---
+title: "Native disclosure widgets"
+description: "Build native disclosure widgets."
+---
+
+## What you will learn
+
+- Build native disclosure widgets.
+- Write useful summary labels.
+- Keep essential instructions visible.
+
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Disclose optional detail
+
+`details` creates a native disclosure widget. Its first `summary` child labels the control. The browser supplies keyboard behaviour and expanded/collapsed state without JavaScript.
+
+The Boolean `open` attribute starts a disclosure expanded. Omitting it starts collapsed. Do not put another button inside summary to duplicate the native control.
+
+Use disclosures for optional explanations or FAQs. Keep instructions needed to complete a task visible, so visitors do not have to discover hidden requirements.
+
+## Worked example
+
+```html
+<h2>Frequently asked questions</h2>
+<details>
+  <summary>What did I build with HTML?</summary>
+  <p>A connected portfolio with meaningful content and practice forms.</p>
+</details>
+<details>
+  <summary>Does the contact form send messages?</summary>
+  <p>No. It demonstrates HTML controls only.</p>
+</details>
+```
+
+Use Tab to reach each summary and Enter or Space to toggle it in your browser. Both questions can be open; that is acceptable.
+
+<Note>A disclosure is not a form, modal dialog, or generic replacement for navigation.</Note>
+
+## Practice challenge
+
+Add three useful FAQs to your portfolio. Keep the practice-form limitation visible outside the disclosure too. Test keyboard toggling.
+
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
+
+<Accordion title="Need a hint?">
+Write the questions first. Put optional supporting answers inside details.
+</Accordion>
+
+## Completion checklist
+
+- [ ] Each details starts with a meaningful summary.
+- [ ] All three controls toggle with the keyboard.
+- [ ] Essential limitations are visible outside disclosures.
+- [ ] No custom script or nested button is required.
+
+<Accordion title="View a suggested solution">
+
+```html
+<p>The contact form is practice only; it does not send messages.</p>
+<details><summary>What am I learning?</summary><p>HTML content and structure.</p></details>
+<details><summary>What will I learn next?</summary><p>CSS styling.</p></details>
+<details><summary>Can I explain my project?</summary><p>I keep an audit and learning log.</p></details>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/checkpoint-reliable-documents">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/a05-embedded-pages-and-boundaries">Next</a>
+</div>

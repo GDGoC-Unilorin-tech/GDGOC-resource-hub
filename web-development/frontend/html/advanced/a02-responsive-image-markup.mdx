@@ -1,0 +1,94 @@
+---
+title: "Responsive image markup"
+description: "Distinguish resolution selection from art direction."
+---
+
+## What you will learn
+
+- Distinguish resolution selection from art direction.
+- Describe image candidates accurately.
+- Provide an img fallback and text alternative.
+
+## Before you begin
+
+Complete the Intermediate portfolio milestone and earlier lessons in this module.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Two different problems
+
+Resolution selection offers versions of the same composition so the browser can choose a suitable resource. Art direction changes the composition, such as a wide diagram versus a tall arrangement for a narrow screen.
+
+For a fixed 480-pixel-wide slot, `1x` and `2x` density descriptors can offer 480- and 960-pixel resources. With width descriptors such as `480w`, each value must match the file's actual intrinsic width. `sizes` describes the intended display slot for width-descriptor candidates; it does not style that slot.
+
+## Picture selects a source
+
+`picture` can provide source candidates under media conditions, then an `img` fallback. The img supplies alternative text. The browser's selection can depend on density, cache, and other factors, so do not assume it always chooses a particular resolution.
+
+Download the practice pack from the media lesson. It includes study-small.png (480 × 270), study-wide.png (960 × 540), and study-tall.png (480 × 640).
+
+## Worked example
+
+```html
+<!-- Resolution selection for a fixed-width image -->
+<img src="images/study-small.png"
+     srcset="images/study-small.png 1x, images/study-wide.png 2x"
+     width="480" height="270" alt="Learn, practise, build">
+
+<!-- Art direction: a different composition on a narrow viewport -->
+<picture>
+  <source media="(max-width: 600px)" srcset="images/study-tall.png"
+          width="480" height="640">
+  <img src="images/study-wide.png" width="960" height="540"
+       alt="Three stages: learn, practise, and build">
+</picture>
+```
+
+These are resource-selection examples, not a complete responsive CSS layout. The fixed 480px image can overflow a very narrow viewport; later CSS will control display sizing. Inspect currentSrc in DevTools or the Network panel while resizing and reloading.
+
+<Note>Responsive resource selection and responsive visual sizing are related but distinct.</Note>
+
+## Practice challenge
+
+Create both examples using the supplied files. Then write a width-descriptor example for a fixed 480px slot. Explain how resolution selection differs from art direction and record the file selected at two viewport sizes.
+
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
+
+<Accordion title="Need a hint?">
+Do not mix w and x descriptors in one srcset. Check image dimensions before writing descriptors.
+</Accordion>
+
+## Completion checklist
+
+- [ ] Descriptors match actual asset widths.
+- [ ] sizes describes the fixed 480px slot in the width example.
+- [ ] picture retains an img fallback with alternative text.
+- [ ] I recorded observed resource selection without assuming one universal result.
+
+<Accordion title="View a suggested solution">
+
+```html
+<img src="images/study-small.png"
+     srcset="images/study-small.png 480w, images/study-wide.png 960w"
+     sizes="480px" width="480" height="270"
+     alt="Three stages: learn, practise, build">
+<picture>
+  <source media="(max-width: 600px)" srcset="images/study-tall.png"
+          width="480" height="640">
+  <img src="images/study-wide.png" width="960" height="540"
+       alt="Three stages: learn, practise, build">
+</picture>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a01-content-rules-and-browser-error-recovery">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/advanced/a03-image-loading-choices">Next</a>
+</div>

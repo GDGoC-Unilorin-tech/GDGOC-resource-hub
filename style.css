@@ -5,3 +5,299 @@ img[src*="logo"] {
     max-height: none !important;
     width: auto !important;
 }
+
+/* Course navigation: Google orange with readable dark text. */
+.lesson-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.lesson-navigation a.lesson-nav-button,
+#pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #F9AB00 !important;
+    border-radius: 0.5rem;
+    background: #F9AB00 !important;
+    color: #202124 !important;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: background-color 150ms ease;
+}
+.lesson-navigation a.lesson-nav-button:hover,
+#pagination a:hover {
+    background: #FBBC05 !important;
+    border-color: #FBBC05 !important;
+}
+.lesson-navigation a:focus-visible,
+#pagination a:focus-visible {
+    outline: 3px solid #4285F4;
+    outline-offset: 3px;
+}
+.lesson-navigation .lesson-nav-next {
+    margin-left: auto;
+}
+#pagination a * {
+    color: inherit !important;
+}
+/* Give Markdown quotes an explicit color in both themes. */
+#content blockquote,
+.prose blockquote {
+    border-left: 4px solid #4285F4;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background: #E8F0FE;
+    color: #174EA6;
+    padding: 1rem 1.25rem;
+    font-style: normal;
+}
+#content blockquote p,
+.prose blockquote p,
+#content blockquote strong,
+.prose blockquote strong {
+    color: inherit;
+}
+.dark #content blockquote,
+.dark .prose blockquote {
+    background: #182A45;
+    color: #AECBFA;
+}
+@media (max-width: 640px) {
+    .lesson-navigation a.lesson-nav-button {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .lesson-navigation a.lesson-nav-button,
+    #pagination a {
+        transition: none;
+    }
+}
+
+/* Shared CTA treatment, including native Mintlify pagination and cards. */
+.lesson-navigation a.lesson-nav-button,
+#pagination a,
+#topbar-cta-button,
+#content a.card,
+#content .card-group a,
+#content a.hub-cta,
+a[data-component-part="button"],
+button.hub-cta {
+    background: #F9AB00 !important;
+    border-color: #F9AB00 !important;
+    color: #202124 !important;
+    cursor: pointer !important;
+}
+#content a.card *,
+#topbar-cta-button > a * {
+    color: inherit !important;
+}
+.lesson-navigation a.lesson-nav-button:hover,
+#pagination a:hover,
+#topbar-cta-button:hover,
+#content a.card:hover,
+#content a.hub-cta:hover {
+    background: #FBBC05 !important;
+}
+#content a.hub-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+#sidebar a.hub-active-link,
+#sidebar a[aria-current="page"] {
+    background: #FEF7E0 !important;
+    color: #7A4300 !important;
+    box-shadow: inset 3px 0 #F9AB00;
+    font-weight: 700;
+}
+.dark #sidebar a.hub-active-link,
+.dark #sidebar a[aria-current="page"] {
+    background: #3B2B10 !important;
+    color: #FDD663 !important;
+}
+#sidebar a.hub-active-link * {
+    color: inherit !important;
+}
+#sidebar button[aria-expanded],
+#sidebar a,
+#content a.hub-cta {
+    cursor: pointer;
+}
+
+/* Compact, responsive reading layout. */
+#page-title {
+    font-size: clamp(1.5rem, 2.2vw, 2rem) !important;
+    line-height: 1.2 !important;
+    overflow-wrap: anywhere;
+}
+#content {
+    min-width: 0;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+}
+#content h2 { font-size: 1.375rem; line-height: 1.35; }
+#content h3 { font-size: 1.125rem; line-height: 1.4; }
+#content .callout { padding: 1rem; }
+#sidebar a.hub-active-link,
+#sidebar a[aria-current="page"],
+#mobile-nav a[aria-current="page"],
+#mobile-nav-content a[aria-current="page"] {
+    border-radius: 0 !important;
+}
+/* The CTA hook is a list item; style the link and its overlay. */
+#topbar-cta-button {
+    background: transparent !important;
+    border: 0 !important;
+}
+#topbar-cta-button > a {
+    background: #F9AB00 !important;
+    color: #202124 !important;
+    border-radius: 0.5rem;
+    min-height: 44px;
+    padding: 0.625rem 0.875rem;
+    cursor: pointer !important;
+    isolation: isolate;
+}
+#topbar-cta-button > a > span.absolute {
+    background: #F9AB00 !important;
+    border-radius: inherit;
+}
+#topbar-cta-button > a:hover,
+#topbar-cta-button > a:hover > span.absolute {
+    background: #FBBC05 !important;
+}
+#topbar-cta-button > a span,
+#topbar-cta-button > a svg {
+    color: #202124 !important;
+}
+#topbar-cta-button > a:focus-visible {
+    outline: 3px solid #4285F4;
+    outline-offset: 3px;
+}
+@media (min-width: 1024px) {
+    #sidebar {
+        width: 15rem !important;
+        --sidebar-width: 15rem;
+        font-size: 0.8125rem;
+    }
+    #sidebar-content .relative.lg\:text-sm {
+        font-size: 0.8125rem;
+        line-height: 1.5;
+    }
+    #sidebar-content [data-component-part="scroll-area-viewport"] {
+        padding-right: 1rem;
+    }
+    div:has(> #content-area) {
+        gap: 1.5rem !important;
+        min-width: 0;
+    }
+    #content-area {
+        flex: 1 1 0% !important;
+        width: 0 !important;
+        min-width: 0;
+        max-width: none !important;
+        margin-left: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 0 !important;
+    }
+    #content-side-layout {
+        display: flex !important;
+        flex-direction: column;
+        flex: 0 0 12rem;
+        width: 12rem;
+        min-width: 0;
+    }
+    #table-of-contents-layout {
+        display: flex !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+    #table-of-contents {
+        width: 100% !important;
+        font-size: 0.8125rem;
+        line-height: 1.5;
+    }
+    #header .eyebrow { font-size: 0.8125rem; }
+}
+@media (max-width: 1023px) {
+    #content-area {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    #content-side-layout,
+    #table-of-contents-layout {
+        display: none !important;
+    }
+    #navbar a[href="/"] img {
+        height: 40px !important;
+        max-width: 160px;
+        object-fit: contain;
+    }
+}
+@media (max-width: 640px) {
+    #page-title { font-size: 1.5rem !important; }
+    #content h2 { font-size: 1.25rem; }
+    #content .callout { padding: 0.875rem; }
+    #content img, #content video { max-width: 100%; height: auto; }
+    #content pre { max-width: 100%; overflow-x: auto; }
+    .lesson-navigation { gap: 0.75rem; }
+    .lesson-navigation a.lesson-nav-button {
+        box-sizing: border-box;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
+.progress-share [data-share-draft] {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    user-select: text;
+}
+.progress-share a.hub-cta {
+    white-space: normal;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.progress-share [data-share-status] {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+@media (max-width: 640px) {
+    .progress-share a.hub-cta {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.progress-share .share-draft { margin: 1rem 0; padding: 1rem; border-left: 4px solid #4285F4; background: #E8F0FE; color: #174EA6; }
+.dark .progress-share .share-draft { background: #182A45; color: #AECBFA; }
+
+/* Keep module disclosure arrows clear in desktop and mobile navigation. */
+:is(#sidebar, #mobile-nav-content) button[aria-expanded] svg {
+    color: #000000 !important;
+    width: 16px !important;
+    height: 16px !important;
+    stroke-width: 3 !important;
+    opacity: 1 !important;
+    flex-shrink: 0;
+}
+:is(#sidebar, #mobile-nav-content) button[aria-expanded] svg path {
+    stroke: currentColor !important;
+    stroke-width: 3 !important;
+}
+.dark :is(#sidebar, #mobile-nav-content) button[aria-expanded] svg {
+    color: #F9AB00 !important;
+}

@@ -1,0 +1,104 @@
+---
+title: "Lists"
+description: "Choose ordered, unordered, and description lists."
+---
+
+## What you will learn
+
+- Choose ordered, unordered, and description lists.
+- Write valid list items.
+- Nest a list within a list item.
+
+## Before you begin
+
+Complete the previous lesson in this module. Keep your editor and browser ready.
+
+<Tip>Examples labelled as body snippets go inside your existing document's body, not inside the MDX source of a live website. Complete HTML documents can be saved directly as .html files. Read the explanation for any head-only or intentionally broken examples.</Tip>
+
+## Choose the list for the content
+
+Use `ul` when the order of items does not matter, such as interests. Use `ol` when sequence or ranking matters, such as setup instructions. Their items use `li`.
+
+Use `dl` for term–description relationships: `dt` gives a term and `dd` its description. This works for a glossary without pretending the entries are steps.
+
+## Nested lists
+
+A nested list belongs inside the `li` it expands. Do not place a nested `ul` directly between sibling list items. The indentation in your editor makes the relationship easier to inspect.
+
+## Worked example
+
+```html
+<h2>Study supplies</h2>
+<ul>
+  <li>A notebook</li>
+  <li>Practice files
+    <ul>
+      <li>index.html</li>
+      <li>about.html</li>
+    </ul>
+  </li>
+</ul>
+<h2>Start practising</h2>
+<ol>
+  <li>Open the editor.</li>
+  <li>Save the file.</li>
+  <li>Refresh the browser.</li>
+</ol>
+<dl>
+  <dt>Browser</dt>
+  <dd>Software that displays web pages.</dd>
+</dl>
+```
+
+The supplies have no required order; the workflow does. The glossary describes a term. The nested list stays inside “Practice files”.
+
+<Note>Do not type bullet characters to imitate a list; use list markup.</Note>
+
+## Practice challenge
+
+Create a packing list with three items, ordered instructions with three steps, and a two-term HTML glossary. Add two subitems beneath one packing-list item.
+
+Attempt the task first. Save your source and inspect the result in your browser. Record what you expected and what you observed.
+
+<Accordion title="Need a hint?">
+Choose list types before writing tags. Indent nested items to make their parent clear.
+</Accordion>
+
+## Completion checklist
+
+- [ ] Each list type matches its content.
+- [ ] ul and ol items use li.
+- [ ] The nested list is inside its parent li.
+- [ ] Both glossary terms have descriptions.
+
+<Accordion title="View a suggested solution">
+
+```html
+<h2>What to bring</h2>
+<ul>
+  <li>Notebook</li>
+  <li>Laptop
+    <ul><li>Charger</li><li>Practice files</li></ul>
+  </li>
+  <li>Water</li>
+</ul>
+<h2>Practice steps</h2>
+<ol><li>Write HTML.</li><li>Save it.</li><li>Refresh the page.</li></ol>
+<dl>
+  <dt>Element</dt><dd>A unit of HTML structure.</dd>
+  <dt>Attribute</dt><dd>Information added to an opening tag.</dd>
+</dl>
+```
+
+This implementation follows the requirements above. Compare it with your own attempt against each checklist item. Your wording and other valid choices may differ. Explain one decision you made and revise any unmet criterion.
+
+</Accordion>
+
+## Check your understanding
+
+Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/beginner/b06-meaningful-text-markup">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/beginner/checkpoint-writing-content">Next</a>
+</div>

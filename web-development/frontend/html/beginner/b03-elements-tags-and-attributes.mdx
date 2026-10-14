@@ -1,0 +1,356 @@
+---
+title: "Elements, tags, and attributes"
+description: "Learn how HTML tags, content, and attributes work together to describe a web page."
+---
+
+You have created and opened your first HTML page. Now let's
+understand the building blocks you used.
+
+## What you will learn
+
+By the end of this lesson, you will be able to:
+
+- Distinguish an HTML tag from an HTML element.
+- Write elements with opening and closing tags.
+- Add attributes to an opening tag.
+- Nest elements correctly.
+- Recognise void elements.
+
+## Before you begin
+
+Open your `my-first-website` folder in your editor.
+
+Keep `index.html` open in both your editor and browser.
+You will continue working with the document from the previous lesson.
+
+## Tags and elements
+
+Consider this example:
+
+```html
+<p>I am learning HTML.</p>
+```
+
+It contains three parts:
+
+| Part | Name | Purpose |
+| --- | --- | --- |
+| `<p>` | Opening tag | Starts the paragraph |
+| `I am learning HTML.` | Content | Provides the paragraph's text |
+| `</p>` | Closing tag | Ends the paragraph |
+
+The complete structure is an **HTML element**:
+
+```html
+<p>I am learning HTML.</p>
+```
+
+<Info>
+  A **tag** marks the start or end of an element.
+
+  An **element** includes its tags and content, when those
+  parts apply.
+</Info>
+
+Notice the forward slash in the closing tag:
+
+```html
+</p>
+```
+
+It tells the browser where that element ends.
+
+## Choose elements by meaning
+
+Different elements describe different kinds of content:
+
+```html
+<h1>My learning journey</h1>
+<p>Today, I am practising HTML.</p>
+```
+
+Here:
+
+- `h1` identifies a main heading.
+- `p` identifies a paragraph.
+
+<Tip>
+  Choose an element because of what the content means.
+  You will use CSS later to control how it looks.
+</Tip>
+
+## Attributes add information
+
+An **attribute** provides extra information about an element.
+Attributes belong in the opening tag.
+
+Look at this link:
+
+```html
+<a href="#practice">Go to the practice section</a>
+```
+
+The parts are:
+
+- `<a>` creates a link.
+- `href` is the attribute name.
+- `"#practice"` is its value.
+- `Go to the practice section` is the visible link text.
+- `</a>` closes the element.
+
+The general pattern is:
+
+```html
+<element attribute="value">Content</element>
+```
+
+<Note>
+  The pattern above explains the syntax. `element` is a
+  placeholder, not an HTML element to use in your page.
+</Note>
+
+Use quotes around attribute values. This course uses double quotes.
+
+### Connect a link to a section
+
+The `#practice` destination points to an element on the same
+page whose `id` is `practice`:
+
+```html
+<a href="#practice">Go to the practice section</a>
+
+<h2 id="practice">Practice section</h2>
+<p>This is where I will practise HTML.</p>
+```
+
+Clicking the link navigates to that heading. On a short page,
+the movement may be small because the heading is already visible.
+
+Each `id` must be unique within the page.
+
+You will explore links and navigation more fully in a later lesson.
+
+## Nesting: Elements inside elements
+
+An element can contain another element when HTML allows it.
+
+For example:
+
+```html
+<p>I am learning <strong>HTML</strong> today.</p>
+```
+
+The `strong` element marks “HTML” as especially important.
+It is nested inside the paragraph.
+
+The browser usually displays that word in bold.
+
+### Close the inner element first
+
+Correct nesting:
+
+```html
+<p>I am learning <strong>HTML</strong> today.</p>
+```
+
+Incorrect nesting:
+
+```html
+<p>I am learning <strong>HTML</p></strong>
+```
+
+The second example closes the paragraph before closing the
+element inside it.
+
+<Warning>
+  Browsers may try to repair incorrect HTML. A page appearing
+  on screen does not prove that its markup is correct.
+</Warning>
+
+Not every element can go inside every other element. For now,
+keep headings and paragraphs separate, and use the demonstrated
+nesting pattern for `strong`.
+
+## Some elements are void elements
+
+A **void element** cannot contain content and does not have
+a closing tag.
+
+You have already seen one in your document's head:
+
+```html
+<meta charset="UTF-8">
+```
+
+Another example is a line break:
+
+```html
+<p>
+  Campus Technology Club<br>
+  University of Ilorin
+</p>
+```
+
+Here, `<br>` introduces a line break within the paragraph.
+
+Do not write `</br>` or `</meta>`.
+
+<Note>
+  Use separate `<p>` elements for separate paragraphs.
+  Do not add repeated `<br>` elements to create spacing.
+</Note>
+
+## Make your code readable
+
+Indentation helps you see which elements are inside others:
+
+```html
+<body>
+  <h1>My learning journey</h1>
+  <p>I am learning <strong>HTML</strong>.</p>
+</body>
+```
+
+The heading and paragraph are indented because they are
+inside `body`.
+
+Indentation makes your source easier to read. It does not
+create visual indentation on the rendered page.
+
+## Try this example
+
+Keep the document structure from the previous lesson.
+
+Replace only the content between `<body>` and `</body>`
+with the following:
+
+```html
+<h1>My learning journey</h1>
+
+<p>I am learning <strong>HTML</strong> step by step.</p>
+
+<a href="#practice">Go to my practice section</a>
+
+<h2 id="practice">My practice section</h2>
+
+<p>I can identify tags, elements, and attributes.</p>
+```
+
+Save the file and refresh your browser.
+
+Check that:
+
+- The main heading appears.
+- “HTML” is usually displayed in bold.
+- The link points to the practice heading.
+
+## Practice challenge: A learning introduction
+
+Replace the content inside your document's `body` with
+your own learning introduction.
+
+### Requirements
+
+1. Add a main heading using `h1`.
+2. Add a paragraph about your learning goal.
+3. Mark one important word or phrase using `strong`
+   inside that paragraph.
+4. Add a link labelled “Read my next goal”.
+5. Give the link an `href` value of `#next-goal`.
+6. Add an `h2` heading with `id="next-goal"`.
+7. Add a paragraph below that heading describing your next goal.
+
+Keep all visible content inside `body`.
+
+### Explain your code
+
+After building the page, identify:
+
+- One opening tag and its closing tag.
+- One complete element.
+- One attribute name and its value.
+- One element nested inside another.
+- One void element in your existing document.
+
+<Accordion title="Hint 1: Build the paragraph">
+
+Start with a normal paragraph, then put `strong` around
+an important phrase:
+
+```html
+<p>I want to practise <strong>every day</strong>.</p>
+```
+
+Close `strong` before closing the paragraph.
+
+</Accordion>
+
+<Accordion title="Hint 2: Match the link and destination">
+
+The link uses a `#` before the destination's ID:
+
+```html
+<a href="#next-goal">Read my next goal</a>
+```
+
+The destination uses the same value without `#`:
+
+```html
+<h2 id="next-goal">My next goal</h2>
+```
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] My page contains a main heading and introduction paragraph.
+- [ ] A `strong` element is correctly nested inside the paragraph.
+- [ ] My link uses a quoted `href` attribute.
+- [ ] The link destination matches the heading's unique `id`.
+- [ ] My elements are correctly nested.
+- [ ] I saved the file and checked it in my browser.
+- [ ] I can identify the requested tags, elements, and attributes.
+- [ ] I can find a void element in my document.
+
+<Accordion title="View a suggested solution">
+
+This is one possible set of content for your document's body:
+
+```html
+<h1>Amina's learning journey</h1>
+
+<p>I want to build a <strong>strong HTML foundation</strong>.</p>
+
+<a href="#next-goal">Read my next goal</a>
+
+<h2 id="next-goal">My next goal</h2>
+
+<p>I want to create a website for my campus club.</p>
+```
+
+Here are examples you could identify:
+
+- **Opening and closing tags:** `<h1>` and `</h1>`.
+- **Complete element:** `<h2 id="next-goal">My next goal</h2>`.
+- **Attribute:** `href` with the value `#next-goal`.
+- **Nested element:** `strong` inside `p`.
+- **Void element:** `<meta charset="UTF-8">` in the document's head.
+
+Your wording can differ. The important points are the correct
+structure, nesting, and matching link destination.
+
+</Accordion>
+
+## Next lesson
+
+You now understand tags, elements, and attributes. Next,
+you will explore the structure of a complete HTML document.
+
+[Previous: Set up and open your first page](/web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page)
+
+[Next: The HTML document skeleton →](/web-development/frontend/html/beginner/b04-the-html-document-skeleton)
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/html/beginner/b04-the-html-document-skeleton">Next</a>
+</div>

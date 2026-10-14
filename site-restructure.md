@@ -1,0 +1,385 @@
+# Resource Hub Structure and Contributor Guide
+
+Updated: 13 October 2026
+
+## Purpose and current scope
+
+Build a structured learning experience that takes students through **Learn → Practise → Build → Demonstrate → Contribute → Ship**. Learners should understand what to learn, why it matters, how to practise it, and what they can build.
+
+Core teaching lives inside this Mintlify MDX site. Each topic has its own page. Skill cards lead to internal course overviews; curated external learning resources belong at the end of a course, in Further Learning & References.
+
+This guide describes the current repository structure and the standards for extending it. It is contributor documentation, not a learner lesson or confirmation that local changes have been deployed. `docs.json` is the source of truth for navigation and reading order.
+
+## What exists and what comes next
+
+| Area | Current state | Next work |
+| --- | --- | --- |
+| HTML | 46 MDX pages: 29 topic lessons, 11 module checkpoints, 3 stage projects, a final challenge, overview, and further learning | Maintain, review, and improve the existing course |
+| CSS and JavaScript | Course overview, level overview pages, final-project and further-learning scaffolds | Write complete curricula and lessons using HTML's structure; CSS first, then JavaScript |
+| Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
+| Frontend capstone | Proposed framework page | Agree the shared brief and assessment rubric; implement after core courses |
+| Contribution pathway | Proposed pathway page | Technical Innovation & Development team confirms readiness, tasks, and reviewers |
+| Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
+| Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
+
+A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. Current work is focused on HTML; other courses follow this pattern as they are developed.
+
+## Learning architecture
+
+The conceptual hierarchy is **Learning path → Track → Skill → Level → Module → Topic**, with checkpoints after modules and projects after levels.
+
+```text
+Resource Hub
+├── Start Here
+├── Web Development
+│   ├── Frontend Development: overview, roadmap, prerequisites
+│   │   ├── HTML
+│   │   ├── CSS
+│   │   ├── JavaScript
+│   │   ├── Frameworks & Libraries
+│   │   ├── Frontend Tools & Workflow
+│   │   ├── Frontend Capstone
+│   │   └── Contribution Pathway
+│   ├── Backend Development
+│   └── Databases
+├── Cloud Computing
+├── Other Learning Paths
+├── Career Resources
+└── About and Contributing
+```
+
+The on-screen navigation uses skill/area tabs rather than putting this entire tree in one sidebar. Current tabs, in order: **Resource Hub, HTML, CSS, JavaScript, Frameworks, Tools, Backend, Databases, Cloud, Other Paths**. Selecting HTML displays the HTML sidebar; selecting CSS displays the CSS sidebar. Roadmaps, capstone, and contribution pathway are under the Resource Hub tab.
+
+## Standard course structure
+
+**Overview → Learning modules with topic practice → Module checkpoints → Stage projects → Final building challenge → Further learning**
+
+```text
+Skill
+├── Overview: audience, prerequisites, outcomes, tools, course order
+├── Beginner
+│   ├── Modules: individual topic pages followed by a checkpoint
+│   └── Stage project
+├── Intermediate
+│   ├── Modules: individual topic pages followed by a checkpoint
+│   └── Stage project
+├── Advanced
+│   ├── Modules: individual topic pages followed by a checkpoint
+│   └── Stage project
+└── Build and explore
+    ├── Final building challenge
+    └── Further learning and references
+```
+
+Levels must describe increasing skill, with observable outcomes. Advanced HTML stays focused on HTML; CSS styling and JavaScript functionality belong to their own courses. Categories such as Frameworks & Libraries can contain courses; they do not all need artificial Beginner/Intermediate/Advanced sections themselves.
+
+## HTML modules and outcomes
+
+| Level | Modules in reading order | What learners demonstrate |
+| --- | --- | --- |
+| Beginner | Getting started; Writing content; Connecting content; Reviewing your work | Create and inspect complete documents, structure text, connect pages, use local assets, and repair basic mistakes |
+| Intermediate | Semantic and accessible pages; Data and meaningful text; Accessible forms; Accessible media | Build meaningful page structure, tables, labelled forms, and media with appropriate alternatives |
+| Advanced | Reliable documents and images; Native features and document context; Audit and demonstrate | Apply content rules, responsive images, native features, metadata, and a documented website audit |
+
+Each module ends with its own checkpoint. The full current page inventory appears at the end of this document. Follow navigation order rather than sorting filenames: for example, `i10-quotations-code-and-dates` appears with data tables before the forms module.
+
+### Connected portfolio projects
+
+1. **Beginner:** Build a two-page personal introduction website.
+2. **Intermediate:** Extend the same work into a semantic, accessible portfolio.
+3. **Advanced:** Improve and audit that portfolio using advanced HTML features.
+4. **HTML final challenge:** Refine, review, and demonstrate the complete HTML portfolio.
+5. **CSS, planned:** Add styling and responsive design to that foundation.
+6. **JavaScript, planned:** Add useful interactions and functionality.
+7. **Frontend capstone, proposed:** Integrate, test, demonstrate, and deploy a complete website.
+
+The HTML final challenge assesses HTML. It is distinct from the future frontend capstone, which combines technologies. The capstone's final shared brief and review criteria still require team agreement.
+
+## Where files belong
+
+```text
+GDGOC-resource-hub/
+├── docs.json                         # Tabs, sidebar groups, page order, branding
+├── site-restructure.md               # This contributor guide
+├── style.css                         # Shared lesson and navigation styling
+├── sidebar-state.js                  # Native group state restoration and active links
+├── share-progress.js                 # Optional progress-post copying helper
+├── index.mdx
+├── frontend-development.mdx          # Frontend roadmap
+├── web-development.mdx
+├── backend-development.mdx
+├── start-here/
+├── web-development/
+│   ├── frontend/
+│   │   ├── html/
+│   │   │   ├── overview.mdx
+│   │   │   ├── beginner/             # b01–b11, checkpoint-*.mdx, project.mdx
+│   │   │   ├── intermediate/         # i01–i10, checkpoint-*.mdx, project.mdx
+│   │   │   ├── advanced/             # a01–a08, checkpoint-*.mdx, project.mdx
+│   │   │   ├── final-project.mdx
+│   │   │   └── further-learning.mdx
+│   │   ├── css/                      # Course and level scaffolds
+│   │   ├── javascript/               # Course and level scaffolds
+│   │   ├── frameworks-and-libraries.mdx
+│   │   ├── tools-and-workflow.mdx
+│   │   ├── capstone.mdx
+│   │   └── contribution-pathway.mdx
+│   ├── backend/
+│   └── databases/
+├── assets/html/                      # Practice media and worked-project ZIPs
+├── cloud-computing/
+├── paths/                            # Existing cloud and machine-learning entry pages
+├── other-learning-paths/
+├── job-hunting/
+├── images/
+└── logo/
+```
+
+Keep one topic per `.mdx` file. Modules are navigation groups, not necessarily extra folders or overview pages. Preserve existing paths when editing so links remain valid.
+
+## Lesson and assessment standards
+
+Assume no previous coding experience in Beginner. Explain terms and file setup before relying on them. State prerequisites for later courses.
+
+Each topic lesson should contain:
+
+1. Learning objectives and relevant prerequisites.
+2. A clear explanation with small, runnable examples.
+3. Expected output or an explanation of what the example demonstrates.
+4. A practice challenge with concrete instructions.
+5. A checklist of observable completion criteria.
+6. Optional hints, separate from the answer.
+7. A suggested solution that learners can reveal after attempting the task.
+8. Previous and Next links in the course's reading order.
+
+Use fenced code blocks with language labels such as `html` for syntax highlighting. Use existing Mintlify callouts (`Note`, `Info`, `Tip`, `Warning`) and separate `Accordion` components for hints and solutions. Use quotes for quotations, not as a substitute for code formatting. Follow shared styles rather than adding one-off colors to every page; meaning must remain clear without color alone.
+
+**Topic exercises** teach through practice and worked solutions. **Module checkpoints** ask learners to demonstrate skills independently: task, completion criteria, evidence to keep, hints, and review guidance. Current checkpoints intentionally omit complete implementations; related lessons provide worked examples.
+
+**Stage projects and the final challenge** combine skills. Include a brief, requirements, checklist, hints, and a separate suggested implementation. Existing downloadable solutions and practice media live under `assets/html/`. When changing a project, keep its worked ZIP and instructions consistent. Check that examples can run with the supplied files and relative paths.
+
+## Navigation behavior to preserve
+
+- Register pages in `docs.json` without `.mdx`, using forward slashes.
+- Use root-relative internal routes in MDX, for example `/web-development/frontend/html/overview`.
+- Creating a file does not automatically place it in the intended sidebar: add it to the correct tab, level, and module.
+- Keep each lesson's explicit Previous/Next links aligned with `docs.json`, including checkpoints and stage projects.
+- Keep `interaction.drilldown` set to `false`: module controls expand/collapse their children.
+- Mintlify owns the native dropdown behavior. `sidebar-state.js` remembers manual choices in `sessionStorage` and restores them through native controls, across lesson navigation and refreshes in the same tab.
+- Do not replace native expansion with CSS hiding, manual `aria-expanded` changes, or click interception that blocks links. This previously caused navigation failures.
+- Preserve visible dropdown arrows and check light/dark themes, keyboard use, and mobile navigation after navigation changes.
+
+Saved dropdown state is not course completion tracking. Closing the browser session may discard it.
+
+## Progress, evidence, and contribution
+
+Current progression is guided by checklists and evidence. There are no learner accounts, automatic grading, or enforced stage locks. Suggested completion order is Beginner → Intermediate → Advanced → Final Challenge; moving forward is not technically blocked.
+
+Stage locking remains a proposed feature awaiting approval and a defined assessment model. A checklist alone does not prove code correctness. Do not describe saved progress, automatic unlocks, or verified completion as implemented.
+
+Learners should retain source files, explanations, and records of testing and repairs. The contribution pathway proposes demonstrating readiness, choosing a reviewed starter task, submitting changes, responding to review, and shipping through maintainer approval. Course completion does not grant production access or guarantee an assignment. The Technical Innovation & Development team must confirm that process.
+
+## Contributor workflow
+
+1. Read this guide and [the contribution guide](how-to-contribute.mdx). Inspect `git status` and work on a dedicated branch without discarding unrelated changes.
+2. Identify whether the task is a lesson change, curriculum change, navigation change, or shared UI change. Use the existing HTML pages as examples.
+3. From the repository root (the folder containing `docs.json`), install the Mintlify CLI if needed and launch the preview:
+
+   ```powershell
+   npm install -g mint
+   mint dev
+   ```
+
+   Use a Node.js version supported by the CLI you install. Open the local URL printed by the command; another port may be used if the default is occupied. The repository uses the `mint` CLI.
+
+4. Edit or create MDX with `title` and `description` frontmatter. Put shared downloadable files under `assets/`, not beside unrelated lessons.
+5. For added, moved, or reordered pages, update `docs.json`, Previous/Next links, overview links, and affected references together. Reconcile the inventory below when changing the structure.
+6. Preview every changed page. Attempt its exercise from the instructions, reveal hints and solutions, and verify downloads and example paths.
+7. Run the relevant checks below, then review the diff and submit a pull request with the problem, changes, and validation performed. Maintainers handle approval and release.
+
+### Checks before review
+
+- MDX renders without errors; code fences, callouts, and accordions display correctly.
+- Every configured route exists; internal cards, sidebar links, and Previous/Next links reach the intended page.
+- Changes work in light and dark themes and on a narrow/mobile viewport.
+- Keyboard users can reach links, operate dropdowns, and see focus.
+- Manually opened sidebar groups remain open through lesson changes; manually closed groups remain closed.
+- Exercises use only already-taught skills and have observable success criteria.
+- Downloads contain the files referenced in the instructions.
+- Planned content is labelled, and course cards do not redirect learners to external courses.
+- `git diff --check` reports no whitespace errors.
+
+For larger navigation/content changes, also use the installed CLI's validation and broken-link checks (`mint --help` lists available commands). Do not equate a successful local preview with deployment.
+
+## Delivery sequence
+
+1. Maintain and review the implemented HTML course and navigation.
+2. Develop CSS using the same levels, module checkpoints, and continuing portfolio.
+3. Develop JavaScript using the same pattern.
+4. Finalise the frontend capstone brief and assessment with the Lead.
+5. Expand frameworks and workflow content, then remaining tracks.
+6. Confirm the contribution pathway with the technical team.
+
+Keep foundational courses distinct from frameworks and tools. Useful external references supplement the internal teaching at the end of each course.
+
+## Current navigation inventory
+
+The following inventory mirrors `docs.json` as of the update date. Links point to repository source files for collaborators. Grouping and sequence, especially checkpoint placement, are intentional.
+
+### Resource Hub
+
+- **Start Here**
+  - [GDGOC Unilorin Resource Hub](index.mdx)
+  - [How to use the hub](start-here/how-to-use-the-hub.mdx)
+  - [Choose a learning path](start-here/choose-a-learning-path.mdx)
+  - [Set up your learning tools](start-here/set-up-your-learning-tools.mdx)
+- **Learning roadmaps**
+  - [Overview and learning roadmap](web-development.mdx)
+  - [Frontend Development](frontend-development.mdx)
+  - [Frontend Capstone](web-development/frontend/capstone.mdx)
+  - [From learning to contribution](web-development/frontend/contribution-pathway.mdx)
+- **Career Resources**
+  - [Job Hunting & Resume Guide](job-hunting/resume.mdx)
+- **About and Contributing**
+  - [Purpose of the Hub](purpose-of-this-guide.mdx)
+  - [How to Contribute](how-to-contribute.mdx)
+
+### HTML
+
+- **Start HTML**
+  - [Learn HTML](web-development/frontend/html/overview.mdx)
+- **Beginner**
+  - **Getting started**
+    - [How web pages work](web-development/frontend/html/beginner/b01-how-web-pages-work.mdx)
+    - [Set up and open your first page](web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page.mdx)
+    - [Elements, tags, and attributes](web-development/frontend/html/beginner/b03-elements-tags-and-attributes.mdx)
+    - [The HTML document skeleton](web-development/frontend/html/beginner/b04-the-html-document-skeleton.mdx)
+    - [Checkpoint: Getting started](web-development/frontend/html/beginner/checkpoint-getting-started.mdx)
+  - **Writing content**
+    - [Headings and paragraphs](web-development/frontend/html/beginner/b05-headings-and-paragraphs.mdx)
+    - [Meaningful text markup](web-development/frontend/html/beginner/b06-meaningful-text-markup.mdx)
+    - [Lists](web-development/frontend/html/beginner/b07-lists.mdx)
+    - [Checkpoint: Writing content](web-development/frontend/html/beginner/checkpoint-writing-content.mdx)
+  - **Connecting content**
+    - [Links and page navigation](web-development/frontend/html/beginner/b08-links-and-page-navigation.mdx)
+    - [Files, folders, and relative paths](web-development/frontend/html/beginner/b09-files-folders-and-relative-paths.mdx)
+    - [Images and text alternatives](web-development/frontend/html/beginner/b10-images-and-text-alternatives.mdx)
+    - [Checkpoint: Connecting content](web-development/frontend/html/beginner/checkpoint-connecting-content.mdx)
+  - **Reviewing your work**
+    - [Inspect and fix your HTML](web-development/frontend/html/beginner/b11-inspect-and-fix-your-html.mdx)
+    - [Checkpoint: Reviewing your work](web-development/frontend/html/beginner/checkpoint-reviewing-your-work.mdx)
+  - [Beginner project: Personal introduction website](web-development/frontend/html/beginner/project.mdx)
+- **Intermediate**
+  - **Semantic and accessible pages**
+    - [Semantic page structure](web-development/frontend/html/intermediate/i01-semantic-page-structure.mdx)
+    - [Articles, sections, and supporting content](web-development/frontend/html/intermediate/i02-articles-sections-and-supporting-content.mdx)
+    - [Accessible content and keyboard navigation](web-development/frontend/html/intermediate/i03-accessible-content-and-keyboard-navigation.mdx)
+    - [Checkpoint: Semantic and accessible pages](web-development/frontend/html/intermediate/checkpoint-semantic-pages.mdx)
+  - **Data and meaningful text**
+    - [Data tables](web-development/frontend/html/intermediate/i04-data-tables.mdx)
+    - [Quotations, code, and dates](web-development/frontend/html/intermediate/i10-quotations-code-and-dates.mdx)
+    - [Checkpoint: Data and meaningful text](web-development/frontend/html/intermediate/checkpoint-data-and-text.mdx)
+  - **Accessible forms**
+    - [Forms, labels, and submission basics](web-development/frontend/html/intermediate/i05-forms-labels-and-submission-basics.mdx)
+    - [Input types and browser validation](web-development/frontend/html/intermediate/i06-input-types-and-browser-validation.mdx)
+    - [Choices and longer responses](web-development/frontend/html/intermediate/i07-choices-and-longer-responses.mdx)
+    - [Clear and accessible forms](web-development/frontend/html/intermediate/i08-clear-and-accessible-forms.mdx)
+    - [Checkpoint: Accessible forms](web-development/frontend/html/intermediate/checkpoint-accessible-forms.mdx)
+  - **Accessible media**
+    - [Audio, video, and captions](web-development/frontend/html/intermediate/i09-audio-video-and-captions.mdx)
+    - [Checkpoint: Accessible media](web-development/frontend/html/intermediate/checkpoint-accessible-media.mdx)
+  - [Intermediate project: Extend your portfolio](web-development/frontend/html/intermediate/project.mdx)
+- **Advanced**
+  - **Reliable documents and images**
+    - [Content rules and browser error recovery](web-development/frontend/html/advanced/a01-content-rules-and-browser-error-recovery.mdx)
+    - [Responsive image markup](web-development/frontend/html/advanced/a02-responsive-image-markup.mdx)
+    - [Image loading choices](web-development/frontend/html/advanced/a03-image-loading-choices.mdx)
+    - [Checkpoint: Reliable documents and images](web-development/frontend/html/advanced/checkpoint-reliable-documents.mdx)
+  - **Native features and document context**
+    - [Native disclosure widgets](web-development/frontend/html/advanced/a04-native-disclosure-widgets.mdx)
+    - [Embedded pages and boundaries](web-development/frontend/html/advanced/a05-embedded-pages-and-boundaries.mdx)
+    - [Metadata and meaningful document context](web-development/frontend/html/advanced/a06-metadata-and-meaningful-document-context.mdx)
+    - [Form boundaries and safe practice](web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice.mdx)
+    - [Checkpoint: Native features and document context](web-development/frontend/html/advanced/checkpoint-native-features.mdx)
+  - **Audit and demonstrate**
+    - [Validate and audit a complete website](web-development/frontend/html/advanced/a08-validate-and-audit-a-complete-website.mdx)
+    - [Checkpoint: Audit and demonstrate](web-development/frontend/html/advanced/checkpoint-audit-and-demonstrate.mdx)
+  - [Advanced project: Improve and audit your portfolio](web-development/frontend/html/advanced/project.mdx)
+- **Build and explore**
+  - [Final building challenge: HTML portfolio](web-development/frontend/html/final-project.mdx)
+  - [Further learning and references](web-development/frontend/html/further-learning.mdx)
+
+### CSS
+
+- **Start CSS**
+  - [CSS overview](web-development/frontend/css/overview.mdx)
+- **Beginner**
+  - [CSS Beginner — planned](web-development/frontend/css/beginner/overview.mdx)
+- **Intermediate**
+  - [CSS Intermediate — planned](web-development/frontend/css/intermediate/overview.mdx)
+- **Advanced**
+  - [CSS Advanced — planned](web-development/frontend/css/advanced/overview.mdx)
+- **Build and explore**
+  - [CSS building challenge — planned](web-development/frontend/css/final-project.mdx)
+  - [CSS further learning — planned](web-development/frontend/css/further-learning.mdx)
+
+### JavaScript
+
+- **Start JavaScript**
+  - [JavaScript overview](web-development/frontend/javascript/overview.mdx)
+- **Beginner**
+  - [JavaScript Beginner — planned](web-development/frontend/javascript/beginner/overview.mdx)
+- **Intermediate**
+  - [JavaScript Intermediate — planned](web-development/frontend/javascript/intermediate/overview.mdx)
+- **Advanced**
+  - [JavaScript Advanced — planned](web-development/frontend/javascript/advanced/overview.mdx)
+- **Build and explore**
+  - [JavaScript building challenge — planned](web-development/frontend/javascript/final-project.mdx)
+  - [JavaScript further learning — planned](web-development/frontend/javascript/further-learning.mdx)
+
+### Frameworks
+
+- **Frameworks and libraries**
+  - [Frameworks and libraries](web-development/frontend/frameworks-and-libraries.mdx)
+
+### Tools
+
+- **Frontend workflow**
+  - [Frontend tools and workflow](web-development/frontend/tools-and-workflow.mdx)
+
+### Backend
+
+- **Backend Development**
+  - [Backend Development](backend-development.mdx)
+  - [Backend foundations](web-development/backend/foundations.mdx)
+  - [Languages and frameworks](web-development/backend/languages-and-frameworks.mdx)
+  - [APIs](web-development/backend/apis.mdx)
+  - [Authentication and security](web-development/backend/authentication-and-security.mdx)
+  - [Testing and deployment](web-development/backend/testing-and-deployment.mdx)
+
+### Databases
+
+- **Databases**
+  - [Databases](web-development/databases/overview.mdx)
+  - [Database foundations](web-development/databases/foundations.mdx)
+  - [Relational databases and SQL](web-development/databases/relational-databases-and-sql.mdx)
+  - [Non-relational databases](web-development/databases/non-relational-databases.mdx)
+  - [Data modelling and database tools](web-development/databases/data-modelling-and-tools.mdx)
+
+### Cloud
+
+- **Cloud Computing**
+  - [Overview and learning roadmap](paths/cloud-computing.mdx)
+  - [Cloud foundations](cloud-computing/foundations.mdx)
+  - [Cloud providers](cloud-computing/providers.mdx)
+  - [Compute, storage, and networking](cloud-computing/compute-storage-and-networking.mdx)
+  - [Identity and security](cloud-computing/identity-and-security.mdx)
+  - [Deployment, operations, and automation](cloud-computing/deployment-operations-and-automation.mdx)
+
+### Other Paths
+
+- **Other Learning Paths**
+  - [Other Learning Paths](other-learning-paths/overview.mdx)
+  - [Machine Learning](paths/machine-learning.mdx)
+  - [Frontend Development Track](other-learning-paths/frontend-resources.mdx)
+  - [Backend Development Track](other-learning-paths/backend-resources.mdx)

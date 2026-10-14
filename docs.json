@@ -1,6 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
+  "interaction": {
+    "drilldown": false
+  },
   "name": "GDGOC Unilorin Resource Hub",
   "colors": {
     "primary": "#4285F4",
@@ -14,67 +17,347 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Start Here",
             "pages": [
               "index",
-              "purpose-of-this-guide",
-              "how-to-contribute"
-            ]
+              "start-here/how-to-use-the-hub",
+              "start-here/choose-a-learning-path",
+              "start-here/set-up-your-learning-tools"
+            ],
+            "expanded": true
           },
           {
-            "group": "Learning Paths",
+            "group": "Learning roadmaps",
             "pages": [
+              "web-development",
               "frontend-development",
-              "backend-development",
-              "paths/cloud-computing",
-              "paths/machine-learning"
+              "web-development/frontend/capstone",
+              "web-development/frontend/contribution-pathway"
             ]
           },
           {
-            "group": "Programming Languages",
-            "pages": [
-              "languages/python",
-              "languages/javascript",
-              "languages/typescript",
-              "languages/dart"
-            ]
-          },
-          {
-            "group": "Event Resources",
-            "pages": [
-              "events/devfest",
-              "events/info-session",
-              "events/hackathons",
-              "events/workshops"
-            ]
-          },
-          {
-            "group": "Tools & Platforms",
-            "pages": [
-              "tools/firebase",
-              "tools/flutter",
-              "tools/github",
-              "tools/google-cloud-platform"
-            ]
-          },
-          {
-            "group": "Career Growth",
-            "pages": [
-              "career/portfolio-tips",
-              "career/linkedin-guide",
-              "career/resume-template"
-            ]
-          },
-          {
-            "group": "Job Hunting",
+            "group": "Career Resources",
             "pages": [
               "job-hunting/resume"
+            ],
+            "expanded": true
+          },
+          {
+            "group": "About and Contributing",
+            "pages": [
+              "purpose-of-this-guide",
+              "how-to-contribute"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Resource Hub"
+      },
+      {
+        "groups": [
+          {
+            "group": "Start HTML",
+            "pages": [
+              "web-development/frontend/html/overview"
+            ]
+          },
+          {
+            "group": "Beginner",
+            "expanded": true,
+            "pages": [
+              {
+                "group": "Getting started",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/beginner/b01-how-web-pages-work",
+                  "web-development/frontend/html/beginner/b02-set-up-and-open-your-first-page",
+                  "web-development/frontend/html/beginner/b03-elements-tags-and-attributes",
+                  "web-development/frontend/html/beginner/b04-the-html-document-skeleton",
+                  "web-development/frontend/html/beginner/checkpoint-getting-started"
+                ]
+              },
+              {
+                "group": "Writing content",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/beginner/b05-headings-and-paragraphs",
+                  "web-development/frontend/html/beginner/b06-meaningful-text-markup",
+                  "web-development/frontend/html/beginner/b07-lists",
+                  "web-development/frontend/html/beginner/checkpoint-writing-content"
+                ]
+              },
+              {
+                "group": "Connecting content",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/beginner/b08-links-and-page-navigation",
+                  "web-development/frontend/html/beginner/b09-files-folders-and-relative-paths",
+                  "web-development/frontend/html/beginner/b10-images-and-text-alternatives",
+                  "web-development/frontend/html/beginner/checkpoint-connecting-content"
+                ]
+              },
+              {
+                "group": "Reviewing your work",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/beginner/b11-inspect-and-fix-your-html",
+                  "web-development/frontend/html/beginner/checkpoint-reviewing-your-work"
+                ]
+              },
+              "web-development/frontend/html/beginner/project"
+            ]
+          },
+          {
+            "group": "Intermediate",
+            "expanded": true,
+            "pages": [
+              {
+                "group": "Semantic and accessible pages",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/intermediate/i01-semantic-page-structure",
+                  "web-development/frontend/html/intermediate/i02-articles-sections-and-supporting-content",
+                  "web-development/frontend/html/intermediate/i03-accessible-content-and-keyboard-navigation",
+                  "web-development/frontend/html/intermediate/checkpoint-semantic-pages"
+                ]
+              },
+              {
+                "group": "Data and meaningful text",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/intermediate/i04-data-tables",
+                  "web-development/frontend/html/intermediate/i10-quotations-code-and-dates",
+                  "web-development/frontend/html/intermediate/checkpoint-data-and-text"
+                ]
+              },
+              {
+                "group": "Accessible forms",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/intermediate/i05-forms-labels-and-submission-basics",
+                  "web-development/frontend/html/intermediate/i06-input-types-and-browser-validation",
+                  "web-development/frontend/html/intermediate/i07-choices-and-longer-responses",
+                  "web-development/frontend/html/intermediate/i08-clear-and-accessible-forms",
+                  "web-development/frontend/html/intermediate/checkpoint-accessible-forms"
+                ]
+              },
+              {
+                "group": "Accessible media",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/intermediate/i09-audio-video-and-captions",
+                  "web-development/frontend/html/intermediate/checkpoint-accessible-media"
+                ]
+              },
+              "web-development/frontend/html/intermediate/project"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "expanded": true,
+            "pages": [
+              {
+                "group": "Reliable documents and images",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/advanced/a01-content-rules-and-browser-error-recovery",
+                  "web-development/frontend/html/advanced/a02-responsive-image-markup",
+                  "web-development/frontend/html/advanced/a03-image-loading-choices",
+                  "web-development/frontend/html/advanced/checkpoint-reliable-documents"
+                ]
+              },
+              {
+                "group": "Native features and document context",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/advanced/a04-native-disclosure-widgets",
+                  "web-development/frontend/html/advanced/a05-embedded-pages-and-boundaries",
+                  "web-development/frontend/html/advanced/a06-metadata-and-meaningful-document-context",
+                  "web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice",
+                  "web-development/frontend/html/advanced/checkpoint-native-features"
+                ]
+              },
+              {
+                "group": "Audit and demonstrate",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/html/advanced/a08-validate-and-audit-a-complete-website",
+                  "web-development/frontend/html/advanced/checkpoint-audit-and-demonstrate"
+                ]
+              },
+              "web-development/frontend/html/advanced/project"
+            ]
+          },
+          {
+            "group": "Build and explore",
+            "pages": [
+              "web-development/frontend/html/final-project",
+              "web-development/frontend/html/further-learning"
             ]
           }
-        ]
+        ],
+        "tab": "HTML"
+      },
+      {
+        "groups": [
+          {
+            "group": "Start CSS",
+            "pages": [
+              "web-development/frontend/css/overview"
+            ]
+          },
+          {
+            "group": "Beginner",
+            "pages": [
+              "web-development/frontend/css/beginner/overview"
+            ]
+          },
+          {
+            "group": "Intermediate",
+            "pages": [
+              "web-development/frontend/css/intermediate/overview"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "web-development/frontend/css/advanced/overview"
+            ]
+          },
+          {
+            "group": "Build and explore",
+            "pages": [
+              "web-development/frontend/css/final-project",
+              "web-development/frontend/css/further-learning"
+            ]
+          }
+        ],
+        "tab": "CSS"
+      },
+      {
+        "groups": [
+          {
+            "group": "Start JavaScript",
+            "pages": [
+              "web-development/frontend/javascript/overview"
+            ]
+          },
+          {
+            "group": "Beginner",
+            "pages": [
+              "web-development/frontend/javascript/beginner/overview"
+            ]
+          },
+          {
+            "group": "Intermediate",
+            "pages": [
+              "web-development/frontend/javascript/intermediate/overview"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "web-development/frontend/javascript/advanced/overview"
+            ]
+          },
+          {
+            "group": "Build and explore",
+            "pages": [
+              "web-development/frontend/javascript/final-project",
+              "web-development/frontend/javascript/further-learning"
+            ]
+          }
+        ],
+        "tab": "JavaScript"
+      },
+      {
+        "groups": [
+          {
+            "group": "Frameworks and libraries",
+            "pages": [
+              "web-development/frontend/frameworks-and-libraries"
+            ]
+          }
+        ],
+        "tab": "Frameworks"
+      },
+      {
+        "groups": [
+          {
+            "group": "Frontend workflow",
+            "pages": [
+              "web-development/frontend/tools-and-workflow"
+            ]
+          }
+        ],
+        "tab": "Tools"
+      },
+      {
+        "groups": [
+          {
+            "group": "Backend Development",
+            "pages": [
+              "backend-development",
+              "web-development/backend/foundations",
+              "web-development/backend/languages-and-frameworks",
+              "web-development/backend/apis",
+              "web-development/backend/authentication-and-security",
+              "web-development/backend/testing-and-deployment"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Backend"
+      },
+      {
+        "groups": [
+          {
+            "group": "Databases",
+            "pages": [
+              "web-development/databases/overview",
+              "web-development/databases/foundations",
+              "web-development/databases/relational-databases-and-sql",
+              "web-development/databases/non-relational-databases",
+              "web-development/databases/data-modelling-and-tools"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Databases"
+      },
+      {
+        "groups": [
+          {
+            "group": "Cloud Computing",
+            "pages": [
+              "paths/cloud-computing",
+              "cloud-computing/foundations",
+              "cloud-computing/providers",
+              "cloud-computing/compute-storage-and-networking",
+              "cloud-computing/identity-and-security",
+              "cloud-computing/deployment-operations-and-automation"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Cloud"
+      },
+      {
+        "groups": [
+          {
+            "group": "Other Learning Paths",
+            "pages": [
+              "other-learning-paths/overview",
+              "paths/machine-learning",
+              "other-learning-paths/frontend-resources",
+              "other-learning-paths/backend-resources"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Other Paths"
       }
     ],
     "global": {
