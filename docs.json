@@ -1,9 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "interaction": {
-    "drilldown": false
-  },
   "name": "GDGOC Unilorin Resource Hub",
   "colors": {
     "primary": "#4285F4",
@@ -246,8 +243,19 @@
           },
           {
             "group": "Beginner",
+            "expanded": true,
             "pages": [
-              "web-development/frontend/javascript/beginner/overview"
+              "web-development/frontend/javascript/beginner/overview",
+              {
+                "group": "Programming foundations",
+                "pages": [
+                  "web-development/frontend/javascript/beginner/b01-run-your-first-javascript",
+                  "web-development/frontend/javascript/beginner/b02-variables-and-values",
+                  "web-development/frontend/javascript/beginner/b03-expressions-and-messages",
+                  "web-development/frontend/javascript/beginner/b04-comparisons-and-decisions",
+                  "web-development/frontend/javascript/beginner/checkpoint-programming-foundations"
+                ]
+              }
             ]
           },
           {
@@ -415,5 +423,8 @@
       "linkedin": "https://linkedin.com/company/gdgocunilorin",
       "instagram": "https://instagram.com/gdgocunilorin"
     }
+  },
+  "interaction": {
+    "drilldown": false
   }
 }

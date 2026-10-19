@@ -1,0 +1,124 @@
+---
+title: "Comparisons and decisions"
+description: "Use booleans and if statements to choose which instructions run."
+---
+
+## What you will learn
+
+- Compare values and explain the resulting boolean.
+- Distinguish assignment from strict equality.
+- Choose a branch with `if`, `else if`, and `else`.
+- Combine boolean conditions and test boundary cases.
+
+## Before you begin
+
+Complete the first three lessons. Keep your HTML setup and replace `app.js` for each full example.
+
+## Compare values
+
+| Operator | Question | Example |
+| --- | --- | --- |
+| `===` | Same type and equal value? | `3 === 3` gives `true` |
+| `!==` | Different type or unequal value? | `3 !== "3"` gives `true` |
+| `>` | Greater than? | `4 > 3` gives `true` |
+| `<` | Less than? | `2 < 3` gives `true` |
+| `>=` | Greater than or equal? | `3 >= 3` gives `true` |
+| `<=` | Less than or equal? | `3 <= 3` gives `true` |
+
+These examples compare primitive values. Object comparisons come later. Use numbers for the duration comparisons in this lesson.
+
+```javascript
+console.log(3 === 3);
+console.log("3" === 3);
+console.log(25 >= 30);
+```
+
+Expected output: `true`, `false`, `false`.
+
+<Warning>`=` assigns a value; `===` compares values. JavaScript also has `==`, which performs type conversion. Use strict equality (`===`) in these exercises so a text value and a number are not treated as identical.</Warning>
+
+## Choose a branch
+
+```javascript
+const studiedMinutes = 20;
+const targetMinutes = 30;
+
+if (studiedMinutes >= targetMinutes) {
+  console.log("Target reached.");
+} else if (studiedMinutes === 0) {
+  console.log("Choose a short task to begin.");
+} else {
+  console.log(`Keep going: ${targetMinutes - studiedMinutes} minutes left.`);
+}
+```
+
+The condition inside parentheses is checked first. If it is true, its brace-delimited block runs. Otherwise, the next condition is checked. The final `else` handles the remaining case. Only one branch in this chain runs.
+
+For `20`, the message is `Keep going: 10 minutes left.` Try `0`, `30`, and `45` separately. The target branch must handle both exactly meeting the target and exceeding it.
+
+## Combine boolean conditions
+
+With boolean values, `&&` means both conditions must be true; `||` means at least one must be true; `!` reverses true and false.
+
+```javascript
+const hasRead = true;
+const hasPractised = false;
+
+console.log(hasRead && hasPractised);
+console.log(hasRead || hasPractised);
+console.log(!hasPractised);
+```
+
+Output: `false`, `true`, `true`. These operators also have behaviour involving non-boolean values; we will examine that later. For now, use explicit comparisons or booleans in conditions.
+
+## Practice: decide what to do next
+
+Create `completedLessons`, `totalLessons`, and `hasPractised` variables. Assume counts are whole numbers from zero to the total, and the total is greater than zero.
+
+- If all lessons are complete **and** practice is complete, print `Ready for the checkpoint.`
+- Otherwise, if all lessons are complete, print `Complete the practice first.`
+- Otherwise, print `Keep studying the lessons.`
+
+Test these cases by changing the starting values and refreshing:
+
+| Completed | Total | Has practised | Expected message |
+| --- | --- | --- | --- |
+| 4 | 4 | `true` | Ready for the checkpoint. |
+| 4 | 4 | `false` | Complete the practice first. |
+| 3 | 4 | `true` | Keep studying the lessons. |
+| 0 | 4 | `false` | Keep studying the lessons. |
+
+### Completion checklist
+
+- [ ] Each test prints exactly one expected message.
+- [ ] I use strict equality for the lesson-count comparison.
+- [ ] I check the combined condition before the less specific completed-lessons condition.
+- [ ] I can explain how changing the practice flag affects the result.
+
+<Accordion title="Hint: order matters">
+Check both readiness requirements first. If you check only the lesson count first, learners who have also practised will enter that branch before reaching the more specific case.
+</Accordion>
+
+<Accordion title="Suggested solution: checkpoint readiness">
+
+```javascript
+const completedLessons = 4;
+const totalLessons = 4;
+const hasPractised = true;
+
+if (completedLessons === totalLessons && hasPractised) {
+  console.log("Ready for the checkpoint.");
+} else if (completedLessons === totalLessons) {
+  console.log("Complete the practice first.");
+} else {
+  console.log("Keep studying the lessons.");
+}
+```
+
+Run all four table cases. This script demonstrates a decision; it does not grade your work or lock any course page.
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b03-expressions-and-messages">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/checkpoint-programming-foundations">Next</a>
+</div>

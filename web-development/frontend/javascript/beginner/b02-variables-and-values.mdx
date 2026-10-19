@@ -1,0 +1,127 @@
+---
+title: "Variables and values"
+description: "Give values names and choose between const and let."
+---
+
+## What you will learn
+
+- Store values in named variables.
+- Distinguish strings, numbers, and booleans.
+- Choose `const` or `let` and explain reassignment.
+- Recognise `undefined`, `null`, and common naming errors.
+
+## Before you begin
+
+Complete the first lesson. Keep its `index.html` and replace the contents of `app.js` for each full example. Save and refresh the browser to run the file again. Do not paste every example into the same file: declaring the same name twice in one scope can cause an error.
+
+## Give a value a name
+
+A variable is a name associated with a value. Declare it before using it:
+
+```javascript
+const learnerName = "Amina";
+let completedLessons = 1;
+const isPractising = true;
+
+console.log(learnerName);
+console.log(completedLessons);
+console.log(isPractising);
+
+completedLessons = 2;
+console.log(completedLessons);
+```
+
+Expected output:
+
+```text
+Amina
+1
+true
+2
+```
+
+`=` assigns the value on the right to the name on the left. It does not ask whether two things are equal. The last assignment updates an existing variable, so it does not repeat `let`.
+
+| Declaration | Use it when | Example |
+| --- | --- | --- |
+| `const` | You will not reassign the name | A course title |
+| `let` | You will reassign the name | A completed-lesson count |
+
+Start with `const`; use `let` when a value needs reassignment. A `const` declaration needs an initial value. Reassigning it causes a `TypeError`. Later, you will learn why `const` does not freeze the contents of objects or arrays.
+
+## Types of values
+
+| Type | Example | Meaning |
+| --- | --- | --- |
+| String | `"JavaScript"` | Text, written here inside quotes |
+| Number | `4` or `2.5` | A numeric value |
+| Boolean | `true` or `false` | A logical yes/no value, without quotes |
+| Undefined | `undefined` | Often a value that has not been assigned |
+| Null | `null` | An intentional empty value chosen by your program |
+
+`"4"` is text; `4` is a number. `"false"` is text; `false` is a boolean. More value types exist, but these are enough for our first programs.
+
+Run this as a separate example:
+
+```javascript
+let nextTopic;
+const selectedProject = null;
+console.log(nextTopic);
+console.log(selectedProject);
+console.log(typeof "4");
+console.log(typeof 4);
+console.log(typeof false);
+```
+
+Output is `undefined`, `null`, `string`, `number`, and `boolean`, on separate lines. `typeof` reports a value's type as text. It has historical quirks—for example, `typeof null` reports `"object"`—so it is not a universal emptiness check.
+
+## Names and mistakes
+
+Use meaningful names such as `completedLessons`. This style, with later words capitalised, is called camelCase. Names are case-sensitive: `learnerName` and `LearnerName` differ. Names cannot contain spaces or start with a digit. Keywords such as `const` are reserved for the language.
+
+<Warning>Reading an undeclared name causes a `ReferenceError`. Check spelling and make sure your declaration runs before the line that uses it.</Warning>
+
+## Practice: store your course progress
+
+Replace `app.js` with a script that:
+
+1. Stores `"JavaScript"` as a course title using `const`.
+2. Stores `1` as a completed-lesson count using `let`.
+3. Stores `true` as a practice-completed flag using `const`.
+4. Prints those three values, then changes the count to `2` and prints it again.
+5. Prints the type of the count.
+
+### Completion checklist
+
+- [ ] The output is `JavaScript`, `1`, `true`, `2`, then `number`.
+- [ ] The count is a number, not quoted text.
+- [ ] The flag is a boolean, not quoted text.
+- [ ] I update the count without declaring it again.
+- [ ] I can explain why the title uses `const` and the count uses `let`.
+
+<Accordion title="Hint: updating a name">
+Declare the count once with `let`. On the later line, use only its name, the assignment operator, and the new value. Use `typeof` immediately before the name when logging its type.
+</Accordion>
+
+<Accordion title="Suggested solution: course progress">
+
+```javascript
+const courseTitle = "JavaScript";
+let completedLessons = 1;
+const hasPractised = true;
+
+console.log(courseTitle);
+console.log(completedLessons);
+console.log(hasPractised);
+completedLessons = 2;
+console.log(completedLessons);
+console.log(typeof completedLessons);
+```
+
+Change the initial count to `0` and predict which output changes. Reassignment still sets the later value to `2`.
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b01-run-your-first-javascript">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b03-expressions-and-messages">Next</a>
+</div>

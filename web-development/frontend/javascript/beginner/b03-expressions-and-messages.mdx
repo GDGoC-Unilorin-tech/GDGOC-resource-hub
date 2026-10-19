@@ -1,0 +1,120 @@
+---
+title: "Expressions, numbers, and messages"
+description: "Calculate values and combine them into readable text."
+---
+
+## What you will learn
+
+- Calculate totals and remaining work with arithmetic.
+- Use parentheses to make the order of calculations explicit.
+- Build readable messages with template literals.
+- Explain why text addition can produce an unexpected result.
+
+## Before you begin
+
+Complete Variables and values. Reuse the same HTML file and replace `app.js` for each complete example.
+
+## Expressions produce values
+
+An expression is code that evaluates to a value. `10 + 5` evaluates to `15`; you can store that result in a variable or print it.
+
+| Operator | Operation | Example result |
+| --- | --- | --- |
+| `+` | Addition | `8 + 2` gives `10` |
+| `-` | Subtraction | `8 - 2` gives `6` |
+| `*` | Multiplication | `8 * 2` gives `16` |
+| `/` | Division | `8 / 2` gives `4` |
+| `%` | Remainder | `9 % 2` gives `1` |
+
+```javascript
+const readingMinutes = 15;
+const practiceMinutes = 25;
+const totalMinutes = readingMinutes + practiceMinutes;
+const targetMinutes = 60;
+const remainingMinutes = targetMinutes - totalMinutes;
+
+console.log(totalMinutes);
+console.log(remainingMinutes);
+console.log((10 + 5) * 2);
+console.log(10 + 5 * 2);
+```
+
+Output: `40`, `20`, `30`, `20`. Multiplication runs before addition unless parentheses change the order. Name intermediate results so a reader can follow your calculation.
+
+## Write a readable message
+
+A template literal is text enclosed in backticks. Inside it, a dollar sign followed by braces marks an expression whose value is inserted into the message:
+
+```javascript
+const learnerName = "Amina";
+const completedLessons = 3;
+const totalLessons = 4;
+const remainingLessons = totalLessons - completedLessons;
+
+console.log(`${learnerName} completed ${completedLessons} of ${totalLessons} lessons.`);
+console.log(`Remaining lessons: ${remainingLessons}`);
+```
+
+Expected output:
+
+```text
+Amina completed 3 of 4 lessons.
+Remaining lessons: 1
+```
+
+The backtick character is different from the single quote. Ordinary quoted strings do not evaluate those placeholders.
+
+## Numbers and text behave differently
+
+```javascript
+console.log(10 + 5);
+console.log("10" + "5");
+console.log("10" + 5);
+```
+
+The first line prints the number `15`. The others print the text `105`: `+` joins strings, and when one operand here is a string, the number is converted to text. Keep numeric data as numbers for these exercises. A later forms lesson will cover converting and checking user input.
+
+<Note>JavaScript numbers can have rounding effects with decimal fractions. We use whole-number lesson counts and minutes here. Do not assume ordinary decimal arithmetic is suitable for exact financial calculations.</Note>
+
+## Practice: a study-session summary
+
+Use a reading duration of `20` minutes, a practice duration of `15`, and a target of `60`. Calculate the total and remaining minutes, then print these exact messages using template literals:
+
+```text
+Studied: 35 minutes
+Remaining: 25 minutes
+```
+
+Change the practice duration to `30`. Predict and confirm that the totals become `50` and `10`. Keep the durations below the target for this exercise; the next lesson teaches decisions when a target is reached or exceeded.
+
+### Completion checklist
+
+- [ ] Both results are calculated from named numeric values.
+- [ ] My messages use backticks and inserted values.
+- [ ] Changing one duration updates both messages after refresh.
+- [ ] I can explain why `"20" + 15` is not `35`.
+
+<Accordion title="Hint: calculate first, describe second">
+Create a total from reading plus practice. Subtract that total from the target. Insert each calculated value into its own message.
+</Accordion>
+
+<Accordion title="Suggested solution: session summary">
+
+```javascript
+const readingMinutes = 20;
+const practiceMinutes = 15;
+const targetMinutes = 60;
+const totalMinutes = readingMinutes + practiceMinutes;
+const remainingMinutes = targetMinutes - totalMinutes;
+
+console.log(`Studied: ${totalMinutes} minutes`);
+console.log(`Remaining: ${remainingMinutes} minutes`);
+```
+
+If changing the duration does not affect the messages, check that you inserted variables rather than typing the result directly into the text.
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b02-variables-and-values">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b04-comparisons-and-decisions">Next</a>
+</div>

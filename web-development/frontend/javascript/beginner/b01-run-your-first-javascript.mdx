@@ -1,0 +1,129 @@
+---
+title: "Run your first JavaScript"
+description: "Connect a script to an HTML page and read its output in the browser console."
+---
+
+## What you will learn
+
+- Explain what JavaScript adds to a page.
+- Connect an external script file to HTML.
+- Print a message and a calculation in the browser console.
+- Save, refresh, and diagnose a missing script.
+
+## Before you begin
+
+You should know how to create a folder and an HTML file. Use your existing text editor and a browser. Create a new folder called `javascript-practice` containing two files:
+
+```text
+javascript-practice/
+  index.html
+  app.js
+```
+
+HTML describes content, CSS controls presentation, and JavaScript provides programmable behaviour. We will start by writing instructions and seeing their output before changing a page's content.
+
+## Connect your script
+
+Put this complete document in `index.html`:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript practice</title>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <h1>My JavaScript practice</h1>
+    <p>Open the browser console to see my script's output.</p>
+  </body>
+</html>
+```
+
+`src="app.js"` tells the browser where to find the script relative to this HTML file. `defer` tells the browser to run this external script after it has parsed the HTML. JavaScript code goes inside `app.js`, without HTML script tags.
+
+Put the following in `app.js`:
+
+```javascript
+// A comment explains the code; it is not an instruction to execute.
+console.log("My JavaScript journey starts here.");
+console.log(8 + 4);
+```
+
+`console.log(...)` calls a built-in tool that prints the value between its parentheses to the console. Text needs quotes; a calculation uses numbers and an operator such as `+`. Each line here is a statement—an instruction. We end these statements with semicolons for consistency. `//` starts a comment that lasts to the end of the line.
+
+## Run and inspect
+
+1. Save both files and open `index.html` in Chrome.
+2. Right-click the page and select **Inspect**, then choose **Console** in DevTools. You can also open the console with Ctrl+Shift+J on Windows/Linux or Command+Option+J on macOS.
+3. Refresh the page if needed. Look for these two output lines:
+
+```text
+My JavaScript journey starts here.
+12
+```
+
+The page itself still shows the heading and paragraph. Console output is a developer tool, not visible page content. Later lessons will teach you to update the page.
+
+<Tip>You can also type `8 + 4` directly into the console and press Enter. The console displays its result. If you type a `console.log(...)` call, the console may additionally display `undefined`: that is the call's return value, not an error.</Tip>
+
+Change `8 + 4` in your file to `8 + 5`, save, and refresh. The result becomes `13`. Editing the file does not rerun it until you reload the page.
+
+## If the output is missing
+
+- Confirm both files are saved in the same folder.
+- Check that the filename is `app.js`, not `app.js.txt`.
+- Match the spelling in `src` exactly, including letter case.
+- Look for a red error in the console and open its file/line link.
+- Check matching quotes and parentheses, correct the file, then refresh.
+
+<Note>Use your own practice page for these exercises. Type or run code you understand; browser developer tools can execute code with access to the page you have open.</Note>
+
+## Practice: introduce your learning goal
+
+Replace the contents of `app.js` with three `console.log` statements:
+
+1. Print a name or nickname.
+2. Print a sentence explaining what you want to build.
+3. Print the result of adding two numbers representing study minutes: `15 + 10`.
+
+Add one comment explaining the script. Predict the final number before refreshing.
+
+### Completion checklist
+
+- [ ] My HTML loads the separate `app.js` file.
+- [ ] The console shows my name, goal, and the number `25`, in that order.
+- [ ] I can change the goal, save, refresh, and see the updated output.
+- [ ] I can explain why the messages are absent from the page body.
+- [ ] The console has no errors caused by my script.
+
+<Accordion title="Hint: text versus a calculation">
+Wrap your name and goal in quotes. Leave the addition outside quotes so JavaScript calculates a number instead of printing the characters.
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+```javascript
+// Introduce my goal and calculate a short study session.
+console.log("Amina");
+console.log("I want to make my portfolio interactive.");
+console.log(15 + 10);
+```
+
+Expected output:
+
+```text
+Amina
+I want to make my portfolio interactive.
+25
+```
+
+Your name and goal can differ. The third line must be a calculated number.
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b02-variables-and-values">Next</a>
+</div>
