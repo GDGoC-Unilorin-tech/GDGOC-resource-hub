@@ -1,0 +1,99 @@
+---
+title: "Buttons and events"
+description: "Register a listener and update state after a user action."
+---
+
+## What you will learn
+
+Register a listener and update state after a user action.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>My portfolio</h1>
+<p id="status">Waiting</p>
+<button id="update" type="button">Update status</button>
+</body>
+</html>
+```
+
+## Understand the idea
+
+An event reports something that happened, such as a button click. `addEventListener` takes an event name and a callback—a function the browser calls later. Pass the function itself, not the result of calling it.
+
+Use a native button for an action. It already supports keyboard activation with Enter and Space. Keep state (the current count) separate from the displayed message and update both when the event occurs.
+
+The conditional expression `condition ? valueIfTrue : valueIfFalse` chooses one value. It is a compact alternative to assigning text in an `if/else` block; the solution uses it for two short labels.
+
+## Run the example
+
+```javascript
+let count = 0;
+const button = document.querySelector("#update");
+const status = document.querySelector("#status");
+function recordPractice() {
+  count = count + 1;
+  status.textContent = `Practice sessions: ${count}`;
+}
+button.addEventListener("click", recordPractice);
+```
+
+**Expected result:** Each button activation increments the displayed count once, starting at 1.
+
+## Practice challenge
+
+Make the button toggle a saved state. Initially show Not saved; after one activation show Saved; after the next show Not saved. Keep the button label Save or Unsave in sync.
+
+### Completion checklist
+
+- [ ] Initial labels are Not saved and Save.
+- [ ] Repeated activations alternate both labels.
+- [ ] Enter and Space work when the button has focus.
+
+<Accordion title="Hint: plan your approach">
+
+Use a boolean and invert it with ! inside the listener. A small render function can update both labels.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+let saved = false;
+const button = document.querySelector("#update");
+const status = document.querySelector("#status");
+function render() {
+  status.textContent = saved ? "Saved" : "Not saved";
+  button.textContent = saved ? "Unsave" : "Save";
+}
+function toggleSaved() {
+  saved = !saved;
+  render();
+}
+button.addEventListener("click", toggleSaved);
+render();
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b11-updating-text-and-classes">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b13-debugging-and-tracing">Next</a>
+</div>

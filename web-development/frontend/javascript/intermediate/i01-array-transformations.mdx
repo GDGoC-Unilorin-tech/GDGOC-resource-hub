@@ -1,0 +1,71 @@
+---
+title: "Array transformations and callbacks"
+description: "Use map and filter to derive new collections."
+---
+
+## What you will learn
+
+Use map and filter to derive new collections.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+`map` calls a callback for each item and collects its return values into a new array. `filter` keeps items whose callback returns a truthy value. Neither method itself changes the original array, though a callback that mutates an object can still change shared objects.
+
+An arrow function is another function syntax. `item => item.title` has one parameter and implicitly returns an expression. With braces, write `return` explicitly. `includes` checks for a substring; `toLowerCase` makes a lowercase copy for simple case-insensitive matching.
+
+## Run the example
+
+```javascript
+const projects = [{ title: "Profile", category: "web" }, { title: "Poster", category: "design" }];
+const web = projects.filter(project => project.category === "web");
+const titles = web.map(project => project.title);
+console.log(titles.join(", "));
+console.log(projects.length);
+```
+
+**Expected result:** The output is Profile and 2. join combines array strings with a separator.
+
+## Practice challenge
+
+Filter project titles by the query "pro" ignoring case. Print matching titles joined by commas. Test a query with no match and show No matches.
+
+### Completion checklist
+
+- [ ] The two searches return Profile and No matches.
+- [ ] Original array length remains 2.
+- [ ] I can explain the callback return value.
+
+<Accordion title="Hint: plan your approach">
+
+Normalise both the query and title. Check the filtered array length before joining.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const projects = [{ title: "Profile" }, { title: "Poster" }];
+function searchTitles(query) {
+  const matches = projects.filter(project => project.title.toLowerCase().includes(query.toLowerCase()));
+  return matches.length === 0 ? "No matches" : matches.map(project => project.title).join(", ");
+}
+console.log(searchTitles("pro"));
+console.log(searchTitles("zz"));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i02-copying-and-sorting">Next</a>
+</div>

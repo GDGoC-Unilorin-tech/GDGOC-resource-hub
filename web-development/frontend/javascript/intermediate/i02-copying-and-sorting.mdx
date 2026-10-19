@@ -1,0 +1,71 @@
+---
+title: "Copying, updating, and sorting data"
+description: "Avoid accidental mutation when sorting arrays or updating records."
+---
+
+## What you will learn
+
+Avoid accidental mutation when sorting arrays or updating records.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+`sort` rearranges the array it is called on. Make a new array with spread (`[...items]`) when you need the original order. A comparator returns a negative number to place the first item earlier, positive to place it later, or zero for equal ordering. Numeric sorting needs a comparator.
+
+Object spread (`{...item}`) copies its own enumerable properties into a new object. This is shallow: nested objects are still shared. A property written after the spread overrides the copied property.
+
+## Run the example
+
+```javascript
+const durations = [20, 5, 100];
+const sorted = [...durations].sort((a, b) => a - b);
+console.log(sorted.join(", "));
+console.log(durations.join(", "));
+const oldProject = { title: "Profile", complete: false };
+const updated = { ...oldProject, complete: true };
+console.log(oldProject.complete);
+console.log(updated.complete);
+```
+
+**Expected result:** Output is 5, 20, 100; then 20, 5, 100; then false and true.
+
+## Practice challenge
+
+Sort projects by minutes from smallest to largest without modifying the original array. Print both orders using their titles.
+
+### Completion checklist
+
+- [ ] Sorted output is Short, Long.
+- [ ] Original output remains Long, Short.
+- [ ] I can explain shallow copying.
+
+<Accordion title="Hint: plan your approach">
+
+Copy the array before sort and compare a.minutes with b.minutes.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const projects = [{ title: "Long", minutes: 40 }, { title: "Short", minutes: 10 }];
+const sorted = [...projects].sort((a, b) => a.minutes - b.minutes);
+console.log(sorted.map(project => project.title).join(", "));
+console.log(projects.map(project => project.title).join(", "));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i01-array-transformations">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i03-rendering-lists">Next</a>
+</div>

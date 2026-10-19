@@ -1,8 +1,61 @@
 ---
-title: "JavaScript building challenge — planned"
+title: "Final challenge: Demonstrate your JavaScript portfolio"
+description: "Combine the course skills into a reliable, accessible project explorer."
 ---
 
-<Info>This section is planned and has not yet been published.</Info>
+## Your goal
 
-[Back to the JavaScript overview](/web-development/frontend/javascript/overview)
+Combine the course skills into a reliable, accessible project explorer.
 
+## Before you begin
+
+Complete all three levels and their projects. Build in a separate practice folder or branch. Use the HTTP setup from Intermediate for data loading and modules. No external service or API key is needed.
+
+## Project brief
+
+Build an integrated portfolio project explorer from your own source files, using the previous milestones as reference. Include category filtering, case-insensitive search, local JSON loading, a saved category, loading/empty/error feedback, and retry. Organise the code into modules and protect against stale requests.
+
+Add a labelled Original order / Title A–Z select control and a Reset filters button. Reset must clear the query, select All, restore Original order, and update the stored category. Use a copy when sorting so original order can be restored. Listen to the select's change event and read its value. Use localeCompare for title comparison.
+
+Integrate into a copy or branch of your HTML/CSS portfolio; do not overwrite a collaborator's work. Keep this challenge focused on JavaScript. Deployment and the wider frontend capstone are follow-on work.
+
+## Build in steps
+
+1. List the controls, input data, and expected outputs before coding.
+2. Implement one user action and verify it before adding the next.
+3. Separate calculation or selection from DOM updates where appropriate.
+4. Run the checklist below and record expected versus actual results.
+5. Explain the code in your own words before comparing the worked implementation.
+
+## Completion checklist
+
+- [ ] All earlier project requirements remain working.
+- [ ] Title sorting preserves original data and Reset restores the initial controls.
+- [ ] Blank, no-match, failed request, corrupt data, blocked storage, and rapid-click cases are checked.
+- [ ] Keyboard operation and meaningful status feedback are demonstrated.
+- [ ] Source, setup instructions, automated checks, manual audit, and known limitations are included.
+
+## Evidence and review
+
+Keep your source files, a short setup README, and a table of test action / expected result / actual result / repair. Demonstrate a normal visitor journey and at least one failure or edge case. A reviewer should be able to run your work from these instructions. Completion is self-assessed unless someone reviews it; this page does not automatically grade or unlock anything.
+
+<Accordion title="Hints: break the project into behaviours">
+
+Start with the supplied project titles so result counts are predictable. Keep a single selected category. Use textContent for data, render from current state, and avoid attaching another listener every time you render. For later levels, distinguish a failed request from a valid empty list and keep a retry available.
+
+</Accordion>
+
+<Accordion title="Suggested solution: download after attempting the project">
+
+[Download the complete final implementation](/assets/javascript/final-solution.zip).
+
+Extract the archive and follow README.md. It includes source code, a minimal stylesheet, and REVIEW.md with manual checks. It also includes tests.html and tests.js; open the test page through the local server.
+
+The implementation is a worked example, not the only valid answer. Compare event handling, state, and failure behaviour against your own work. Explain any differences.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/project">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/further-learning">Next</a>
+</div>

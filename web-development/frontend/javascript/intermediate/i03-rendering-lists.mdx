@@ -1,0 +1,99 @@
+---
+title: "Rendering lists safely"
+description: "Create elements from data and replace a list without duplicates."
+---
+
+## What you will learn
+
+Create elements from data and replace a list without duplicates.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Projects</h1>
+<ul id="projects"></ul>
+<p id="status" role="status"></p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+`createElement` creates a disconnected element. Set its text, then `append` it to a parent. `replaceChildren` removes old children and can insert replacements. Clearing the list once at the start of rendering prevents repeated renders from duplicating entries.
+
+A render function should describe the current data, not keep appending history. Use `textContent` for data strings. A status region can communicate a result count, but keep updates meaningful rather than announcing every tiny change.
+
+## Run the example
+
+```javascript
+function render(projects) {
+  const list = document.querySelector("#projects");
+  list.replaceChildren();
+  for (const project of projects) {
+    const item = document.createElement("li");
+    item.textContent = project.title;
+    list.append(item);
+  }
+  document.querySelector("#status").textContent = `${projects.length} projects`;
+}
+render([{ title: "Profile" }, { title: "Study planner" }]);
+```
+
+**Expected result:** Two list items appear, and status reads 2 projects.
+
+## Practice challenge
+
+Write render so an empty list reports No projects yet. Call it with a title containing `<b>` literally, then with an empty array. Confirm the final list is empty. Switch back to the first call to inspect the literal characters.
+
+### Completion checklist
+
+- [ ] Repeated rendering does not duplicate entries.
+- [ ] Empty data produces an empty list and useful status.
+- [ ] A title containing markup is treated as text.
+
+<Accordion title="Hint: plan your approach">
+
+Clear the list every time; choose status text from the array length.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function render(projects) {
+  const list = document.querySelector("#projects");
+  list.replaceChildren();
+  for (const project of projects) {
+    const item = document.createElement("li");
+    item.textContent = project.title;
+    list.append(item);
+  }
+  document.querySelector("#status").textContent = projects.length === 0 ? "No projects yet" : `${projects.length} projects`;
+}
+render([{ title: "<b>Profile</b>" }]);
+render([]);
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i02-copying-and-sorting">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/checkpoint-data-interfaces">Next</a>
+</div>

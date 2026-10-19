@@ -1,0 +1,85 @@
+---
+title: "Selecting DOM elements"
+description: "Find page elements and handle a missing match."
+---
+
+## What you will learn
+
+Find page elements and handle a missing match.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>My portfolio</h1>
+<p id="status">Waiting</p>
+<button id="update" type="button">Update status</button>
+</body>
+</html>
+```
+
+## Understand the idea
+
+The Document Object Model (DOM) is the browser's tree of objects representing the page. `document.querySelector` returns the first matching element, or `null` if there is no match. Its argument uses CSS selector syntax: `#status` selects an id.
+
+The DOM is not your original source file: JavaScript can change the in-memory page without rewriting the HTML on disk. Our deferred script runs after the HTML is parsed, so elements already exist when we select them.
+
+## Run the example
+
+```javascript
+const status = document.querySelector("#status");
+if (status !== null) {
+  console.log(status.textContent);
+}
+console.log(document.querySelector("#missing"));
+```
+
+**Expected result:** The console shows `Waiting`, then `null`.
+
+## Practice challenge
+
+Select the page heading and print its text. Also select #unknown and print Missing element when no match exists. Do not read properties from null.
+
+### Completion checklist
+
+- [ ] The heading text is logged.
+- [ ] A missing selector does not cause a TypeError.
+- [ ] I can explain why defer matters.
+
+<Accordion title="Hint: plan your approach">
+
+Check the return value before using textContent.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const heading = document.querySelector("h1");
+if (heading !== null) console.log(heading.textContent);
+const unknown = document.querySelector("#unknown");
+if (unknown === null) console.log("Missing element");
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/checkpoint-collections">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b11-updating-text-and-classes">Next</a>
+</div>

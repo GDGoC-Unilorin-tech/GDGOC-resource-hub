@@ -1,0 +1,41 @@
+---
+title: "Checkpoint: Load and recover"
+description: "Demonstrate the skills in this module independently."
+---
+
+## Task
+
+Use a local HTTP server and projects.json. Build a Load button and result list with a persistent status region. Handle HTTP failures, parsing failures, and invalid records, and make retry possible.
+
+Attempt the task without copying a full implementation. Refer back to individual lesson concepts when necessary. Keep this work in a separate practice folder.
+
+## Completion criteria
+
+- [ ] Valid data produces the expected titles.
+- [ ] [] is a successful empty state, not an error.
+- [ ] A missing file and [null] produce useful error messages.
+- [ ] Restoring valid data and retrying recovers.
+- [ ] The load action is restored in every outcome.
+
+## Evidence to keep
+
+Keep your source files and a short record of each input/action, expected result, actual result, and repair. Explain one design choice and one error you investigated. A screenshot supports the record but does not replace runnable code.
+
+<Accordion title="Hint">
+
+Check response.ok, then parse, then validate. Keep the restore-button step in finally.
+
+</Accordion>
+
+<Accordion title="Review your attempt">
+
+Demonstrate every criterion in your browser and source. Re-run the same checks after each fix. Topic lessons supply worked examples; this checkpoint intentionally asks you to combine them independently rather than copy a complete answer. If a criterion fails, revisit the related lesson before moving on.
+
+</Accordion>
+
+<Note>This checkpoint is self-assessed unless a reviewer examines the evidence. It does not automatically grade or unlock the next page.</Note>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i09-loading-and-error-states">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/project">Next</a>
+</div>

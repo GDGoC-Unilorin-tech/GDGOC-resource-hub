@@ -1,0 +1,70 @@
+---
+title: "Functions, parameters, and return values"
+description: "Define reusable calculations, pass arguments, and use a returned result."
+---
+
+## What you will learn
+
+Define reusable calculations, pass arguments, and use a returned result.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+A function names a reusable set of instructions. Defining it does not run its body; a call with parentheses runs it. Parameters are local names declared in the definition. Arguments are the actual values supplied by a call.
+
+`return` sends a value back to the caller and ends that function call. Printing with `console.log` only displays something; it does not supply your function's result. A function that reaches its end without returning a value produces `undefined`.
+
+## Run the example
+
+```javascript
+function remaining(total, done) {
+  return total - done;
+}
+const result = remaining(8, 3);
+console.log(result);
+console.log(remaining(8, 8));
+```
+
+**Expected result:** The console prints `5`, then `0`.
+
+## Practice challenge
+
+Write `studyTotal(reading, practice)` to return their sum. Call it with 15 and 20, then 0 and 10. Print the returned results. Use non-negative numbers.
+
+### Completion checklist
+
+- [ ] Calls print 35 and 10.
+- [ ] The function returns a result rather than logging it.
+- [ ] I can identify parameters and arguments.
+
+<Accordion title="Hint: plan your approach">
+
+Keep the calculation inside the function and the printing outside it.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function studyTotal(reading, practice) {
+  return reading + practice;
+}
+console.log(studyTotal(15, 20));
+console.log(studyTotal(0, 10));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/checkpoint-programming-foundations">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b06-scope-and-local-variables">Next</a>
+</div>

@@ -1,0 +1,74 @@
+---
+title: "Loops and collections"
+description: "Repeat work with for...of and calculate a running total."
+---
+
+## What you will learn
+
+Repeat work with for...of and calculate a running total.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+A loop runs a block repeatedly. `for...of` assigns each array item to a loop variable in order. The block can read its properties or add to a running total. An empty array performs zero iterations, so an initial total of zero stays zero.
+
+Initialise the accumulator before the loop. Placing it inside the loop resets it on every iteration. `break` can end a loop early and `continue` skips to its next iteration, but neither is needed for this total.
+
+## Run the example
+
+```javascript
+const sessions = [{ minutes: 10 }, { minutes: 20 }];
+let total = 0;
+for (const session of sessions) {
+  total = total + session.minutes;
+}
+console.log(total);
+```
+
+**Expected result:** The total is `30`. Replacing the array with `[]` prints `0`.
+
+## Practice challenge
+
+Write totalMinutes(sessions) that returns the sum of each object’s minutes. Call it with 5 and 15 minute sessions, then an empty array.
+
+### Completion checklist
+
+- [ ] The two calls return 20 and 0.
+- [ ] The function works with more than two entries.
+- [ ] I can trace the total after each iteration.
+
+<Accordion title="Hint: plan your approach">
+
+Put the initial total inside the function but outside the loop.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function totalMinutes(sessions) {
+  let total = 0;
+  for (const session of sessions) {
+    total = total + session.minutes;
+  }
+  return total;
+}
+console.log(totalMinutes([{ minutes: 5 }, { minutes: 15 }]));
+console.log(totalMinutes([]));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b08-objects-and-properties">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/checkpoint-collections">Next</a>
+</div>

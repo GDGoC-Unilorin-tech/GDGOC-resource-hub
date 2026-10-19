@@ -1,0 +1,59 @@
+---
+title: "Intermediate project: Searchable project explorer"
+description: "Load local data, combine search and categories, and remember a preference."
+---
+
+## Your goal
+
+Load local data, combine search and categories, and remember a preference.
+
+## Before you begin
+
+Complete all lessons and checkpoints in this level. Build in a separate practice folder or branch. Use the HTTP setup from Intermediate for data loading and modules. No external service or API key is needed.
+
+## Project brief
+
+Extend the Beginner filter. Move project data to projects.json, load it over HTTP, and validate titles and categories. Combine a submitted search query with the chosen category. Save only the category as a non-sensitive preference. Show loading, empty, and failure states, with a Reload projects action. A storage failure must not prevent use of the page.
+
+Use the supplied three-record fixture to make counts predictable. Keep search text as text; never insert it or loaded titles through innerHTML. This exercise is a local browser application, not a deployed backend.
+
+## Build in steps
+
+1. List the controls, input data, and expected outputs before coding.
+2. Implement one user action and verify it before adding the next.
+3. Separate calculation or selection from DOM updates where appropriate.
+4. Run the checklist below and record expected versus actual results.
+5. Explain the code in your own words before comparing the worked implementation.
+
+## Completion checklist
+
+- [ ] All/Web/Design give 3/2/1 results for an empty query.
+- [ ] Mixed-case search works and combines with category filtering.
+- [ ] A saved category survives refresh; invalid or blocked storage falls back safely.
+- [ ] [], malformed JSON, [null], and missing-file cases are handled.
+- [ ] Restoring the file and retrying recovers without refreshing the page.
+
+## Evidence and review
+
+Keep your source files, a short setup README, and a table of test action / expected result / actual result / repair. Demonstrate a normal visitor journey and at least one failure or edge case. A reviewer should be able to run your work from these instructions. Completion is self-assessed unless someone reviews it; this page does not automatically grade or unlock anything.
+
+<Accordion title="Hints: break the project into behaviours">
+
+Start with the supplied project titles so result counts are predictable. Keep a single selected category. Use textContent for data, render from current state, and avoid attaching another listener every time you render. For later levels, distinguish a failed request from a valid empty list and keep a retry available.
+
+</Accordion>
+
+<Accordion title="Suggested solution: download after attempting the project">
+
+[Download the complete intermediate implementation](/assets/javascript/intermediate-solution.zip).
+
+Extract the archive and follow README.md. It includes source code, a minimal stylesheet, and REVIEW.md with manual checks. 
+
+The implementation is a worked example, not the only valid answer. Compare event handling, state, and failure behaviour against your own work. Explain any differences.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/checkpoint-async">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/overview">Next</a>
+</div>

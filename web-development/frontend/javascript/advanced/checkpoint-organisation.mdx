@@ -1,0 +1,40 @@
+---
+title: "Checkpoint: Refactor without changing behaviour"
+description: "Demonstrate the skills in this module independently."
+---
+
+## Task
+
+Split a project-selection function into a module. Keep rendering in app.js and use a closure for a separate visit-only counter. Use object copies when updating a record. Serve the modules over HTTP.
+
+Attempt the task without copying a full implementation. Refer back to individual lesson concepts when necessary. Keep this work in a separate practice folder.
+
+## Completion criteria
+
+- [ ] Imports resolve without global helper variables.
+- [ ] Identical inputs produce identical selected titles.
+- [ ] Changing a copied record does not change the original flat record.
+- [ ] Two counters retain independent state.
+
+## Evidence to keep
+
+Keep your source files and a short record of each input/action, expected result, actual result, and repair. Explain one design choice and one error you investigated. A screenshot supports the record but does not replace runnable code.
+
+<Accordion title="Hint">
+
+Write down module inputs and outputs before moving code. Check which references a shallow copy shares.
+
+</Accordion>
+
+<Accordion title="Review your attempt">
+
+Demonstrate every criterion in your browser and source. Re-run the same checks after each fix. Topic lessons supply worked examples; this checkpoint intentionally asks you to combine them independently rather than copy a complete answer. If a criterion fails, revisit the related lesson before moving on.
+
+</Accordion>
+
+<Note>This checkpoint is self-assessed unless a reviewer examines the evidence. It does not automatically grade or unlock the next page.</Note>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a03-state-and-pure-functions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a04-event-delegation">Next</a>
+</div>

@@ -1,0 +1,112 @@
+---
+title: "Loading, empty, and error states"
+description: "Keep users informed and offer a retry after failure."
+---
+
+## What you will learn
+
+Keep users informed and offer a retry after failure.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Project data</h1>
+<button type="button" id="load">Load projects</button>
+<p id="status" role="status">Not loaded</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+An asynchronous interface needs more than a success message. Show loading while waiting, an empty message for a valid empty result, and a recoverable error for failure. Disable the action during a single in-flight request to prevent duplicate work.
+
+`finally` runs after try/catch regardless of success or failure, so it is useful for restoring the button. An error message should explain what the user can do next. Keep status text in a live region already present before the update.
+
+Run over HTTP with the same local `projects.json`. Use Network throttling in DevTools to observe the loading state.
+
+## Run the example
+
+```javascript
+const button = document.querySelector("#load");
+const status = document.querySelector("#status");
+button.addEventListener("click", async () => {
+  button.disabled = true;
+  status.textContent = "Loading projects…";
+  try {
+    const response = await fetch("./projects.json");
+    if (!response.ok) throw new Error("Request failed");
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Invalid list");
+    status.textContent = data.length === 0 ? "No projects yet" : `${data.length} projects loaded`;
+  } catch (error) {
+    status.textContent = "Could not load projects. Try again.";
+  } finally {
+    button.disabled = false;
+  }
+});
+```
+
+**Expected result:** The button loads 2 projects, and is enabled again afterward. [] gives No projects yet; a missing file gives a retry message.
+
+## Practice challenge
+
+Extend the loader to reject any record without a non-empty string title. Include the first project title in a successful non-empty message. Preserve empty, failure, and retry behaviour.
+
+### Completion checklist
+
+- [ ] Valid, empty, malformed, and missing-file cases show distinct useful outcomes.
+- [ ] The button becomes usable again after failure.
+- [ ] A successful retry works after restoring the file.
+
+<Accordion title="Hint: plan your approach">
+
+Validate before accessing data[0]. Restore the button in finally.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const button = document.querySelector("#load");
+const status = document.querySelector("#status");
+button.addEventListener("click", async () => {
+  button.disabled = true;
+  status.textContent = "Loading projects…";
+  try {
+    const response = await fetch("./projects.json");
+    if (!response.ok) throw new Error("Request failed");
+    const data = await response.json();
+    if (!Array.isArray(data) || !data.every(item => item !== null && typeof item.title === "string" && item.title.trim() !== "")) throw new Error("Invalid data");
+    status.textContent = data.length === 0 ? "No projects yet" : `First project: ${data[0].title}`;
+  } catch (error) {
+    status.textContent = "Could not load projects. Try again.";
+  } finally {
+    button.disabled = false;
+  }
+});
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i08-fetching-local-data">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/checkpoint-async">Next</a>
+</div>

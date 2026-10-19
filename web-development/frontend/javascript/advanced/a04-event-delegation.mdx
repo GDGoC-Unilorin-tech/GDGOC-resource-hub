@@ -1,0 +1,102 @@
+---
+title: "Event delegation"
+description: "Handle related controls with one listener on their parent."
+---
+
+## What you will learn
+
+Handle related controls with one listener on their parent.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Project categories</h1>
+<div id="filters">
+<button type="button" data-category="all">All</button>
+<button type="button" data-category="web"><span>Web</span></button>
+</div>
+<p id="status" role="status">Choose a category</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+Many events bubble from the target through its ancestors. A listener on a parent can handle clicks from children created later. `event.target` is where the event originated; `event.currentTarget` is the element whose listener is running.
+
+`closest` finds a matching element at or above the target, so clicking text inside a span still finds its button. Confirm that the result belongs to the intended container. `dataset.category` reads the `data-category` attribute as text. Validate allowed actions rather than trusting arbitrary attributes.
+
+## Run the example
+
+```javascript
+const filters = document.querySelector("#filters");
+filters.addEventListener("click", event => {
+  if (!(event.target instanceof Element)) return;
+  const button = event.target.closest("button[data-category]");
+  if (!button || !filters.contains(button)) return;
+  const category = button.dataset.category;
+  if (category !== "all" && category !== "web") return;
+  document.querySelector("#status").textContent = `Category: ${category}`;
+});
+```
+
+**Expected result:** Clicking the nested Web label reports Category: web; clicking empty container space does nothing.
+
+## Practice challenge
+
+Add a design button from JavaScript after registering the listener. Accept all, web, and design values. Confirm the new button works without a second listener.
+
+### Completion checklist
+
+- [ ] The dynamically added Design button works.
+- [ ] The nested Web span still works.
+- [ ] Unknown values are ignored.
+
+<Accordion title="Hint: plan your approach">
+
+Use an allowed-value array with includes and append the new button to the parent.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const filters = document.querySelector("#filters");
+filters.addEventListener("click", event => {
+  if (!(event.target instanceof Element)) return;
+  const button = event.target.closest("button[data-category]");
+  if (!button || !filters.contains(button)) return;
+  const category = button.dataset.category;
+  if (!["all", "web", "design"].includes(category)) return;
+  document.querySelector("#status").textContent = `Category: ${category}`;
+});
+const button = document.createElement("button");
+button.type = "button";
+button.dataset.category = "design";
+button.textContent = "Design";
+filters.append(button);
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/checkpoint-organisation">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a05-event-loop-and-task-order">Next</a>
+</div>

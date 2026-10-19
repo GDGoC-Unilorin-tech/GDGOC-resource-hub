@@ -1,0 +1,81 @@
+---
+title: "JSON and data shapes"
+description: "Serialise data and validate parsed records before using them."
+---
+
+## What you will learn
+
+Serialise data and validate parsed records before using them.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+JSON is a text format for exchanging data. Property names and strings use double quotes; JSON cannot contain comments, functions, or undefined. `JSON.stringify` converts supported data to text; `JSON.parse` converts valid JSON text back to values.
+
+Valid JSON is not necessarily valid application data: parsing `null` succeeds. Check the shape you need before reading properties. `try/catch` lets you handle exceptions; code in catch runs when something inside try throws. `throw new Error(...)` creates a deliberate failure with a useful message.
+
+## Run the example
+
+```javascript
+const text = JSON.stringify({ title: "Profile", minutes: 20 });
+const project = JSON.parse(text);
+console.log(project.title);
+try {
+  JSON.parse("not JSON");
+} catch (error) {
+  console.log("Could not read JSON");
+}
+```
+
+**Expected result:** Output is Profile and Could not read JSON.
+
+## Practice challenge
+
+Write readTitle(text) that returns a parsed title only when it is a non-empty string on a non-null object. Otherwise return Invalid project. Test valid JSON, null, and malformed text.
+
+### Completion checklist
+
+- [ ] Valid input returns Profile.
+- [ ] Null and malformed input return Invalid project.
+- [ ] I distinguish parsing from shape validation.
+
+<Accordion title="Hint: plan your approach">
+
+Check the parsed value before reading title; trim tests whether text contains more than spaces.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function readTitle(text) {
+  try {
+    const value = JSON.parse(text);
+    if (value === null || typeof value !== "object" || typeof value.title !== "string" || value.title.trim() === "") {
+      return "Invalid project";
+    }
+    return value.title;
+  } catch (error) {
+    return "Invalid project";
+  }
+}
+console.log(readTitle('{"title":"Profile"}'));
+console.log(readTitle("null"));
+console.log(readTitle("broken"));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i04-forms-and-input-validation">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i06-local-storage">Next</a>
+</div>

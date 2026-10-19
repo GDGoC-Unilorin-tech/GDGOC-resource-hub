@@ -1,0 +1,20 @@
+import { validProjects, selectProjects } from "./logic.js";
+let passed = 0;
+function check(condition, label) {
+  if (!condition) throw new Error(label);
+  passed++;
+}
+const data = [{ id: "b", title: "Beta", category: "web" }, { id: "a", title: "Alpha", category: "design" }];
+const state = { category: "all", query: "", sort: "original" };
+check(validProjects(data), "valid list");
+check(validProjects([]), "empty list is valid");
+check(!validProjects([null]), "null record rejected");
+check(!validProjects([{ id: "x", title: " ", category: "web" }]), "empty title rejected");
+check(!validProjects([data[0], data[0]]), "duplicate id rejected");
+check(selectProjects(data, { ...state, query: " BETA " }).length === 1, "normalised search");
+check(selectProjects(data, { ...state, category: "design" })[0].title === "Alpha", "category");
+check(selectProjects(data, { ...state, query: "missing" }).length === 0, "no match");
+check(selectProjects(data, { ...state, sort: "title" })[0].title === "Alpha", "sort");
+check(data[0].title === "Beta", "original order unchanged");
+document.querySelector("#result").textContent = `${passed} checks passed`;
+console.log(`${passed} checks passed`);

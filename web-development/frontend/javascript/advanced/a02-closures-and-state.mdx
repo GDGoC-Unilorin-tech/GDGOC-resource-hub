@@ -1,0 +1,83 @@
+---
+title: "Closures and private state"
+description: "Explain how a returned function retains access to a local variable."
+---
+
+## What you will learn
+
+Explain how a returned function retains access to a local variable.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+A closure is a function together with access to the surrounding lexical scope where it was created. A returned function can keep using a local variable after the outer call has finished. Separate calls to the outer function create independent local state.
+
+Closures are useful for a counter or a small stateful helper. They are not a security mechanism: code running in the same application should still be treated according to its trust level. Keep the behaviour explicit and avoid hidden state when a plain function would be clearer.
+
+## Run the example
+
+```javascript
+function createCounter() {
+  let count = 0;
+  return function increment() {
+    count = count + 1;
+    return count;
+  };
+}
+const first = createCounter();
+const second = createCounter();
+console.log(first());
+console.log(first());
+console.log(second());
+```
+
+**Expected result:** The independent counters print 1, 2, 1.
+
+## Practice challenge
+
+Write createCounter(start) that begins at the supplied number. Create counters starting at 5 and 0. Call the first twice and the second once.
+
+### Completion checklist
+
+- [ ] Output is 6, 7, 1.
+- [ ] The counters do not share state.
+- [ ] I can identify which variable the returned function retains.
+
+<Accordion title="Hint: plan your approach">
+
+Use the parameter to initialise the local count; do not move the count outside the factory function.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function createCounter(start) {
+  let count = start;
+  return function increment() {
+    count = count + 1;
+    return count;
+  };
+}
+const first = createCounter(5);
+const second = createCounter(0);
+console.log(first());
+console.log(first());
+console.log(second());
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a01-es-modules">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a03-state-and-pure-functions">Next</a>
+</div>

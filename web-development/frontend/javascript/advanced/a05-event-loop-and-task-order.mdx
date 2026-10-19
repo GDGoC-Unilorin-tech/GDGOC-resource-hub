@@ -1,0 +1,70 @@
+---
+title: "The event loop and task order"
+description: "Predict synchronous, promise, and timer execution order."
+---
+
+## What you will learn
+
+Predict synchronous, promise, and timer execution order.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+JavaScript executes the current synchronous work first. Promise continuations are queued as microtasks; a timer callback is scheduled as a task. Microtasks run after the current execution finishes and before the next task is taken. A zero-delay timer is not an instruction to run immediately.
+
+Long synchronous work can prevent the page from responding. Marking a function async does not move heavy computation off the main thread. Use measurements before optimisation; later you will practise breaking work into smaller tasks.
+
+## Run the example
+
+```javascript
+console.log("start");
+setTimeout(() => console.log("timer"), 0);
+Promise.resolve().then(() => console.log("promise"));
+console.log("end");
+```
+
+**Expected result:** Output order is start, end, promise, timer.
+
+## Practice challenge
+
+Write an async function that logs Before, awaits Promise.resolve(), then logs After. Call it and immediately log Outside. Predict the sequence before running.
+
+### Completion checklist
+
+- [ ] The order is Before, Outside, After.
+- [ ] I can explain why Outside is not last.
+- [ ] I do not treat async as background computation.
+
+<Accordion title="Hint: plan your approach">
+
+The function runs synchronously until it reaches await. The continuation runs later.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+async function demonstrate() {
+  console.log("Before");
+  await Promise.resolve();
+  console.log("After");
+}
+demonstrate();
+console.log("Outside");
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a04-event-delegation">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a06-cancellation-and-stale-results">Next</a>
+</div>

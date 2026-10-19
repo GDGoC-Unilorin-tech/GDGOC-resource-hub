@@ -1,0 +1,61 @@
+---
+title: "Checkpoint: Programming foundations"
+description: "Independently build and test a learning-session summary."
+---
+
+## Skill to demonstrate
+
+Create a browser-run script that stores data, calculates a total, and chooses a useful message. Complete the first four lessons before attempting it. Work from a blank `app.js`; you may look back at individual concepts.
+
+## Your task
+
+Reuse the practice HTML setup. Store a learner name, reading minutes, practice minutes, and target minutes as named values. Print a personalised summary containing the total studied minutes. Then print exactly one status message:
+
+- At or above the target: `Target reached.`
+- Below the target: a message containing the remaining minutes.
+
+Use whole-number, non-negative durations and a positive target. Input validation is outside this checkpoint. Do not hard-code the calculated total or remaining time into your messages.
+
+## Test your work
+
+| Reading | Practice | Target | Expected total | Expected status |
+| --- | --- | --- | --- | --- |
+| 10 | 15 | 30 | 25 | 5 minutes remaining |
+| 10 | 20 | 30 | 30 | Target reached. |
+| 20 | 20 | 30 | 40 | Target reached. |
+| 0 | 0 | 30 | 0 | 30 minutes remaining |
+
+Change the source values and refresh for each case. The below-target wording may differ, but the remaining number must be correct. Never display a negative number of remaining minutes after the target is reached.
+
+## Completion checklist
+
+- [ ] My HTML loads an external script successfully.
+- [ ] Names describe the values they hold, and durations are numbers.
+- [ ] The summary includes a learner name and calculated total.
+- [ ] Exactly one status message appears for each test.
+- [ ] All four test cases give the correct result.
+- [ ] I can explain the difference between assignment and comparison.
+- [ ] I can point to the expression that calculates remaining time.
+- [ ] My console has no errors from the script.
+
+## Evidence to keep
+
+Keep `index.html`, `app.js`, and a short note listing each test's expected and actual results. Explain why the comparison includes equality. A screenshot can support your explanation, but keep the source files too.
+
+<Accordion title="Hint: split the problem into three steps">
+Store the inputs, calculate the total, then choose the message. Compare the total with the target before reporting remaining minutes. The same source should work when you change the input values.
+</Accordion>
+
+<Accordion title="Review your attempt">
+Trace your code from top to bottom for each row. Explain which branch runs and why. If the exact-target case reports time remaining, inspect your comparison operator. If totals look like joined digits, inspect the input types. Related lessons include worked solutions; this checkpoint intentionally asks you to combine those skills independently.
+</Accordion>
+
+<Note>This is a self-assessed checkpoint, not an automatic grade. Continue to Reusable logic and collections after you can demonstrate the completion criteria.</Note>
+
+[Return to the Beginner roadmap](/web-development/frontend/javascript/beginner/overview)
+
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b04-comparisons-and-decisions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b05-functions-parameters-and-return">Next</a>
+</div>

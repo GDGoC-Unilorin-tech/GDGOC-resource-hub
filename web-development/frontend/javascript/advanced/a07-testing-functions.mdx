@@ -1,0 +1,100 @@
+---
+title: "Testing functions and boundary cases"
+description: "Write assertions that catch wrong results and protect input data."
+---
+
+## What you will learn
+
+Write assertions that catch wrong results and protect input data.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Use the local HTTP server introduced in Intermediate. Open the supplied practice page through that server, not as a file URL. The script uses `type="module"`. Replace `app.js` with one complete example at a time.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<h1>Function checks</h1>
+<p>Read the Console for test results.</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+A test compares observed behaviour with an expectation and fails clearly if they differ. `console.assert` is useful while experimenting, but a throwing assertion is harder to overlook in a script. Choose cases that could reveal a defect: zero, an exact boundary, beyond the boundary, and empty input.
+
+Tests do not prove a program has no bugs. Record assumptions about accepted inputs, and test side effects such as accidental mutation separately. Production test frameworks add runners and reporting; these small browser checks need no dependencies.
+
+Reuse `math.js` from the first Advanced lesson for the example. The challenge is self-contained in app.js. `result += value` is shorthand for `result = result + value`.
+
+## Run the example
+
+```javascript
+import { remaining } from "./math.js";
+function equal(actual, expected, label) {
+  if (actual !== expected) throw new Error(`${label}: expected ${expected}, got ${actual}`);
+}
+equal(remaining(30, 0), 30, "zero done");
+equal(remaining(30, 30), 0, "exact target");
+equal(remaining(30, 40), 0, "past target");
+console.log("3 checks passed");
+```
+
+**Expected result:** All checks pass. Temporarily removing the clamp in math.js makes the past-target check fail.
+
+## Practice challenge
+
+Create a pure total function for an array of minutes. Test empty input, one item, and several items. Assert that the source array length and first value are unchanged.
+
+### Completion checklist
+
+- [ ] A deliberate wrong result triggers an error.
+- [ ] All five checks pass after repair.
+- [ ] Accepted input assumptions are recorded.
+
+<Accordion title="Hint: plan your approach">
+
+Use explicit failures, not just printed values. State that inputs are non-negative numbers.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function total(minutes) {
+  let result = 0;
+  for (const value of minutes) result += value;
+  return result;
+}
+function equal(actual, expected, label) {
+  if (actual !== expected) throw new Error(label);
+}
+const input = [10, 20];
+equal(total([]), 0, "empty");
+equal(total([5]), 5, "single");
+equal(total(input), 30, "multiple");
+equal(input.length, 2, "length unchanged");
+equal(input[0], 10, "first unchanged");
+console.log("5 checks passed");
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/checkpoint-reliable-interactions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a08-testing-accessible-interactions">Next</a>
+</div>

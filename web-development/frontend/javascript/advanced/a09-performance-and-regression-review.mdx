@@ -1,0 +1,112 @@
+---
+title: "Performance and regression review"
+description: "Measure a task, yield between batches, and record a reproducible audit."
+---
+
+## What you will learn
+
+Measure a task, yield between batches, and record a reproducible audit.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Task progress</h1>
+<button id="run" type="button">Process sample</button>
+<p id="status" role="status">Ready</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+Use performance.now for elapsed time, and the DevTools Performance panel to inspect long tasks. A fast result on your computer may still be slow on another device. Record the input size, device or throttling setting, and repeatable action.
+
+Split independent work into batches when needed. Awaiting a timer gives the browser an opportunity to handle other tasks between batches; it does not guarantee a particular frame rate. Do not add batching to tiny calculations without evidence.
+
+The three-part loop `for (let batch = 0; batch < 10; batch++)` initialises a counter, checks the condition before each iteration, and increments it afterward.
+
+## Run the example
+
+```javascript
+function pause() {
+  return new Promise(resolve => setTimeout(resolve, 0));
+}
+document.querySelector("#run").addEventListener("click", async event => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  const start = performance.now();
+  let total = 0;
+  for (let batch = 0; batch < 10; batch++) {
+    for (let item = 0; item < 1000; item++) total++;
+    document.querySelector("#status").textContent = `Processed ${total}`;
+    await pause();
+  }
+  console.log(`Elapsed milliseconds: ${performance.now() - start}`);
+  button.disabled = false;
+});
+```
+
+**Expected result:** The final count is 10000. Elapsed time varies; it is not a fixed expected number.
+
+## Practice challenge
+
+Process 5000 items in five batches. Restore the button in finally even if the work fails. Record a manual regression checklist for normal, repeated, and keyboard activation.
+
+### Completion checklist
+
+- [ ] The final result is 5000.
+- [ ] Repeated runs do not accumulate old totals.
+- [ ] The button becomes usable after completion.
+- [ ] My audit records an action, expected/actual result, and environment.
+
+<Accordion title="Hint: plan your approach">
+
+Keep a reference to currentTarget before awaiting; it is not retained as currentTarget throughout asynchronous work.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const button = document.querySelector("#run");
+const status = document.querySelector("#status");
+button.addEventListener("click", async () => {
+  button.disabled = true;
+  try {
+    let total = 0;
+    for (let batch = 0; batch < 5; batch++) {
+      for (let item = 0; item < 1000; item++) total++;
+      status.textContent = `Processed ${total}`;
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+  } catch (error) {
+    status.textContent = "Processing failed. Try again.";
+  } finally {
+    button.disabled = false;
+  }
+});
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a08-testing-accessible-interactions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/checkpoint-audit">Next</a>
+</div>
