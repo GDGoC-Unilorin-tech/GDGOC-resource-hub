@@ -1,0 +1,59 @@
+---
+title: "Advanced project: Reliable modular explorer"
+description: "Refactor the explorer into modules and verify its behaviour under failure."
+---
+
+## Your goal
+
+Refactor the explorer into modules and verify its behaviour under failure.
+
+## Before you begin
+
+Complete all lessons and checkpoints in this level. Build in a separate practice folder or branch. Use the HTTP setup from Intermediate for data loading and modules. No external service or API key is needed.
+
+## Project brief
+
+Keep the Intermediate behaviour while separating pure selection/validation logic, storage access, and browser event/rendering code. Validate unique non-empty ids, titles, and known categories. Use event delegation for category buttons. Let a new reload cancel an older request and ensure only the latest request can update the page.
+
+Provide a browser test page for pure logic and a manual test record for keyboard use, storage failure, and request races. A Set stores unique values; has checks membership and add records a value. The worked validator uses it to reject duplicate ids. The optional sort helper uses localeCompare to compare title strings.
+
+## Build in steps
+
+1. List the controls, input data, and expected outputs before coding.
+2. Implement one user action and verify it before adding the next.
+3. Separate calculation or selection from DOM updates where appropriate.
+4. Run the checklist below and record expected versus actual results.
+5. Explain the code in your own words before comparing the worked implementation.
+
+## Completion checklist
+
+- [ ] Modules load through HTTP with no console errors.
+- [ ] Pure selection does not mutate source data.
+- [ ] Duplicate ids and malformed records produce an error state.
+- [ ] Rapid reloads do not display an old request result.
+- [ ] Automated checks and a manual keyboard/failure audit are recorded.
+
+## Evidence and review
+
+Keep your source files, a short setup README, and a table of test action / expected result / actual result / repair. Demonstrate a normal visitor journey and at least one failure or edge case. A reviewer should be able to run your work from these instructions. Completion is self-assessed unless someone reviews it; this page does not automatically grade or unlock anything.
+
+<Accordion title="Hints: break the project into behaviours">
+
+Start with the supplied project titles so result counts are predictable. Keep a single selected category. Use textContent for data, render from current state, and avoid attaching another listener every time you render. For later levels, distinguish a failed request from a valid empty list and keep a retry available.
+
+</Accordion>
+
+<Accordion title="Suggested solution: download after attempting the project">
+
+[Download the complete advanced implementation](/assets/javascript/advanced-solution.zip).
+
+Extract the archive and follow README.md. It includes source code, a minimal stylesheet, and REVIEW.md with manual checks. It also includes tests.html and tests.js; open the test page through the local server.
+
+The implementation is a worked example, not the only valid answer. Compare event handling, state, and failure behaviour against your own work. Explain any differences.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/checkpoint-audit">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/final-project">Next</a>
+</div>

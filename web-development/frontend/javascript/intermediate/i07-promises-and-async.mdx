@@ -1,0 +1,94 @@
+---
+title: "Promises and asynchronous work"
+description: "Describe pending work and handle a promise with async/await."
+---
+
+## What you will learn
+
+Describe pending work and handle a promise with async/await.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+A promise represents a future outcome: pending, fulfilled, or rejected. `async` functions always return promises. `await` pauses the continuation of that async function until a promise settles; it does not freeze the whole browser.
+
+Use try/catch around awaited work to handle rejection. Calling an async function without awaiting or otherwise handling its promise can lose the error. Our first example uses Promise.resolve and Promise.reject to practise outcomes without an external service.
+
+## Serve the practice folder
+
+Fetch and JavaScript modules need a local HTTP origin for these exercises. Use your editor's local preview server. Alternatively, if Python is installed, open a terminal **inside your practice folder** and run:
+
+```powershell
+py -m http.server 8000 --bind 127.0.0.1
+```
+
+On macOS/Linux, use `python3` instead of `py`. Open `http://localhost:8000` in your browser. Stop the server with Ctrl+C. If Python is unavailable, use the editor preview option; no Python programming is required. Serve only the practice folder, not a directory of personal files.
+
+Create `projects.json` beside `index.html` and `app.js`:
+
+```json
+[{"id":"profile","title":"Profile","category":"web"},{"id":"poster","title":"Poster","category":"design"}]
+```
+
+## Run the example
+
+```javascript
+async function showTitle() {
+  try {
+    const title = await Promise.resolve("Profile");
+    console.log(title);
+  } catch (error) {
+    console.log("Could not load title");
+  }
+}
+showTitle();
+console.log("Other work continues");
+```
+
+**Expected result:** Other work continues is printed before Profile, because the continuation after await runs later.
+
+## Practice challenge
+
+Write an async function that awaits Promise.reject(new Error("offline")), catches it, and prints Try again. Confirm no unhandled rejection appears.
+
+### Completion checklist
+
+- [ ] Try again appears.
+- [ ] There is no unhandled rejection.
+- [ ] I can explain why await does not block the entire page.
+
+<Accordion title="Hint: plan your approach">
+
+Place the await inside try and print a recovery message in catch.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+async function showTitle() {
+  try {
+    const title = await Promise.reject(new Error("offline"));
+    console.log(title);
+  } catch (error) {
+    console.log("Try again");
+  }
+}
+showTitle();
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/checkpoint-forms-storage">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i08-fetching-local-data">Next</a>
+</div>

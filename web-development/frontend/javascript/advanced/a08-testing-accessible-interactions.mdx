@@ -1,0 +1,100 @@
+---
+title: "Testing accessible interactions"
+description: "Verify visible state, accessibility state, and keyboard behaviour together."
+---
+
+## What you will learn
+
+Verify visible state, accessibility state, and keyboard behaviour together.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Project notes</h1>
+<button type="button" id="toggle" aria-expanded="false" aria-controls="notes">Show notes</button>
+<section id="notes" hidden><h2>Notes</h2><p>Built with semantic HTML.</p></section>
+</body>
+</html>
+```
+
+## Understand the idea
+
+A DOM test can check that a button updates its controlled region and its aria-expanded value. Native buttons provide keyboard behaviour; ARIA communicates state but does not implement the interaction. Keep state and visible content synchronised.
+
+Automated clicks do not replace manual keyboard and assistive-technology checks. Test Tab focus, Enter/Space activation, and whether focus remains usable after content changes. Avoid moving focus unnecessarily for a simple disclosure.
+
+## Run the example
+
+```javascript
+const button = document.querySelector("#toggle");
+const notes = document.querySelector("#notes");
+button.addEventListener("click", () => {
+  const open = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!open));
+  notes.hidden = open;
+  button.textContent = open ? "Show notes" : "Hide notes";
+});
+```
+
+**Expected result:** The button alternates visibility, label, and expanded state. Focus stays on the button.
+
+## Practice challenge
+
+Add a small assert helper and programmatically activate the button twice. Assert the first activation opens the panel and the second closes it. Then manually test Enter and Space.
+
+### Completion checklist
+
+- [ ] Both programmatic checks pass.
+- [ ] Enter and Space toggle the native button.
+- [ ] Focus remains visible and the hidden panel is not exposed as open.
+
+<Accordion title="Hint: plan your approach">
+
+Read hidden and aria-expanded after each click. Restore the initial state after the test.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const button = document.querySelector("#toggle");
+const notes = document.querySelector("#notes");
+button.addEventListener("click", () => {
+  const open = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!open));
+  notes.hidden = open;
+  button.textContent = open ? "Show notes" : "Hide notes";
+});
+function check(condition, label) {
+  if (!condition) throw new Error(label);
+}
+button.click();
+check(!notes.hidden && button.getAttribute("aria-expanded") === "true", "opens");
+button.click();
+check(notes.hidden && button.getAttribute("aria-expanded") === "false", "closes");
+console.log("Disclosure checks passed");
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a07-testing-functions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a09-performance-and-regression-review">Next</a>
+</div>

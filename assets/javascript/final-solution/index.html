@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script type="module" src="app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>My portfolio project explorer</h1>
+<p>Explore my work by title and category.</p>
+<form id="search-form">
+  <label for="query">Search project titles</label>
+  <input id="query" type="search" name="query">
+  <button type="submit">Search</button>
+</form>
+<div id="filters" aria-label="Filter projects">
+  <button type="button" data-category="all" aria-pressed="true">All</button>
+  <button type="button" data-category="web" aria-pressed="false"><span>Web</span></button>
+  <button type="button" data-category="design" aria-pressed="false">Design</button>
+</div>
+<label for="sort">Project order</label>
+<select id="sort"><option value="original">Original order</option><option value="title">Title A–Z</option></select>
+<button id="reset" type="button">Reset filters</button>
+<button id="load" type="button">Reload projects</button>
+<p id="storage-note"></p>
+<p id="status" role="status">Loading projects…</p>
+<ul id="projects"></ul>
+<noscript>JavaScript is needed for this explorer. My projects include Personal profile, Study planner, and Community poster.</noscript>
+</body>
+</html>

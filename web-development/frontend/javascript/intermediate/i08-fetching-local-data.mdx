@@ -1,0 +1,87 @@
+---
+title: "Fetching and checking local data"
+description: "Read JSON over HTTP and handle both transport and HTTP failures."
+---
+
+## What you will learn
+
+Read JSON over HTTP and handle both transport and HTTP failures.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+`fetch` returns a promise for a Response. A 404 response does not automatically reject that promise: inspect `response.ok` before consuming data. `response.json()` is also asynchronous and may fail if the response is not valid JSON.
+
+Use the local projects.json from the preceding lesson. Keep the server running. `Array.isArray` checks that the result is an array. Do not disable browser security to work around fetch errors; check the server URL, filename, and Network panel.
+
+Use the HTTP server and `projects.json` fixture from the previous lesson. Save this script in the same folder.
+
+## Run the example
+
+```javascript
+async function loadProjects() {
+  try {
+    const response = await fetch("./projects.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const projects = await response.json();
+    if (!Array.isArray(projects)) throw new Error("Expected an array");
+    console.log(projects.length);
+  } catch (error) {
+    console.log("Projects unavailable");
+  }
+}
+loadProjects();
+```
+
+**Expected result:** The supplied file logs 2. Renaming it temporarily produces Projects unavailable.
+
+## Practice challenge
+
+Load the file and accept it only if every record is non-null and has a string title. Log each title. Test a file containing [null] and restore the fixture afterward.
+
+### Completion checklist
+
+- [ ] Valid data logs Profile and Poster.
+- [ ] A missing file and [null] are handled.
+- [ ] I check response.ok before parsing.
+
+<Accordion title="Hint: plan your approach">
+
+every returns true only if all records pass its callback. Check record existence before reading its fields.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+async function loadProjects() {
+  try {
+    const response = await fetch("./projects.json");
+    if (!response.ok) throw new Error("HTTP failure");
+    const data = await response.json();
+    if (!Array.isArray(data) || !data.every(item => item !== null && typeof item === "object" && typeof item.title === "string")) {
+      throw new Error("Invalid project data");
+    }
+    for (const item of data) console.log(item.title);
+  } catch (error) {
+    console.log("Projects unavailable");
+  }
+}
+loadProjects();
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i07-promises-and-async">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i09-loading-and-error-states">Next</a>
+</div>

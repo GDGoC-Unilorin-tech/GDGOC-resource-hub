@@ -1,48 +1,36 @@
-# JavaScript curriculum and handoff
+# JavaScript curriculum and collaborator handoff
 
 Updated: 19 October 2026
 
-## Scope and current state
+## Delivered scope
 
-JavaScript development is now active. HTML and CSS are handled by other collaborators; do not edit those courses as part of JavaScript work. At inspection, JavaScript had six scaffold pages and only its overview was registered in docs.json. The header uses separate track tabs: Resource Hub, HTML, CSS, JavaScript, Frameworks, Tools, Backend, Databases, Cloud, and Other Paths. JavaScript has its own sidebar with level and module groups. Preserve these tabs; do not collapse courses into the Resource Hub sidebar.
+The JavaScript course now contains 31 lessons, 9 independent module checkpoints, 3 stage projects, a final challenge, 4 overview pages, and further learning: 49 MDX pages. All pages are linked in the JavaScript header tab and in sequential Previous/Next navigation. Preserve the separate header tabs and interaction.drilldown=false.
 
-This pass delivers four Beginner lessons and one checkpoint, plus course/level roadmaps and Google-only further reading. It does not complete the JavaScript course. There are 11 learner-facing MDX pages; this Markdown handoff is not in learner navigation.
+HTML and CSS remain owned by other collaborators. No course-source edits outside JavaScript are part of this delivery. Shared docs.json changes affect only the JavaScript tab. The shared frontend roadmap and site-restructure.md reflect JavaScript completion; HTML/CSS course files remain untouched.
 
-## Teaching contract
+## Levels
 
-Each topic is a separate MDX page with objectives, prerequisites, explanation, runnable examples and expected output, a challenge, checklist, hint, and separately revealed suggested solution. Modules finish with independent checkpoints and review guidance. Stage projects and the final challenge will include full briefs and worked solutions when their prerequisite lessons exist. Checklists are self-assessment, not grading or locks.
+- Beginner: programming foundations; reusable logic and collections; DOM interactions and debugging; portfolio category-filter project.
+- Intermediate: data transformations and rendering; forms/JSON/storage; promises/fetch/recovery; searchable explorer project.
+- Advanced: modules/closures/pure functions; delegation/event loop/request races; tests/accessibility/performance review; modular explorer project.
+- Final challenge: integrate search, categories, data loading, persistence, sorting, reset, tests, and review evidence.
 
-Use language-labelled code fences, existing callouts and accordions, and the shared lesson-navigation classes. Avoid new shared CSS or JavaScript unless required. Explain every new construct before using it. Keep external learning links in further-learning.mdx and use only verified Google resources, such as web.dev and developer.chrome.com. Local practice-server addresses are not external learning resources.
+## Authoring contract
 
-## Sequence and ownership
+Every topic contains objectives, setup, explanation, runnable examples, expected results, a task, checklist, hint, and suggested solution. Checkpoints deliberately omit full answers and assess independent application; related lessons provide solutions. All four projects have complete ZIP implementations under assets/javascript. Source snapshots are retained beside the ZIPs for maintenance. Their CSS and JavaScript filenames end in .source to prevent Mintlify from loading example code globally. Rebuild each ZIP when changing its source, removing the trailing .source suffix from archive entry names. Extract and test ZIPs outside the Mintlify repository; see assets/javascript/README.md. Project READMEs describe local setup and REVIEW.md lists manual checks.
 
-| Level | Module | Status | Deliverable |
-| --- | --- | --- | --- |
-| Beginner | Programming foundations | Available | b01 run a script; b02 variables/types; b03 expressions/messages; b04 comparisons/decisions; checkpoint-programming-foundations |
-| Beginner | Reusable logic and collections | Next | Functions/parameters/returns; scope; arrays; objects; loops; collection-summary checkpoint |
-| Beginner | First interactive page | Planned | DOM selection; safe text/classes; events; debugging; interaction checkpoint |
-| Beginner | Stage project | Planned | Portfolio project-category filter |
-| Intermediate | Data-driven interfaces | Planned | Array methods; object updates; DOM list rendering; filtering/sorting; checkpoint |
-| Intermediate | Forms and saved preferences | Planned | Input conversion/checks; accessible feedback; JSON; localStorage failures; checkpoint |
-| Intermediate | Asynchronous JavaScript | Planned | Promises; async/await; fetch/status checks; loading/empty/error states; checkpoint |
-| Intermediate | Stage project | Planned | Searchable project explorer with local JSON and preference storage |
-| Advanced | Code organisation | Planned | Modules; closures; data/state/rendering separation; identity/mutation; checkpoint |
-| Advanced | Reliable interactions | Planned | Delegation; event loop; stale requests/cancellation; accessibility; checkpoint |
-| Advanced | Test and demonstrate | Planned | Function and DOM tests; debugging/performance; regression evidence; checkpoint |
-| Advanced | Stage project | Planned | Refactor and audit the project explorer |
-| Course | Final challenge | Planned | Demonstrate the complete feature with source, checks, and limitations |
+Keep external learning references in further-learning.mdx and use verified Google resources only. Current references use web.dev and developer.chrome.com. Localhost examples describe local practice, not an external learning resource. There are no paid APIs, credentials, Node dependencies, automatic grades, or enforced stage locks in this course.
 
-## Next contributor task
+## Running the worked projects
 
-Write b05-functions-parameters-and-return.mdx, followed by scope, arrays, objects, and loops. Finish that module with its own checkpoint. Register only finished pages, update the Beginner roadmap and status counts, and connect the existing foundations checkpoint to b05 with Next. Keep the final published page explicit about where available content ends. Do not link to missing lessons or present planned projects as complete.
+Extract a solution ZIP. Serve that extracted folder through an editor preview server or Python's HTTP server, as described in its README. Beginner also supports direct file opening; Intermediate and later require HTTP. Advanced and Final include tests.html, which runs ten pure-logic checks. Manual keyboard, failure, and storage checks remain necessary.
 
-Before DOM lessons, agree the portfolio integration points with the HTML/CSS collaborators. Until then, use a separate javascript-practice folder and supplied minimal HTML. No Node.js or package installation is needed for the current module. Introduce a local HTTP server before fetch and ES modules, and provide a local data fixture rather than requiring a paid external API.
+## Maintenance and integration
 
-## Validation for each addition
+Coordinate portfolio DOM hooks and shared layout changes with HTML/CSS owners before integration. The worked projects are standalone teaching examples. Preserve readable fallback content, native controls, textContent rendering, and explicit loading/error states. Never store secrets in localStorage. Keep storage failures recoverable and protect asynchronous UI updates from stale requests.
 
-- Compile MDX and preview callouts, code blocks, accordions, and navigation.
-- Execute complete examples and solutions; verify expected output and boundary cases.
-- Confirm internal routes and Previous/Next targets exist.
-- Verify external reference destinations belong to Google and still match their descriptions.
-- Compare the shared docs.json edit against the pre-edit file; change only JavaScript navigation within its dedicated tab.
-- Preserve all HTML/CSS files and unrelated uncommitted changes.
+When adding a topic, update the JavaScript tab, sequential links, overview counts, and this guide together. Check MDX compilation, internal paths, worked examples, project ZIP/source consistency, keyboard operation, and failure scenarios. Do not interpret passing automated checks as proof of complete accessibility or production readiness. The next curricular work is cross-course capstone coordination, learner review, and other tracks; no JavaScript pages remain marked planned.
+
+## Verification on 19 October 2026
+
+All 49 MDX pages compiled. Sequential links and 156 internal/external link occurrences were checked. All 54 new topic examples/solutions ran in a browser; worked projects passed applicable filter/search, persistence, invalid-data, retry, request-race, keyboard, and narrow-viewport checks. Advanced/Final test pages each reported ten checks passed. All four ZIPs match their source directories. Full Mintlify theme rendering still needs a local preview check: the CLI did not start a listening preview during this session.

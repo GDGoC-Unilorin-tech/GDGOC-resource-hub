@@ -1,0 +1,13 @@
+import { categories } from "./logic.js";
+const key = "gdgoc-js-project-category";
+export function readCategory() {
+  try {
+    const value = localStorage.getItem(key);
+    return { value: categories.includes(value) ? value : "all", available: true };
+  } catch (error) { return { value: "all", available: false }; }
+}
+export function saveCategory(value) {
+  if (!categories.includes(value)) return false;
+  try { localStorage.setItem(key, value); return true; }
+  catch (error) { return false; }
+}

@@ -1,0 +1,1 @@
+body{font:1.1rem/1.6 system-ui;max-width:48rem;margin:2rem auto;padding:0 1rem}button,input,select{font:inherit;margin:.25rem;padding:.4rem}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1769aa;outline-offset:3px}[aria-pressed="true"]{background:#164e80;color:white}li{margin:.7rem 0}label{display:block}

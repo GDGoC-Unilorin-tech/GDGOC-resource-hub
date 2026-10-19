@@ -1,0 +1,84 @@
+---
+title: "Updating text and classes"
+description: "Change visible text and visibility without parsing untrusted HTML."
+---
+
+## What you will learn
+
+Change visible text and visibility without parsing untrusted HTML.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>My portfolio</h1>
+<p id="status">Waiting</p>
+<button id="update" type="button">Update status</button>
+</body>
+</html>
+```
+
+## Understand the idea
+
+`textContent` sets text rather than treating a string as HTML. Use it for names, search input, and data from a file. `innerHTML` parses markup; passing untrusted input into it can create a security problem.
+
+`classList.add`, `remove`, and `toggle` manage CSS class names. A class only changes appearance if CSS defines that class. The boolean `hidden` property hides or reveals an element without requiring a custom class.
+
+## Run the example
+
+```javascript
+const status = document.querySelector("#status");
+status.textContent = "Ready to practise";
+status.classList.add("ready");
+console.log(status.classList.contains("ready"));
+```
+
+**Expected result:** The paragraph reads Ready to practise and the console prints true. The class has no visual styling in this plain page.
+
+## Practice challenge
+
+Set the paragraph to the literal text `<strong>My project</strong>`. Hide the update button. Confirm no strong element was created.
+
+### Completion checklist
+
+- [ ] Angle brackets appear as text, not a bold element.
+- [ ] The button is hidden.
+- [ ] The query for a strong element returns null.
+
+<Accordion title="Hint: plan your approach">
+
+textContent preserves the angle brackets as visible characters. Set hidden to true on the button.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const status = document.querySelector("#status");
+status.textContent = "<strong>My project</strong>";
+document.querySelector("#update").hidden = true;
+console.log(status.querySelector("strong"));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b10-selecting-dom-elements">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b12-buttons-and-events">Next</a>
+</div>

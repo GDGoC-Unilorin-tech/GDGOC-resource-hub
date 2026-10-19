@@ -1,0 +1,75 @@
+---
+title: "State, identity, and pure functions"
+description: "Derive results without changing inputs and reason about shallow copies."
+---
+
+## What you will learn
+
+Derive results without changing inputs and reason about shallow copies.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+A pure function calculates its output from its inputs without observable side effects such as storage writes, DOM changes, or modifying the inputs. This makes test results easier to reproduce. Keep state updates and rendering explicit around those calculations.
+
+Objects are compared by identity, not by matching fields. Two separately created objects are different even if their contents match. Spreading an array copies the array, but its object entries still refer to the same objects. To update one flat record safely, create a new array and a new object for that record.
+
+## Run the example
+
+```javascript
+const projects = [{ id: "profile", complete: false }];
+function markComplete(items, id) {
+  return items.map(item => item.id === id ? { ...item, complete: true } : item);
+}
+const updated = markComplete(projects, "profile");
+console.log(projects[0].complete);
+console.log(updated[0].complete);
+console.log(projects[0] === updated[0]);
+```
+
+**Expected result:** Output is false, true, false.
+
+## Practice challenge
+
+Write renameProject(items, id, title) that returns a new array and updates only the matching record. Show the original title remains Profile after renaming the copy to Portfolio.
+
+### Completion checklist
+
+- [ ] Original remains Profile and updated becomes Portfolio.
+- [ ] A missing id leaves record values unchanged.
+- [ ] I explain which references are copied and which are reused.
+
+<Accordion title="Hint: plan your approach">
+
+Map each record to itself unless the id matches; spread only the record being changed.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function renameProject(items, id, title) {
+  return items.map(item => item.id === id ? { ...item, title } : item);
+}
+const original = [{ id: "profile", title: "Profile" }];
+const updated = renameProject(original, "profile", "Portfolio");
+console.log(original[0].title);
+console.log(updated[0].title);
+console.log(renameProject(original, "missing", "Other")[0].title);
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a02-closures-and-state">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/checkpoint-organisation">Next</a>
+</div>

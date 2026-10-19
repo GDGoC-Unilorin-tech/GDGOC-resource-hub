@@ -1,0 +1,62 @@
+const allowed = ["all", "web", "design"];
+const key = "gdgoc-js-project-category";
+let category = "all";
+let query = "";
+let projects = [];
+let loaded = false;
+const list = document.querySelector("#projects");
+const status = document.querySelector("#status");
+const button = document.querySelector("#load");
+try {
+  const saved = localStorage.getItem(key);
+  if (allowed.includes(saved)) category = saved;
+} catch (error) {
+  document.querySelector("#storage-note").textContent = "Preferences are available for this visit only.";
+}
+function render() {
+  for (const control of document.querySelectorAll("[data-category]")) {
+    control.setAttribute("aria-pressed", String(control.dataset.category === category));
+  }
+  if (!loaded) return;
+  const matches = projects.filter(project => (category === "all" || project.category === category) && project.title.toLowerCase().includes(query.toLowerCase()));
+  list.replaceChildren();
+  for (const project of matches) {
+    const item = document.createElement("li");
+    item.textContent = project.title;
+    list.append(item);
+  }
+  status.textContent = matches.length === 0 ? "No matching projects" : `${matches.length} projects`;
+}
+document.querySelector("#search-form").addEventListener("submit", event => {
+  event.preventDefault();
+  query = document.querySelector("#query").value.trim();
+  render();
+});
+for (const control of document.querySelectorAll("[data-category]")) {
+  control.addEventListener("click", () => {
+    category = control.dataset.category;
+    try { localStorage.setItem(key, category); }
+    catch (error) { document.querySelector("#storage-note").textContent = "Could not save preference; filtering still works."; }
+    render();
+  });
+}
+async function load() {
+  loaded = false;
+  button.disabled = true;
+  list.replaceChildren();
+  status.textContent = "Loading projects…";
+  try {
+    const response = await fetch("./projects.json");
+    if (!response.ok) throw new Error("Request failed");
+    const data = await response.json();
+    if (!Array.isArray(data) || !data.every(item => item !== null && typeof item === "object" && typeof item.title === "string" && item.title.trim() !== "" && ["web", "design"].includes(item.category))) throw new Error("Invalid data");
+    projects = data;
+    loaded = true;
+    render();
+  } catch (error) {
+    status.textContent = "Could not load projects. Use Reload projects to try again.";
+  } finally { button.disabled = false; }
+}
+button.addEventListener("click", load);
+render();
+load();

@@ -1,0 +1,105 @@
+---
+title: "Forms and input validation"
+description: "Handle submission, convert text to numbers, and report invalid values."
+---
+
+## What you will learn
+
+Handle submission, convert text to numbers, and report invalid values.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Study session</h1>
+<form id="session">
+<label for="minutes">Minutes (1–120)</label>
+<input id="minutes" name="minutes" type="number" min="1" max="120" step="1" required aria-describedby="result">
+<button type="submit">Save session</button>
+</form>
+<p id="result" role="status"></p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+Listen for the form's `submit` event so clicking its button and pressing Enter follow the same path. `event.preventDefault()` stops navigation for this local demo. Native validation runs before a normal submit event; keep useful HTML constraints.
+
+An input's `value` is a string. Check empty text before `Number(...)`, because an empty string converts to zero. `Number.isInteger` rejects fractions, infinities, and NaN. Client-side checks help users but are not a security boundary; a real backend must validate independently.
+
+## Run the example
+
+```javascript
+const form = document.querySelector("#session");
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const input = document.querySelector("#minutes");
+  const minutes = Number(input.value);
+  const result = document.querySelector("#result");
+  if (input.value.trim() === "" || !Number.isInteger(minutes) || minutes < 1 || minutes > 120) {
+    result.textContent = "Enter a whole number from 1 to 120.";
+    input.focus();
+    return;
+  }
+  result.textContent = `Recorded ${minutes} minutes for this visit.`;
+});
+```
+
+**Expected result:** Submitting 25 reports 25 minutes without navigation. Empty, fractional, and out-of-range entries are rejected by the form.
+
+## Practice challenge
+
+After a valid submission, calculate how many minutes remain toward a 60-minute goal. At 60 or more, say Goal reached. Reject the same invalid values. Do not claim the data is permanently saved.
+
+### Completion checklist
+
+- [ ] 25 reports 35 minutes remaining; 60 and 90 report Goal reached.
+- [ ] Blank, 0, 121, and 1.5 are rejected.
+- [ ] Enter and button submission behave consistently.
+
+<Accordion title="Hint: plan your approach">
+
+Use the same validation, then branch on minutes >= 60.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+document.querySelector("#session").addEventListener("submit", event => {
+  event.preventDefault();
+  const input = document.querySelector("#minutes");
+  const result = document.querySelector("#result");
+  const minutes = Number(input.value);
+  if (input.value.trim() === "" || !Number.isInteger(minutes) || minutes < 1 || minutes > 120) {
+    result.textContent = "Enter a whole number from 1 to 120.";
+    input.focus();
+    return;
+  }
+  result.textContent = minutes >= 60 ? "Goal reached" : `${60 - minutes} minutes remaining`;
+});
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/checkpoint-data-interfaces">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/i05-json-and-data-shapes">Next</a>
+</div>

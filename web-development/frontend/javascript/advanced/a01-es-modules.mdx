@@ -1,0 +1,92 @@
+---
+title: "Organising code with ES modules"
+description: "Export focused functions and import them through an explicit module boundary."
+---
+
+## What you will learn
+
+Export focused functions and import them through an explicit module boundary.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Use the local HTTP server introduced in Intermediate. Open the supplied practice page through that server, not as a file URL. The script uses `type="module"`. Replace `app.js` with one complete example at a time.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<h1>Module practice</h1>
+<p>Open the Console.</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+Modules give each file its own scope and run in strict mode. `export` makes a declaration available to other modules; `import` names what another module needs. A relative import includes the file extension. Modules are deferred by default and must be served over HTTP for these exercises.
+
+Keep calculations separate from code that queries the DOM. A calculation module can be reused and tested without a page. Avoid placing unrelated logic into one large file or triggering DOM updates just by importing a helper.
+
+Create `math.js` beside `app.js`:
+
+```javascript
+export function remaining(target, done) {
+  return done >= target ? 0 : target - done;
+}
+```
+
+The code below belongs in `app.js`. Keep the HTTP server from Intermediate running.
+
+## Run the example
+
+```javascript
+import { remaining } from "./math.js";
+console.log(remaining(30, 10));
+console.log(remaining(30, 40));
+```
+
+**Expected result:** The imported function prints 20 then 0.
+
+## Practice challenge
+
+Use the imported helper to print remaining minutes for (60, 15), (60, 60), and (60, 90). Keep the function in math.js and the calls in app.js.
+
+### Completion checklist
+
+- [ ] Output is 45, 0, 0.
+- [ ] The helper exists in a separate module.
+- [ ] The page uses type="module" and HTTP.
+
+<Accordion title="Hint: plan your approach">
+
+Only the calls belong in app.js. An import failure often means an incorrect path, missing extension, or using a file URL.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+import { remaining } from "./math.js";
+console.log(remaining(60, 15));
+console.log(remaining(60, 60));
+console.log(remaining(60, 90));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/a02-closures-and-state">Next</a>
+</div>

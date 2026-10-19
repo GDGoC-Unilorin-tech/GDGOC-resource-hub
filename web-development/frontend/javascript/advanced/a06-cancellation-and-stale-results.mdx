@@ -1,0 +1,110 @@
+---
+title: "Cancellation and stale results"
+description: "Prevent an old request from overwriting a newer result."
+---
+
+## What you will learn
+
+Prevent an old request from overwriting a newer result.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Replace the contents of your practice page with the HTML below. It includes the script connection. Put one complete JavaScript example at a time in `app.js`, save, and refresh.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript practice</title>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<h1>Project data</h1>
+<button type="button" id="load">Load projects</button>
+<p id="status" role="status">Not loaded</p>
+</body>
+</html>
+```
+
+## Understand the idea
+
+When requests overlap, an older one may finish last. Track a request number and apply results only if they belong to the newest request. `AbortController` can also cancel fetch: pass its signal in the options and call abort on the old controller.
+
+Cancellation saves work where supported; the request-number check protects UI correctness. Keep old-request catch/finally handlers from changing the new request's UI. An intentional cancellation should not produce a misleading failure message.
+
+Use the HTTP setup and `projects.json` from Intermediate. The first example logs to the console; the challenge uses the button and status paragraph.
+
+## Run the example
+
+```javascript
+let currentRequest = 0;
+function delayed(value, delay) {
+  return new Promise(resolve => setTimeout(() => resolve(value), delay));
+}
+async function show(value, delay) {
+  const request = ++currentRequest;
+  const result = await delayed(value, delay);
+  if (request !== currentRequest) return;
+  console.log(result);
+}
+show("old", 40);
+show("new", 5);
+```
+
+**Expected result:** Only new is printed even though old finishes later. ++ increments the counter before its value is used.
+
+## Practice challenge
+
+On each Load projects click, cancel the previous fetch and use a request number. Show only the latest result count or failure. Keep the button enabled so you can test rapid clicks with Network throttling.
+
+### Completion checklist
+
+- [ ] Rapid clicks leave only the latest result visible.
+- [ ] Intentional cancellation does not show a failure.
+- [ ] A real missing file shows a useful error.
+
+<Accordion title="Hint: plan your approach">
+
+Create a new controller per request. In catch, ignore AbortError and any request that is no longer current.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+let controller;
+let currentRequest = 0;
+document.querySelector("#load").addEventListener("click", async () => {
+  if (controller) controller.abort();
+  controller = new AbortController();
+  const request = ++currentRequest;
+  const status = document.querySelector("#status");
+  status.textContent = "Loading…";
+  try {
+    const response = await fetch("./projects.json", { signal: controller.signal });
+    if (!response.ok) throw new Error("HTTP failure");
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Invalid data");
+    if (request !== currentRequest) return;
+    status.textContent = `${data.length} projects`;
+  } catch (error) {
+    if (request !== currentRequest || error.name === "AbortError") return;
+    status.textContent = "Could not load projects. Try again.";
+  }
+});
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/advanced/a05-event-loop-and-task-order">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/advanced/checkpoint-reliable-interactions">Next</a>
+</div>

@@ -1,0 +1,58 @@
+---
+title: "Beginner project: Interactive portfolio filters"
+description: "Create a keyboard-operable project filter using the HTML content already on the page."
+---
+
+## Your goal
+
+Create a keyboard-operable project filter using the HTML content already on the page.
+
+## Before you begin
+
+Complete all lessons and checkpoints in this level. Build in a separate practice folder or branch. Use the HTTP setup from Intermediate for data loading and modules. No external service or API key is needed.
+
+## Project brief
+
+Start with three projects: Personal profile and Study planner in web, and Community poster in design. Keep all three titles in HTML so useful content remains when JavaScript is disabled. Add All, Web, and Design buttons, hide non-matching entries, and report the visible count. Mark the selected button with aria-pressed.
+
+`querySelectorAll` returns a collection you can loop over with for...of. `dataset.category` reads a data-category attribute. `setAttribute` updates an attribute as text; `String(true)` gives "true" for aria-pressed. These are small additions to the selectors, loops, and events already taught.
+
+## Build in steps
+
+1. List the controls, input data, and expected outputs before coding.
+2. Implement one user action and verify it before adding the next.
+3. Separate calculation or selection from DOM updates where appropriate.
+4. Run the checklist below and record expected versus actual results.
+5. Explain the code in your own words before comparing the worked implementation.
+
+## Completion checklist
+
+- [ ] All shows 3 entries, Web shows 2, Design shows 1.
+- [ ] Repeated filtering never duplicates or loses source entries.
+- [ ] Buttons work by keyboard and have correct pressed states.
+- [ ] Disabling JavaScript leaves all project titles readable.
+
+## Evidence and review
+
+Keep your source files, a short setup README, and a table of test action / expected result / actual result / repair. Demonstrate a normal visitor journey and at least one failure or edge case. A reviewer should be able to run your work from these instructions. Completion is self-assessed unless someone reviews it; this page does not automatically grade or unlock anything.
+
+<Accordion title="Hints: break the project into behaviours">
+
+Start with the supplied project titles so result counts are predictable. Keep a single selected category. Use textContent for data, render from current state, and avoid attaching another listener every time you render. For later levels, distinguish a failed request from a valid empty list and keep a retry available.
+
+</Accordion>
+
+<Accordion title="Suggested solution: download after attempting the project">
+
+[Download the complete beginner implementation](/assets/javascript/beginner-solution.zip).
+
+Extract the archive and follow README.md. It includes source code, a minimal stylesheet, and REVIEW.md with manual checks. 
+
+The implementation is a worked example, not the only valid answer. Compare event handling, state, and failure behaviour against your own work. Explain any differences.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/checkpoint-interactions">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/overview">Next</a>
+</div>

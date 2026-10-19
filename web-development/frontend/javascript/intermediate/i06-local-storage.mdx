@@ -1,0 +1,86 @@
+---
+title: "Remembering a preference"
+description: "Save a non-sensitive preference and recover when storage fails."
+---
+
+## What you will learn
+
+Save a non-sensitive preference and recover when storage fails.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+`localStorage` stores strings for an origin, normally persisting across reloads. It is not a database for secrets, an account system, or proof of learning progress. Any same-origin script can read it; browser settings or quota limits can make access fail.
+
+Use a specific key, validate values when reading, and wrap reads and writes in try/catch. Use the local HTTP setup in the next lesson for dependable origin behaviour; file-URL storage behaviour varies across browsers. Never clear all origin storage just to reset one preference: remove your own key only.
+
+## Run the example
+
+```javascript
+const key = "gdgoc-js-category";
+function readCategory() {
+  try {
+    const value = localStorage.getItem(key);
+    return value === "web" ? value : "all";
+  } catch (error) {
+    return "all";
+  }
+}
+console.log(readCategory());
+```
+
+**Expected result:** A missing, invalid, or inaccessible value falls back to all; a stored web value returns web.
+
+## Practice challenge
+
+Add saveCategory(value) that accepts only all or web, reports whether the write succeeded, and keeps the page usable on failure. Test saving web, reading it back, and passing invalid.
+
+### Completion checklist
+
+- [ ] With available storage, the output is true, web, false.
+- [ ] A storage failure does not crash the script.
+- [ ] I can remove only gdgoc-js-category in DevTools to reset it.
+
+<Accordion title="Hint: plan your approach">
+
+Return a boolean from the save function. Do not put the write outside try.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const key = "gdgoc-js-category";
+function saveCategory(value) {
+  if (value !== "all" && value !== "web") return false;
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+console.log(saveCategory("web"));
+try {
+  console.log(localStorage.getItem(key));
+} catch (error) {
+  console.log("Storage unavailable; keep using the page.");
+}
+console.log(saveCategory("invalid"));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/intermediate/i05-json-and-data-shapes">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/intermediate/checkpoint-forms-storage">Next</a>
+</div>

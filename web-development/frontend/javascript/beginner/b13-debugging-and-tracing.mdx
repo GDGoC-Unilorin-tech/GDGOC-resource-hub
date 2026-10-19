@@ -1,0 +1,72 @@
+---
+title: "Debugging and tracing"
+description: "Reproduce an error, inspect values, and verify a fix."
+---
+
+## What you will learn
+
+Reproduce an error, inspect values, and verify a fix.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+Debugging starts with a specific expected result and a repeatable actual result. Syntax errors stop code from being parsed; reference errors often mean a name is wrong; logic errors produce an incorrect result without throwing.
+
+In Chrome DevTools, open Sources, select app.js, and click a line number to add a breakpoint. Reload or activate the feature, then use Step over to follow execution and inspect local values. Change the saved source file to keep a fix; a temporary DevTools edit may not survive refresh.
+
+## Run the example
+
+```javascript
+function averageMinutes(first, second) {
+  const total = first + second;
+  return total / 2;
+}
+console.log(averageMinutes(10, 30));
+console.log(averageMinutes(0, 0));
+```
+
+**Expected result:** Results are 20 and 0. Pause on the return line and inspect total for each call.
+
+## Practice challenge
+
+Investigate a calculation written as first + second / 2 instead of (first + second) / 2. For 10 and 30 it gives 25. Fix the function and test equal inputs (8, 8) and zeros. Record the cause in a comment.
+
+### Completion checklist
+
+- [ ] Results are 20, 8, and 0.
+- [ ] I can reproduce and explain the original defect.
+- [ ] I verified the saved file after refresh.
+
+<Accordion title="Hint: plan your approach">
+
+Division has higher precedence than addition. Inspect the intermediate sum.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+function averageMinutes(first, second) {
+  // Add before dividing; without parentheses only second is halved.
+  return (first + second) / 2;
+}
+console.log(averageMinutes(10, 30));
+console.log(averageMinutes(8, 8));
+console.log(averageMinutes(0, 0));
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b12-buttons-and-events">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/checkpoint-interactions">Next</a>
+</div>

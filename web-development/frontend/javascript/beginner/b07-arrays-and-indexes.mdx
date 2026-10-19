@@ -1,0 +1,69 @@
+---
+title: "Arrays and indexes"
+description: "Store an ordered collection, access an item, and update its contents."
+---
+
+## What you will learn
+
+Store an ordered collection, access an item, and update its contents.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+An array groups values in order using square brackets. Indexes start at zero: the first item is at index 0. `length` tells you how many items exist; the last index is one less than the length. Reading an index that does not exist gives `undefined`.
+
+`push` is an array method: a function attached to the array that adds an item at the end. A `const` array name cannot be reassigned to another array, but the existing array's contents can change.
+
+## Run the example
+
+```javascript
+const topics = ["HTML", "CSS"];
+console.log(topics[0]);
+topics.push("JavaScript");
+console.log(topics.length);
+console.log(topics[topics.length - 1]);
+```
+
+**Expected result:** The console prints `HTML`, `3`, and `JavaScript`.
+
+## Practice challenge
+
+Create an array with two portfolio project titles. Add a third with push. Print the second title and the final length. Then read index 10 and explain the output.
+
+### Completion checklist
+
+- [ ] The second title and length 3 appear.
+- [ ] Index 10 produces undefined.
+- [ ] I distinguish an index from a count.
+
+<Accordion title="Hint: plan your approach">
+
+The second item is index 1. An out-of-range read is not the same as an empty string.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const projects = ["Profile", "Study planner"];
+projects.push("Event page");
+console.log(projects[1]);
+console.log(projects.length);
+console.log(projects[10]);
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b06-scope-and-local-variables">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b08-objects-and-properties">Next</a>
+</div>

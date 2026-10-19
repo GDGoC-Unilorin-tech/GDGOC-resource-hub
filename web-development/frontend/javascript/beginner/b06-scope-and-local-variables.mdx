@@ -1,0 +1,74 @@
+---
+title: "Scope and local variables"
+description: "Keep temporary values local and pass data explicitly."
+---
+
+## What you will learn
+
+Keep temporary values local and pass data explicitly.
+
+## Before you begin
+
+Follow the Previous link if any concept is unfamiliar. This lesson builds on the preceding module topics.
+
+Keep the `index.html` setup from your first lesson and replace `app.js` with one complete example at a time. Save and refresh with the Console open.
+
+## Understand the idea
+
+Scope describes where a name can be used. Variables declared inside a function are local to that function. `let` and `const` are also limited to the brace-delimited block where they are declared. A function can read names in its surrounding scope, but explicit parameters usually make a calculation easier to reuse.
+
+Do not rely on a variable with the same name elsewhere changing by accident. Two declarations in different scopes can refer to different values. Reading a function's local variable from outside causes a `ReferenceError`.
+
+## Run the example
+
+```javascript
+const total = 100;
+function addMinutes(first, second) {
+  const total = first + second;
+  return total;
+}
+console.log(addMinutes(5, 10));
+console.log(total);
+```
+
+**Expected result:** The function result is `15`; the outer total remains `100`.
+
+## Practice challenge
+
+Write a function `doubleMinutes(minutes)` that stores its result in a local variable. Print results for 6 and 0. Keep an outer variable named result equal to 99 and show that it is unchanged.
+
+### Completion checklist
+
+- [ ] Output is 12, 0, 99.
+- [ ] The function does not modify the outer variable.
+- [ ] I can explain where each result name is visible.
+
+<Accordion title="Hint: plan your approach">
+
+The local variable can share a name with the outer one, but they are separate bindings.
+
+</Accordion>
+
+<Accordion title="Suggested solution: compare after trying">
+
+Replace `app.js` with this complete solution and use the same HTML/setup above.
+
+```javascript
+const result = 99;
+function doubleMinutes(minutes) {
+  const result = minutes * 2;
+  return result;
+}
+console.log(doubleMinutes(6));
+console.log(doubleMinutes(0));
+console.log(result);
+```
+
+Explain why it meets each checklist item. Different implementations can be correct.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/javascript/beginner/b05-functions-parameters-and-return">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/javascript/beginner/b07-arrays-and-indexes">Next</a>
+</div>

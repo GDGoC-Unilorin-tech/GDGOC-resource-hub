@@ -1,0 +1,65 @@
+import { categories, validProjects, selectProjects } from "./logic.js";
+import { readCategory, saveCategory } from "./storage.js";
+const saved = readCategory();
+const state = { projects: [], category: saved.value, query: "", sort: "original", phase: "idle" };
+const list = document.querySelector("#projects");
+const status = document.querySelector("#status");
+const storageNote = document.querySelector("#storage-note");
+if (!saved.available) storageNote.textContent = "Preferences are available for this visit only.";
+function render() {
+  for (const button of document.querySelectorAll("#filters button[data-category]")) {
+    button.setAttribute("aria-pressed", String(button.dataset.category === state.category));
+  }
+  list.replaceChildren();
+  if (state.phase === "loading") { status.textContent = "Loading projects…"; return; }
+  if (state.phase === "error") { status.textContent = "Could not load projects. Use Reload projects to try again."; return; }
+  if (state.phase !== "ready") return;
+  const matches = selectProjects(state.projects, state);
+  for (const project of matches) {
+    const item = document.createElement("li");
+    item.textContent = project.title;
+    list.append(item);
+  }
+  status.textContent = matches.length === 0 ? "No matching projects" : `${matches.length} projects`;
+}
+function remember() {
+  storageNote.textContent = saveCategory(state.category) ? "" : "Could not save preference; filtering still works.";
+}
+const filters = document.querySelector("#filters");
+filters.addEventListener("click", event => {
+  if (!(event.target instanceof Element)) return;
+  const button = event.target.closest("button[data-category]");
+  if (!button || !filters.contains(button) || !categories.includes(button.dataset.category)) return;
+  state.category = button.dataset.category;
+  remember();
+  render();
+});
+document.querySelector("#search-form").addEventListener("submit", event => {
+  event.preventDefault();
+  state.query = document.querySelector("#query").value;
+  render();
+});
+let controller;
+let currentRequest = 0;
+async function load() {
+  if (controller) controller.abort();
+  controller = new AbortController();
+  const request = ++currentRequest;
+  state.phase = "loading";
+  render();
+  try {
+    const response = await fetch("./projects.json", { signal: controller.signal });
+    if (!response.ok) throw new Error("HTTP failure");
+    const projects = await response.json();
+    if (!validProjects(projects)) throw new Error("Invalid data");
+    if (request !== currentRequest) return;
+    state.projects = projects;
+    state.phase = "ready";
+  } catch (error) {
+    if (request !== currentRequest || error.name === "AbortError") return;
+    state.phase = "error";
+  }
+  render();
+}
+document.querySelector("#load").addEventListener("click", load);
+load();

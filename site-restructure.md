@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 13 October 2026
+Updated: 19 October 2026 (JavaScript completion)
 
 ## Purpose and current scope
 
@@ -15,14 +15,15 @@ This guide describes the current repository structure and the standards for exte
 | Area | Current state | Next work |
 | --- | --- | --- |
 | HTML | 46 MDX pages: 29 topic lessons, 11 module checkpoints, 3 stage projects, a final challenge, overview, and further learning | Maintain, review, and improve the existing course |
-| CSS and JavaScript | Course overview, level overview pages, final-project and further-learning scaffolds | Write complete curricula and lessons using HTML's structure; CSS first, then JavaScript |
+| CSS | Course and level scaffolds; owned by a separate collaborator | Continue the CSS curriculum independently |
+| JavaScript | 49 MDX pages: 31 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; 4 worked-project ZIPs | Learner review and cross-course portfolio integration |
 | Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
 | Frontend capstone | Proposed framework page | Agree the shared brief and assessment rubric; implement after core courses |
 | Contribution pathway | Proposed pathway page | Technical Innovation & Development team confirms readiness, tasks, and reviewers |
 | Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
-A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. Current work is focused on HTML; other courses follow this pattern as they are developed.
+A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML and CSS work is handled separately by their collaborators.
 
 ## Learning architecture
 
@@ -90,7 +91,7 @@ Each module ends with its own checkpoint. The full current page inventory appear
 3. **Advanced:** Improve and audit that portfolio using advanced HTML features.
 4. **HTML final challenge:** Refine, review, and demonstrate the complete HTML portfolio.
 5. **CSS, planned:** Add styling and responsive design to that foundation.
-6. **JavaScript, planned:** Add useful interactions and functionality.
+6. **JavaScript, available:** Add search, filtering, local data loading, saved preferences, and tested interactions.
 7. **Frontend capstone, proposed:** Integrate, test, demonstrate, and deploy a complete website.
 
 The HTML final challenge assesses HTML. It is distinct from the future frontend capstone, which combines technologies. The capstone's final shared brief and review criteria still require team agreement.
@@ -119,7 +120,7 @@ GDGOC-resource-hub/
 │   │   │   ├── final-project.mdx
 │   │   │   └── further-learning.mdx
 │   │   ├── css/                      # Course and level scaffolds
-│   │   ├── javascript/               # Course and level scaffolds
+│   │   ├── javascript/               # Complete course; see its curriculum.md
 │   │   ├── frameworks-and-libraries.mdx
 │   │   ├── tools-and-workflow.mdx
 │   │   ├── capstone.mdx
@@ -215,7 +216,7 @@ For larger navigation/content changes, also use the installed CLI's validation a
 
 1. Maintain and review the implemented HTML course and navigation.
 2. Develop CSS using the same levels, module checkpoints, and continuing portfolio.
-3. Develop JavaScript using the same pattern.
+3. Review the completed JavaScript course and coordinate portfolio integration with HTML/CSS owners.
 4. Finalise the frontend capstone brief and assessment with the Lead.
 5. Expand frameworks and workflow content, then remaining tracks.
 6. Confirm the contribution pathway with the technical team.
@@ -326,16 +327,68 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
 ### JavaScript
 
 - **Start JavaScript**
-  - [JavaScript overview](web-development/frontend/javascript/overview.mdx)
+  - [Learn JavaScript](web-development/frontend/javascript/overview.mdx)
 - **Beginner**
-  - [JavaScript Beginner — planned](web-development/frontend/javascript/beginner/overview.mdx)
+  - [Beginner: Language and browser foundations](web-development/frontend/javascript/beginner/overview.mdx)
+  - **Programming foundations**
+    - [Run your first JavaScript](web-development/frontend/javascript/beginner/b01-run-your-first-javascript.mdx)
+    - [Variables and values](web-development/frontend/javascript/beginner/b02-variables-and-values.mdx)
+    - [Expressions, numbers, and messages](web-development/frontend/javascript/beginner/b03-expressions-and-messages.mdx)
+    - [Comparisons and decisions](web-development/frontend/javascript/beginner/b04-comparisons-and-decisions.mdx)
+    - [Checkpoint: Programming foundations](web-development/frontend/javascript/beginner/checkpoint-programming-foundations.mdx)
+  - **Reusable logic and collections**
+    - [Functions, parameters, and return values](web-development/frontend/javascript/beginner/b05-functions-parameters-and-return.mdx)
+    - [Scope and local variables](web-development/frontend/javascript/beginner/b06-scope-and-local-variables.mdx)
+    - [Arrays and indexes](web-development/frontend/javascript/beginner/b07-arrays-and-indexes.mdx)
+    - [Objects and properties](web-development/frontend/javascript/beginner/b08-objects-and-properties.mdx)
+    - [Loops and collections](web-development/frontend/javascript/beginner/b09-loops-and-collections.mdx)
+    - [Checkpoint: Summarise a project collection](web-development/frontend/javascript/beginner/checkpoint-collections.mdx)
+  - **Your first interactive page**
+    - [Selecting DOM elements](web-development/frontend/javascript/beginner/b10-selecting-dom-elements.mdx)
+    - [Updating text and classes](web-development/frontend/javascript/beginner/b11-updating-text-and-classes.mdx)
+    - [Buttons and events](web-development/frontend/javascript/beginner/b12-buttons-and-events.mdx)
+    - [Debugging and tracing](web-development/frontend/javascript/beginner/b13-debugging-and-tracing.mdx)
+    - [Checkpoint: Build a practice counter](web-development/frontend/javascript/beginner/checkpoint-interactions.mdx)
+  - [Beginner project: Interactive portfolio filters](web-development/frontend/javascript/beginner/project.mdx)
 - **Intermediate**
-  - [JavaScript Intermediate — planned](web-development/frontend/javascript/intermediate/overview.mdx)
+  - [Intermediate: Data and asynchronous interfaces](web-development/frontend/javascript/intermediate/overview.mdx)
+  - **Data-driven interfaces**
+    - [Array transformations and callbacks](web-development/frontend/javascript/intermediate/i01-array-transformations.mdx)
+    - [Copying, updating, and sorting data](web-development/frontend/javascript/intermediate/i02-copying-and-sorting.mdx)
+    - [Rendering lists safely](web-development/frontend/javascript/intermediate/i03-rendering-lists.mdx)
+    - [Checkpoint: Render a filtered project list](web-development/frontend/javascript/intermediate/checkpoint-data-interfaces.mdx)
+  - **Forms and saved preferences**
+    - [Forms and input validation](web-development/frontend/javascript/intermediate/i04-forms-and-input-validation.mdx)
+    - [JSON and data shapes](web-development/frontend/javascript/intermediate/i05-json-and-data-shapes.mdx)
+    - [Remembering a preference](web-development/frontend/javascript/intermediate/i06-local-storage.mdx)
+    - [Checkpoint: Validate and remember a study target](web-development/frontend/javascript/intermediate/checkpoint-forms-storage.mdx)
+  - **Asynchronous JavaScript**
+    - [Promises and asynchronous work](web-development/frontend/javascript/intermediate/i07-promises-and-async.mdx)
+    - [Fetching and checking local data](web-development/frontend/javascript/intermediate/i08-fetching-local-data.mdx)
+    - [Loading, empty, and error states](web-development/frontend/javascript/intermediate/i09-loading-and-error-states.mdx)
+    - [Checkpoint: Load and recover](web-development/frontend/javascript/intermediate/checkpoint-async.mdx)
+  - [Intermediate project: Searchable project explorer](web-development/frontend/javascript/intermediate/project.mdx)
 - **Advanced**
-  - [JavaScript Advanced — planned](web-development/frontend/javascript/advanced/overview.mdx)
+  - [Advanced: Reliable browser applications](web-development/frontend/javascript/advanced/overview.mdx)
+  - **Code organisation**
+    - [Organising code with ES modules](web-development/frontend/javascript/advanced/a01-es-modules.mdx)
+    - [Closures and private state](web-development/frontend/javascript/advanced/a02-closures-and-state.mdx)
+    - [State, identity, and pure functions](web-development/frontend/javascript/advanced/a03-state-and-pure-functions.mdx)
+    - [Checkpoint: Refactor without changing behaviour](web-development/frontend/javascript/advanced/checkpoint-organisation.mdx)
+  - **Reliable interactions**
+    - [Event delegation](web-development/frontend/javascript/advanced/a04-event-delegation.mdx)
+    - [The event loop and task order](web-development/frontend/javascript/advanced/a05-event-loop-and-task-order.mdx)
+    - [Cancellation and stale results](web-development/frontend/javascript/advanced/a06-cancellation-and-stale-results.mdx)
+    - [Checkpoint: Protect the latest result](web-development/frontend/javascript/advanced/checkpoint-reliable-interactions.mdx)
+  - **Test and demonstrate**
+    - [Testing functions and boundary cases](web-development/frontend/javascript/advanced/a07-testing-functions.mdx)
+    - [Testing accessible interactions](web-development/frontend/javascript/advanced/a08-testing-accessible-interactions.mdx)
+    - [Performance and regression review](web-development/frontend/javascript/advanced/a09-performance-and-regression-review.mdx)
+    - [Checkpoint: Demonstrate reliability](web-development/frontend/javascript/advanced/checkpoint-audit.mdx)
+  - [Advanced project: Reliable modular explorer](web-development/frontend/javascript/advanced/project.mdx)
 - **Build and explore**
-  - [JavaScript building challenge — planned](web-development/frontend/javascript/final-project.mdx)
-  - [JavaScript further learning — planned](web-development/frontend/javascript/further-learning.mdx)
+  - [Final challenge: Demonstrate your JavaScript portfolio](web-development/frontend/javascript/final-project.mdx)
+  - [JavaScript further learning and references](web-development/frontend/javascript/further-learning.mdx)
 
 ### Frameworks
 
