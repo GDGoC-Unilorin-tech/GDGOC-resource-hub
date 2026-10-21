@@ -31,14 +31,50 @@ Refactor both portfolio pages with header, navigation, main content, and footer.
 - A record of checks, defects, and repairs.
 
 <Accordion title="Need a hint?">
-Break the task into the concepts covered by this module. Test one change at a time. Revisit the related lesson examples, then return to your own implementation.
+Start with the main region and its unique target ID. Put the skip link before the repeated navigation. Use the same page links on home and about, but write a distinct main heading for each page.
 </Accordion>
 
 <Accordion title="How to review your attempt">
 Use each completion criterion to demonstrate the result in your source and browser. Explain why your elements and attributes fit the task. Different valid implementations can meet the same requirements. If a criterion is not met, revise and test again before continuing.
 </Accordion>
 
-<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. A complete suggested implementation is not included in this assessment; related topic exercises provide worked examples.</Note>
+## Test your work
+
+| Check | Action | Expected evidence |
+| --- | --- | --- |
+| Both pages | Tab to the skip link and activate it; follow both navigation links. | Skip navigation reaches the main region, and both page links resolve. |
+| Source meaning | Identify the main region and explain the study-routine section. | One visible main per page; the section groups a named theme. |
+
+Record your own observed results beside these expectations. If a check fails, revisit [the relevant lesson](/web-development/frontend/html/intermediate/i03-accessible-content-and-keyboard-navigation), repair your source, and repeat it.
+
+<Accordion title="View a suggested checkpoint solution">
+
+```html
+<a href="#main-content">Skip to main content</a>
+<header>
+  <p>My learning portfolio</p>
+  <nav aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main id="main-content" tabindex="-1">
+  <h1>About my learning</h1>
+  <section>
+    <h2>My study routine</h2>
+    <p>I build one example, test it, and record what changed.</p>
+  </section>
+</main>
+<footer><p>A student HTML practice site.</p></footer>
+```
+
+This is the body of about.html. Apply the same shared regions to index.html, with its own heading and content. The study routine is a thematic section; an article or aside is not required just to use every element.
+
+[Download the complete intermediate stage example](/assets/html/portfolio-intermediate-solution.zip) to compare connected pages after making your own attempt. It demonstrates one approach; your words and structure may differ where they meet the criteria.
+
+</Accordion>
+
+<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. Attempt the task before revealing the suggested approach. A sample is a learning aid, not proof that your work meets the criteria.</Note>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i03-accessible-content-and-keyboard-navigation">Previous</a>

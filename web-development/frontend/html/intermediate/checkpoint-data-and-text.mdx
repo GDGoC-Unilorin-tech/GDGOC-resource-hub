@@ -31,14 +31,51 @@ Add a learning log to your portfolio with a captioned study schedule table, a ma
 - A record of checks, defects, and repairs.
 
 <Accordion title="Need a hint?">
-Break the task into the concepts covered by this module. Test one change at a time. Revisit the related lesson examples, then return to your own implementation.
+Use a simple three-column grid before considering merged cells. Add the quotation attribution outside blockquote and escape the code example’s angle brackets.
 </Accordion>
 
 <Accordion title="How to review your attempt">
 Use each completion criterion to demonstrate the result in your source and browser. Explain why your elements and attributes fit the task. Different valid implementations can meet the same requirements. If a criterion is not met, revise and test again before continuing.
 </Accordion>
 
-<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. A complete suggested implementation is not included in this assessment; related topic exercises provide worked examples.</Note>
+## Test your work
+
+| Check | Action | Expected evidence |
+| --- | --- | --- |
+| Table | Choose the Forms cell and identify its headers. | Tuesday is the row header and Topic is the column header. |
+| Code and date | View the page, then inspect source. | The th example is displayed as text; datetime matches the visible date. |
+
+Record your own observed results beside these expectations. If a check fails, revisit [the relevant lesson](/web-development/frontend/html/intermediate/i04-data-tables), repair your source, and repeat it.
+
+<Accordion title="View a suggested checkpoint solution">
+
+```html
+<h1>My learning log</h1>
+<table>
+  <caption>Weekly HTML practice</caption>
+  <thead><tr><th scope="col">Day</th><th scope="col">Topic</th><th scope="col">Task</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Monday</th><td>Tables</td><td>Build a study log</td></tr>
+    <tr><th scope="row">Tuesday</th><td>Forms</td><td>Label each field</td></tr>
+    <tr><th scope="row">Friday</th><td>Review</td><td>Repair broken links</td></tr>
+  </tbody>
+</table>
+<article>
+  <h2>My table practice</h2>
+  <p><time datetime="2026-10-21">21 October 2026</time></p>
+  <blockquote><p>I understand a topic better after building an example.</p></blockquote>
+  <p>Original practice quotation from my <cite>Learning Journal</cite>.</p>
+  <pre><code>&lt;th scope="col"&gt;Topic&lt;/th&gt;</code></pre>
+</article>
+```
+
+Place this inside the learning-log main region. The quotation is original sample text, not a statement attributed to a real person. Use your own date and journal entry, keeping the visible and machine-readable dates consistent.
+
+[Download the complete intermediate stage example](/assets/html/portfolio-intermediate-solution.zip) to compare connected pages after making your own attempt. It demonstrates one approach; your words and structure may differ where they meet the criteria.
+
+</Accordion>
+
+<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. Attempt the task before revealing the suggested approach. A sample is a learning aid, not proof that your work meets the criteria.</Note>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i10-quotations-code-and-dates">Previous</a>

@@ -40,6 +40,12 @@ Create results.html with a heading saying “Practice destination”. Submit a f
 
 <Note>Use fictional data in practice URLs. Query strings can appear in browser history.</Note>
 
+## Try it and observe
+
+### Trace a submitted value
+
+Serve the files locally, enter HTML in the search field, and submit. The destination should end in `results.html?topic=HTML` for the challenge. In a disposable copy, remove the input’s `name` and submit again. The control remains visible, but its value is missing from the query. Restore the name. Click the label to check the separate id/for relationship.
+
 ## Practice challenge
 
 Build the search form and destination. Use the field name topic instead of q. Submit a fictional term and explain where its name and value appear.
@@ -66,7 +72,11 @@ id connects the label; name labels the submitted value. They can match but have 
   <input id="topic" name="topic" type="search" required>
   <button type="submit">Continue</button>
 </form>
-<!-- results.html body: -->
+```
+
+Save this second snippet in the body of **results.html**, not below the form in the same file:
+
+```html
 <h1>Practice destination</h1>
 <p>No search has been performed.</p>
 ```
@@ -77,7 +87,15 @@ This implementation follows the requirements above. Compare it with your own att
 
 ## Check your understanding
 
-Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+Will adding `action="results.html"` make that page perform a search? Is `id` a substitute for `name`?
+
+Write your answer before opening the explanation.
+
+<Accordion title="Check your answer">
+
+No. A static destination can display a message but needs processing logic to search. The id identifies the control for its label and other references; name identifies its submitted value. Neither automatically creates a backend.
+
+</Accordion>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/checkpoint-data-and-text">Previous</a>

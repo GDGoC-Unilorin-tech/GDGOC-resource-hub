@@ -32,14 +32,63 @@ Create a practice contact form with name, email, a topic choice, optional intere
 - A record of checks, defects, and repairs.
 
 <Accordion title="Need a hint?">
-Break the task into the concepts covered by this module. Test one change at a time. Revisit the related lesson examples, then return to your own implementation.
+Start with name and email, then add a fieldset for the topic radios and another for optional interests. Give the message help its own ID. Create the result page before testing valid submission.
 </Accordion>
 
 <Accordion title="How to review your attempt">
 Use each completion criterion to demonstrate the result in your source and browser. Explain why your elements and attributes fit the task. Different valid implementations can meet the same requirements. If a criterion is not met, revise and test again before continuing.
 </Accordion>
 
-<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. A complete suggested implementation is not included in this assessment; related topic exercises provide worked examples.</Note>
+## Test your work
+
+| Check | Action | Expected evidence |
+| --- | --- | --- |
+| Empty required fields | Submit with all fields empty. | Navigation is blocked; a required control is identified. |
+| Email and message | Fill the other fields, then type an invalid email or a message shorter than ten characters. | Each invalid case blocks submission; test them separately. |
+| Fictional valid entry | Use Amina, learner@example.test, one topic, an experience, and a message such as Practising HTML forms. | The local result page opens with a query string. No real message is delivered. |
+| Optional interests | Select both interests, submit, then repeat with neither. | Selected values are included; unchecked options are absent. |
+
+Record your own observed results beside these expectations. If a check fails, revisit [the relevant lesson](/web-development/frontend/html/intermediate/i08-clear-and-accessible-forms), repair your source, and repeat it.
+
+<Accordion title="View a suggested checkpoint solution">
+
+```html
+<form action="practice-result.html" method="get">
+      <p>Fields marked required must be completed.</p>
+      <p><label for="name">Name (required)</label>
+      <input id="name" name="name" autocomplete="name" required></p>
+      <p><label for="email">Email (required)</label>
+      <input id="email" name="email" type="email" autocomplete="email" required></p>
+      <fieldset>
+        <legend>Topic (required)</legend>
+        <label><input type="radio" name="topic" value="project" required> Project</label>
+        <label><input type="radio" name="topic" value="learning"> Learning</label>
+      </fieldset>
+      <fieldset>
+        <legend>Optional interests</legend>
+        <label><input type="checkbox" name="interest" value="html"> HTML</label>
+        <label><input type="checkbox" name="interest" value="accessibility"> Accessibility</label>
+      </fieldset>
+      <p><label for="experience">Experience (required)</label>
+      <select id="experience" name="experience" required>
+        <option value="">Choose an option</option>
+        <option value="new">New learner</option>
+        <option value="practising">Practising learner</option>
+      </select></p>
+      <label for="message">Message (required)</label>
+      <p id="message-help">Use 10 to 300 characters of fictional information.</p>
+      <textarea id="message" name="message" rows="4" minlength="10" maxlength="300" aria-describedby="message-help" required></textarea>
+      <p><button type="submit">Check practice entries</button></p>
+    </form>
+```
+
+Put this form inside contact.html and add a visible notice above it: “Practice only: no message is sent or stored by this site. Use fictional details; entries appear in the URL.” Create practice-result.html with a heading and the same limitation. The result page is static; it does not process the query. A complete set of files is in the stage solution download.
+
+[Download the complete intermediate stage example](/assets/html/portfolio-intermediate-solution.zip) to compare connected pages after making your own attempt. It demonstrates one approach; your words and structure may differ where they meet the criteria.
+
+</Accordion>
+
+<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. Attempt the task before revealing the suggested approach. A sample is a learning aid, not proof that your work meets the criteria.</Note>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i08-clear-and-accessible-forms">Previous</a>

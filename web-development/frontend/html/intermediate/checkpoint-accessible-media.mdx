@@ -32,14 +32,46 @@ Add the supplied silent learning video using native controls, its WebVTT visual-
 - A record of checks, defects, and repairs.
 
 <Accordion title="Need a hint?">
-Break the task into the concepts covered by this module. Test one change at a time. Revisit the related lesson examples, then return to your own implementation.
+Copy images and media from the supplied pack without renaming individual files. Serve the whole project over HTTP. Check the player, text track, and visible transcript separately.
 </Accordion>
 
 <Accordion title="How to review your attempt">
 Use each completion criterion to demonstrate the result in your source and browser. Explain why your elements and attributes fit the task. Different valid implementations can meet the same requirements. If a criterion is not met, revise and test again before continuing.
 </Accordion>
 
-<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. A complete suggested implementation is not included in this assessment; related topic exercises provide worked examples.</Note>
+## Test your work
+
+| Check | Action | Expected evidence |
+| --- | --- | --- |
+| Playback | Play and pause using the native controls. | The supplied animation plays without forced autoplay. |
+| Timed text | Enable English descriptions and watch all six seconds over HTTP. | Descriptions correspond to Learn, Practise, and Build. |
+| Alternative | Read the transcript and open the download link. | The transcript describes the sequence and silence; the media file resolves. |
+
+Record your own observed results beside these expectations. If a check fails, revisit [the relevant lesson](/web-development/frontend/html/intermediate/i09-audio-video-and-captions), repair your source, and repeat it.
+
+<Accordion title="View a suggested checkpoint solution">
+
+```html
+<section>
+      <h2>My learning approach</h2>
+      <video controls preload="metadata" width="640" height="360" poster="images/study-wide.png">
+        <source src="media/learning.webm" type="video/webm">
+        <track src="media/learning-en.vtt" kind="captions" srclang="en" label="English descriptions" default>
+        Video playback is unavailable.
+      </video>
+      <p><a href="media/learning.webm">Download the silent practice video</a></p>
+      <h3>Transcript and visual description</h3>
+      <p>The animation displays Learn for two seconds, Practise for two seconds, then Build for two seconds. It has no speech or other audio.</p>
+    </section>
+```
+
+Place this section inside the projects page main region. Copy the media and images directories from the practice pack. The transcript describes a silent visual sequence; spoken media would require captions for speech and meaningful sounds.
+
+[Download the complete intermediate stage example](/assets/html/portfolio-intermediate-solution.zip) to compare connected pages after making your own attempt. It demonstrates one approach; your words and structure may differ where they meet the criteria.
+
+</Accordion>
+
+<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. Attempt the task before revealing the suggested approach. A sample is a learning aid, not proof that your work meets the criteria.</Note>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/intermediate/i09-audio-video-and-captions">Previous</a>

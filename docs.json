@@ -110,6 +110,7 @@
             "group": "Intermediate",
             "expanded": true,
             "pages": [
+              "web-development/frontend/html/intermediate/overview",
               {
                 "group": "Semantic and accessible pages",
                 "expanded": false,
@@ -155,6 +156,7 @@
             "group": "Advanced",
             "expanded": true,
             "pages": [
+              "web-development/frontend/html/advanced/overview",
               {
                 "group": "Reliable documents and images",
                 "expanded": false,
@@ -370,15 +372,26 @@
         "tab": "JavaScript"
       },
       {
+        "tab": "React",
         "groups": [
           {
-            "group": "Frameworks and libraries",
+            "group": "Start React",
             "pages": [
-              "web-development/frontend/frameworks-and-libraries"
+              "web-development/frontend/react/overview"
             ]
           }
-        ],
-        "tab": "Frameworks"
+        ]
+      },
+      {
+        "tab": "Angular",
+        "groups": [
+          {
+            "group": "Start Angular",
+            "pages": [
+              "web-development/frontend/angular/overview"
+            ]
+          }
+        ]
       },
       {
         "groups": [
@@ -390,6 +403,33 @@
           }
         ],
         "tab": "Tools"
+      },
+      {
+        "groups": [
+          {
+            "group": "Databases",
+            "pages": [
+              "web-development/databases/overview",
+              "web-development/databases/foundations",
+              "web-development/databases/relational-databases-and-sql",
+              "web-development/databases/non-relational-databases",
+              "web-development/databases/data-modelling-and-tools"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Databases"
+      },
+      {
+        "groups": [
+          {
+            "group": "Frameworks and libraries",
+            "pages": [
+              "web-development/frontend/frameworks-and-libraries"
+            ]
+          }
+        ],
+        "tab": "Frameworks"
       },
       {
         "groups": [
@@ -407,22 +447,6 @@
           }
         ],
         "tab": "Backend"
-      },
-      {
-        "groups": [
-          {
-            "group": "Databases",
-            "pages": [
-              "web-development/databases/overview",
-              "web-development/databases/foundations",
-              "web-development/databases/relational-databases-and-sql",
-              "web-development/databases/non-relational-databases",
-              "web-development/databases/data-modelling-and-tools"
-            ],
-            "expanded": true
-          }
-        ],
-        "tab": "Databases"
       },
       {
         "groups": [
@@ -484,8 +508,28 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:gdgocunilorin@gmail.com"
+        "label": "Resource Hub",
+        "href": "/"
+      },
+      {
+        "label": "Frontend",
+        "href": "/frontend-development"
+      },
+      {
+        "label": "Backend",
+        "href": "/backend-development"
+      },
+      {
+        "label": "Frameworks",
+        "href": "/web-development/frontend/frameworks-and-libraries"
+      },
+      {
+        "label": "Cloud",
+        "href": "/paths/cloud-computing"
+      },
+      {
+        "label": "Databases",
+        "href": "/web-development/databases/overview"
       }
     ],
     "primary": {
