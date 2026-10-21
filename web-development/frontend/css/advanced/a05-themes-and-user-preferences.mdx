@@ -1,0 +1,104 @@
+---
+title: "Build light and dark themes with tokens"
+description: "Define semantic colour tokens. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Define semantic colour tokens.
+- Respond to prefers-color-scheme.
+- Check controls, links, and focus in both themes.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a04-logical-properties). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a05-themes-and-user-preferences/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A theme needs coherent foreground, background, border, link, and focus colours. Inverting a screenshot or changing only the page background leaves controls and low-contrast text behind. Use custom properties named by role so components inherit a consistent palette.
+
+Prefers-color-scheme reflects the user’s system or browser preference. A media query can override tokens for a dark theme without JavaScript. The color-scheme property also lets native controls and browser UI adapt; it does not invent your component colours for you.
+
+This course follows the system preference. A manual toggle with saved state would need additional behaviour, normally taught with JavaScript. Inspect contrast in both themes and do not disable forced-colour adjustments just to preserve branding.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Theme preview</h1>
+<section class="panel"><h2>My portfolio</h2><p><a href="#notes">Read notes</a></p><label for="query">Practice search</label><input id="query" type="search"></section><p id="notes">Check both themes.</p>
+```
+
+### styles.css
+
+```css
+:root { color-scheme: light; --surface: #ffffff; --text: #202124; --link: #174ea6; --border: #747775; }
+body { background: var(--surface); color: var(--text); }
+a { color: var(--link); }
+.panel { padding: 1rem; border: 1px solid var(--border); }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --surface: #202124; --text: #f1f3f4; --link: #aecbfa; --border: #9aa0a6; }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Emulate light and dark colour schemes in DevTools Rendering. Check text, links, input appearance, and the keyboard focus outline. Record the actual contrast pairs rather than assuming the dark palette is readable.
+
+## Practice challenge
+
+Add --panel as #f8fafd in light mode and #303134 in dark mode, then use it on .panel. Keep all existing states usable.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Override the new token inside the same preference query instead of duplicating the whole panel rule.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Both preference settings use the intended panel colour.
+- [ ] Text, links, fields, and focus indicators remain visible.
+- [ ] Contrast results are recorded for both themes.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+:root { color-scheme: light; --surface: #ffffff; --panel: #f8fafd; --text: #202124; --link: #174ea6; --border: #747775; }
+body { background: var(--surface); color: var(--text); }
+a { color: var(--link); }
+.panel { background: var(--panel); padding: 1rem; border: 1px solid var(--border); }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --surface: #202124; --panel: #303134; --text: #f1f3f4; --link: #aecbfa; --border: #9aa0a6; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does color-scheme:dark automatically create a complete dark component theme?
+
+<Accordion title="Check your answer">
+
+No. It informs browser-provided UI. Your own backgrounds, text, borders, and states still need appropriate styles and testing.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a04-logical-properties">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a06-transitions-and-reduced-motion">Next</a>
+</div>

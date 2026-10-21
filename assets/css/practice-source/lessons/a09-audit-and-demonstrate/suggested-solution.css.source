@@ -1,0 +1,3 @@
+* { box-sizing: border-box; }
+.card { width: 100%; max-width: 48rem; padding: 1rem; border: 1px solid #747775; overflow-wrap: anywhere; }
+a:focus-visible { outline: 3px solid #174ea6; outline-offset: 3px; }

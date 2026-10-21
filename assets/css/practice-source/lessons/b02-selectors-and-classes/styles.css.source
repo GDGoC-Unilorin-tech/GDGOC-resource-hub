@@ -1,0 +1,3 @@
+.intro { font-size: 1.25rem; }
+.card { border: 2px solid #174ea6; }
+.card p { color: #174ea6; }

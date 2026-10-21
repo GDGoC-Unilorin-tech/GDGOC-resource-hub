@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice contact | Amina</title>
+  <meta name="description" content="Practice contact in a fictional HTML learning portfolio.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p>Amina's learning portfolio</p>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="learning-log.html">Learning log</a>
+      <a href="contact.html">Practice contact</a>
+    </nav>
+  </header>
+  <main id="main-content" tabindex="-1">
+<h1>Practice contact form</h1>
+    <p>This form navigates to a local demonstration page. It does not send or store a message. Use fictional entries only; GET values appear in the URL.</p>
+    <form action="practice-result.html" method="get">
+      <p>Fields marked required must be completed.</p>
+      <p><label for="name">Name (required)</label>
+      <input id="name" name="name" autocomplete="name" required></p>
+      <p><label for="email">Email (required)</label>
+      <input id="email" name="email" type="email" autocomplete="email" required></p>
+      <fieldset>
+        <legend>Topic (required)</legend>
+        <label><input type="radio" name="topic" value="project" required> Project</label>
+        <label><input type="radio" name="topic" value="learning"> Learning</label>
+      </fieldset>
+      <fieldset>
+        <legend>Optional interests</legend>
+        <label><input type="checkbox" name="interest" value="html"> HTML</label>
+        <label><input type="checkbox" name="interest" value="accessibility"> Accessibility</label>
+      </fieldset>
+      <p><label for="experience">Experience (required)</label>
+      <select id="experience" name="experience" required>
+        <option value="">Choose an option</option>
+        <option value="new">New learner</option>
+        <option value="practising">Practising learner</option>
+      </select></p>
+      <label for="message">Message (required)</label>
+      <p id="message-help">Use 10 to 300 characters of fictional information.</p>
+      <textarea id="message" name="message" rows="4" minlength="10" maxlength="300" aria-describedby="message-help" required></textarea>
+      <p><button type="submit">Check practice entries</button></p>
+    </form>
+  </main>
+  <footer><p>Fictional student portfolio for HTML practice.</p></footer>
+</body>
+</html>

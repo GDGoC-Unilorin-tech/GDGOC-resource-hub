@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 21 October 2026 (HTML Intermediate and Advanced completion)
+Updated: 21 October 2026 (CSS course completion)
 
 ## Purpose and current scope
 
@@ -15,7 +15,7 @@ This guide describes the current repository structure and the standards for exte
 | Area | Current state | Next work |
 | --- | --- | --- |
 | HTML | 48 MDX pages: 29 topic lessons, 11 module checkpoints, 3 stage projects, a final challenge, 3 overviews, and further learning | Maintain, review, and improve the existing course |
-| CSS | Course and level scaffolds; owned by a separate collaborator | Continue the CSS curriculum independently |
+| CSS | 45 MDX pages: 27 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; practice pack and 4 solution ZIPs | Learner review and portfolio integration |
 | JavaScript | 49 MDX pages: 31 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; 4 worked-project ZIPs | Learner review and cross-course portfolio integration |
 | Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
 | Frontend capstone | Proposed framework page | Agree the shared brief and assessment rubric; implement after core courses |
@@ -23,7 +23,7 @@ This guide describes the current repository structure and the standards for exte
 | Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
-A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML Intermediate and Advanced now include stage overviews, topic-specific experiments and answer explanations, checkpoint solutions and test tables, and project assessment rubrics. CSS work remains with its collaborator.
+A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML Intermediate and Advanced now include stage overviews, topic-specific experiments and answer explanations, checkpoint solutions and test tables, and project assessment rubrics. CSS now follows the same pattern across all three levels, with isolated runnable examples and a continuing portfolio.
 
 ## Learning architecture
 
@@ -105,7 +105,7 @@ Each module ends with its own checkpoint. The full current page inventory appear
 2. **Intermediate:** Extend the same work into a semantic, accessible portfolio.
 3. **Advanced:** Improve and audit that portfolio using advanced HTML features.
 4. **HTML final challenge:** Refine, review, and demonstrate the complete HTML portfolio.
-5. **CSS, planned:** Add styling and responsive design to that foundation.
+5. **CSS:** Add styling and responsive design to that foundation.
 6. **JavaScript, available:** Add search, filtering, local data loading, saved preferences, and tested interactions.
 7. **Frontend capstone, proposed:** Integrate, test, demonstrate, and deploy a complete website.
 
@@ -230,7 +230,7 @@ For larger navigation/content changes, also use the installed CLI's validation a
 ## Delivery sequence
 
 1. Maintain and review the implemented HTML course and navigation.
-2. Develop CSS using the same levels, module checkpoints, and continuing portfolio.
+2. Review the completed CSS course with learners and preserve the shared portfolio through JavaScript.
 3. Review the completed JavaScript course and coordinate portfolio integration with HTML/CSS owners.
 4. Finalise the frontend capstone brief and assessment with the Lead.
 5. Expand frameworks and workflow content, then remaining tracks.
@@ -330,16 +330,64 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
 ### CSS
 
 - **Start CSS**
-  - [CSS overview](web-development/frontend/css/overview.mdx)
+  - [Learn CSS](web-development/frontend/css/overview.mdx)
 - **Beginner**
-  - [CSS Beginner — planned](web-development/frontend/css/beginner/overview.mdx)
+  - [Beginner: CSS foundations](web-development/frontend/css/beginner/overview.mdx)
+  - **Writing and understanding CSS**
+    - [Connect your first stylesheet](web-development/frontend/css/beginner/b01-connect-a-stylesheet.mdx)
+    - [Select elements with reusable classes](web-development/frontend/css/beginner/b02-selectors-and-classes.mdx)
+    - [Understand the cascade and inheritance](web-development/frontend/css/beginner/b03-cascade-and-inheritance.mdx)
+    - [Checkpoint: Writing and understanding CSS](web-development/frontend/css/beginner/checkpoint-css-foundations.mdx)
+  - **Sizing and readable text**
+    - [Use the box model and predictable spacing](web-development/frontend/css/beginner/b04-box-model-and-spacing.mdx)
+    - [Choose units and flexible widths](web-development/frontend/css/beginner/b05-units-and-sizing.mdx)
+    - [Build readable typography](web-development/frontend/css/beginner/b06-readable-typography.mdx)
+    - [Checkpoint: Sizing and readable text](web-development/frontend/css/beginner/checkpoint-readable-layout.mdx)
+  - **Colour and dependable presentation**
+    - [Use colour with sufficient contrast](web-development/frontend/css/beginner/b07-colour-and-contrast.mdx)
+    - [Separate decoration from content](web-development/frontend/css/beginner/b08-borders-backgrounds-and-decoration.mdx)
+    - [Understand flow, display, and overflow](web-development/frontend/css/beginner/b09-flow-display-and-overflow.mdx)
+    - [Checkpoint: Colour and dependable presentation](web-development/frontend/css/beginner/checkpoint-visual-foundations.mdx)
+  - [Beginner project: Readable portfolio styling](web-development/frontend/css/beginner/project.mdx)
 - **Intermediate**
-  - [CSS Intermediate — planned](web-development/frontend/css/intermediate/overview.mdx)
+  - [Intermediate: Responsive interfaces](web-development/frontend/css/intermediate/overview.mdx)
+  - **Flexible page layouts**
+    - [Arrange navigation with Flexbox](web-development/frontend/css/intermediate/i01-flexbox-for-navigation.mdx)
+    - [Build a project grid](web-development/frontend/css/intermediate/i02-grid-for-projects.mdx)
+    - [Adapt layouts with media queries](web-development/frontend/css/intermediate/i03-mobile-first-media-queries.mdx)
+    - [Checkpoint: Flexible page layouts](web-development/frontend/css/intermediate/checkpoint-responsive-layout.mdx)
+  - **Fluid content and positioning**
+    - [Use fluid sizing with limits](web-development/frontend/css/intermediate/i04-fluid-spacing-and-type.mdx)
+    - [Fit images and media without distortion](web-development/frontend/css/intermediate/i05-images-and-responsive-media.mdx)
+    - [Position small details deliberately](web-development/frontend/css/intermediate/i06-positioning-and-stacking.mdx)
+    - [Checkpoint: Fluid content and positioning](web-development/frontend/css/intermediate/checkpoint-fluid-content.mdx)
+  - **Usable components and debugging**
+    - [Style focus, links, and form controls](web-development/frontend/css/intermediate/i07-interaction-states-and-forms.mdx)
+    - [Reuse design values with custom properties](web-development/frontend/css/intermediate/i08-custom-properties.mdx)
+    - [Debug responsive layouts systematically](web-development/frontend/css/intermediate/i09-debug-responsive-layouts.mdx)
+    - [Checkpoint: Usable components and debugging](web-development/frontend/css/intermediate/checkpoint-component-review.mdx)
+  - [Intermediate project: Responsive portfolio](web-development/frontend/css/intermediate/project.mdx)
 - **Advanced**
-  - [CSS Advanced — planned](web-development/frontend/css/advanced/overview.mdx)
+  - [Advanced: Maintainable and adaptable CSS](web-development/frontend/css/advanced/overview.mdx)
+  - **Architecture and progressive layout**
+    - [Organise the cascade with layers](web-development/frontend/css/advanced/a01-cascade-layers.mdx)
+    - [Adapt components with container queries](web-development/frontend/css/advanced/a02-container-queries.mdx)
+    - [Align card content with subgrid](web-development/frontend/css/advanced/a03-subgrid-and-fallbacks.mdx)
+    - [Checkpoint: Architecture and progressive layout](web-development/frontend/css/advanced/checkpoint-progressive-layout.mdx)
+  - **Direction, themes, and motion**
+    - [Use logical properties for adaptable layouts](web-development/frontend/css/advanced/a04-logical-properties.mdx)
+    - [Build light and dark themes with tokens](web-development/frontend/css/advanced/a05-themes-and-user-preferences.mdx)
+    - [Use transitions with reduced-motion support](web-development/frontend/css/advanced/a06-transitions-and-reduced-motion.mdx)
+    - [Checkpoint: Direction, themes, and motion](web-development/frontend/css/advanced/checkpoint-user-preferences.mdx)
+  - **Animation, print, and evidence**
+    - [Create a restrained keyframe animation](web-development/frontend/css/advanced/a07-keyframes-and-finite-animation.mdx)
+    - [Maintain styles and support printing](web-development/frontend/css/advanced/a08-maintainable-css-and-print.mdx)
+    - [Audit and demonstrate a styled website](web-development/frontend/css/advanced/a09-audit-and-demonstrate.mdx)
+    - [Checkpoint: Animation, print, and evidence](web-development/frontend/css/advanced/checkpoint-final-audit.mdx)
+  - [Advanced project: Adaptable portfolio design system](web-development/frontend/css/advanced/project.mdx)
 - **Build and explore**
-  - [CSS building challenge — planned](web-development/frontend/css/final-project.mdx)
-  - [CSS further learning — planned](web-development/frontend/css/further-learning.mdx)
+  - [Final challenge: Build and audit your styled portfolio](web-development/frontend/css/final-project.mdx)
+  - [CSS further learning and Google references](web-development/frontend/css/further-learning.mdx)
 
 ### JavaScript
 

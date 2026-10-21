@@ -1,0 +1,2 @@
+*, *::before, *::after { box-sizing: border-box; }
+.card { width: 280px; padding: 20px; border: 4px solid #174ea6; margin: 24px 0; }

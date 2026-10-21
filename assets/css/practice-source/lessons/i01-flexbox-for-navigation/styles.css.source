@@ -1,0 +1,2 @@
+.nav { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.nav a { padding: 0.75rem; }

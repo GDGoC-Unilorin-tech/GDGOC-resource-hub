@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; }
+.prose { max-width: 65ch; }
+h1 { font-size: 2rem; line-height: 1.2; }
+a { text-underline-offset: 0.2em; }

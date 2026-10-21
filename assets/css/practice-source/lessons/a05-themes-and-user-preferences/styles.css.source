@@ -1,0 +1,8 @@
+:root { color-scheme: light; --surface: #ffffff; --text: #202124; --link: #174ea6; --border: #747775; }
+body { background: var(--surface); color: var(--text); }
+a { color: var(--link); }
+.panel { padding: 1rem; border: 1px solid var(--border); }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --surface: #202124; --text: #f1f3f4; --link: #aecbfa; --border: #9aa0a6; }
+}

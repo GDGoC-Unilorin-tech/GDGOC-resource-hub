@@ -1,0 +1,94 @@
+---
+title: "Understand flow, display, and overflow"
+description: "Compare block, inline, and inline-block boxes. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Compare block, inline, and inline-block boxes.
+- Wrap long text without hiding content.
+- Diagnose overflow at its source.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b08-borders-backgrounds-and-decoration). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b09-flow-display-and-overflow/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Normal flow places block boxes one after another and inline content within text lines. Inline-block allows an element to flow with text while accepting box dimensions and padding. Display changes layout behaviour, not the element’s semantics: a link remains a link.
+
+Long unbroken text can overflow a narrow container. `overflow-wrap: anywhere` permits breaks when needed. An oversized image or fixed-width child needs a sizing fix instead. Do not apply overflow:hidden to the whole page to conceal the symptom: that can cut off content and focus indicators.
+
+Display:none removes an element from layout and normally from the accessibility tree. Visibility:hidden also hides it but preserves its layout space. Neither is a way to retain useful information for everyone while only making it less prominent.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Contact links</h1>
+<div class="panel"><a class="badge" href="#notes">HTML learner</a><p>averylongunbrokensampleprojectidentifierthatshouldwrapratherthanclip</p></div><p id="notes">Keep every link readable.</p>
+```
+
+### styles.css
+
+```css
+.panel { max-width: 18rem; border: 1px solid #747775; padding: 1rem; }
+.badge { display: inline-block; padding: 0.5rem; border: 1px solid currentColor; }
+.panel p { overflow-wrap: anywhere; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Inspect the long word at a narrow width. Disable overflow-wrap to reproduce the overflow. Restore it, then Tab to the badge and confirm its focus ring is not clipped.
+
+## Practice challenge
+
+Make the badge a block link with 1rem padding and keep the long text wrapping. Do not hide any content or add a horizontal scrollbar to the entire page.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change display on the badge; solve the long text with wrapping rather than hiding overflow.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The badge occupies its own line and stays keyboard-operable.
+- [ ] The long identifier wraps inside the panel.
+- [ ] No content or focus outline is clipped.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.panel { max-width: 18rem; border: 1px solid #747775; padding: 1rem; }
+.badge { display: block; padding: 1rem; border: 1px solid currentColor; }
+.panel p { overflow-wrap: anywhere; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does display:block turn an anchor into a semantic button?
+
+<Accordion title="Check your answer">
+
+No. CSS changes presentation. Use an anchor for navigation and a button for an action, regardless of how either is displayed.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b08-borders-backgrounds-and-decoration">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/checkpoint-visual-foundations">Next</a>
+</div>

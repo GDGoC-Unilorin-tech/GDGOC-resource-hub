@@ -1,0 +1,2 @@
+.card { position: relative; padding: 4rem 1rem 1rem; border: 1px solid #747775; }
+.badge { position: absolute; top: 0.75rem; left: 0.75rem; padding: 0.25rem; background: #e8f0fe; color: #202124; }

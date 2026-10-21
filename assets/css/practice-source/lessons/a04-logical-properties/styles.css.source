@@ -1,0 +1,1 @@
+.note { padding-block: 1rem; padding-inline: 1.5rem; border-inline-start: 4px solid #174ea6; max-inline-size: 40rem; margin-inline: auto; background: #e8f0fe; color: #202124; }

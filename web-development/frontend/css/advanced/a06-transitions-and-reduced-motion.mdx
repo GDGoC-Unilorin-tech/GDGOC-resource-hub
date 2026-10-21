@@ -1,0 +1,100 @@
+---
+title: "Use transitions with reduced-motion support"
+description: "Transition only selected properties. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Transition only selected properties.
+- Pair hover and focus behaviour.
+- Respect the reduced-motion preference.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a05-themes-and-user-preferences). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a06-transitions-and-reduced-motion/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A transition interpolates a property when its computed value changes. Specify the property, duration, and timing function. Avoid transition:all: a future layout change could unexpectedly animate too. Put transition on the base state so entering and leaving the state behave consistently.
+
+Transforms can move or scale a visual box without reflowing surrounding content. That can be efficient, but it also means moved content may overlap neighbours. Keep the effect small and test it. A transform does not change reading order or semantics.
+
+Prefer no motion by default, then enable a nonessential effect only when prefers-reduced-motion:no-preference matches. Reduced motion must not hide content or remove functionality. Keyboard users should receive clear state feedback even when movement is disabled.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Project link</h1>
+<a class="project-link" href="#project">Explore my portfolio</a><section id="project"><h2>Portfolio notes</h2><p>The link leads here.</p></section>
+```
+
+### styles.css
+
+```css
+.project-link { display: inline-block; padding: 1rem; border: 2px solid currentColor; }
+.project-link:focus-visible { outline: 3px solid #174ea6; outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .project-link { transition: transform 160ms ease-out; }
+  .project-link:hover, .project-link:focus-visible { transform: translateY(-2px); }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Test hover and keyboard focus. Emulate prefers-reduced-motion:reduce in DevTools; the link should still work and have an outline, but should not move.
+
+## Practice challenge
+
+Use a 120ms transition and a 1px upward movement. Preserve no movement under reduced motion and retain the keyboard outline.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Keep transform and transition inside the no-preference query, not the focus outline.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Hover and keyboard focus receive deliberate feedback.
+- [ ] Reduced motion removes the movement but preserves focus and navigation.
+- [ ] Only transform is transitioned.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.project-link { display: inline-block; padding: 1rem; border: 2px solid currentColor; }
+.project-link:focus-visible { outline: 3px solid #174ea6; outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .project-link { transition: transform 120ms ease-out; }
+  .project-link:hover, .project-link:focus-visible { transform: translateY(-1px); }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why not remove the focus outline along with the animation?
+
+<Accordion title="Check your answer">
+
+The outline communicates which control is active. It is essential feedback independent of the optional movement.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a05-themes-and-user-preferences">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/checkpoint-user-preferences">Next</a>
+</div>

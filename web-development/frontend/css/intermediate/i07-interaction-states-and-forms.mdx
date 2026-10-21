@@ -1,0 +1,100 @@
+---
+title: "Style focus, links, and form controls"
+description: "Provide visible keyboard focus. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Provide visible keyboard focus.
+- Style controls without removing native behaviour.
+- Distinguish hover from keyboard interaction.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/checkpoint-fluid-content). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i07-interaction-states-and-forms/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Hover describes pointer interaction; it is unavailable to many touch and keyboard users. Focus-visible lets the browser decide when to show an explicit focus indication, commonly during keyboard interaction. Never remove outlines without a usable replacement. A clear outline with an offset can remain visible without changing box dimensions.
+
+Form controls may not inherit the surrounding font automatically; font:inherit creates more consistent typography. Keep labels visible, allow textareas to resize vertically, and retain native checkboxes and radios until you have a strong reason and testing plan to replace them.
+
+Pseudo-classes such as :disabled and :invalid describe states, but colour alone must not explain why a field is unusable. Do not show every empty required field as an error on first load merely because it matches :invalid. Keep instructions in HTML and test native validation by submitting.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Practice form</h1>
+<form action="result.html" method="get"><label for="email">Practice email (required)</label><input id="email" name="email" type="email" required><label for="note">Learning note</label><textarea id="note" name="note"></textarea><button type="submit">Check practice entries</button></form>
+<p>Fictional entries only. This static page does not deliver messages.</p>
+```
+
+### styles.css
+
+```css
+input, textarea, button { font: inherit; padding: 0.75rem; }
+label { display: block; margin-top: 1rem; }
+textarea { resize: vertical; }
+:focus-visible { outline: 3px solid #174ea6; outline-offset: 3px; }
+button:hover { background: #e8f0fe; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Tab through each control and identify the focused one without using the mouse. Click the email label. Submit empty and malformed values, then a fictional valid address. The pack includes a static result.html destination.
+
+## Practice challenge
+
+Add a 1px #747775 border to the text fields and a 0.5rem radius. Make the submit button’s hover and focus-visible background match, while keeping its visible outline.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Use a selector list for the two button states; keep the global focus-visible rule.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Every focusable control has a visible keyboard focus state.
+- [ ] Labels and native validation still work.
+- [ ] Textarea resizing and readable control text remain available.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+input, textarea, button { font: inherit; padding: 0.75rem; }
+input, textarea { border: 1px solid #747775; border-radius: 0.5rem; }
+label { display: block; margin-top: 1rem; }
+textarea { resize: vertical; }
+:focus-visible { outline: 3px solid #174ea6; outline-offset: 3px; }
+button:hover, button:focus-visible { background: #e8f0fe; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Can a hover style replace a keyboard focus style?
+
+<Accordion title="Check your answer">
+
+No. A keyboard user may never hover the control. Provide a distinct visible focus indicator and preserve the native interaction semantics.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/checkpoint-fluid-content">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i08-custom-properties">Next</a>
+</div>

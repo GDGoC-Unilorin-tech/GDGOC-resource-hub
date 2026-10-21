@@ -1,0 +1,103 @@
+---
+title: "Maintain styles and support printing"
+description: "Organise reusable rules by responsibility. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Organise reusable rules by responsibility.
+- Add print-specific presentation without removing meaning.
+- Measure before claiming a performance improvement.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a07-keyframes-and-finite-animation). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a08-maintainable-css-and-print/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Separate shared tokens, base typography, layout, components, and intentional utilities. Keep selectors reasonably local and avoid duplicating a full component just to change one token. Comments should explain a constraint or decision rather than narrate every property.
+
+Print is another presentation context. A print query can remove nonessential navigation, use dark text on white, and avoid splitting a short card across pages where possible. Avoid hiding the main content or important instructions. Break-inside:avoid is a request, not a guarantee that an oversized item can fit on one sheet.
+
+Use DevTools to inspect expensive effects and unused rules before optimising. Coverage from one page or state does not prove a selector is unused everywhere. Removing the wrong rule can break another page, keyboard state, theme, or print layout. Record the test scope and actual measurements instead of promising speed from a small stylesheet alone.
+
+## Worked example
+
+### HTML body
+
+```html
+<nav class="site-nav" aria-label="Practice"><a href="#report">Review report</a></nav>
+<main id="report"><h1>Portfolio review</h1><article class="card"><h2>What I learned</h2><p>I tested layout, focus, and readable print output.</p></article></main>
+```
+
+### styles.css
+
+```css
+:root { --space-card: 1rem; }
+.card { padding: var(--space-card); border: 1px solid #747775; box-shadow: 0 2px 6px #0000001a; }
+@media print {
+  body { color: #000; background: #fff; }
+  .site-nav { display: none; }
+  .card { box-shadow: none; break-inside: avoid; }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Open Print preview and inspect the page. Navigation should be absent but the report remains. Return to screen mode and confirm the navigation is available again.
+
+## Practice challenge
+
+Keep the print rules, add a black 1px card border in print, and make every link print with black underlined text. Record whether all report content fits and is readable.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Put the print-only changes in the existing @media print block, leaving screen presentation separate.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Screen navigation is preserved.
+- [ ] Print output keeps the report readable and removes only nonessential navigation.
+- [ ] Any optimisation claim is supported by a recorded comparison.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+:root { --space-card: 1rem; }
+.card { padding: var(--space-card); border: 1px solid #747775; box-shadow: 0 2px 6px #0000001a; }
+@media print {
+  body { color: #000; background: #fff; }
+  .site-nav { display: none; }
+  .card { border: 1px solid #000; box-shadow: none; break-inside: avoid; }
+  a { color: #000; text-decoration: underline; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Can you delete every rule marked unused after opening only the home page?
+
+<Accordion title="Check your answer">
+
+No. Other pages and states may need those rules. Check the complete tested scope before removing them, then run regression checks.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a07-keyframes-and-finite-animation">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a09-audit-and-demonstrate">Next</a>
+</div>

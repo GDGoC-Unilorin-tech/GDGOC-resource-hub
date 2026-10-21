@@ -1,0 +1,98 @@
+---
+title: "Create a restrained keyframe animation"
+description: "Describe an animation with keyframes. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Describe an animation with keyframes.
+- Keep content visible without animation.
+- Use finite motion and test reduced motion.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/checkpoint-user-preferences). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a07-keyframes-and-finite-animation/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Keyframes describe values at points along an animation timeline. An animation associates those keyframes with a duration, timing function, and iteration count. Unlike a transition, it can run without a change between two interactive states.
+
+Start from a usable static design. If animation is unavailable or disabled, the content should already be visible. Avoid infinite decorative movement, flashing, and animated information that a visitor must time correctly to read. A finite one-time emphasis is enough for this exercise.
+
+Keep motion inside a no-preference query and use transform or opacity deliberately. A fill mode can retain animated values before or after playback, so do not use it to accidentally leave content hidden. This example finishes at the same visible state as its base rule.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Learning milestone</h1>
+<p class="milestone">Portfolio draft ready for review.</p>
+```
+
+### styles.css
+
+```css
+.milestone { padding: 1rem; border: 2px solid #174ea6; }
+@keyframes settle { from { transform: translateY(6px); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .milestone { animation: settle 200ms ease-out 1; }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Reload and observe the small one-time movement. After it ends, inspect the text and base style. Enable reduced motion and reload: the message should appear immediately without moving.
+
+## Practice challenge
+
+Reduce the starting offset to 4px and duration to 180ms. Keep one iteration, visible base content, and the reduced-motion protection.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change the keyframe offset and animation duration; do not add opacity:0 to the base style.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The animation runs once and ends in the readable base state.
+- [ ] Reduced motion shows the complete message without movement.
+- [ ] There is no flashing or ongoing decorative animation.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.milestone { padding: 1rem; border: 2px solid #174ea6; }
+@keyframes settle { from { transform: translateY(4px); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .milestone { animation: settle 180ms ease-out 1; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+How does this differ from a transition?
+
+<Accordion title="Check your answer">
+
+A transition reacts to a property changing between states. A keyframe animation defines its own sequence and can run on loading without a hover or focus change.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/checkpoint-user-preferences">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a08-maintainable-css-and-print">Next</a>
+</div>

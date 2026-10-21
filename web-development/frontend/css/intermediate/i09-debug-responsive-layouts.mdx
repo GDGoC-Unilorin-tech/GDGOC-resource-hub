@@ -1,0 +1,94 @@
+---
+title: "Debug responsive layouts systematically"
+description: "Reproduce an overflow defect. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Reproduce an overflow defect.
+- Use computed styles to trace its cause.
+- Record a repair and regression checks.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i08-custom-properties). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i09-debug-responsive-layouts/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Start with a reproducible symptom: a page scrolls horizontally at 320px, a title clips at 200% zoom, or a focus outline disappears. Inspect the element causing it rather than adding a global overflow rule. Check width, min-width, white-space, positioning, and the dimensions of nested media.
+
+Use the device toolbar to vary viewport width, then test an ordinary resized browser too. Emulation is useful but does not prove behaviour on every physical device. Inspect Styles for crossed-out declarations and Computed for the resolved value. Save repairs to the stylesheet, reload, and repeat the original steps.
+
+Maintain a small test matrix: narrow, medium, and wide viewports; longer content; zoom; and keyboard use. A screenshot records appearance but should be accompanied by the steps and expected behaviour.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Repair this layout</h1>
+<article class="card"><h2>averylongunbrokenprojecttitlethatneedswrapping</h2><p>Test this card at 320px.</p></article>
+```
+
+### styles.css
+
+```css
+/* Intentionally broken: reproduce, then repair. */
+.card { width: 900px; padding: 24px; border: 2px solid #747775; }
+.card h2 { white-space: nowrap; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+At 320px, the fixed width and nowrap cause overflow. Inspect both declarations. Do not keep this intentionally broken stylesheet in your portfolio.
+
+## Practice challenge
+
+Repair the card with border-box sizing, a 100% width capped at 48rem, and wrapping headings. Record the original failure and retest at 320px, 768px, and 1280px.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Fix both the oversized box and unbreakable text. Hiding page overflow would only conceal the problem.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The card stays within the viewport at all three sizes.
+- [ ] Its complete heading is visible.
+- [ ] The report includes reproduction steps, source changes, and retest results.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+* { box-sizing: border-box; }
+.card { width: 100%; max-width: 48rem; padding: 24px; border: 2px solid #747775; }
+.card h2 { white-space: normal; overflow-wrap: anywhere; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why must you reload after fixing a rule in DevTools?
+
+<Accordion title="Check your answer">
+
+DevTools edits are usually temporary. Reloading after saving the source confirms the repair exists in the actual project rather than only the current browser session.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i08-custom-properties">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/checkpoint-component-review">Next</a>
+</div>

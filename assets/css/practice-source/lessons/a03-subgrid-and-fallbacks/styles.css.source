@@ -1,0 +1,5 @@
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
+.card { display: grid; grid-template-rows: auto 1fr auto; padding: 1rem; border: 1px solid #747775; min-width: 0; }
+@supports (grid-template-rows: subgrid) {
+  .card { grid-row: span 3; grid-template-rows: subgrid; }
+}

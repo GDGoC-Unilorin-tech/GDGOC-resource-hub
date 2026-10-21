@@ -209,20 +209,116 @@
           },
           {
             "group": "Beginner",
+            "expanded": true,
             "pages": [
-              "web-development/frontend/css/beginner/overview"
+              "web-development/frontend/css/beginner/overview",
+              {
+                "group": "Writing and understanding CSS",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/beginner/b01-connect-a-stylesheet",
+                  "web-development/frontend/css/beginner/b02-selectors-and-classes",
+                  "web-development/frontend/css/beginner/b03-cascade-and-inheritance",
+                  "web-development/frontend/css/beginner/checkpoint-css-foundations"
+                ]
+              },
+              {
+                "group": "Sizing and readable text",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/beginner/b04-box-model-and-spacing",
+                  "web-development/frontend/css/beginner/b05-units-and-sizing",
+                  "web-development/frontend/css/beginner/b06-readable-typography",
+                  "web-development/frontend/css/beginner/checkpoint-readable-layout"
+                ]
+              },
+              {
+                "group": "Colour and dependable presentation",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/beginner/b07-colour-and-contrast",
+                  "web-development/frontend/css/beginner/b08-borders-backgrounds-and-decoration",
+                  "web-development/frontend/css/beginner/b09-flow-display-and-overflow",
+                  "web-development/frontend/css/beginner/checkpoint-visual-foundations"
+                ]
+              },
+              "web-development/frontend/css/beginner/project"
             ]
           },
           {
             "group": "Intermediate",
+            "expanded": true,
             "pages": [
-              "web-development/frontend/css/intermediate/overview"
+              "web-development/frontend/css/intermediate/overview",
+              {
+                "group": "Flexible page layouts",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/intermediate/i01-flexbox-for-navigation",
+                  "web-development/frontend/css/intermediate/i02-grid-for-projects",
+                  "web-development/frontend/css/intermediate/i03-mobile-first-media-queries",
+                  "web-development/frontend/css/intermediate/checkpoint-responsive-layout"
+                ]
+              },
+              {
+                "group": "Fluid content and positioning",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/intermediate/i04-fluid-spacing-and-type",
+                  "web-development/frontend/css/intermediate/i05-images-and-responsive-media",
+                  "web-development/frontend/css/intermediate/i06-positioning-and-stacking",
+                  "web-development/frontend/css/intermediate/checkpoint-fluid-content"
+                ]
+              },
+              {
+                "group": "Usable components and debugging",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/intermediate/i07-interaction-states-and-forms",
+                  "web-development/frontend/css/intermediate/i08-custom-properties",
+                  "web-development/frontend/css/intermediate/i09-debug-responsive-layouts",
+                  "web-development/frontend/css/intermediate/checkpoint-component-review"
+                ]
+              },
+              "web-development/frontend/css/intermediate/project"
             ]
           },
           {
             "group": "Advanced",
+            "expanded": true,
             "pages": [
-              "web-development/frontend/css/advanced/overview"
+              "web-development/frontend/css/advanced/overview",
+              {
+                "group": "Architecture and progressive layout",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/advanced/a01-cascade-layers",
+                  "web-development/frontend/css/advanced/a02-container-queries",
+                  "web-development/frontend/css/advanced/a03-subgrid-and-fallbacks",
+                  "web-development/frontend/css/advanced/checkpoint-progressive-layout"
+                ]
+              },
+              {
+                "group": "Direction, themes, and motion",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/advanced/a04-logical-properties",
+                  "web-development/frontend/css/advanced/a05-themes-and-user-preferences",
+                  "web-development/frontend/css/advanced/a06-transitions-and-reduced-motion",
+                  "web-development/frontend/css/advanced/checkpoint-user-preferences"
+                ]
+              },
+              {
+                "group": "Animation, print, and evidence",
+                "expanded": false,
+                "pages": [
+                  "web-development/frontend/css/advanced/a07-keyframes-and-finite-animation",
+                  "web-development/frontend/css/advanced/a08-maintainable-css-and-print",
+                  "web-development/frontend/css/advanced/a09-audit-and-demonstrate",
+                  "web-development/frontend/css/advanced/checkpoint-final-audit"
+                ]
+              },
+              "web-development/frontend/css/advanced/project"
             ]
           },
           {

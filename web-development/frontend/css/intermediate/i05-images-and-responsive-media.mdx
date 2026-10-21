@@ -1,0 +1,95 @@
+---
+title: "Fit images and media without distortion"
+description: "Combine HTML dimensions with flexible CSS sizing. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Combine HTML dimensions with flexible CSS sizing.
+- Distinguish containment from cropping.
+- Provide local overflow only when the content needs it.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i04-fluid-spacing-and-type). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i05-images-and-responsive-media/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+HTML width and height communicate an image’s proportions before it loads. CSS can make its displayed size flexible. `max-width:100%; height:auto` allows an image to shrink to its container while preserving its aspect ratio. Display:block removes the inline baseline gap when the image is a standalone block.
+
+Object-fit matters when the element has a constrained box. Cover fills that box and crops excess content; contain fits the whole image and can leave empty space. Do not crop diagrams, text screenshots, or other images whose edges carry essential information just to make all cards equal.
+
+A wide data table may need local horizontal scrolling. Put it in a labelled, keyboard-focusable wrapper with overflow:auto rather than making the entire page scroll horizontally. Check that the focus outline remains visible.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Learning diagram</h1>
+<img class="diagram" src="images/study-wide.png" width="960" height="540" alt="Learn, practise, then build">
+<div class="table-wrap" role="region" aria-label="Study schedule" tabindex="0"><table><caption>Study schedule</caption><tr><th scope="col">Topic</th><th scope="col">Task</th></tr><tr><td>Images</td><td>Check that diagrams remain fully visible</td></tr></table></div>
+```
+
+### styles.css
+
+```css
+.diagram { display: block; max-width: 100%; height: auto; }
+.table-wrap { max-width: 100%; overflow: auto; }
+.table-wrap:focus { outline: 3px solid #174ea6; outline-offset: 2px; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Copy the supplied image from the practice pack. At 320px confirm the diagram is fully visible and proportional. Give the table longer cell text and Tab to its wrapper to check keyboard access.
+
+## Practice challenge
+
+Constrain the diagram’s displayed width to at most 40rem while allowing it to shrink. Centre it with auto horizontal margins. Preserve its full composition.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Use width:100% with max-width:40rem and height:auto; object-fit:cover is unnecessary here.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The diagram never stretches or crops important labels.
+- [ ] Its width does not exceed its container or 40rem.
+- [ ] Any table overflow is local and keyboard-accessible.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.diagram { display: block; width: 100%; max-width: 40rem; height: auto; margin: 0 auto; }
+.table-wrap { max-width: 100%; overflow: auto; }
+.table-wrap:focus { outline: 3px solid #174ea6; outline-offset: 2px; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Is object-fit:cover always the right fix for a large image?
+
+<Accordion title="Check your answer">
+
+No. It crops to fill a constrained box. A diagram often needs its entire content preserved, so proportional shrinking or contain is more appropriate.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i04-fluid-spacing-and-type">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i06-positioning-and-stacking">Next</a>
+</div>

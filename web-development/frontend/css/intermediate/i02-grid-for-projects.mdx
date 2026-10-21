@@ -1,0 +1,92 @@
+---
+title: "Build a project grid"
+description: "Define columns with Grid. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Define columns with Grid.
+- Use fr, repeat, minmax, and auto-fit.
+- Keep cards usable in a narrow container.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i01-flexbox-for-navigation). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i02-grid-for-projects/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Grid controls rows and columns. Setting display:grid on the parent makes its direct children grid items. Fr units divide available space; gap separates tracks. `repeat(3, 1fr)` creates three equal tracks, but a fixed count is not always suitable for small screens.
+
+Auto-fit with minmax can create as many columns as fit. A minimum of 15rem gives cards a useful starting width, but an unconditional 15rem minimum could overflow a smaller container. `min(100%, 15rem)` caps that minimum at the available width. The maximum 1fr lets cards share remaining space.
+
+Keep the source in a meaningful order. A visual grid does not change what order a keyboard user follows. Long card text may need min-width:0 and overflow-wrap to avoid an oversized intrinsic minimum.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>My projects</h1>
+<div class="projects"><article><h2>Portfolio</h2><p>Semantic HTML pages.</p></article><article><h2>Study log</h2><p>A record of practice.</p></article><article><h2>Event page</h2><p>A community event outline.</p></article></div>
+```
+
+### styles.css
+
+```css
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+.projects article { min-width: 0; padding: 1rem; border: 1px solid #747775; overflow-wrap: anywhere; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Resize the page and count columns. Inspect the grid overlay. Insert a long project title and confirm it wraps instead of forcing horizontal overflow.
+
+## Practice challenge
+
+Change the preferred card minimum to 18rem and the gap to 1.5rem. Add a fourth article and confirm it joins the layout without a new selector.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change the minimum inside min(), preserving the 100% safeguard.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] A fourth article participates automatically.
+- [ ] Cards collapse to one column when needed.
+- [ ] Long titles remain within their cards.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; }
+.projects article { min-width: 0; padding: 1rem; border: 1px solid #747775; overflow-wrap: anywhere; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why is a fixed 18rem minimum risky without the min(100%, ...) safeguard?
+
+<Accordion title="Check your answer">
+
+A containing block narrower than 18rem cannot fit that minimum. The safeguard allows the minimum to shrink to the available width.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i01-flexbox-for-navigation">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i03-mobile-first-media-queries">Next</a>
+</div>

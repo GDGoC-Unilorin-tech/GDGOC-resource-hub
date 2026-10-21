@@ -1,0 +1,2 @@
+.card { padding: 1rem; border: 2px solid #747775; border-radius: 0.75rem; background: #ffffff; }
+.card::before { content: ""; display: block; width: 4rem; height: 4px; background: #174ea6; }

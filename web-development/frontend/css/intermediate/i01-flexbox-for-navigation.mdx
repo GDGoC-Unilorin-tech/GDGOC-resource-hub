@@ -1,0 +1,93 @@
+---
+title: "Arrange navigation with Flexbox"
+description: "Identify a flex container and its direct items. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Identify a flex container and its direct items.
+- Choose wrapping, gap, and alignment.
+- Preserve meaningful source and keyboard order.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/overview). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i01-flexbox-for-navigation/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Flexbox lays out direct children along a main axis and a cross axis. The default main axis follows the row direction. Justify-content distributes free space along the main axis; align-items controls alignment across it. Gap creates spacing between items without needing special margins on the first or last item.
+
+Flex items can shrink, but long content may still have an automatic minimum size. Use min-width:0 on an item that should be allowed to shrink, then handle the text inside it appropriately. Flex-wrap lets a navigation row break into more rows when space is insufficient.
+
+Do not use order or row-reverse just to make a visually convenient reading order. Keyboard and assistive-technology order generally follows the DOM, so the HTML order should already make sense.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Portfolio navigation</h1>
+<nav class="nav" aria-label="Practice"><a href="#home">Home</a><a href="#projects">My projects</a><a href="#contact">Contact and collaboration</a></nav>
+<section id="home"><h2>Home</h2></section><section id="projects"><h2>Projects</h2></section><section id="contact"><h2>Contact</h2></section>
+```
+
+### styles.css
+
+```css
+.nav { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.nav a { padding: 0.75rem; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Resize to 320px. Links should wrap rather than disappear. Tab through them and compare focus order with their visual order. Use the flex overlay in DevTools to identify the container and gaps.
+
+## Practice challenge
+
+Keep wrapping navigation, set gap to 1rem, and give each link a visible 1px border. Do not reorder the links or reduce their labels.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Flexbox belongs on the parent; spacing and borders can then be applied to the links.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] All links remain visible at narrow widths.
+- [ ] Gap is 1rem without margin workarounds.
+- [ ] Keyboard order agrees with the HTML reading order.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.nav { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.nav a { padding: 0.75rem; border: 1px solid currentColor; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does justify-content create space if the items already consume all available width?
+
+<Accordion title="Check your answer">
+
+It distributes available free space; it cannot invent room when there is none. Wrapping, sizing, and sensible labels resolve limited space.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i02-grid-for-projects">Next</a>
+</div>

@@ -1,0 +1,5 @@
+input, textarea, button { font: inherit; padding: 0.75rem; }
+label { display: block; margin-top: 1rem; }
+textarea { resize: vertical; }
+:focus-visible { outline: 3px solid #174ea6; outline-offset: 3px; }
+button:hover { background: #e8f0fe; }

@@ -1,0 +1,95 @@
+---
+title: "Reuse design values with custom properties"
+description: "Declare and consume custom properties. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Declare and consume custom properties.
+- Scope a variation to a component.
+- Explain a var() fallback.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i07-interaction-states-and-forms). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i08-custom-properties/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Custom properties have names beginning with two hyphens. Declare shared values on :root and use them with var(). They participate in the cascade and ordinarily inherit, so a value declared on a component can affect its descendants without changing the rest of the page.
+
+Name values by role, such as --surface or --space-card, rather than assuming a colour will always be blue. Reusing a few intentional values makes later theme and spacing changes easier to inspect. Custom property names are case-sensitive.
+
+The second argument to var() is a fallback when the referenced property is missing or invalid as a custom property. It is not a general validator for every consuming property: if --space is defined as red, padding:var(--space, 1rem) does not simply choose 1rem because red is an invalid padding value.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Reusable cards</h1>
+<article class="card"><h2>Portfolio</h2><p>Standard card.</p></article>
+<article class="card featured"><h2>Study journal</h2><p>A scoped variation.</p></article>
+```
+
+### styles.css
+
+```css
+:root { --accent: #174ea6; --space-card: 1rem; }
+.card { color: var(--accent); padding: var(--space-card); border: 1px solid currentColor; margin-bottom: 1rem; }
+.featured { --accent: #137333; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Change --accent on :root: the ordinary card changes, but the featured card keeps its local green value. Inspect the inherited custom property on each heading.
+
+## Practice challenge
+
+Set shared card padding to 1.5rem and make the featured card purple (#6a1b9a), without copying the entire .card rule.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Override the custom property on .featured, not the descendant heading colour.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Both cards share the new padding.
+- [ ] Only the featured card uses the purple accent.
+- [ ] No duplicated card rule is needed for the variation.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+:root { --accent: #174ea6; --space-card: 1.5rem; }
+.card { color: var(--accent); padding: var(--space-card); border: 1px solid currentColor; margin-bottom: 1rem; }
+.featured { --accent: #6a1b9a; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does defining a custom property automatically apply a visual style?
+
+<Accordion title="Check your answer">
+
+No. A consuming declaration must use it through var(). An unused token has no visible effect.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i07-interaction-states-and-forms">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i09-debug-responsive-layouts">Next</a>
+</div>
