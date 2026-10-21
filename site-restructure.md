@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 19 October 2026 (JavaScript completion)
+Updated: 21 October 2026 (HTML Intermediate and Advanced completion)
 
 ## Purpose and current scope
 
@@ -14,7 +14,7 @@ This guide describes the current repository structure and the standards for exte
 
 | Area | Current state | Next work |
 | --- | --- | --- |
-| HTML | 46 MDX pages: 29 topic lessons, 11 module checkpoints, 3 stage projects, a final challenge, overview, and further learning | Maintain, review, and improve the existing course |
+| HTML | 48 MDX pages: 29 topic lessons, 11 module checkpoints, 3 stage projects, a final challenge, 3 overviews, and further learning | Maintain, review, and improve the existing course |
 | CSS | Course and level scaffolds; owned by a separate collaborator | Continue the CSS curriculum independently |
 | JavaScript | 49 MDX pages: 31 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; 4 worked-project ZIPs | Learner review and cross-course portfolio integration |
 | Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
@@ -23,7 +23,7 @@ This guide describes the current repository structure and the standards for exte
 | Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
-A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML and CSS work is handled separately by their collaborators.
+A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML Intermediate and Advanced now include stage overviews, topic-specific experiments and answer explanations, checkpoint solutions and test tables, and project assessment rubrics. CSS work remains with its collaborator.
 
 ## Learning architecture
 
@@ -49,7 +49,22 @@ Resource Hub
 └── About and Contributing
 ```
 
-The on-screen navigation uses skill/area tabs rather than putting this entire tree in one sidebar. Current tabs, in order: **Resource Hub, HTML, CSS, JavaScript, Frameworks, Tools, Backend, Databases, Cloud, Other Paths**. Selecting HTML displays the HTML sidebar; selecting CSS displays the CSS sidebar. Roadmaps, capstone, and contribution pathway are under the Resource Hub tab.
+The header has two navigation rows:
+
+1. **Track links:** Resource Hub, Frontend, Backend, Frameworks, Cloud, and Databases open their internal overview pages. Category links sit between the logo and search without horizontal scrolling. Compact spacing accommodates smaller desktop screens; mobile navigation uses Mintlify's menu. Search and Join Community remain available. Tools, Other Paths, and Support are omitted from the top links; existing content pages remain intact.
+2. **Technology tabs:** HTML, CSS, JavaScript, React, and Angular. The row stays on one line and scrolls horizontally when space is limited. Arrow buttons, touch scrolling, and keyboard focus expose off-screen links.
+
+Selecting a technology displays only its own sidebar. Existing HTML, CSS, and JavaScript level/module structures remain unchanged. React and Angular currently have planned-course landing pages only; do not imply their lessons are available. Roadmaps, capstone, and contribution pathway remain under Resource Hub.
+
+### Maintaining the header
+
+- Category tabs remain registered for routing and their own sidebars, but CSS hides their duplicate links in the technology row. Resource Hub stays first in the configuration so the home page resolves to its own navigation.
+- `docs.json` owns the category links (`navbar.links`) and course tabs (`navigation.tabs`). Each tab owns its sidebar groups and existing routes remain stable.
+- `header-navigation.js` progressively enhances Mintlify's native `.nav-tabs` with overflow controls. It preserves native links and client-side routing, handles header remounts, and uses ResizeObserver to update controls.
+- The header CSS at the end of `style.css` scopes layout to `#navbar`; never add global body width constraints. The native mobile menu remains available.
+- When adding a skill, create a real overview page and a tab with its own sidebar. Label unfinished curricula as planned. Check light/dark themes, narrow screens, keyboard access, overflow arrows, and direct lesson URLs.
+- Keep example `.css.source` and `.js.source` snapshots inert; only intentional hub styles/scripts should load globally.
+
 
 ## Standard course structure
 
@@ -271,6 +286,7 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
     - [Checkpoint: Reviewing your work](web-development/frontend/html/beginner/checkpoint-reviewing-your-work.mdx)
   - [Beginner project: Personal introduction website](web-development/frontend/html/beginner/project.mdx)
 - **Intermediate**
+  - [Intermediate: Structured and accessible content](web-development/frontend/html/intermediate/overview.mdx)
   - **Semantic and accessible pages**
     - [Semantic page structure](web-development/frontend/html/intermediate/i01-semantic-page-structure.mdx)
     - [Articles, sections, and supporting content](web-development/frontend/html/intermediate/i02-articles-sections-and-supporting-content.mdx)
@@ -291,6 +307,7 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
     - [Checkpoint: Accessible media](web-development/frontend/html/intermediate/checkpoint-accessible-media.mdx)
   - [Intermediate project: Extend your portfolio](web-development/frontend/html/intermediate/project.mdx)
 - **Advanced**
+  - [Advanced: Robust HTML and native features](web-development/frontend/html/advanced/overview.mdx)
   - **Reliable documents and images**
     - [Content rules and browser error recovery](web-development/frontend/html/advanced/a01-content-rules-and-browser-error-recovery.mdx)
     - [Responsive image markup](web-development/frontend/html/advanced/a02-responsive-image-markup.mdx)
@@ -436,3 +453,7 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
   - [Machine Learning](paths/machine-learning.mdx)
   - [Frontend Development Track](other-learning-paths/frontend-resources.mdx)
   - [Backend Development Track](other-learning-paths/backend-resources.mdx)
+
+## HTML Intermediate and Advanced contributor checks
+
+The two stage overview pages are the entry points in the HTML sidebar. Preserve the module order in `docs.json`, including Data tables followed by Quotations, code, and dates before the forms module. Each of the 18 lessons includes an observation exercise and a topic-specific answer explanation; each of the seven checkpoints includes expected test evidence and a separate suggested solution. Keep stage-project checklists, rubrics, and downloadable solutions aligned. External references remain on `further-learning.mdx` and use Google resources. Automated grading and enforced stage locks remain unimplemented.

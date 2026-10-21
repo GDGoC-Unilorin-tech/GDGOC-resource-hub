@@ -31,14 +31,49 @@ Add a portfolio FAQ using details and summary, improve page metadata, and demons
 - A record of checks, defects, and repairs.
 
 <Accordion title="Need a hint?">
-Break the task into the concepts covered by this module. Test one change at a time. Revisit the related lesson examples, then return to your own implementation.
+Keep the disclosure questions meaningful and the form limitation visible. Create the note page first, then embed it. Review titles and descriptions across all pages, not just the example.
 </Accordion>
 
 <Accordion title="How to review your attempt">
 Use each completion criterion to demonstrate the result in your source and browser. Explain why your elements and attributes fit the task. Different valid implementations can meet the same requirements. If a criterion is not met, revise and test again before continuing.
 </Accordion>
 
-<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. A complete suggested implementation is not included in this assessment; related topic exercises provide worked examples.</Note>
+## Test your work
+
+| Check | Action | Expected evidence |
+| --- | --- | --- |
+| Disclosures | Tab to each summary and toggle with Enter or Space. | Every answer can be opened and closed without a mouse. |
+| Embedded note | Read the frame and follow the direct link. | Both display the note; the frame has a descriptive title. |
+| Document context | Open each page and inspect its head. | Page-specific titles and descriptions match the content. |
+| Form boundary | Explain what POST and required do. | Neither supplies encryption, processing, or trustworthy server-side validation by itself. |
+
+Record your own observed results beside these expectations. If a check fails, revisit [the relevant lesson](/web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice), repair your source, and repeat it.
+
+<Accordion title="View a suggested checkpoint solution">
+
+```html
+<p>The practice form does not send or store messages.</p>
+<section>
+  <h2>Questions about my portfolio</h2>
+  <details><summary>What have I built?</summary><p>A connected HTML portfolio.</p></details>
+  <details><summary>What comes next?</summary><p>CSS layout and JavaScript behaviour.</p></details>
+  <details><summary>How did I review it?</summary><p>I recorded checks and repairs for each page.</p></details>
+</section>
+<section>
+  <h2>Implementation notes</h2>
+  <iframe src="project-notes.html" title="HTML portfolio implementation notes"
+          width="480" height="240" sandbox loading="lazy"></iframe>
+  <p><a href="project-notes.html">Read the notes separately</a></p>
+</section>
+```
+
+Use this body snippet on projects.html. Create a complete project-notes.html document containing a title and main heading, with notes explaining that real message delivery needs a receiving service and server validation. Give each portfolio page its own title and description, and keep the correct html lang value. The stage download includes a complete variant using a separate frame-note.html document.
+
+[Download the complete advanced stage example](/assets/html/portfolio-advanced-solution.zip) to compare connected pages after making your own attempt. It demonstrates one approach; your words and structure may differ where they meet the criteria.
+
+</Accordion>
+
+<Note>This checkpoint records self-assessment unless a reviewer checks your evidence. It does not automatically verify your code or unlock the next module. Attempt the task before revealing the suggested approach. A sample is a learning aid, not proof that your work meets the criteria.</Note>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a07-form-boundaries-and-safe-practice">Previous</a>

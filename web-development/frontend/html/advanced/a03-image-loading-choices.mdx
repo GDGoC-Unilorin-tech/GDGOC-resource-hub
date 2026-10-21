@@ -41,6 +41,12 @@ Use the second image only where its content is useful. Its smaller file and load
 
 <Note>Do not promise a performance improvement without measuring the actual page.</Note>
 
+## Try it and observe
+
+### Observe loading without assuming a threshold
+
+Keep one useful image near the top and another in a later section of a genuinely long page. Open Network, filter to images, disable cache while DevTools is open, and reload. Record when each request appears before and after scrolling. A lazy image may already load near the viewport; that is not proof the attribute failed. Keep a short explanation of why each placement suits its loading choice.
+
 ## Practice challenge
 
 Review two image placements in your portfolio. Add accurate dimensions, choose which should be deferred, and write a short justification. Inspect Network requests without treating browser heuristics as a strict pass/fail rule.
@@ -74,7 +80,15 @@ This implementation follows the requirements above. Compare it with your own att
 
 ## Check your understanding
 
-Explain the main element or attribute introduced here in your own words. Change one value or relationship in your example, predict the effect, and test it. Keep the corrected version with your practice files.
+Should the first visible image always use lazy loading? What do width and height contribute before the file finishes loading?
+
+Write your answer before opening the explanation.
+
+<Accordion title="Check your answer">
+
+Do not defer an important first-view image indiscriminately. Accurate dimensions give an aspect ratio that helps reserve space. Loading hints and dimensions help different problems and do not replace measuring actual performance.
+
+</Accordion>
 
 <div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
   <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/html/advanced/a02-responsive-image-markup">Previous</a>

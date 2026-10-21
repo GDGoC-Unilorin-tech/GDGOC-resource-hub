@@ -301,3 +301,126 @@ button.hub-cta {
 .dark :is(#sidebar, #mobile-nav-content) button[aria-expanded] svg {
     color: #F9AB00 !important;
 }
+
+/* Two-row header: native category links above native course tabs. */
+/* Retain area tabs in docs.json for routing, but show each only in the top row. */
+#navbar .nav-tabs-item:is([href="/"], [href="/index"],
+    [href="/web-development/frontend/tools-and-workflow"],
+    [href="/web-development/databases/overview"],
+    [href="/web-development/frontend/frameworks-and-libraries"],
+    [href="/backend-development"], [href="/paths/cloud-computing"],
+    [href="/other-learning-paths/overview"]) { display: none !important; }
+@media (min-width: 1024px) {
+    /* Match native markup directly: layout must work before custom JS loads. */
+    #navbar div:has(> div > #search-bar-entry) > div:has(> a img.nav-logo) {
+        order: 0;
+        flex: 0 0 160px;
+        min-width: 160px;
+    }
+    #navbar a:has(> img.nav-logo) {
+        display: block;
+        width: 160px;
+        flex-shrink: 0;
+    }
+    #navbar img.nav-logo {
+        width: 160px !important;
+        max-width: 160px !important;
+        height: 60px !important;
+        object-fit: contain;
+    }
+    #navbar div:has(> div > #search-bar-entry) > div:has(nav[aria-label="Main"]) {
+        order: 1; flex: 1 1 0%; min-width: 0;
+    }
+    #navbar div:has(> nav[aria-label="Main"]) { flex: 1 1 0%; min-width: 0; }
+    #navbar nav[aria-label="Main"] { min-width: 0; overflow: visible; }
+    #navbar nav[aria-label="Main"] ul { width: auto; gap: 1rem; }
+    #navbar nav[aria-label="Main"] ul > li { margin-inline: 0 !important; flex-shrink: 0; }
+    #navbar div:has(> #search-bar-entry) { order: 2; flex: 0 0 clamp(160px, 16vw, 260px); }
+}
+#navbar .navbar-link {
+    white-space: nowrap;
+    font-weight: 600;
+}
+#navbar .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap !important;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #F9AB00 transparent;
+    flex: 1 1 0%;
+}
+#navbar .nav-tabs > *,
+#navbar .nav-tabs-item {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+}
+#navbar .nav-tabs-item {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+#navbar .hub-technology-row {
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: #202124;
+    color: #F1F3F4;
+}
+#navbar .hub-technology-row .nav-tabs-item { color: #E8EAED !important; }
+#navbar .hub-technology-row .nav-tabs-item:hover { color: #FFFFFF !important; }
+#navbar .hub-technology-row .nav-tabs-item[data-active="true"] { color: #FDD663 !important; }
+#navbar .hub-technology-row .nav-tabs-item[data-active="true"] > div { background: #F9AB00 !important; }
+#navbar .hub-technology-overflow {
+    padding-inline: 2.5rem;
+}
+#navbar .hub-scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 4px;
+    background: #202124;
+    color: #F9AB00;
+    font: 700 2rem/1 system-ui;
+    cursor: pointer;
+}
+#navbar .hub-scroll-arrow[hidden] { display: none; }
+#navbar .hub-scroll-left { left: 0; }
+#navbar .hub-scroll-right { right: 0; }
+#navbar .hub-scroll-arrow[aria-disabled="true"] { opacity: 0.35; cursor: default; }
+.dark #navbar .hub-scroll-arrow { background: #202124; color: #F9AB00; }
+#navbar :is(.hub-scroll-arrow, .nav-tabs-item, .navbar-link):focus-visible {
+    outline: 3px solid #4285F4;
+    outline-offset: -3px;
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+    #navbar .navbar-link { font-size: 0.8125rem; }
+    #navbar div:has(> div > #search-bar-entry) > div:has(> a img.nav-logo) {
+        flex-basis: 120px; min-width: 120px;
+    }
+    #navbar a:has(> img.nav-logo) { width: 120px; }
+    #navbar img.nav-logo { width: 120px !important; max-width: 120px !important; }
+    #navbar nav[aria-label="Main"] ul { gap: 0.5rem; }
+    #navbar div:has(> #search-bar-entry) { flex-basis: 144px; }
+    #navbar #topbar-cta-button a { padding-inline: 0.625rem; font-size: 0.8125rem; }
+}
+@media (max-width: 1023px) {
+    #navbar .hub-technology-row {
+        display: flex !important;
+        height: 48px;
+        padding-inline: 1rem;
+    }
+    #navbar .hub-technology-overflow { padding-inline: 2.5rem; }
+    /* Native mobile header is fixed; reserve the extra technology row. */
+    #content-container { padding-top: 48px; }
+    #content :is(h2, h3, h4) { scroll-margin-top: 12rem; }
+}
