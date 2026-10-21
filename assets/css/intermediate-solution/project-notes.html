@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementation notes | Amina</title>
+  <meta name="description" content="Implementation notes in a fictional HTML learning portfolio.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p>Amina's learning portfolio</p>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="learning-log.html">Learning log</a>
+      <a href="contact.html">Practice contact</a>
+    </nav>
+  </header>
+  <main id="main-content" tabindex="-1">
+<h1>Implementation notes</h1><p>Native elements provide document meaning and keyboard behaviour. A restricted iframe demonstration appears below.</p>
+    <iframe src="frame-note.html" title="Short project note" width="480" height="200" loading="lazy" sandbox></iframe>
+    <p><a href="frame-note.html">Read the short note directly</a></p>
+    <section>
+      <h2>Form boundaries</h2>
+      <p>The practice form uses GET to navigate to a static page. It does not deliver messages; fictional values appear in the URL.</p>
+      <p>Real messages need a receiving service with server-side validation, appropriate access and abuse controls, and delivery or storage logic. POST does not encrypt a request; HTTPS protects transport.</p>
+      <p>A real file upload would normally use POST with multipart/form-data. File selection hints do not validate content; the service must validate and handle uploaded files safely.</p>
+    </section>
+    <section>
+      <h2>Image choices and review evidence</h2>
+      <p>The home image offers 480- and 960-pixel candidates. Its display width is capped at 480 pixels and shrinks with the page on narrow screens. The sizes attribute describes that slot. It is needed immediately, so it is not lazy-loaded.</p>
+      <p>Use REVIEW.md to record your own checks, selected image resources, defects, repairs, and limitations. This sample does not certify your work.</p>
+    </section>
+  </main>
+  <footer><p>Fictional student portfolio for HTML practice.</p></footer>
+</body>
+</html>

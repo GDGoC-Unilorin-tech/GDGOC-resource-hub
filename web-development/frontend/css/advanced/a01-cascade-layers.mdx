@@ -1,0 +1,96 @@
+---
+title: "Organise the cascade with layers"
+description: "Declare an explicit layer order. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Declare an explicit layer order.
+- Distinguish layer priority from specificity.
+- Avoid accidental unlayered overrides.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/overview). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a01-cascade-layers/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Cascade layers group author styles into an explicit priority order. For normal declarations, later layers win over earlier layers before selector specificity is compared. A layer order statement at the top makes the intended hierarchy visible even when rules are written elsewhere.
+
+Normal unlayered author declarations outrank normal declarations in named layers. Therefore, wrapping a few new rules in a layer while leaving conflicting old rules unlayered can give unexpected results. Migrate deliberately and inspect the winner. Important declarations reverse layer precedence; this lesson avoids !important so the normal ordering stays clear.
+
+Layers do not change how a selector matches or how layout works. They organise competing declarations. Use a few purposeful layers rather than one for every component.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Layered component</h1>
+<article class="card featured"><h2>Portfolio</h2><p>A reusable component with an intentional variation.</p></article>
+```
+
+### styles.css
+
+```css
+@layer base, components, utilities;
+@layer base { body { font-family: system-ui, sans-serif; } }
+@layer components { .card.featured { padding: 1rem; color: #174ea6; } }
+@layer utilities { .featured { color: #137333; } }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+The featured card is green even though .card.featured is more specific than .featured: the later normal layer wins first. Temporarily add an unlayered .featured colour rule and observe its priority, then remove it.
+
+## Practice challenge
+
+Keep the three layers, make the utility override purple (#6a1b9a), and add a 1px border in the components layer. Do not use !important or an unlayered colour rule.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Put structural component styling in components and the intentional variation in utilities.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The declared layer order is explicit.
+- [ ] The purple utility wins without increased specificity.
+- [ ] The card keeps its component padding and border.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+@layer base, components, utilities;
+@layer base { body { font-family: system-ui, sans-serif; } }
+@layer components { .card.featured { padding: 1rem; border: 1px solid currentColor; color: #174ea6; } }
+@layer utilities { .featured { color: #6a1b9a; } }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why might an old unlayered rule beat your new component layer?
+
+<Accordion title="Check your answer">
+
+For normal author declarations, unlayered styles have priority over layered styles. Inspect and migrate the old rule rather than compensating with increasingly specific selectors.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a02-container-queries">Next</a>
+</div>

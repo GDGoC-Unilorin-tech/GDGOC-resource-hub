@@ -1,0 +1,5 @@
+.milestone { padding: 1rem; border: 2px solid #174ea6; }
+@keyframes settle { from { transform: translateY(6px); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .milestone { animation: settle 200ms ease-out 1; }
+}

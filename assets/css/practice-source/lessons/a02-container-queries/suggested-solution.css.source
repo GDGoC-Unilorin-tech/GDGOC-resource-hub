@@ -1,0 +1,5 @@
+.slot { container-type: inline-size; container-name: profile-slot; }
+.profile { display: grid; gap: 1rem; padding: 1rem; border: 1px solid #747775; }
+@container profile-slot (min-width: 32rem) {
+  .profile { grid-template-columns: 1fr 1fr; align-items: start; }
+}

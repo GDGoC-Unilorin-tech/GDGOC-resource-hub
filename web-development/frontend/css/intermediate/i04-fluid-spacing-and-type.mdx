@@ -1,0 +1,91 @@
+---
+title: "Use fluid sizing with limits"
+description: "Explain min(), max(), and clamp(). Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Explain min(), max(), and clamp().
+- Scale a heading within sensible bounds.
+- Test fluid sizing with zoom and real text.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/checkpoint-responsive-layout). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i04-fluid-spacing-and-type/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Min() chooses the smallest of its arguments; max() chooses the largest. Clamp(minimum, preferred, maximum) constrains a preferred value between two bounds. These functions let a property adapt without a separate media query at every size.
+
+For a heading, a preferred value combining rem and viewport units can grow with available space while retaining a font-relative contribution. A pure vw font size can become too small or respond poorly to text enlargement. Even a mixed clamp formula requires testing: a maximum can limit growth, and real headings can be much longer than your example.
+
+Use fluid space deliberately. Every gap does not need to change constantly. A small consistent spacing scale is often easier to maintain than many unrelated formulas.
+
+## Worked example
+
+### HTML body
+
+```html
+<main class="hero"><h1>Building useful things through steady practice</h1><p>My frontend learning portfolio.</p></main>
+```
+
+### styles.css
+
+```css
+.hero { padding: clamp(1rem, 3vw, 3rem); max-width: 65ch; }
+.hero h1 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); line-height: 1.15; overflow-wrap: anywhere; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Record the heading’s computed font size at 320px and 1280px. It should stay between 2rem and 3rem. Zoom to 200% and check the full heading remains visible; do not assume the formula alone guarantees accessibility.
+
+## Practice challenge
+
+Make the heading range from 1.75rem to 2.75rem with preferred 1.25rem + 2vw. Keep fluid padding and wrapping.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+The first and third clamp arguments are bounds, not breakpoints.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Measured font sizes stay within the intended bounds.
+- [ ] The long heading wraps at narrow widths.
+- [ ] The page remains usable at 200% zoom.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.hero { padding: clamp(1rem, 3vw, 3rem); max-width: 65ch; }
+.hero h1 { font-size: clamp(1.75rem, 1.25rem + 2vw, 2.75rem); line-height: 1.15; overflow-wrap: anywhere; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does clamp choose one of three viewport breakpoints?
+
+<Accordion title="Check your answer">
+
+No. It evaluates values for the property, uses the preferred value when it lies within the bounds, and otherwise uses the appropriate bound.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/checkpoint-responsive-layout">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/i05-images-and-responsive-media">Next</a>
+</div>

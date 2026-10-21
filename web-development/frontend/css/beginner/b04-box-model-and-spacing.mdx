@@ -1,0 +1,92 @@
+---
+title: "Use the box model and predictable spacing"
+description: "Identify content, padding, border, and margin. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Identify content, padding, border, and margin.
+- Compare content-box and border-box sizing.
+- Control spacing without empty HTML elements.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/checkpoint-css-foundations). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b04-box-model-and-spacing/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Each element has a content area, padding inside its border, a border, and margin outside. By default, width usually specifies the content box; padding and borders add to the rendered width. With `box-sizing: border-box`, the specified width includes padding and borders, but not margin.
+
+The universal selector `*` selects all elements. Include pseudo-elements in a box-sizing reset so later decorations follow the same rule. Padding shorthand with two values sets vertical then horizontal space. Margin can separate blocks, but adjoining vertical margins in normal block flow can collapse; do not assume they always add together.
+
+Use the DevTools box-model diagram to see measured values. Avoid repeated br elements or spaces as a layout mechanism.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Practice card</h1>
+<article class="card"><h2>My first project</h2><p>A simple portfolio.</p></article>
+```
+
+### styles.css
+
+```css
+*, *::before, *::after { box-sizing: border-box; }
+.card { width: 280px; padding: 20px; border: 4px solid #174ea6; margin: 24px 0; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+With border-box the outside border width is 280px and the content area is 232px. Temporarily disable box-sizing: the box becomes 328px wide. Restore the reset before continuing.
+
+## Practice challenge
+
+Make the card’s border box 300px wide, padding 16px, border 2px, and outside vertical margin 24px. Keep the HTML unchanged.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+With border-box, subtract both paddings and borders from the declared width to predict content width.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The border box measures 300px.
+- [ ] The content width measures 264px.
+- [ ] Spacing comes from CSS, not empty paragraphs or br elements.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+*, *::before, *::after { box-sizing: border-box; }
+.card { width: 300px; padding: 16px; border: 2px solid #174ea6; margin: 24px 0; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does a 300px border-box width include its margin?
+
+<Accordion title="Check your answer">
+
+No. Padding and border are included, but margin remains outside. The total occupied horizontal space also includes any horizontal margins.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/checkpoint-css-foundations">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b05-units-and-sizing">Next</a>
+</div>

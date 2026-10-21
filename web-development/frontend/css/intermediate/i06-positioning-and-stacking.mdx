@@ -1,0 +1,92 @@
+---
+title: "Position small details deliberately"
+description: "Distinguish normal flow from absolute positioning. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Distinguish normal flow from absolute positioning.
+- Use a positioned ancestor for a badge.
+- Explain why z-index is not a global ranking.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i05-images-and-responsive-media). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i06-positioning-and-stacking/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Relative positioning keeps an element’s original space in normal flow and can establish a containing block for absolutely positioned descendants. Absolute positioning removes the child from normal flow, so surrounding content does not reserve room for it. Use it for small overlays, not the main page layout.
+
+Sticky positioning keeps a flow-based element that can stick within its scrolling context after reaching an inset. Fixed positioning usually relates to the viewport, though certain ancestors can change its containing block. Sticky and fixed headers can cover content or keyboard focus, so they are optional rather than defaults in this course.
+
+Z-index works within stacking contexts. A child cannot escape an ancestor’s stacking context merely by using a huge number. Before adding z-index, inspect positioning and ancestors; opacity and transforms can also affect stacking contexts.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Featured project</h1>
+<article class="card"><span class="badge">Featured</span><h2>My portfolio</h2><p>Content remains in normal flow.</p></article>
+```
+
+### styles.css
+
+```css
+.card { position: relative; padding: 3rem 1rem 1rem; border: 1px solid #747775; }
+.badge { position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.25rem; background: #e8f0fe; color: #202124; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+The card’s top padding reserves space for the badge. Remove that padding in DevTools to see the possible overlap. Restore it, enlarge text, and check again.
+
+## Practice challenge
+
+Place the badge in the upper-left corner with 0.75rem offsets. Retain enough top padding and test with a two-word badge label.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Remove right when using left so the badge is not stretched between both sides.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The badge is positioned relative to its card.
+- [ ] The heading and badge do not overlap in the tested sizes.
+- [ ] Main page layout still uses normal flow, Flexbox, or Grid.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.card { position: relative; padding: 4rem 1rem 1rem; border: 1px solid #747775; }
+.badge { position: absolute; top: 0.75rem; left: 0.75rem; padding: 0.25rem; background: #e8f0fe; color: #202124; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why does an absolutely positioned badge require deliberate space around nearby content?
+
+<Accordion title="Check your answer">
+
+It is removed from normal flow, so the heading does not automatically move out of its way. Reserve space, or use an in-flow layout when content can grow unpredictably.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i05-images-and-responsive-media">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/checkpoint-fluid-content">Next</a>
+</div>

@@ -1,0 +1,7 @@
+:root { --space-card: 1rem; }
+.card { padding: var(--space-card); border: 1px solid #747775; box-shadow: 0 2px 6px #0000001a; }
+@media print {
+  body { color: #000; background: #fff; }
+  .site-nav { display: none; }
+  .card { box-shadow: none; break-inside: avoid; }
+}

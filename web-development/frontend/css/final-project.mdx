@@ -1,8 +1,78 @@
 ---
-title: "CSS building challenge — planned"
+title: "Final challenge: Build and audit your styled portfolio"
+description: "A practical portfolio brief, test matrix, rubric, and separate worked implementation."
 ---
 
-<Info>This section is planned and has not yet been published.</Info>
+## Your brief
 
-[Back to the CSS overview](/web-development/frontend/css/overview)
+Continue the portfolio from the previous stage. Keep working on the same pages instead of restarting from an unrelated template. Your design can differ from the sample when it meets the criteria. For the final challenge, make your content, layout decisions, and review evidence your own.
 
+Use your own files or the `portfolio` folder in the [practice pack](/assets/css/css-practice-pack.zip). Keep the five main pages: home, about, projects, learning log, and contact. Supporting result and note pages remain part of the site.
+
+## Requirements and completion checklist
+
+- [ ] Integrate the same HTML portfolio into a coherent, responsive design across all main and supporting pages.
+- [ ] Meet all Beginner, Intermediate, and Advanced stage requirements.
+- [ ] Retain clear navigation, labels, semantic headings, media alternatives, and honest practice-form wording.
+- [ ] Keep responsive layouts and theme tokens reusable rather than duplicating per-page overrides.
+- [ ] Demonstrate container and subgrid fallbacks with enhancement rules disabled.
+- [ ] Complete the browser test matrix and a documented defect/repair/retest cycle.
+- [ ] Explain what JavaScript could add next without simulating delivery, saved state, or other behaviour CSS does not implement.
+
+## Plan and build
+
+1. Back up the previous milestone and sketch a simple page layout.
+2. Choose a small typography, colour, and spacing system; record why it suits the content.
+3. Link a shared stylesheet and implement one requirement at a time.
+4. Test the pages and states below, save source repairs, and repeat failed checks.
+5. Prepare a short demonstration and an honest list of remaining limitations.
+
+## Test matrix
+
+| Test | Action | Evidence to keep |
+| --- | --- | --- |
+| Pages and paths | Open every main and supporting page using site links | No broken page or local asset paths |
+| Viewports | Test 320px, 768px, and 1280px plus relevant breakpoint boundaries | Content fits; intentional table scrolling is local |
+| Text growth | Use long headings and 200% browser zoom | Complete text and controls remain available |
+| Keyboard | Use Tab, Shift+Tab, Enter, and native control keys | Visible focus and a meaningful reading order |
+| Forms | Try empty, malformed, and valid fictional entries | Native validation works; the result page makes no delivery claim |
+| Contrast | Inspect foreground/background pairs for text, links, and focus | Record the actual pairs and measured ratios |
+| Media | Play the local clip over HTTP and read its transcript | Styling does not remove media alternatives |
+| Advanced preferences | For Advanced and Final, test dark/light, reduced motion, direction, print, and layout fallbacks | Observed behaviour for each condition, or an explicit Not tested |
+
+## Assessment rubric
+
+| Area | Ready when | Needs revision when |
+| --- | --- | --- |
+| Requirements | Every required feature is implemented and demonstrated | A feature exists only in a screenshot or is absent |
+| Usability | Content, focus, and controls remain usable in tested conditions | Styling hides, clips, or reorders essential interaction |
+| Maintainability | Shared rules and tokens have clear responsibilities | Repeated overrides hide the cause of a conflict |
+| Evidence | Checks include observed results, repairs, and retests | Expected results are copied as if they were observed |
+| Explanation | You can explain key selectors, layout choices, and limitations | The stylesheet is copied without understanding its effects |
+
+Meet every required checklist item and rubric row before moving on. Mark failed work **Needs revision** and unavailable checks **Not tested**. Completion is self-assessed unless a reviewer checks your work; it is not an automated grade or accessibility certification.
+
+<Accordion title="Hints for getting unstuck">
+
+Start with readable normal flow, then add the level's layout features. Inspect the element causing a defect instead of hiding page overflow. Keep native labels, headings, and controls. If a component only works with the sample text, test a longer title before calling it finished. Review the relevant module checkpoint rather than copying the complete solution immediately.
+
+</Accordion>
+
+<Accordion title="Reveal the suggested project implementation">
+
+[Download the final portfolio solution](/assets/css/portfolio-final-solution.zip).
+
+Extract the archive, read README.txt, and open index.html. Compare styles.css and the HTML with your own work one requirement at a time. REVIEW.md is a blank evidence template, not proof of passing checks. The Advanced and Final examples use the same design foundation; the final challenge asks for an integrated, personalised result and a complete demonstration.
+
+</Accordion>
+
+## Demonstrate and hand over
+
+Keep your complete HTML/CSS folder, local assets, README, and review notes. Explain one layout choice, demonstrate a repaired defect, and show what happens with keyboard navigation and a narrow viewport. For the final challenge, also show both themes, reduced motion, and print output.
+
+Preserve this portfolio for JavaScript enhancements. CSS controls presentation; actual form processing, saved preferences, and application behaviour need additional implementation. Contribution to live GDGoC products follows the team's review process rather than automatic access from finishing this exercise.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/project">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/further-learning">Next</a>
+</div>

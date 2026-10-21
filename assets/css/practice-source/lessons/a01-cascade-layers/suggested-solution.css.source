@@ -1,0 +1,4 @@
+@layer base, components, utilities;
+@layer base { body { font-family: system-ui, sans-serif; } }
+@layer components { .card.featured { padding: 1rem; border: 1px solid currentColor; color: #174ea6; } }
+@layer utilities { .featured { color: #6a1b9a; } }

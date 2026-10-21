@@ -1,0 +1,96 @@
+---
+title: "Adapt layouts with media queries"
+description: "Start with a usable single-column layout. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Start with a usable single-column layout.
+- Add a breakpoint based on content needs.
+- Test both sides of a breakpoint.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/intermediate/i02-grid-for-projects). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/i03-mobile-first-media-queries/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A media query applies rules when its condition matches. Write the base layout for a narrow viewport, then add a min-width query for a wider arrangement. This is a mobile-first approach to the stylesheet, not a claim that only phones have small viewports.
+
+Choose a breakpoint where the content has room to benefit from a change. Do not maintain a long list of device model widths. A desktop browser can be narrow, and text zoom changes available space. Keep the HTML viewport meta tag from the earlier course.
+
+Media queries participate in the normal cascade: when a query matches, its declarations still need to win. Keep the base and override selectors straightforward so you can explain the result.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>About my work</h1>
+<div class="layout"><main><h2>My story</h2><p>I learn through projects and review.</p></main><aside><h2>Study goals</h2><p>Build useful pages.</p></aside></div>
+```
+
+### styles.css
+
+```css
+.layout { display: grid; gap: 1rem; }
+@media (min-width: 48rem) {
+  .layout { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Test at 600px, just below and above 48rem at the default font setting, and 1024px. Record when the second column appears. Enlarge text and check that neither column clips its content.
+
+## Practice challenge
+
+Use equal columns starting at 50rem, retain a one-column base, and increase the gap to 1.5rem at the breakpoint.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Put the wider grid-template-columns and gap in the same min-width query.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The base layout works without a matching query.
+- [ ] The two-column override begins at the intended breakpoint.
+- [ ] Both columns remain readable with enlarged text.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.layout { display: grid; gap: 1rem; }
+@media (min-width: 50rem) {
+  .layout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does a media query replace the entire base rule?
+
+<Accordion title="Check your answer">
+
+No. Matching declarations join the cascade. Properties you do not override, such as display:grid here, still come from the base rule.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/intermediate/i02-grid-for-projects">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/intermediate/checkpoint-responsive-layout">Next</a>
+</div>

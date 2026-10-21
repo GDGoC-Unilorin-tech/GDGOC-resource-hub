@@ -1,0 +1,3 @@
+/* Intentionally broken: reproduce, then repair. */
+.card { width: 900px; padding: 24px; border: 2px solid #747775; }
+.card h2 { white-space: nowrap; }

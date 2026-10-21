@@ -1,0 +1,96 @@
+---
+title: "Understand the cascade and inheritance"
+description: "Predict a simple competing-rule result. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Predict a simple competing-rule result.
+- Distinguish inherited values from directly applied rules.
+- Use Styles and Computed to find a winning declaration.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b02-selectors-and-classes). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b03-cascade-and-inheritance/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+More than one declaration can affect an element. The cascade chooses a winner using factors including origin, importance, layers, specificity, and order. For this lesson all rules are ordinary author rules in the same layer: a class selector is more specific than a type selector, and equally specific rules are resolved by later source order.
+
+Some properties, including color and font-family, are inherited from ancestors when no directly applicable value replaces them. Others, such as border and padding, are not inherited by default. A direct p rule wins over a colour merely inherited from body; this is not a competition between the specificity of body and p.
+
+Avoid treating `!important` as a routine fix. First find the matching rule and remove or narrow the unintended conflict. Advanced lessons introduce cascade layers.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>My study notes</h1>
+<p class="intro">A paragraph with two competing rules.</p>
+<p>A normal paragraph.</p>
+```
+
+### styles.css
+
+```css
+body { color: #202124; font-family: sans-serif; }
+p { color: #174ea6; }
+.intro { color: #137333; }
+.intro { color: #8e24aa; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+The intro is purple because the later equally specific class rule wins. Inspect its crossed-out rules. Remove the final rule and reload: the intro becomes green, while the ordinary paragraph stays blue.
+
+## Practice challenge
+
+Make the intro green and ordinary paragraphs blue, with no duplicate .intro colour rule and no !important. Explain which property both paragraphs inherit.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Remove the accidental override instead of adding a third rule.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Computed colours match the requested result.
+- [ ] There is one intentional .intro colour rule.
+- [ ] You can identify the inherited font family.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+body { color: #202124; font-family: sans-serif; }
+p { color: #174ea6; }
+.intro { color: #137333; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does the last rule always win?
+
+<Accordion title="Check your answer">
+
+No. Source order resolves ties after earlier cascade decisions. In this simplified example equal class selectors tie in specificity; a later type selector would not override the class colour merely by being later.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b02-selectors-and-classes">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/checkpoint-css-foundations">Next</a>
+</div>

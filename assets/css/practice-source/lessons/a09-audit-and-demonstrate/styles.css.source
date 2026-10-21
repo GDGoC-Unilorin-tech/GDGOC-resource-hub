@@ -1,0 +1,3 @@
+/* Intentionally incomplete audit fixture. */
+.card { width: 900px; }
+a:focus { outline: none; }

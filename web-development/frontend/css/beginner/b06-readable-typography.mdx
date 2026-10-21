@@ -1,0 +1,96 @@
+---
+title: "Build readable typography"
+description: "Set a font stack and unitless line height. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Set a font stack and unitless line height.
+- Control line length and heading hierarchy.
+- Style text without changing its HTML meaning.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b05-units-and-sizing). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b06-readable-typography/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A font stack lists preferred families and fallbacks. System fonts avoid needing an external font download for these exercises. A unitless line-height multiplies the element’s font size and inherits as a multiplier, making it useful across headings and paragraphs.
+
+The ch unit is based on the width of the font’s zero character; it approximates rather than guarantees a character count. Limiting prose to around 60–70ch is a starting point for comfortable reading, not a rule for every design. Test actual content, zoom, and spacing.
+
+Keep headings semantic: choose h2 because it is a section heading, not because you want a particular size. CSS can adjust appearance separately. Preserve link underlines or another clear non-colour cue.
+
+## Worked example
+
+### HTML body
+
+```html
+<main class="prose"><h1>My learning journal</h1><h2>This week</h2><p>I built connected pages and tested their links. My next goal is readable styling.</p><a href="#notes">Read my notes</a><p id="notes">Small changes are easier to check.</p></main>
+```
+
+### styles.css
+
+```css
+body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; }
+.prose { max-width: 65ch; }
+h1 { font-size: 2rem; line-height: 1.2; }
+a { text-underline-offset: 0.2em; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Zoom to 200% and read the paragraph. Add a second paragraph with longer text and ensure it wraps. Inspect the heading’s computed line height and compare it with the paragraph.
+
+## Practice challenge
+
+Set h2 to 1.5rem with 1.3 line height, retain the h1 styling, and limit the prose to 60ch. Keep visible link underlines.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Use a heading selector and a prose container; avoid sizing each individual paragraph separately.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Body text uses a readable system font and line height.
+- [ ] Headings remain semantically ordered.
+- [ ] Text and links remain readable at 200% zoom.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; }
+.prose { max-width: 60ch; }
+h1 { font-size: 2rem; line-height: 1.2; }
+h2 { font-size: 1.5rem; line-height: 1.3; }
+a { text-underline-offset: 0.2em; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does max-width:60ch guarantee sixty letters on every line?
+
+<Accordion title="Check your answer">
+
+No. Ch uses the zero glyph’s width; actual letters and words vary. It is a useful line-length control that still needs visual review.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b05-units-and-sizing">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/checkpoint-readable-layout">Next</a>
+</div>

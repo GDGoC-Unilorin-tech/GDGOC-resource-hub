@@ -1,0 +1,90 @@
+---
+title: "Use logical properties for adaptable layouts"
+description: "Distinguish inline and block axes. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Distinguish inline and block axes.
+- Replace directional spacing where appropriate.
+- Test left-to-right and right-to-left content.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/checkpoint-progressive-layout). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a04-logical-properties/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Physical properties such as margin-left always refer to a physical side. Logical properties such as margin-inline-start follow the writing mode and direction. In ordinary horizontal English, inline runs left to right and block runs top to bottom; other writing systems can differ.
+
+Use padding-inline and padding-block for paired spacing, inline-size for width along the inline axis, and border-inline-start for an accent that follows text direction. Logical properties reduce duplicate direction-specific rules, but they do not translate content or guarantee a usable internationalised interface.
+
+Use the HTML dir attribute to communicate direction when appropriate. Test it explicitly; do not reverse text or DOM order with CSS. Keep icons and meaning-sensitive imagery under review rather than mirroring everything automatically.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Direction-aware note</h1>
+<aside class="note"><h2>Practice reminder</h2><p>Read, build, and review.</p></aside>
+```
+
+### styles.css
+
+```css
+.note { padding-block: 1rem; padding-inline: 1.5rem; border-inline-start: 4px solid #174ea6; max-inline-size: 40rem; margin-inline: auto; background: #e8f0fe; color: #202124; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Add dir="rtl" to the note in your test file. The accent should move to the inline start on the right. Restore the direction appropriate to the actual text after the experiment.
+
+## Practice challenge
+
+Make the accent 6px wide and use 2rem inline padding. Keep all spacing and sizing declarations logical. Test both direction settings.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change border-inline-start and padding-inline; do not add a separate border-right rule.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The accent follows the inline start in both directions.
+- [ ] No physical left/right overrides are needed.
+- [ ] The note remains readable when its content wraps.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.note { padding-block: 1rem; padding-inline: 2rem; border-inline-start: 6px solid #174ea6; max-inline-size: 40rem; margin-inline: auto; background: #e8f0fe; color: #202124; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does inline always mean horizontal?
+
+<Accordion title="Check your answer">
+
+No. Inline follows the line of text in the active writing mode. Logical properties adapt to that direction rather than always meaning left and right.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/checkpoint-progressive-layout">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a05-themes-and-user-preferences">Next</a>
+</div>

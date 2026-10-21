@@ -1,0 +1,98 @@
+---
+title: "Adapt components with container queries"
+description: "Establish a named size-query container. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Establish a named size-query container.
+- Style descendants according to available component space.
+- Keep a usable base layout when a query is unavailable.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a01-cascade-layers). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a02-container-queries/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A viewport media query responds to the browser window. A container query can respond to a component’s available space, useful when the same card appears in a wide main column and a narrow sidebar.
+
+Set container-type:inline-size on a wrapper and optionally give it a container-name. The query styles descendants based on that ancestor’s inline size. Do not expect the query to resize the same element that establishes its query container. Containment also affects intrinsic sizing, so give the wrapper a sensible place in the surrounding layout.
+
+Write the single-column component first. The container rule adds an enhancement at a suitable width; browsers without it retain the readable base. Test by resizing the wrapper while leaving the viewport unchanged.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Reusable profile</h1>
+<div class="slot"><article class="profile"><h2>Amina</h2><p>A learner building accessible frontend projects.</p></article></div>
+```
+
+### styles.css
+
+```css
+.slot { container-type: inline-size; container-name: profile-slot; }
+.profile { display: grid; gap: 1rem; padding: 1rem; border: 1px solid #747775; }
+@container profile-slot (min-width: 30rem) {
+  .profile { grid-template-columns: 1fr 2fr; align-items: start; }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+In DevTools set the slot width to 280px, then 600px, keeping the viewport wide. The profile should change based on the slot. Disable the @container rule: the base layout remains readable.
+
+## Practice challenge
+
+Change the component breakpoint to 32rem and use equal columns when it matches. Keep the wrapper named and the base single-column.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+The width condition belongs to profile-slot; the layout declarations target its .profile descendant.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] A narrow slot stays single-column inside a wide viewport.
+- [ ] A sufficiently wide slot changes to equal columns.
+- [ ] Disabling the enhancement leaves usable content.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.slot { container-type: inline-size; container-name: profile-slot; }
+.profile { display: grid; gap: 1rem; padding: 1rem; border: 1px solid #747775; }
+@container profile-slot (min-width: 32rem) {
+  .profile { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why not use only a viewport breakpoint for a card reused in several regions?
+
+<Accordion title="Check your answer">
+
+The viewport does not tell you how much space that particular card receives. A container query follows the component’s local layout space.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a01-cascade-layers">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/a03-subgrid-and-fallbacks">Next</a>
+</div>

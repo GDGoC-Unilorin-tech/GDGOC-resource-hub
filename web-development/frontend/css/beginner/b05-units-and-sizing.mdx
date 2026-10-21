@@ -1,0 +1,91 @@
+---
+title: "Choose units and flexible widths"
+description: "Compare px, rem, percentages, and max-width. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Compare px, rem, percentages, and max-width.
+- Keep a readable container within its parent.
+- Avoid fixed heights for growing text.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b04-box-model-and-spacing). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b05-units-and-sizing/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Pixels express CSS pixel lengths, not a promise about physical device pixels. Rem units are relative to the root font size. Percentages depend on the property and its reference; a width percentage normally refers to the containing block’s width. Em units are context-dependent: for font-size they relate to the parent’s font size, while many other em lengths use the element’s own font size.
+
+Pair a flexible width with a maximum to let a reading column shrink on small screens and stop growing on large ones. Auto horizontal margins centre a narrower block. Keep the browser’s root font setting rather than forcing a tiny root size.
+
+Text grows when content changes or users zoom. Prefer content-driven height and use min-height only when a minimum is useful.
+
+## Worked example
+
+### HTML body
+
+```html
+<main class="reading"><h1>My learning story</h1><p>I practise a little every day and keep notes about what I discover.</p></main>
+```
+
+### styles.css
+
+```css
+* { box-sizing: border-box; }
+.reading { width: 90%; max-width: 48rem; margin: 0 auto; padding: 1rem; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Resize the window and watch the reading block shrink. At a sufficiently wide width it stops at 48rem. Increase text size: content should grow vertically instead of being clipped.
+
+## Practice challenge
+
+Change the reading column to 92% width with a 40rem maximum and 1.5rem padding. Keep it centred and allow any amount of text.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Do not add height or overflow:hidden to make the sample look tidy.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The column shrinks with its parent.
+- [ ] It remains centred and stops at 40rem.
+- [ ] Longer text stays visible without a fixed height.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+* { box-sizing: border-box; }
+.reading { width: 92%; max-width: 40rem; margin: 0 auto; padding: 1.5rem; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why combine a percentage width with max-width?
+
+<Accordion title="Check your answer">
+
+The percentage allows adaptation to the parent; the maximum prevents a reading column becoming unnecessarily wide. Neither requires a fixed height.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b04-box-model-and-spacing">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b06-readable-typography">Next</a>
+</div>

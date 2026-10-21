@@ -1,0 +1,97 @@
+---
+title: "Select elements with reusable classes"
+description: "Distinguish type, class, and descendant selectors. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Distinguish type, class, and descendant selectors.
+- Apply one class to several elements.
+- Keep selectors focused on their intended content.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b01-connect-a-stylesheet). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b02-selectors-and-classes/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A type selector such as p matches all paragraphs. A class selector starts with a dot: `.intro` matches an element whose class attribute includes intro. HTML uses `class="intro"`, without the dot. Multiple elements can share a class, and an element can have several space-separated classes.
+
+`.card p` matches paragraphs anywhere inside a card; `.card > p` matches only direct children. A comma creates a selector list, such as `h1, h2`. An ID selector starts with # and matches a unique document ID. Use classes for reusable styling rather than assigning IDs just to make a rule stronger.
+
+Choose names that explain purpose, such as project-card, instead of names tied to a temporary colour.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Projects</h1>
+<p class="intro">My latest practice.</p>
+<article class="card"><h2>HTML portfolio</h2><p>Connected pages.</p></article>
+<p>This paragraph is outside the card.</p>
+```
+
+### styles.css
+
+```css
+.intro { font-size: 1.25rem; }
+.card { border: 2px solid #174ea6; }
+.card p { color: #174ea6; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Inspect both paragraphs. Only the card paragraph receives the blue rule. Duplicate the card in HTML: the same class styles both without a new CSS rule.
+
+## Practice challenge
+
+Give every card 16px of inner spacing, make its h2 dark green, and leave the outside paragraph unchanged. Keep the intro enlarged.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Use .card h2 to select headings inside cards. Padding supplies inner spacing; the box-model lesson explains it further.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Both original and duplicated cards share styling.
+- [ ] Only headings inside cards receive the green rule.
+- [ ] The outside paragraph retains its default colour.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.intro { font-size: 1.25rem; }
+.card { border: 2px solid #174ea6; padding: 16px; }
+.card p { color: #174ea6; }
+.card h2 { color: #137333; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+What is the difference between `.card p` and `.card, p`?
+
+<Accordion title="Check your answer">
+
+The space expresses a descendant relationship. The comma selects every card and every paragraph independently, including paragraphs outside cards.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b01-connect-a-stylesheet">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b03-cascade-and-inheritance">Next</a>
+</div>

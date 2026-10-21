@@ -1,0 +1,94 @@
+---
+title: "Audit and demonstrate a styled website"
+description: "Review a complete multi-page stylesheet. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Review a complete multi-page stylesheet.
+- Record reproducible defects and repairs.
+- Explain the limits of automated checks.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a08-maintainable-css-and-print). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a09-audit-and-demonstrate/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+A finished CSS milestone needs evidence across content, layouts, and interaction states. Review every page at narrow, medium, and wide widths. Include long text, 200% zoom, keyboard navigation, light and dark preferences, reduced motion, and print where applicable. A page that looks good at one screenshot size is not enough.
+
+Use browser tools to inspect computed styles, contrast, layout overlays, network resources, and relevant automated audits. These tools can help find issues but cannot prove complete accessibility or suitability for every user. Keep a list of untested browsers and assistive technologies rather than labelling them passed.
+
+For each issue record the page, conditions, steps, expectation, observation, source repair, and retest. Preserve the HTML semantics while styling. A visually hidden label, clipped focus ring, or reordered keyboard journey can undo earlier HTML work.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Audit fixture</h1>
+<article class="card"><h2>averylongprojectheadingthatmustremainreadable</h2><p><a href="#evidence">Read the evidence</a></p></article><section id="evidence"><h2>Evidence</h2><p>Record your actual results.</p></section>
+```
+
+### styles.css
+
+```css
+/* Intentionally incomplete audit fixture. */
+.card { width: 900px; }
+a:focus { outline: none; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+At 320px reproduce the oversized card. Tab to the link and identify the missing focus indicator. Record both failures before replacing the intentionally broken CSS.
+
+## Practice challenge
+
+Repair width, text wrapping, and keyboard focus. Create an audit table for your entire portfolio, with a row for every tested page and state. Include at least one repair and two honest limitations.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Use a flexible box and explicit focus-visible styling. Do not record template expectations as if you observed them.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Both deliberate defects have a saved repair and retest.
+- [ ] Every portfolio page is covered in the audit record.
+- [ ] Untested conditions are clearly distinguished from passing results.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+* { box-sizing: border-box; }
+.card { width: 100%; max-width: 48rem; padding: 1rem; border: 1px solid #747775; overflow-wrap: anywhere; }
+a:focus-visible { outline: 3px solid #174ea6; outline-offset: 3px; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does a passing automated accessibility audit certify the whole site?
+
+<Accordion title="Check your answer">
+
+No. Automated checks cover only some issues and tested states. Keep manual keyboard, content, zoom, and other relevant checks, and document what remains untested.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a08-maintainable-css-and-print">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/checkpoint-final-audit">Next</a>
+</div>

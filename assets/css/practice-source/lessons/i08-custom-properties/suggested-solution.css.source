@@ -1,0 +1,3 @@
+:root { --accent: #174ea6; --space-card: 1.5rem; }
+.card { color: var(--accent); padding: var(--space-card); border: 1px solid currentColor; margin-bottom: 1rem; }
+.featured { --accent: #6a1b9a; }

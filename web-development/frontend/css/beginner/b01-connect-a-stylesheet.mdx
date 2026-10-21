@@ -1,0 +1,93 @@
+---
+title: "Connect your first stylesheet"
+description: "Create and link an external stylesheet. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Create and link an external stylesheet.
+- Read a CSS rule and change one declaration.
+- Diagnose a stylesheet that does not load.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/overview). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b01-connect-a-stylesheet/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+HTML describes content; CSS describes its presentation. A rule contains a selector, braces, and declarations. In `h1 { color: #174ea6; }`, h1 selects headings, color is the property, and the value specifies a colour. End declarations with semicolons so the next declaration remains separate.
+
+Create a folder containing index.html and styles.css. Put `<link rel="stylesheet" href="styles.css">` inside the HTML head. The href is relative to the HTML file. A spelling or folder mismatch prevents the stylesheet loading even if its rules are correct. CSS comments use `/* comment */`, not HTML comment syntax.
+
+Use one shared stylesheet for your portfolio pages. Keeping presentation separate lets one edit update several pages without repeating inline styles.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>My learning portfolio</h1>
+<p>I am learning to style my HTML.</p>
+```
+
+### styles.css
+
+```css
+h1 { color: #174ea6; }
+p { font-size: 20px; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Save both files, reload, and confirm the heading is blue. Inspect the heading in DevTools and find the rule in Styles. Temporarily misspell the stylesheet href: the page returns to browser defaults. Restore the path and save. DevTools-only edits disappear on reload.
+
+## Practice challenge
+
+Make the heading dark green (#137333), set the paragraph to 18px, and add a CSS comment explaining the heading rule. Keep the CSS in the external file.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change values inside the existing rules; do not put CSS declarations directly into the HTML body.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] The stylesheet loads after a fresh reload.
+- [ ] The heading is green and paragraph is 18px.
+- [ ] The rules are saved in styles.css, with a CSS comment.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+/* Green identifies the page heading. */
+h1 { color: #137333; }
+p { font-size: 18px; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+If a declaration is correct but no styles appear, what should you inspect first?
+
+<Accordion title="Check your answer">
+
+Check the link element, its rel value, filename, and relative path. In Network, confirm that the stylesheet request resolves. Then inspect whether the selector matches the element.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b02-selectors-and-classes">Next</a>
+</div>

@@ -1,0 +1,2 @@
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+.projects article { min-width: 0; padding: 1rem; border: 1px solid #747775; overflow-wrap: anywhere; }

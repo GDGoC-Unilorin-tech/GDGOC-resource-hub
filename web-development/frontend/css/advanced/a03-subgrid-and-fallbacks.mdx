@@ -1,0 +1,99 @@
+---
+title: "Align card content with subgrid"
+description: "Share parent grid rows with nested cards. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Share parent grid rows with nested cards.
+- Use @supports for a progressive enhancement.
+- Keep independent card layouts as a fallback.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/advanced/a02-container-queries). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/a03-subgrid-and-fallbacks/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Independent card grids can have different heading and description row heights. Subgrid lets a nested grid use the tracks of its parent on a chosen axis. For cards sharing three row tracks, make each card span three parent rows and use grid-template-rows:subgrid.
+
+The fallback still matters. A card can use its own auto/1fr/auto rows so its content remains readable even without shared alignment. An @supports condition adds the subgrid declarations only when the browser recognises the feature. Feature support does not prove your layout has no bugs; inspect actual content and resizing.
+
+Keep the DOM order aligned with the reading order. Aligning card parts should not require moving interactive elements into a confusing visual order.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Project cards</h1>
+<div class="cards"><article class="card"><h2>Portfolio</h2><p>A short summary.</p><a href="#notes">Read notes</a></article><article class="card"><h2>A longer project heading that wraps</h2><p>Practice with more content and different line lengths.</p><a href="#notes">Read notes</a></article></div><p id="notes">Review each project.</p>
+```
+
+### styles.css
+
+```css
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
+.card { display: grid; grid-template-rows: auto 1fr auto; padding: 1rem; border: 1px solid #747775; min-width: 0; }
+@supports (grid-template-rows: subgrid) {
+  .card { grid-row: span 3; grid-template-rows: subgrid; }
+}
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Inspect the shared rows at a width where two cards fit. Disable the @supports block and compare alignment: both cards should still be usable. Test again when they stack into one column.
+
+## Practice challenge
+
+Increase the gap to 1.5rem and give card headings margin:0. Keep both the fallback and the subgrid enhancement. Add a third card with a longer description.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+The parent owns the gap. Subgrid must share tracks that the card spans.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Cards remain readable with the enhancement disabled.
+- [ ] Supported subgrid rows align corresponding card content.
+- [ ] New content does not require fixed card heights.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; }
+.card { display: grid; grid-template-rows: auto 1fr auto; padding: 1rem; border: 1px solid #747775; min-width: 0; }
+.card h2 { margin: 0; }
+@supports (grid-template-rows: subgrid) {
+  .card { grid-row: span 3; grid-template-rows: subgrid; }
+}
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Does @supports verify that your component is accessible?
+
+<Accordion title="Check your answer">
+
+No. It checks whether a CSS declaration is supported. You still need to test layout, keyboard order, content growth, and contrast.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/advanced/a02-container-queries">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/advanced/checkpoint-progressive-layout">Next</a>
+</div>

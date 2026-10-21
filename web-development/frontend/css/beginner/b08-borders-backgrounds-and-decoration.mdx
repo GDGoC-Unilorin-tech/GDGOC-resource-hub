@@ -1,0 +1,92 @@
+---
+title: "Separate decoration from content"
+description: "Style borders, backgrounds, and shadows. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Style borders, backgrounds, and shadows.
+- Use a pseudo-element only for nonessential decoration.
+- Keep essential information in HTML.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/b07-colour-and-contrast). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b08-borders-backgrounds-and-decoration/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Backgrounds and shadows decorate an existing box. Border-radius rounds its corners; it does not change the meaning of the element. A box shadow can suggest separation, but a subtle border may be useful where shadows are hard to see.
+
+The `::before` and `::after` pseudo-elements can create decorative boxes. They need a content value to generate a box; an empty string is enough for a visual accent. Do not put essential instructions, status text, or labels only in generated content. Keep those in HTML so they remain part of the document’s content.
+
+Shorthand declarations can reset related properties, so inspect the result after changing a background shorthand. Avoid relying on a decorative background image to communicate information that needs alternative text.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Project highlight</h1>
+<article class="card"><h2>Portfolio</h2><p>A place to explain my learning.</p></article>
+```
+
+### styles.css
+
+```css
+.card { padding: 1rem; border: 1px solid #747775; border-radius: 0.75rem; background: #f8fafd; box-shadow: 0 2px 6px #0000001a; }
+.card::before { content: ""; display: block; width: 3rem; height: 4px; background: #174ea6; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Disable the shadow and pseudo-element rules in DevTools. The project title and description must remain understandable. Restore the saved rules by reloading.
+
+## Practice challenge
+
+Use a white background, a 2px border, and a 4rem decorative accent. Remove the shadow, keeping all meaningful text in HTML.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+Change the existing declarations and remove box-shadow rather than adding another overriding card rule.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Decoration can be disabled without losing content.
+- [ ] Border, radius, and background meet the brief.
+- [ ] No essential words are generated with content.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+.card { padding: 1rem; border: 2px solid #747775; border-radius: 0.75rem; background: #ffffff; }
+.card::before { content: ""; display: block; width: 4rem; height: 4px; background: #174ea6; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why use content:"" for a decorative bar?
+
+<Accordion title="Check your answer">
+
+It creates the pseudo-element box without adding meaningful text. The height, width, and background draw the accent; the HTML still holds the actual content.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/b07-colour-and-contrast">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b09-flow-display-and-overflow">Next</a>
+</div>

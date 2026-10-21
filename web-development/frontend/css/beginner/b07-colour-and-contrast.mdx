@@ -1,0 +1,95 @@
+---
+title: "Use colour with sufficient contrast"
+description: "Set foreground and background as a pair. Practise it in a runnable local example."
+---
+
+## What you will learn
+
+- Set foreground and background as a pair.
+- Check text contrast with browser tools.
+- Communicate meaning with more than colour.
+
+## Before you begin
+
+Complete [the previous page](/web-development/frontend/css/beginner/checkpoint-readable-layout). Use your existing text editor and browser. Extract the [CSS practice pack](/assets/css/css-practice-pack.zip), then open `lessons/b07-colour-and-contrast/index.html`. Keep this exercise separate from your portfolio until you understand the result.
+
+The folder contains the worked example in `styles.css` and a separate challenge solution. Make your own attempt before opening the solution. To build the example manually, use your standard HTML document skeleton, add `<link rel="stylesheet" href="styles.css">` inside its head, and put the HTML below inside its body.
+
+## Understand the idea
+
+Text colour is evaluated against the background it actually appears on. Hex notation such as #202124 gives red, green, and blue components. Transparent colours blend with whatever is beneath them, so a colour value alone cannot establish contrast.
+
+For ordinary text, aim for at least a 4.5:1 contrast ratio; large text has a 3:1 threshold. Use 4.5:1 as the simple target for all text in this course. Meaningful control boundaries and graphical indicators also need adequate contrast. Inspect text in DevTools and use the colour picker’s contrast information when available; record the foreground/background pair and measured ratio.
+
+Do not use red or green alone to identify an error or success. Visible wording such as “Needs revision” conveys the status even without colour. A high contrast result does not replace keyboard and content checks.
+
+## Worked example
+
+### HTML body
+
+```html
+<h1>Practice status</h1>
+<p class="notice">Needs revision: give every image a useful text alternative.</p>
+<p><a href="#help">Read the review guidance</a></p><p id="help">Check the purpose of each image.</p>
+```
+
+### styles.css
+
+```css
+body { color: #202124; background: #ffffff; }
+a { color: #174ea6; }
+.notice { color: #202124; background: #e8f0fe; padding: 1rem; }
+```
+
+<Tip>CSS examples belong in your practice project's stylesheet. They are displayed as code here; copying them into an MDX page does not style your practice HTML.</Tip>
+
+## Try it and observe
+
+Inspect the notice colour and background. Measure their contrast and the link against white. Imagine the page in greyscale: the status wording still communicates the issue.
+
+## Practice challenge
+
+Add a 4px solid #174ea6 left border to the notice. Keep its explicit status text, readable colours, and the underlined link. Record contrast for both text pairs.
+
+Save your changes, reload, and compare the observed result with your prediction. Keep a short note of what changed and why.
+
+<Accordion title="Need a hint?">
+
+A border can reinforce a message, but it must not replace the words that explain it.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] Text/background pairs have recorded contrast checks.
+- [ ] The notice has both wording and a visual cue.
+- [ ] The link is identifiable without relying only on colour.
+
+<Accordion title="View a suggested solution">
+
+Replace the exercise stylesheet with this version while keeping the supplied HTML. Make any HTML additions explicitly requested by the challenge, such as a duplicated card.
+
+```css
+body { color: #202124; background: #ffffff; }
+a { color: #174ea6; }
+.notice { color: #202124; background: #e8f0fe; padding: 1rem; border-left: 4px solid #174ea6; }
+```
+
+Compare each checklist item with your result. Equivalent styling choices are valid when they meet the requirements. Explain one property rather than copying the file without testing it.
+
+</Accordion>
+
+## Check your understanding
+
+Why is a screenshot alone insufficient evidence of contrast?
+
+<Accordion title="Check your answer">
+
+Perceived contrast depends on viewing conditions. Record actual colours and the computed ratio, including the real background beneath any transparency.
+
+</Accordion>
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/css/beginner/checkpoint-readable-layout">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/css/beginner/b08-borders-backgrounds-and-decoration">Next</a>
+</div>
