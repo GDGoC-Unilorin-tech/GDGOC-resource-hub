@@ -1,0 +1,61 @@
+---
+title: "Deploy with Firebase Hosting"
+description: "Preview and release your static portfolio."
+---
+
+
+## Prepare the release folder
+
+Keep publishable HTML, CSS, JavaScript, JSON, images, and media inside `public`. Keep your test report, source-control metadata, and private notes outside it. Use only information you intend to make public. This project uses static Hosting; the practice contact form remains a demonstration.
+
+## Configure Hosting
+
+Install a supported Node.js version, then run these commands in your portfolio folder:
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+```
+
+Select your own Firebase project (create one in the Firebase console if needed). Set the public directory to `public`. Answer **No** to single-page-app rewrites and automatic GitHub deployment. Keep your existing `index.html` if prompted to overwrite it. Check that `firebase.json` points to `public`. Use the official references on the final page if your CLI prompts differ.
+
+## Test locally and preview
+
+Replace `YOUR_PROJECT_ID` with your actual project ID in each command:
+
+```bash
+firebase emulators:start --only hosting --project YOUR_PROJECT_ID
+```
+
+Open the local address printed by the CLI and repeat the test matrix. Stop the emulator with Ctrl+C. Create a preview when ready:
+
+```bash
+firebase hosting:channel:deploy capstone-review --project YOUR_PROJECT_ID
+```
+
+<Warning>A preview URL is public. Share only material you intend others to access, and note its expiry date when requesting review.</Warning>
+
+Check the preview's direct `projects.html` URL, reload, images, JSON requests, and form behaviour. Fix issues locally and update the preview before release.
+
+## Publish and verify
+
+```bash
+firebase deploy --only hosting --project YOUR_PROJECT_ID
+```
+
+Open the returned live URL and repeat the visitor journey. Record the release date and commit in your review notes. If a release is broken, repair and redeploy or use Hosting's release history to restore a known good release. Check the current Hosting usage limits in the references before publishing; this static exercise does not require paid backend features.
+
+## Practice and completion checklist
+
+- [ ] I can explain which folder becomes public.
+- [ ] My Firebase project ID is correct.
+- [ ] Direct page URLs and assets work on the preview.
+- [ ] I recorded feedback and retested fixes.
+- [ ] My live URL works and my README explains how to reproduce the release.
+
+<Accordion title="Hint and suggested diagnosis">
+If Hosting shows its default welcome page, inspect the configured public directory and its index.html. If the explorer fails, inspect the projects.json request and module paths on the deployed page. Check filename case; a local machine may tolerate a mismatch that hosting does not.
+</Accordion>
+
+[Previous](/web-development/frontend/capstone/testing) · [Next](/web-development/frontend/capstone/review)

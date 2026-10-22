@@ -124,7 +124,7 @@ GDGOC-resource-hub/
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
+- **Node.js** (a version supported by the current Mintlify CLI)
 - **npm** or **yarn**
 - **Git**
 
@@ -133,7 +133,7 @@ GDGOC-resource-hub/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Oladotunlaniyan/GDGOC-resource-hub.git
+   git clone https://github.com/GDGoC-Unilorin-tech/GDGOC-resource-hub.git
    cd GDGOC-resource-hub
    ```
 
@@ -385,7 +385,7 @@ console.log("Hello, GDGOC!");
 
 - 📧 **Email**: [gdgocunilorin@gmail.com](mailto:gdgocunilorin@gmail.com)
 - 🌐 **Community**: [GDGOC Unilorin](https://gdg.community.dev/gdg-on-campus-university-of-ilorin-ilorin-nigeria/)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/Oladotunlaniyan/GDGOC-resource-hub/issues)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/GDGoC-Unilorin-tech/GDGOC-resource-hub/issues)
 
 ### Troubleshooting
 

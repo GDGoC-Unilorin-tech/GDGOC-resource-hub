@@ -1,118 +1,42 @@
 ---
-title: How to Contribute
+title: "How to contribute"
+description: "Set up the hub, make a focused change, and prepare it for review."
 ---
 
-We’re excited you’re interested in contributing to the **GDGOC Unilorin Resource Hub**! Whether you're fixing a typo, 
-writing a new page, suggesting improvements, or adding helpful resources, your input helps improve this 
-resource for the entire developer relations community.
+## Agree on a task
 
-This guide walks you through the steps for making your first (or next!) contribution.
+Use the [contribution pathway](/web-development/frontend/contribution-pathway) to prepare your evidence. Confirm scope and acceptance checks with a maintainer. The repository's current origin is [GDGOC-resource-hub](https://github.com/GDGoC-Unilorin-tech/GDGOC-resource-hub).
 
----
+## Set up your copy
 
-## 🛠️ Getting Started
+Fork the repository to your GitHub account. Replace YOUR_USERNAME below with your username, then run:
 
-To contribute:
-
-1. **Fork this repository** to your GitHub account.
-
-2. **Clone your fork** to your local machine:
-
-   ```bash
-   git clone https://github.com/yourusername/.git
-   ```
-
-3. **Install the Mintlify CLI**:
-
-   ```bash
-   npm i -g mintlify
-   ```
-
-4. **Create a new branch** to work on an issue or feature:
-
-   ```bash
-   git checkout -b feat/your-feature-name
-   ```
-
-5. **Run the project locally** to view and test your changes:
-
-   ```bash
-   mintlify dev
-   ```
-
----
-
-## ✍️ Writing and Editing Content
-
-When adding or updating content:
-
-* Create new files using this naming format: `lowercase-with-dashes.mdx`
-* Start every file with a `title` in the frontmatter:
-
-```mdx
----
-title: Developer Relations Strategy
----
-
-## Introduction
-...
+```bash
+git clone https://github.com/YOUR_USERNAME/GDGOC-resource-hub.git
+cd GDGOC-resource-hub
+git switch -c feat/your-change
+npm install -g mint
+mint dev
 ```
 
-* Use clear, concise, and inclusive language
-* Feel free to share real-world examples or anecdotes where relevant
+Use a Node.js version supported by the installed CLI. Open the local address printed by Mintlify. Stop it with Ctrl+C. If you already have a checkout, use that checkout and inspect `git status` before making changes.
 
----
+## Follow the content structure
 
-## ✅ Submitting Your Contribution
+Read `site-restructure.md`. Keep one topic per MDX page, with learning objectives, examples, practice, hints, a separate suggested solution, and a completion checklist. Register new pages in `docs.json` in the intended order. Keep external learning references Google-affiliated and on the further-learning page. Use language-tagged code blocks and the existing callout components.
 
-Once you're done making your changes:
+Do not place runnable example CSS or JavaScript in the documentation tree: store them as `.css.source` and `.js.source`, and use the asset build script to produce downloadable runnable files. This prevents example styles and scripts from affecting the hub itself.
 
-1. **Commit your changes** with a clear commit message:
+## Verify and submit
 
-   ```bash
-   git commit -m "feat: add section on community engagement"
-   ```
+Preview changed pages, follow their sidebar and previous/next links, open downloads, and run the examples. Check keyboard use and narrow layouts when changing UI. Inspect `git diff` and stage only files belonging to your task.
 
-2. **Push your changes**:
+```bash
+git add path/to/changed-file.mdx
+git commit -m "docs: clarify the project setup exercise"
+git push -u origin feat/your-change
+```
 
-   ```bash
-   git push origin feat/your-feature-name
-   ```
+Open a pull request against the maintainer-designated base branch. Explain the problem, change, validation, and limitations. Address feedback before maintainers merge or release it. Use `feat:` for a new feature, `fix:` for a repair, and `docs:` for documentation changes.
 
-3. **Open a Pull Request** (PR) on the GitHub repository.
-
-   * Link it to a relevant issue if applicable.
-   * Keep pull requests focused and easy to review.
-
----
-
-## 🧾 Commit Message Guidelines
-
-To keep things organized, we follow [Conventional Commits](https://www.conventionalcommits.org/en):
-
-| Type       | Description                          |
-| ---------- | ------------------------------------ |
-| `feat`     | New features or pages                |
-| `fix`      | Bug fixes or typo corrections        |
-| `docs`     | Documentation-only changes           |
-| `refactor` | Refactoring without behavior changes |
-| `chore`    | Routine tasks (e.g., config updates) |
-| `test`     | Adding or updating tests             |
-
----
-
-## 💬 Need Help?
-
-If you're unsure where to start:
-
-* Browse our [open issues]()
-* Ask questions in our [Community]()
-* Or reach out to the maintainers via GitHub Discussions
-
----
-
-## 🙏 Thank You!
-
-Your contributions, either big or small, make a real difference. This guide is built by
-and for the community, and we deeply appreciate your time, insight, and collaboration.
-
+[Return to the contribution pathway](/web-development/frontend/contribution-pathway)

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Amina</title>
+  <meta name="description" content="Projects in a fictional HTML learning portfolio.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p>Amina's learning portfolio</p>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="learning-log.html">Learning log</a>
+      <a href="contact.html">Practice contact</a>
+    </nav>
+  </header>
+  <main id="main-content" tabindex="-1">
+<h1>My projects</h1>
+<div id="explorer-controls" hidden>
+<form id="search-form">
+  <label for="query">Search project titles</label>
+  <input id="query" type="search" name="query">
+  <button type="submit">Search</button>
+</form>
+<div id="filters" role="group" aria-label="Filter projects">
+  <button type="button" data-category="all" aria-pressed="true">All</button>
+  <button type="button" data-category="web" aria-pressed="false"><span>Web</span></button>
+  <button type="button" data-category="design" aria-pressed="false">Design</button>
+</div>
+<label for="sort">Project order</label>
+<select id="sort"><option value="original">Original order</option><option value="title">Title A–Z</option></select>
+<button id="reset" type="button">Reset filters</button>
+<button id="load" type="button">Reload projects</button>
+</div>
+<p id="storage-note"></p>
+<p id="status" role="status"></p>
+<ul id="projects" class="projects"></ul>
+
+    <div id="project-fallback" class="projects">
+      <article class="card"><h2>Personal profile</h2><p>A connected website built with meaningful HTML and reliable links.</p><a href="about.html">Read about my learning</a></article>
+      <article class="card"><h2>Study planner</h2><p>Pages, forms, tables, and media.</p><a href="learning-log.html">Explore my learning log</a></article>
+      <article class="card"><h2>Community poster</h2><p>A fictional community announcement concept with a clear hierarchy and action.</p><a href="project-notes.html">Read implementation notes</a></article>
+    </div><section>
+      <h2>My learning approach</h2>
+      <video controls preload="metadata" width="640" height="360" poster="images/study-wide.png">
+        <source src="media/learning.webm" type="video/webm">
+        <track src="media/learning-en.vtt" kind="captions" srclang="en" label="English descriptions" default>
+        Video playback is unavailable.
+      </video>
+      <p><a href="media/learning.webm">Download the silent practice video</a></p>
+      <h3>Transcript and visual description</h3>
+      <p>The animation displays Learn for two seconds, Practise for two seconds, then Build for two seconds. It has no speech or other audio.</p>
+    </section><h2>Questions about this portfolio</h2>
+    <details><summary>Does the form send messages?</summary><p>No; it demonstrates native controls only.</p></details>
+    <details><summary>Is styling complete?</summary><p>This example combines HTML, CSS, and JavaScript for the frontend capstone. Review its requirements and test evidence before calling your own work complete.</p></details>
+    <details><summary>How did I check my work?</summary><p>I use the audit template to record checks, repairs, retests, and remaining limitations.</p></details>
+    <p><a href="project-notes.html">Read the implementation notes</a></p>
+  </main>
+  <footer><p>Fictional student portfolio for frontend practice.</p></footer>
+</body>
+</html>

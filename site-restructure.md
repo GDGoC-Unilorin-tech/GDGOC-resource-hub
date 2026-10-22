@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 21 October 2026 (CSS course completion)
+Updated: 22 October 2026 (frontend capstone and contribution pathway)
 
 ## Purpose and current scope
 
@@ -18,8 +18,8 @@ This guide describes the current repository structure and the standards for exte
 | CSS | 45 MDX pages: 27 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; practice pack and 4 solution ZIPs | Learner review and portfolio integration |
 | JavaScript | 49 MDX pages: 31 lessons, 9 checkpoints, 3 stage projects, final challenge, 4 overviews, and further learning; 4 worked-project ZIPs | Learner review and cross-course portfolio integration |
 | Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
-| Frontend capstone | Proposed framework page | Agree the shared brief and assessment rubric; implement after core courses |
-| Contribution pathway | Proposed pathway page | Technical Innovation & Development team confirms readiness, tasks, and reviewers |
+| Frontend capstone | Seven pages covering brief, integration, milestones, testing, Firebase deployment, review, and references; integrated solution ZIP | Learner and maintainer review; keep evidence and examples aligned |
+| Contribution pathway | Evidence checklist, task proposal, and contribution workflow | Technical Innovation & Development team confirms available tasks and reviewers |
 | Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
@@ -107,9 +107,9 @@ Each module ends with its own checkpoint. The full current page inventory appear
 4. **HTML final challenge:** Refine, review, and demonstrate the complete HTML portfolio.
 5. **CSS:** Add styling and responsive design to that foundation.
 6. **JavaScript, available:** Add search, filtering, local data loading, saved preferences, and tested interactions.
-7. **Frontend capstone, proposed:** Integrate, test, demonstrate, and deploy a complete website.
+7. **Frontend capstone:** Integrate, test, demonstrate, and deploy a complete website.
 
-The HTML final challenge assesses HTML. It is distinct from the future frontend capstone, which combines technologies. The capstone's final shared brief and review criteria still require team agreement.
+The HTML final challenge assesses HTML. The frontend capstone combines HTML, CSS, and JavaScript in a complete portfolio. Its learning rubric supports self-assessment and peer review; team assignments and release decisions remain with maintainers.
 
 ## Where files belong
 
@@ -232,7 +232,7 @@ For larger navigation/content changes, also use the installed CLI's validation a
 1. Maintain and review the implemented HTML course and navigation.
 2. Review the completed CSS course with learners and preserve the shared portfolio through JavaScript.
 3. Review the completed JavaScript course and coordinate portfolio integration with HTML/CSS owners.
-4. Finalise the frontend capstone brief and assessment with the Lead.
+4. Review the implemented frontend capstone, integrated example, and assessment evidence with learners and the Lead.
 5. Expand frameworks and workflow content, then remaining tracks.
 6. Confirm the contribution pathway with the technical team.
 
@@ -252,7 +252,14 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
 - **Learning roadmaps**
   - [Overview and learning roadmap](web-development.mdx)
   - [Frontend Development](frontend-development.mdx)
-  - [Frontend Capstone](web-development/frontend/capstone.mdx)
+- **Frontend Capstone**
+  - [Capstone brief](web-development/frontend/capstone.mdx)
+  - [Integrate your portfolio](web-development/frontend/capstone/integration.mdx)
+  - [Build milestones](web-development/frontend/capstone/milestones.mdx)
+  - [Test and repair](web-development/frontend/capstone/testing.mdx)
+  - [Deploy with Firebase](web-development/frontend/capstone/deployment.mdx)
+  - [Demonstrate and review](web-development/frontend/capstone/review.mdx)
+  - [Further learning](web-development/frontend/capstone/further-learning.mdx)
   - [From learning to contribution](web-development/frontend/contribution-pathway.mdx)
 - **Career Resources**
   - [Job Hunting & Resume Guide](job-hunting/resume.mdx)
@@ -505,3 +512,18 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
 ## HTML Intermediate and Advanced contributor checks
 
 The two stage overview pages are the entry points in the HTML sidebar. Preserve the module order in `docs.json`, including Data tables followed by Quotations, code, and dates before the forms module. Each of the 18 lessons includes an observation exercise and a topic-specific answer explanation; each of the seven checkpoints includes expected test evidence and a separate suggested solution. Keep stage-project checklists, rubrics, and downloadable solutions aligned. External references remain on `further-learning.mdx` and use Google resources. Automated grading and enforced stage locks remain unimplemented.
+
+## Frontend capstone and contribution pathway
+
+The Resource Hub sidebar now has a Frontend Capstone group after Learning roadmaps. The existing capstone URL is the brief; continue through these standalone pages in order:
+
+- [Frontend Capstone: build your portfolio](web-development/frontend/capstone.mdx)
+- [Integrate HTML, CSS, and JavaScript](web-development/frontend/capstone/integration.mdx)
+- [Build your capstone in milestones](web-development/frontend/capstone/milestones.mdx)
+- [Test and repair your portfolio](web-development/frontend/capstone/testing.mdx)
+- [Deploy with Firebase Hosting](web-development/frontend/capstone/deployment.mdx)
+- [Demonstrate and review your capstone](web-development/frontend/capstone/review.mdx)
+- [Capstone further learning](web-development/frontend/capstone/further-learning.mdx)
+- [From learning to contribution](web-development/frontend/contribution-pathway.mdx)
+
+The capstone integrates the HTML/CSS portfolio and JavaScript explorer. Assets live in `assets/capstone/solution/`; regenerate the ZIP with `python assets/capstone/build_archives.py`. Keep `.source` suffixes in the repository. Downloads contain a publishable `public/` folder and review instructions outside it. Firebase steps are learner-run instructions; no hosting project or deployment is provisioned by the hub. Readiness uses an observable rubric and evidence; team assignments and releases still require maintainer review. No automated grading, progress account, or stage lock is implemented.
