@@ -29,8 +29,19 @@
             "group": "Learning roadmaps",
             "pages": [
               "web-development",
-              "frontend-development",
+              "frontend-development"
+            ]
+          },
+          {
+            "group": "Frontend Capstone",
+            "pages": [
               "web-development/frontend/capstone",
+              "web-development/frontend/capstone/integration",
+              "web-development/frontend/capstone/milestones",
+              "web-development/frontend/capstone/testing",
+              "web-development/frontend/capstone/deployment",
+              "web-development/frontend/capstone/review",
+              "web-development/frontend/capstone/further-learning",
               "web-development/frontend/contribution-pathway"
             ]
           },
@@ -648,7 +659,7 @@
   "footer": {
     "socials": {
       "x": "https://x.com/gdgocunilorin",
-      "github": "https://github.com/gdgocunilorin",
+      "github": "https://github.com/GDGoC-Unilorin-tech",
       "linkedin": "https://linkedin.com/company/gdgocunilorin",
       "instagram": "https://instagram.com/gdgocunilorin"
     }

@@ -1,0 +1,75 @@
+---
+title: "Integrate HTML, CSS, and JavaScript"
+description: "Connect your existing course projects without losing their accessibility or styling."
+---
+
+
+## Start with your portfolio
+
+Make a separate copy of your completed CSS portfolio. Keep the five main pages, images, captions, and relative links. Keep the original course work as a comparison. Move the publishable files into a folder named `public`; keep review notes and configuration outside it.
+
+```text
+portfolio/
+  public/
+    index.html
+    about.html
+    projects.html
+    learning-log.html
+    contact.html
+    styles.css
+    app.js
+    logic.js
+    storage.js
+    projects.json
+    images/
+    media/
+  REVIEW.md
+```
+
+Include any supporting HTML pages your links or forms use. A file is not optional if another page links to it.
+
+## Connect the explorer
+
+Add the JavaScript course's controls and result list to `projects.html`. Give the controls a wrapper with `id="explorer-controls"` and the `hidden` attribute. Keep a separate static project list with `id="project-fallback"`. Load the module only on this page:
+
+```html
+<script type="module" src="app.js"></script>
+```
+
+In the module, reveal the controls after the event handlers are installed. Hide the fallback only after valid data arrives. Restore it on a failed request. The static list then works when scripts fail, JavaScript is disabled, or the JSON cannot load.
+
+```javascript
+const fallback = document.querySelector('#project-fallback');
+// In render(), after updating the phase:
+fallback.hidden = state.phase === 'ready';
+```
+
+Use `textContent` when inserting project titles. Keep the existing shared stylesheet and add small, scoped explorer rules. A hidden element must stay hidden even when a grid rule sets its display value:
+
+```css
+[hidden] { display: none !important; }
+#projects { list-style: none; padding: 0; }
+```
+
+<Tip>Use one ID for each element. Two elements named `projects` can make your script update the wrong list.</Tip>
+
+## Practice: connect the three layers
+
+Add a fourth project to the JSON and update the static fallback. Make its title long enough to wrap. Run through a local HTTP server; modules and fetch should not be tested by double-clicking a file. The deployment page explains a local Hosting emulator.
+
+- [ ] All five pages still navigate correctly.
+- [ ] Four projects appear after loading; filtering and reset give the expected counts.
+- [ ] The long title fits at a narrow viewport.
+- [ ] Disabling JavaScript preserves project information and hides inactive controls.
+
+<Accordion title="Hint">
+Check the Network panel for missing module or JSON requests. Paths resolve relative to the page or importing module; moving one file can break its dependencies.
+</Accordion>
+
+<Accordion title="Suggested solution: integrated portfolio">
+
+[Download the worked capstone](/assets/capstone/frontend-capstone-solution.zip). Extract it and read README.md. It combines the styled multipage portfolio and the modular explorer, includes browser-based logic checks, and keeps static fallback content. Its fictional content is a reference: personalise and test your own submission.
+
+</Accordion>
+
+[Previous](/web-development/frontend/capstone) · [Next](/web-development/frontend/capstone/milestones)
