@@ -1,0 +1,50 @@
+---
+title: "Test and repair your portfolio"
+description: "Check visitor journeys, accessibility, and failure states before release."
+---
+
+
+## Keep a test record
+
+For each check record: browser/version, viewport or zoom, action, expected result, actual result, repair, and retest. Mark untested checks as **Not tested**. Passing an automated audit alone does not establish accessibility.
+
+| Area | Action | Expected result |
+| --- | --- | --- |
+| Navigation | Follow every menu, card, and supporting-page link | Correct destination; no missing files |
+| Keyboard | Use Tab, Shift+Tab, Enter, and Space | Visible focus, usable controls, no trap; skip link reaches main |
+| Forms | Try an empty required field and invalid email | Native validation; visible demonstration notice; no message sent |
+| Layout | Test 320, 768, and 1440 CSS pixels; then 200% and 400% browser zoom | Readable content and controls without overlap or lost information |
+| Preferences | Test dark mode, reduced motion, and print | Legible colours, reduced optional motion, useful printed content |
+| Explorer | Combine query/category, sort, reset, and reload | Predictable results; pressed filter is exposed to assistive technology |
+| Empty | Search an absent title; also temporarily serve an empty array | Clear empty message, usable reset/reload |
+| Failure | Block projects.json in DevTools, then unblock and reload | Error with retry and static fallback; successful recovery |
+| Invalid data | Temporarily serve malformed JSON or duplicate IDs | Error state rather than partial misleading results |
+| Storage | Block site storage or simulate a storage exception | Filtering works for the current visit; explanatory notice |
+| Request race | Throttle network and press Reload repeatedly | Only the latest request changes the results |
+| No JavaScript | Disable JavaScript and reload | Navigation and static project content work; inert controls hidden |
+| Safe rendering | Put literal HTML-like text in a project title | Text appears as text, without executing markup |
+| Media | Check alternatives, captions, transcript, loading | Meaning remains available when media cannot be used |
+
+Restore all test data and network settings before deployment. Run `tests.html` from the worked solution through your local server for its logic checks. These cover data validation, filtering, and sorting; the table above still requires browser checks.
+
+## Practice: diagnose a broken request
+
+Temporarily rename `projects.json`. Record the Network status and visible fallback. Restore the file, press Reload, and record recovery. Explain why an HTTP error differs from a successful response containing an empty array.
+
+<Accordion title="Hint">
+Use the Network and Console panels together. A valid empty dataset is a successful state, not a reason to tell visitors that the connection failed.
+</Accordion>
+
+<Accordion title="Suggested explanation">
+A missing file produces an unsuccessful response, so the explorer shows retry instructions and the static list. A valid empty array passes validation and shows zero matches. Restoring the file and reloading should return to the ready state without refreshing the entire page.
+</Accordion>
+
+## Completion checklist
+
+- [ ] I recorded actual results and retested repairs.
+- [ ] I tested at least two browsers and documented their versions; where possible I included a different browser engine.
+- [ ] I performed keyboard and zoom checks and recorded any assistive-technology review separately.
+- [ ] I restored normal data and removed debugging changes.
+- [ ] I recorded remaining limitations honestly.
+
+[Previous](/web-development/frontend/capstone/milestones) · [Next](/web-development/frontend/capstone/deployment)

@@ -1,0 +1,55 @@
+---
+title: "Build your capstone in milestones"
+description: "Turn the brief into observable outcomes."
+---
+
+
+## 1. Plan the visitor journey
+
+Write an audience statement and sketch your five pages. Describe a journey from Home to Projects to a learning reflection. Pick three projects you can honestly explain, including what you built, a difficulty, and an improvement.
+
+**Checkpoint:** another learner can explain the purpose of each page from your sketch.
+
+## 2. Prepare content and structure
+
+Write your content before polishing the design. Check heading order, descriptive links, image alternatives, form labels, and page titles. Keep the practice form's demonstration notice visible. Add the same useful project information to the static fallback and the JSON dataset.
+
+**Checkpoint:** the site remains understandable with CSS and JavaScript disabled.
+
+## 3. Apply your design
+
+Choose a small set of spacing, colour, and typography tokens. Reuse them across all pages. Make navigation wrap, cards adapt, and media fit. Check long words and zoom as well as familiar screen widths.
+
+**Checkpoint:** no content is cut off at 320 CSS pixels; focused controls are visible in both themes.
+
+## 4. Add interaction
+
+Integrate the explorer. Search and category must combine, sorting must preserve the dataset, reset must restore defaults, and reload must recover after a failed request. Store only the selected category. Test a browser that refuses storage.
+
+**Checkpoint:** demonstrate search, filtering, sorting, an empty result, a failed load, and recovery without a console error.
+
+## 5. Review, deploy, and demonstrate
+
+Complete the test matrix on the next page. Fix problems, retain before-and-after evidence, then follow the Firebase deployment page. Ask a peer to repeat your visitor journey using only the instructions in your README.
+
+## Practice: write acceptance checks
+
+For your search and reset features, write an action, an expected result, and an actual result. Do this before looking at the suggested checks.
+
+<Accordion title="Hint">
+Use a known dataset. A check such as “search works” cannot tell another person what to reproduce.
+</Accordion>
+
+<Accordion title="Suggested checks">
+With the supplied three projects, select Web and search for ` PROFILE `. Expect one result, Personal profile. Press Reset: expect an empty search box, All selected, Original order selected, and all three projects. Reload the page after selecting Design: expect Design to remain selected when storage is available.
+</Accordion>
+
+## Completion checklist
+
+- [ ] I have an audience statement and page plan.
+- [ ] My content and design are personalised.
+- [ ] My static and interactive content agree.
+- [ ] I can explain the state, rendering, and fetch flow.
+- [ ] I have test evidence and a list of limitations.
+
+[Previous](/web-development/frontend/capstone/integration) · [Next](/web-development/frontend/capstone/testing)
