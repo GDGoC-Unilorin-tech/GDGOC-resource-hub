@@ -1,0 +1,57 @@
+---
+title: "Lift shared state"
+description: "Make sibling controls agree on one source of truth."
+---
+
+## What you will learn
+
+Make sibling controls agree on one source of truth.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+When a search control and results panel both need a query, the nearest shared parent owns it. Pass the value down and a callback back up. Avoid giving both children independent copies of the query.
+
+Refactor the query control in Explorer.jsx into a SearchBox component. Explorer keeps query state, SearchBox reports changes, and the result calculation uses the same query. Reset should update the owner's state so the displayed input and results change together. The Intermediate example uses local state; the Advanced example centralises filter actions in a reducer.
+
+## Worked example
+
+```jsx
+function SearchBox({ query, onQueryChange }) {
+  return <label>Search project titles
+    <input value={query} onChange={e => onQueryChange(e.target.value)} />
+  </label>;
+}
+// <SearchBox query={query} onQueryChange={setQuery} />
+```
+
+## Practice challenge
+
+Extract SearchBox, then add Reset which clears the query and restores category All. Test input and results together.
+
+<Accordion title="Need a hint?">
+
+The child reports the new string; the parent decides how to store it.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Keep query/category in Explorer. Pass setQuery as the callback. Reset sets both defaults; the controlled input reflects the cleared state without direct DOM manipulation.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/intermediate/i01-forms">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/intermediate/i03-effects-fetch">Next</a>
+</div>

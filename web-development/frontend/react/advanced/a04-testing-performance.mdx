@@ -1,0 +1,60 @@
+---
+title: "Test behaviour and measure before optimising"
+description: "Protect logic and investigate an observed performance problem."
+---
+
+## What you will learn
+
+Protect logic and investigate an observed performance problem.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+Run `npm test` in the extracted pack. Node's built-in runner exercises pure data validation, filtering, and reducer behaviour. Those tests do not render components, so also perform the UI checks in REVIEW.md. Add tests around an observable requirement rather than copying the implementation into the test.
+
+Before optimising, reproduce a slow task and record browser Performance evidence under consistent conditions. For three cards, filtering during render is inexpensive. Adding memoisation everywhere creates complexity without demonstrated benefit. For a genuinely large dataset, investigate unnecessary work and expensive rendering before choosing a change.
+
+## Worked example
+
+```jsx
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { selectProjects } from './logic.js';
+test('normalises the query', () => {
+  const data = [{ id: 'a', title: 'Profile', category: 'web' }];
+  assert.equal(selectProjects(data, {
+    query: ' PROFILE ', category: 'all', sort: 'original'
+  }).length, 1);
+});
+```
+
+## Practice challenge
+
+Add a no-match test, deliberately regress query normalisation and observe failure, then restore it. Record a keyboard/browser check the function test cannot prove.
+
+<Accordion title="Need a hint?">
+
+A test is useful when it fails for the defect it is intended to catch.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+An absent query returns zero matches. Removing trim/lowercase makes the supplied normalisation test fail. Restoring the code passes. Focus retention still needs an interaction check.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/a03-accessibility">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/advanced/a05-build-deploy">Next</a>
+</div>

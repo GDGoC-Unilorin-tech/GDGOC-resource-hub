@@ -1,0 +1,59 @@
+---
+title: "Props, lists, and stable keys"
+description: "Pass project data into reusable cards."
+---
+
+## What you will learn
+
+Pass project data into reusable cards.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+Props are inputs from a parent. Read them without changing them. Render a collection by mapping data to elements and give each sibling a stable key from its data, such as a project ID. An array position is a poor identity when the list can reorder or filter.
+
+The course dataset contains unique id, title, and category fields. In Beginner.jsx, create the component below and use it inside the list. The key belongs where the list is created, not inside the card. Avoid mutating an object passed as a prop; request a change through a callback or update state in its owner.
+
+## Worked example
+
+```jsx
+function ProjectCard({ project }) {
+  return <article className="card">
+    <h3>{project.title}</h3>
+    <p>{project.category}</p>
+  </article>;
+}
+// Inside the parent return:
+// projects.map(project => <ProjectCard key={project.id} project={project} />)
+```
+
+## Practice challenge
+
+Replace repeated project markup with ProjectCard. Add one uniquely identified project and check that all cards update.
+
+<Accordion title="Need a hint?">
+
+The passed prop is named project, so destructure that exact name.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Map each project to ProjectCard with key={project.id} and project={project}. Keep title/category in the data rather than duplicating hard-coded card JSX. Confirm there are no missing-key warnings.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/beginner/b02-components-jsx">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/beginner/b04-events-state">Next</a>
+</div>

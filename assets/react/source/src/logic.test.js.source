@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validProjects, selectProjects, filtersReducer, initialFilters} from './logic.js';
+const data=[{id:'b',title:'Beta',category:'web'},{id:'a',title:'Alpha',category:'design'}];
+test('valid and empty data',()=>{assert.ok(validProjects(data));assert.ok(validProjects([]));});
+test('reject malformed and duplicate records',()=>{for(const value of [null,{},[null],[{id:'x',title:' ',category:'web'}],[data[0],data[0]]])assert.equal(validProjects(value),false);});
+test('normalised query',()=>assert.equal(selectProjects(data,{...initialFilters,query:' BETA '}).length,1));
+test('category and query combine',()=>assert.equal(selectProjects(data,{...initialFilters,query:'Beta',category:'design'}).length,0));
+test('no match',()=>assert.equal(selectProjects(data,{...initialFilters,query:'absent'}).length,0));
+test('sort preserves input order',()=>{assert.equal(selectProjects(data,{...initialFilters,sort:'title'})[0].id,'a');assert.equal(data[0].id,'b');});
+test('reducer changes only requested field',()=>{const next=filtersReducer(initialFilters,{type:'query',value:'abc'});assert.equal(next.query,'abc');assert.equal(next.category,'all');assert.equal(initialFilters.query,'');});
+test('reset does not mutate old state',()=>{const old={query:'x',category:'web',sort:'title'};assert.deepEqual(filtersReducer(old,{type:'reset'}),initialFilters);assert.equal(old.query,'x');});
+test('unknown action preserves state',()=>assert.equal(filtersReducer(initialFilters,{type:'unknown'}),initialFilters));

@@ -1,0 +1,31 @@
+import React, { useReducer, useState } from 'react';
+import { initialFilters, filtersReducer, selectProjects } from './logic.js';
+import { useProjects } from './useProjects.js';
+export function Intermediate() {
+ const [filters, setFilters] = useState({...initialFilters});
+ function update(type, value) { setFilters(previous => type === 'reset' ? {...initialFilters} : {...previous, [type]:value}); }
+ return <Explorer filters={filters} update={update} title="Intermediate explorer" />;
+}
+export function Advanced() {
+ const [filters, dispatch] = useReducer(filtersReducer, initialFilters);
+ return <Explorer filters={filters} update={(type,value) => dispatch({type,value})} title="Advanced explorer" />;
+}
+function Explorer({filters, update, title}) {
+ const {phase, projects, error, reload} = useProjects();
+ const [saved, setSaved] = useState([]);
+ const matches = selectProjects(projects, filters);
+ const message = phase === 'loading' ? 'Loading projects…' : phase === 'error' ? error : matches.length === 0 ? 'No matching projects.' : `${matches.length} projects found.`;
+ function toggle(id) { setSaved(previous => previous.includes(id) ? previous.filter(value => value !== id) : [...previous,id]); }
+ return <section><h2>{title}</h2>
+  <div className="controls">
+   <label htmlFor="query">Search project titles</label><input id="query" value={filters.query} onChange={e => update('query',e.target.value)} />
+   <label htmlFor="category">Category</label><select id="category" value={filters.category} onChange={e => update('category',e.target.value)}><option value="all">All</option><option value="web">Web</option><option value="design">Design</option></select>
+   <label htmlFor="sort">Order</label><select id="sort" value={filters.sort} onChange={e => update('sort',e.target.value)}><option value="original">Original order</option><option value="title">Title A–Z</option></select>
+   <div className="actions"><button onClick={() => update('reset')}>Reset</button><button onClick={reload}>{phase === 'error' ? 'Retry' : 'Reload'}</button></div>
+  </div>
+  <p role="status">{message}</p><p>{projects.filter(p => saved.includes(p.id)).length} saved projects (this visit)</p>
+  {phase === 'ready' && <div className="cards">{matches.map(project => <article className="card" key={project.id}>
+   <h3>{project.title}</h3><p>{project.category}</p><button aria-pressed={saved.includes(project.id)} onClick={() => toggle(project.id)}>Save {project.title}</button>
+  </article>)}</div>}
+ </section>;
+}

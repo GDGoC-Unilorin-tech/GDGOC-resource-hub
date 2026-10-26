@@ -487,6 +487,52 @@
             "pages": [
               "web-development/frontend/react/overview"
             ]
+          },
+          {
+            "group": "Beginner",
+            "pages": [
+              "web-development/frontend/react/beginner/overview",
+              "web-development/frontend/react/beginner/b01-setup",
+              "web-development/frontend/react/beginner/b02-components-jsx",
+              "web-development/frontend/react/beginner/b03-props-lists",
+              "web-development/frontend/react/beginner/b04-events-state",
+              "web-development/frontend/react/beginner/b05-derived-ui",
+              "web-development/frontend/react/beginner/checkpoint",
+              "web-development/frontend/react/beginner/project"
+            ]
+          },
+          {
+            "group": "Intermediate",
+            "pages": [
+              "web-development/frontend/react/intermediate/overview",
+              "web-development/frontend/react/intermediate/i01-forms",
+              "web-development/frontend/react/intermediate/i02-shared-state",
+              "web-development/frontend/react/intermediate/i03-effects-fetch",
+              "web-development/frontend/react/intermediate/i04-navigation",
+              "web-development/frontend/react/intermediate/i05-empty-error",
+              "web-development/frontend/react/intermediate/checkpoint",
+              "web-development/frontend/react/intermediate/project"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "web-development/frontend/react/advanced/overview",
+              "web-development/frontend/react/advanced/a01-reducer",
+              "web-development/frontend/react/advanced/a02-custom-hooks",
+              "web-development/frontend/react/advanced/a03-accessibility",
+              "web-development/frontend/react/advanced/a04-testing-performance",
+              "web-development/frontend/react/advanced/a05-build-deploy",
+              "web-development/frontend/react/advanced/checkpoint",
+              "web-development/frontend/react/advanced/project"
+            ]
+          },
+          {
+            "group": "Build and explore",
+            "pages": [
+              "web-development/frontend/react/final-project",
+              "web-development/frontend/react/further-learning"
+            ]
           }
         ]
       },

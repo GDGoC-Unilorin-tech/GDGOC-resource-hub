@@ -1,0 +1,60 @@
+---
+title: "Manage related updates with a reducer"
+description: "Represent filter changes with explicit actions."
+---
+
+## What you will learn
+
+Represent filter changes with explicit actions.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A reducer computes new state from previous state and an action. It is useful when related updates need a clear vocabulary. It is not automatically better than useState for a single value. Keep reducers pure: no requests, mutation, time-dependent values, or storage writes inside them.
+
+The Advanced example uses filtersReducer in logic.js. Search, category, sort, and reset actions describe intent. Returning a new object preserves React's update model and makes the reducer straightforward to test.
+
+## Worked example
+
+```jsx
+export function filtersReducer(state, action) {
+  switch (action.type) {
+    case 'query': return { ...state, query: action.value };
+    case 'category': return { ...state, category: action.value };
+    case 'sort': return { ...state, sort: action.value };
+    case 'reset': return { query: '', category: 'all', sort: 'original' };
+    default: return state;
+  }
+}
+```
+
+## Practice challenge
+
+Add a test proving reset clears a non-empty query and selected category without modifying the previous state.
+
+<Accordion title="Need a hint?">
+
+Keep a reference to the old state and assert its values after calling the reducer.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Call filtersReducer with a populated state and reset. Assert default values in the returned object, a different object identity, and unchanged values in the original state.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/overview">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/advanced/a02-custom-hooks">Next</a>
+</div>

@@ -1,0 +1,17 @@
+import React, { useState } from 'react';
+import { projects } from './data.js';
+export default function Beginner() {
+ const [saved, setSaved] = useState([]);
+ const [onlySaved, setOnlySaved] = useState(false);
+ function toggle(id) { setSaved(previous => previous.includes(id) ? previous.filter(value => value !== id) : [...previous, id]); }
+ const visible = onlySaved ? projects.filter(project => saved.includes(project.id)) : projects;
+ return <section id="projects"><h2>My first React portfolio</h2>
+  <p role="status">{saved.length} saved projects</p>
+  <label><input type="checkbox" checked={onlySaved} onChange={e => setOnlySaved(e.target.checked)} /> Show saved only</label>
+  {visible.length === 0 && <p>No saved projects yet.</p>}
+  <div className="cards">{visible.map(project => <article className="card" key={project.id}>
+   <h3>{project.title}</h3><p>{project.category}</p>
+   <button aria-pressed={saved.includes(project.id)} onClick={() => toggle(project.id)}>Save {project.title}</button>
+  </article>)}</div>
+ </section>;
+}

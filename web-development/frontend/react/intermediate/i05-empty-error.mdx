@@ -1,0 +1,56 @@
+---
+title: "Design loading, empty, and error states"
+description: "Keep interactions understandable when data is unavailable."
+---
+
+## What you will learn
+
+Keep interactions understandable when data is unavailable.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A reliable interface says whether it is waiting, has no matching data, or failed. Do not show No results while the first request is still loading. Keep controls labelled, provide a retry after failures, and announce concise result changes through a status region.
+
+In Explorer.jsx, the status text depends on phase before it depends on the match count. Search, category, and order combine to calculate matches. Reset restores a useful starting state. Keep the last-focused control mounted when results change so keyboard users do not lose their place.
+
+## Worked example
+
+```jsx
+const message = phase === 'loading' ? 'Loading projects…'
+  : phase === 'error' ? error
+  : matches.length === 0 ? 'No matching projects.'
+  : `${matches.length} projects found.`;
+// <p role="status">{message}</p>
+```
+
+## Practice challenge
+
+Test a search with no match, a failed fetch, and a delayed fetch. Explain how each state differs and how a visitor recovers.
+
+<Accordion title="Need a hint?">
+
+Filter emptiness is recovered with a different filter or Reset; network failure is recovered with Retry.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Retain Reset for no matches, Retry for failed loading, and a loading message during requests. Never render untrusted error content as HTML; display text.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/intermediate/i04-navigation">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/intermediate/checkpoint">Next</a>
+</div>

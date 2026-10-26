@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 22 October 2026 (Frontend Tools & Workflow course)
+Updated: 26 October 2026 (React course)
 
 ## Purpose and current scope
 
@@ -21,7 +21,8 @@ This guide describes the current repository structure and the standards for exte
 | Frontend capstone | Seven pages covering brief, integration, milestones, testing, Firebase deployment, review, and references; integrated solution ZIP | Learner and maintainer review; keep evidence and examples aligned |
 | Contribution pathway | Evidence checklist, task proposal, and contribution workflow | Technical Innovation & Development team confirms available tasks and reviewers |
 | Frontend Tools & Workflow | 21 pages: overview, 3 stage overviews, 9 lessons, 3 checkpoints, 3 stage projects, final challenge, and references; downloadable repair lab | Learner review and integration into the portfolio workflow |
-| Frameworks | Landing pages | Develop after the core foundations, with prerequisites |
+| React | 27 MDX pages: 15 lessons, 3 checkpoints, 3 stage projects, 4 overviews, final challenge, references; runnable practice pack | Learner review and maintenance |
+| Other frameworks | Landing pages | Develop after React with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
 A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML Intermediate and Advanced now include stage overviews, topic-specific experiments and answer explanations, checkpoint solutions and test tables, and project assessment rubrics. CSS now follows the same pattern across all three levels, with isolated runnable examples and a continuing portfolio.
@@ -55,7 +56,7 @@ The header has two navigation rows:
 1. **Track links:** Resource Hub, Frontend, Backend, Frameworks, Cloud, and Databases open their internal overview pages. Category links sit between the logo and search without horizontal scrolling. Compact spacing accommodates smaller desktop screens; mobile navigation uses Mintlify's menu. Search and Join Community remain available. Tools, Other Paths, and Support are omitted from the top links; existing content pages remain intact.
 2. **Technology tabs:** HTML, CSS, JavaScript, React, and Angular. The row stays on one line and scrolls horizontally when space is limited. Arrow buttons, touch scrolling, and keyboard focus expose off-screen links.
 
-Selecting a technology displays only its own sidebar. Existing HTML, CSS, and JavaScript level/module structures remain unchanged. React and Angular currently have planned-course landing pages only; do not imply their lessons are available. Roadmaps, capstone, and contribution pathway remain under Resource Hub.
+Selecting a technology displays only its own sidebar. Existing HTML, CSS, and JavaScript level/module structures remain unchanged. React now has a structured course; Angular remains a planned-course landing page. Roadmaps, capstone, and contribution pathway remain under Resource Hub.
 
 ### Maintaining the header
 
@@ -553,3 +554,36 @@ The capstone integrates the HTML/CSS portfolio and JavaScript explorer. Assets l
 ## Workflow course maintenance
 
 The Tools tab keeps the existing tools-and-workflow overview URL. Lessons under `web-development/frontend/workflow/` progress through Beginner, Intermediate, and Advanced, with a checkpoint and project at each stage. Preserve the reading order in docs.json. The final challenge applies workflow skills to the learner’s portfolio and links back to the capstone. Google-affiliated references stay on further-learning.mdx. Git/GitHub are explicitly described as independent products. Practice sources live under assets/workflow/source; keep .source suffixes and regenerate the ZIP with its build script. Do not “repair” intentional starter failures when editing the worked solution. Cloud/remote tasks need learner accounts; locally prepared evidence must not be labelled a completed remote action.
+
+
+## React course inventory
+
+- [Learn React](web-development/frontend/react/overview.mdx)
+- [Beginner: Components and local state](web-development/frontend/react/beginner/overview.mdx)
+- [Run your first React app](web-development/frontend/react/beginner/b01-setup.mdx)
+- [Components and JSX](web-development/frontend/react/beginner/b02-components-jsx.mdx)
+- [Props, lists, and stable keys](web-development/frontend/react/beginner/b03-props-lists.mdx)
+- [Events and state](web-development/frontend/react/beginner/b04-events-state.mdx)
+- [Conditional and derived UI](web-development/frontend/react/beginner/b05-derived-ui.mdx)
+- [Checkpoint: Components and local state](web-development/frontend/react/beginner/checkpoint.mdx)
+- [A portfolio card collection](web-development/frontend/react/beginner/project.mdx)
+- [Intermediate: Data and navigation](web-development/frontend/react/intermediate/overview.mdx)
+- [Controlled forms and validation](web-development/frontend/react/intermediate/i01-forms.mdx)
+- [Lift shared state](web-development/frontend/react/intermediate/i02-shared-state.mdx)
+- [Effects and data loading](web-development/frontend/react/intermediate/i03-effects-fetch.mdx)
+- [Navigation and shareable views](web-development/frontend/react/intermediate/i04-navigation.mdx)
+- [Design loading, empty, and error states](web-development/frontend/react/intermediate/i05-empty-error.mdx)
+- [Checkpoint: Data and navigation](web-development/frontend/react/intermediate/checkpoint.mdx)
+- [A searchable portfolio explorer](web-development/frontend/react/intermediate/project.mdx)
+- [Advanced: Reliability and release](web-development/frontend/react/advanced/overview.mdx)
+- [Manage related updates with a reducer](web-development/frontend/react/advanced/a01-reducer.mdx)
+- [Extract reusable Hooks](web-development/frontend/react/advanced/a02-custom-hooks.mdx)
+- [Accessible React interactions](web-development/frontend/react/advanced/a03-accessibility.mdx)
+- [Test behaviour and measure before optimising](web-development/frontend/react/advanced/a04-testing-performance.mdx)
+- [Build and deploy the React portfolio](web-development/frontend/react/advanced/a05-build-deploy.mdx)
+- [Checkpoint: Reliability and release](web-development/frontend/react/advanced/checkpoint.mdx)
+- [A reviewed React portfolio](web-development/frontend/react/advanced/project.mdx)
+- [Final challenge: your React portfolio](web-development/frontend/react/final-project.mdx)
+- [React further learning](web-development/frontend/react/further-learning.mdx)
+
+The React pack uses client-side rendering and educational hash navigation. Keep the dependency lock and tested runtime aligned. Preserve source suffixes in assets/react/source and regenerate the ZIP after edits. All external learner references stay Google-affiliated. Server rendering, full-stack React frameworks, and authentication are outside this course.

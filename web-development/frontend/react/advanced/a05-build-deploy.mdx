@@ -1,0 +1,59 @@
+---
+title: "Build and deploy the React portfolio"
+description: "Publish build output and verify a production preview."
+---
+
+## What you will learn
+
+Publish build output and verify a production preview.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+Development source is not the release artifact. Run `npm run build` to create dist, then `npm run preview` and open the printed URL. Check the built app, not only the development server. Vite serves public assets into the build; projects.json must exist in the output.
+
+Follow the internal [Firebase setup guide](/web-development/frontend/capstone/deployment), but use `dist` as the public directory for this React project. Keep the generated index.html. This course uses hash navigation, so answer No to SPA rewrites. If you later adopt path-based routing, configure and test the required fallback separately.
+
+Frontend source and client environment values can be seen by visitors; never embed a private server credential. No Firebase client SDK or database is required to host this static course app.
+
+## Worked example
+
+```bash
+npm ci
+npm test
+npm run build
+npm run preview
+# After Firebase setup, replace YOUR_PROJECT_ID:
+firebase hosting:channel:deploy react-review --project YOUR_PROJECT_ID
+```
+
+## Practice challenge
+
+Prepare the dist folder, test #/projects and #/about on a preview, and record the source commit, build command, project ID, and recovery plan.
+
+<Accordion title="Need a hint?">
+
+Do not deploy node_modules or the entire source folder as the Hosting public directory.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The release contains built HTML/assets and projects.json. Direct hash views, filter/reset, reload failures, and mobile layouts work. Mark cloud deployment Not practised if account access is unavailable; a local build is not a live release.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/a04-testing-performance">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/advanced/checkpoint">Next</a>
+</div>
