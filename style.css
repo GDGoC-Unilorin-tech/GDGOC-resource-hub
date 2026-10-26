@@ -309,6 +309,7 @@ button.hub-cta {
     [href="/web-development/databases/overview"],
     [href="/web-development/frontend/frameworks-and-libraries"],
     [href="/backend-development"], [href="/paths/cloud-computing"],
+    [href="/paths/machine-learning"],
     [href="/other-learning-paths/overview"]) { display: none !important; }
 @media (min-width: 1024px) {
     /* Match native markup directly: layout must work before custom JS loads. */
