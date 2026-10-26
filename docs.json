@@ -29,7 +29,8 @@
             "group": "Learning roadmaps",
             "pages": [
               "web-development",
-              "frontend-development"
+              "frontend-development",
+              "paths/machine-learning"
             ]
           },
           {
@@ -575,6 +576,18 @@
       {
         "groups": [
           {
+            "group": "Machine Learning",
+            "pages": [
+              "paths/machine-learning"
+            ],
+            "expanded": true
+          }
+        ],
+        "tab": "Machine Learning"
+      },
+      {
+        "groups": [
+          {
             "group": "Other Learning Paths",
             "pages": [
               "other-learning-paths/overview",
@@ -637,6 +650,10 @@
       {
         "label": "Databases",
         "href": "/web-development/databases/overview"
+      },
+      {
+        "label": "Machine Learning",
+        "href": "/paths/machine-learning"
       }
     ],
     "primary": {
