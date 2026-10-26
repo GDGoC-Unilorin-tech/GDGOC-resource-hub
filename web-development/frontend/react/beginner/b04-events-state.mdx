@@ -1,0 +1,58 @@
+---
+title: "Events and state"
+description: "Use state to update a component after an interaction."
+---
+
+## What you will learn
+
+Use state to update a component after an interaction.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A regular variable does not ask React to render again. useState gives you a value for the current render and a setter that schedules an update. Pass event handlers as functions; calling the handler while rendering causes it to run before anyone clicks.
+
+Read the favourite toggle in Beginner.jsx. When the new value depends on the previous one, use the setter's updater form. State should be treated as immutable: replace arrays with new arrays instead of pushing into the existing value. Hooks belong at the top level of a component or custom Hook, not inside conditions or loops.
+
+## Worked example
+
+```jsx
+const [saved, setSaved] = useState([]);
+function toggle(id) {
+  setSaved(previous => previous.includes(id)
+    ? previous.filter(value => value !== id)
+    : [...previous, id]);
+}
+// <button onClick={() => toggle(project.id)}>Save project</button>
+```
+
+## Practice challenge
+
+Save and unsave two projects. Show the current saved count and expose each toggle with aria-pressed.
+
+<Accordion title="Need a hint?">
+
+Derive the count from saved.length instead of storing a second count.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Render saved.length and set aria-pressed={saved.includes(project.id)}. A second click removes the ID. Repeated saves cannot create duplicates because the toggle checks membership.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/beginner/b03-props-lists">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/beginner/b05-derived-ui">Next</a>
+</div>

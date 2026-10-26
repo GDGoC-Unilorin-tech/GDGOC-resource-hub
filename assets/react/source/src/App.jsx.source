@@ -1,0 +1,24 @@
+import React, { useEffect, useRef, useState } from 'react';
+import Beginner from './Beginner.jsx';
+import { Intermediate, Advanced } from './Explorer.jsx';
+function readRoute() { return window.location.hash.replace(/^#\/?/,'') || 'home'; }
+export default function App() {
+ const [route,setRoute] = useState(readRoute);
+ const [stage,setStage] = useState('beginner');
+ const mainRef=useRef(null);
+ const previousRoute=useRef(route);
+ useEffect(() => { const update=() => setRoute(readRoute()); window.addEventListener('hashchange',update); return () => window.removeEventListener('hashchange',update); },[]);
+ useEffect(() => {
+  document.title = `${route} | React portfolio`;
+  if (previousRoute.current !== route) mainRef.current?.focus();
+  previousRoute.current = route;
+ },[route]);
+ return <><a className="skip" href="#main-content" onClick={e => {e.preventDefault();mainRef.current?.focus();}}>Skip to main content</a>
+ <header><p>GDGoC React practice portfolio</p><nav aria-label="Portfolio">{['home','projects','about'].map(name => <a key={name} href={`#/${name}`} aria-current={route===name?'page':undefined}>{name[0].toUpperCase()+name.slice(1)}</a>)}</nav></header>
+ <main ref={mainRef} id="main-content" tabIndex={-1}>
+ {route === 'home' ? <><h1>Learn by building</h1><p>A fictional portfolio rebuilt with React. Open Projects to practise the three stages.</p><a href="#/projects">Explore projects</a></>
+ : route === 'about' ? <><h1>About this portfolio</h1><p>I am learning components, state, and reliable interactions. Replace this fictional introduction with your own work.</p></>
+ : route === 'projects' ? <><h1>My projects</h1><label htmlFor="stage">Worked example stage</label><select id="stage" value={stage} onChange={e => setStage(e.target.value)}><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select><p>Switching stages resets the example's local state.</p>{stage==='beginner'?<Beginner />:stage==='intermediate'?<Intermediate />:<Advanced />}</>
+ : <><h1>Not found</h1><a href="#/home">Return home</a></>}
+ </main><footer><p>Course example. Saved selections are not persisted.</p></footer></>;
+}

@@ -1,0 +1,25 @@
+import { useEffect, useState } from 'react';
+import { validProjects } from './logic.js';
+async function loadProjects(signal) {
+ const response = await fetch(`${import.meta.env.BASE_URL}projects.json`, {signal});
+ if (!response.ok) throw new Error('Could not load projects. Try again.');
+ const data = await response.json();
+ if (!validProjects(data)) throw new Error('Project data is invalid.');
+ return data;
+}
+export function useProjects() {
+ const [attempt, setAttempt] = useState(0);
+ const [result, setResult] = useState({phase:'loading', projects:[], error:''});
+ useEffect(() => {
+  let active = true;
+  const controller = new AbortController();
+  setResult({phase:'loading', projects:[], error:''});
+  loadProjects(controller.signal).then(projects => {
+   if (active) setResult({phase:'ready', projects, error:''});
+  }).catch(error => {
+   if (active && error.name !== 'AbortError') setResult({phase:'error', projects:[], error:error.message});
+  });
+  return () => { active = false; controller.abort(); };
+ }, [attempt]);
+ return {...result, reload: () => setAttempt(n => n + 1)};
+}

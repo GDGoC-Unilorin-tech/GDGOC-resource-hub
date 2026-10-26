@@ -1,0 +1,46 @@
+---
+title: "Final challenge: your React portfolio"
+description: "Combine React skills in a reviewed independent project."
+---
+
+## Brief
+
+Rebuild your existing portfolio's project explorer in React and retain useful Home and About views. Use your own projects and explain what you built. The explorer must combine search, category, and order; support reset and retry; validate fetched data; and distinguish loading, empty, and error states.
+
+Include saved-project toggles and an accessible saved count. Saving is in-memory in this course; if you add persistence, handle blocked storage and document its behaviour. Preserve HTML semantics, responsive styling, and navigation focus. Include an honest no-JavaScript message; this client-rendered example does not offer the same complete static fallback as the original HTML portfolio.
+
+## Review rubric
+
+| Area | Ready means |
+| --- | --- |
+| Components | Clear responsibilities, stable keys, no mutated props/state |
+| State | One owner for shared values; derived results stay consistent |
+| Requests | Validation, cleanup, loading/error/empty feedback and retry demonstrated |
+| Navigation | Direct hash URLs, Back, unknown routes, titles and focus checked |
+| Accessibility | Native controls, labels, keyboard use, focus and narrow layouts reviewed |
+| Testing | Logic tests plus manual interaction evidence; limitations explicit |
+| Release | Reproducible install/build and reviewed dist output; cloud status accurate |
+
+Mark each row Ready, Needs revision, or Not tested and attach evidence. Fix required failures before claiming completion.
+
+<Accordion title="Hints">
+Reuse your portfolio content and design, but let React own the interactive DOM. Avoid mixing manual querySelector updates with React-rendered values. Keep review and release notes outside the public build output.
+</Accordion>
+
+<Accordion title="Suggested solution and comparison">
+The Advanced stage in the [practice pack](/assets/react/react-practice-pack.zip) demonstrates the required mechanics. Personalise and extend it, then explain one state transition, one failure recovery, and one test that caught a defect. Optional features are not substitutes for the core requirements.
+</Accordion>
+
+## Completion checklist
+
+- [ ] Every rubric row has evidence.
+- [ ] Another learner can run my setup instructions.
+- [ ] My review notes distinguish sample expectations from actual checks.
+- [ ] My deployment status and remaining limitations are accurate.
+
+Use the [contribution pathway](/web-development/frontend/contribution-pathway) to discuss a reviewed starter task after demonstrating your work.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/project">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/further-learning">Next</a>
+</div>

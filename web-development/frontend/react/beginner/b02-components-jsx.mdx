@@ -1,0 +1,58 @@
+---
+title: "Components and JSX"
+description: "Compose semantic UI from small, named components."
+---
+
+## What you will learn
+
+Compose semantic UI from small, named components.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+Use a capitalised component name so JSX treats it as your function rather than a built-in HTML tag. Return one enclosing tree or a fragment. Close every JSX tag, use className for CSS classes, and put JavaScript expressions inside braces.
+
+In src/Beginner.jsx, extract a Profile component above the default Beginner function, then render `<Profile />` before its project list. Keep the component at module scope; declaring components inside other components can cause state to reset when their identity changes. JSX does not replace accessible HTML: a button still performs an action and an anchor still navigates.
+
+## Worked example
+
+```jsx
+function Profile() {
+  const name = 'Amina';
+  return <section className="card">
+    <h3>{name}'s portfolio</h3>
+    <p>I build useful web interfaces.</p>
+  </section>;
+}
+```
+
+## Practice challenge
+
+Create a Profile component with your name, an introduction, and a link to the #projects section. Render it in Beginner.
+
+<Accordion title="Need a hint?">
+
+Use an anchor for navigation and retain an identifiable destination.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Return a section containing h3, p, and `<a href="#projects">Explore projects</a>`. Add id="projects" to the existing project section. Text inside braces can come from a variable; the href remains a normal link target.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/beginner/b01-setup">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/beginner/b03-props-lists">Next</a>
+</div>

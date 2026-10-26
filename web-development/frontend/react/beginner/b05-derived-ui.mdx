@@ -1,0 +1,56 @@
+---
+title: "Conditional and derived UI"
+description: "Render useful empty states without duplicating state."
+---
+
+## What you will learn
+
+Render useful empty states without duplicating state.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+Some values can be calculated directly from current props and state. Keep the original projects and selected filter; calculate the visible list while rendering. Storing visible projects separately creates two values that can disagree. A derived calculation does not need an Effect.
+
+In Beginner.jsx, the saved-only checkbox changes which projects are shown. Keep a heading and explanatory empty message when no cards match. React text expressions escape text; do not use raw HTML insertion for project titles.
+
+## Worked example
+
+```jsx
+const visible = onlySaved
+  ? projects.filter(project => saved.includes(project.id))
+  : projects;
+// In JSX:
+// {visible.length === 0 ? <p>No saved projects yet.</p> : visible.map(...)}
+```
+
+## Practice challenge
+
+Turn on saved-only with no saved cards, then save one card after returning to All. Confirm the filter shows the right content.
+
+<Accordion title="Need a hint?">
+
+A boolean filter and an array of saved IDs are enough; do not add a second array state for the result.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Show a specific empty message, retain the filter control, and derive visible from projects/saved/onlySaved. Saving and unsaving immediately changes the derived view.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/beginner/b04-events-state">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/beginner/checkpoint">Next</a>
+</div>

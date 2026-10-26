@@ -1,0 +1,57 @@
+---
+title: "Navigation and shareable views"
+description: "Understand URL-driven navigation and its limits."
+---
+
+## What you will learn
+
+Understand URL-driven navigation and its limits.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A tab stored only in React state cannot be shared through its URL. For this small client-side exercise, the pack uses the hash fragment to choose Home, Projects, or About. Anchors update the hash; a hashchange listener updates React state, and browser Back can restore the prior view. Unknown fragments show a not-found message.
+
+This is an educational hash navigator, not a replacement for a routing library in a larger application. Path routing, nested layouts, data loaders, server rendering, and route error boundaries need additional design. Hash routes leave the server path unchanged, so they do not require a catch-all rewrite.
+
+## Worked example
+
+```jsx
+useEffect(() => {
+  const update = () => setRoute(readRoute());
+  window.addEventListener('hashchange', update);
+  return () => window.removeEventListener('hashchange', update);
+}, []);
+// <a href="#/projects">Projects</a>
+```
+
+## Practice challenge
+
+Open #/about directly, navigate to Projects, use Back, and try an unknown route. Record each result.
+
+<Accordion title="Need a hint?">
+
+The URL is the source of route state; buttons that only set local state do not update history.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The direct About hash renders About. Back restores the earlier hash/view. Unknown fragments show Not found and a Home link. A hash change does not request a separate HTML page.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/intermediate/i03-effects-fetch">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/intermediate/i05-empty-error">Next</a>
+</div>

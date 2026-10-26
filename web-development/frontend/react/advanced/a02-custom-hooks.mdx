@@ -1,0 +1,58 @@
+---
+title: "Extract reusable Hooks"
+description: "Separate request behaviour from presentation."
+---
+
+## What you will learn
+
+Separate request behaviour from presentation.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A custom Hook is a function starting with use that composes Hooks. It shares stateful logic, not one global state instance: two components calling it normally receive independent state. Keep its return value small and explicit so callers can render all phases.
+
+The pack's useProjects returns phase, projects, error, and reload. Explorer owns presentation and filters; useProjects owns the request lifecycle. Do not call a Hook conditionally or hide dependencies to force an Effect to run less often. The beginner component needs no data-loading Hook because its data is local.
+
+## Worked example
+
+```jsx
+function ProjectPanel() {
+  const { phase, projects, error, reload } = useProjects();
+  if (phase === 'error') return <div>
+    <p role="status">{error}</p><button onClick={reload}>Retry</button>
+  </div>;
+  return <p>{phase === 'loading' ? 'Loading…' : `${projects.length} projects`}</p>;
+}
+```
+
+## Practice challenge
+
+Explain the responsibility of useProjects and Explorer. Temporarily mount two ProjectPanel instances and observe whether their reload state is shared.
+
+<Accordion title="Need a hint?">
+
+A function name does not make state global. Each call creates its own Hook state.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Request validation, cleanup, and reload belong in useProjects; labels, cards, and filters belong in Explorer. Two instances own independent attempts/results. Remove the temporary panel after the experiment.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/a01-reducer">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/advanced/a03-accessibility">Next</a>
+</div>

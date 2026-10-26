@@ -1,0 +1,64 @@
+---
+title: "Effects and data loading"
+description: "Synchronise with a request and clean up obsolete work."
+---
+
+## What you will learn
+
+Synchronise with a request and clean up obsolete work.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+An Effect synchronises a component with something outside rendering, such as a network request. Fetching is not a calculation to perform during render. Track loading, error, and success states separately, validate the response, and provide retry.
+
+Inspect useProjects in the pack. An AbortController cancels work on cleanup; an active flag also prevents obsolete results from updating the component. Dependencies must describe the values the Effect uses. Development StrictMode can run an extra setup/cleanup cycle to reveal missing cleanup; do not remove it just to hide duplicated development requests.
+
+## Worked example
+
+```jsx
+useEffect(() => {
+  let active = true;
+  const controller = new AbortController();
+  setResult({ phase: 'loading', projects: [], error: '' });
+  loadProjects(controller.signal).then(projects => {
+    if (active) setResult({ phase: 'ready', projects, error: '' });
+  }).catch(error => {
+    if (active && error.name !== 'AbortError') {
+      setResult({ phase: 'error', projects: [], error: error.message });
+    }
+  });
+  return () => { active = false; controller.abort(); };
+}, [attempt]);
+```
+
+## Practice challenge
+
+Temporarily rename public/projects.json. Demonstrate an error and Retry, then restore the file. Also test an empty array.
+
+<Accordion title="Need a hint?">
+
+A failed request and a successful empty array need different messages.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The missing file gives a retryable error. Restoring it and retrying gives cards. [] gives No matching projects. Cleanup stops a previous request from replacing the current result.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/intermediate/i02-shared-state">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/intermediate/i04-navigation">Next</a>
+</div>

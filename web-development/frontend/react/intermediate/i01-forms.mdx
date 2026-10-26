@@ -1,0 +1,60 @@
+---
+title: "Controlled forms and validation"
+description: "Keep input state and feedback aligned."
+---
+
+## What you will learn
+
+Keep input state and feedback aligned.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+A controlled input receives its value from state and updates that state onChange. Start a text field with an empty string, not undefined. Associate every input with a label. Form submission is an event; prevent the browser navigation when the app handles it locally.
+
+The Intermediate example's query field filters project titles. Below it, add a small practice note form with local feedback. It is not a message-delivery service. Validate trimmed content and retain invalid input so the learner can correct it. Do not claim a message was sent when nothing was delivered.
+
+## Worked example
+
+```jsx
+const [note, setNote] = useState('');
+const [feedback, setFeedback] = useState('');
+function submit(event) {
+  event.preventDefault();
+  setFeedback(note.trim() ? 'Practice note accepted locally.' : 'Enter a note.');
+}
+// <form onSubmit={submit}><label htmlFor="note">Practice note</label>
+// <input id="note" value={note} onChange={e => setNote(e.target.value)} />
+// <button>Check note</button><p role="status">{feedback}</p></form>
+```
+
+## Practice challenge
+
+Add the practice note form and test blank, whitespace-only, and useful text. Keep the label and feedback visible.
+
+<Accordion title="Need a hint?">
+
+Use trim for validation without replacing the value on every keystroke.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Blank and whitespace-only inputs show Enter a note. Useful text is accepted locally. No network request or delivery claim is made.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/intermediate/overview">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/intermediate/i02-shared-state">Next</a>
+</div>

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "profile",
+    "title": "Personal profile",
+    "category": "web"
+  },
+  {
+    "id": "planner",
+    "title": "Study planner",
+    "category": "web"
+  },
+  {
+    "id": "poster",
+    "title": "Community poster",
+    "category": "design"
+  }
+]

@@ -1,0 +1,59 @@
+---
+title: "Run your first React app"
+description: "Start the course app and identify the render entry point."
+---
+
+## What you will learn
+
+Start the course app and identify the render entry point.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+React describes UI using components. A component is a function that returns UI descriptions; React updates the DOM when its inputs change. HTML semantics and CSS still matter. JSX is a syntax extension processed by the build tool, not a new browser language.
+
+Extract the [React practice pack](/assets/react/react-practice-pack.zip) outside the hub repository. Use a supported Node.js runtime (this pack requires Node 22.12 or newer). In the extracted root run `npm ci`, then `npm run dev`. Open the address printed by Vite. Stop with Ctrl+C. The first install needs network access. This pack uses JavaScript and Vite for learning client-side React; it is not a server-rendered framework.
+
+Open Projects in the app navigation, then use the Worked example stage selector to choose Beginner. Intermediate and Advanced are available in the same selector. Find `src/main.jsx`, which mounts the app in the element named root in index.html. Editing a component updates the preview; save changes in your editor, not only in DevTools.
+
+## Worked example
+
+```jsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
+createRoot(document.getElementById('root')).render(
+  <StrictMode><App /></StrictMode>
+);
+```
+
+## Practice challenge
+
+Change the Beginner heading in src/Beginner.jsx to your name. Reload and confirm it persists. Identify which HTML element receives the app.
+
+<Accordion title="Need a hint?">
+
+The root DOM element comes from index.html; the visible heading comes from a component.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Change the h2 text in Beginner.jsx. The mount target is the div with id="root". A blank page requires checking the terminal and browser Console for the first error.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/beginner/overview">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/beginner/b02-components-jsx">Next</a>
+</div>

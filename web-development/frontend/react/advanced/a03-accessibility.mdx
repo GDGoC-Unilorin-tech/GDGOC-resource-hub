@@ -1,0 +1,58 @@
+---
+title: "Accessible React interactions"
+description: "Manage page titles and focus after navigation."
+---
+
+## What you will learn
+
+Manage page titles and focus after navigation.
+
+## Before you begin
+
+Work through the previous page and use the extracted practice pack. Keep changes in your own practice branch.
+
+## Understand the idea
+
+React does not add accessible names or navigation focus automatically. Use native elements first. On a client-side view change, update the document title and move focus to a meaningful view heading or main region. Do not steal focus whenever a search result changes.
+
+App.jsx handles hash navigation and focuses main only when the route changes. The initial page load keeps normal browser focus. Save toggles expose aria-pressed, fields have labels, and live status text reports result changes. Test with keyboard and actual assistive technology where available; an automated score is not a complete accessibility review.
+
+## Worked example
+
+```jsx
+const previousRoute = useRef(route);
+useEffect(() => {
+  document.title = `${route} | React portfolio`;
+  if (previousRoute.current !== route) mainRef.current?.focus();
+  previousRoute.current = route;
+}, [route]);
+// <main ref={mainRef} tabIndex={-1}>...</main>
+```
+
+## Practice challenge
+
+Navigate with the keyboard, search while typing, and toggle a save button. Check that route changes announce a meaningful location but filtering preserves focus.
+
+<Accordion title="Need a hint?">
+
+Focus handling should depend on route, not query or matches.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+After changing route, focus reaches main. During typing it stays in the search field. The Save button remains a button and exposes its toggled state. Record screen-reader checks separately if not performed.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I completed the challenge and observed its result.
+- [ ] I can explain the data or event flow shown in this lesson.
+- [ ] I checked a relevant empty, invalid, or alternate case.
+- [ ] I recorded remaining questions rather than marking untested behaviour as passed.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+<a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/react/advanced/a02-custom-hooks">Previous</a>
+<a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/react/advanced/a04-testing-performance">Next</a>
+</div>
