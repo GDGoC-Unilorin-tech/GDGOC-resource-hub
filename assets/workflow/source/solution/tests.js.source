@@ -1,0 +1,22 @@
+import { addValues } from './logic.js';
+let failures = 0;
+function equal(actual, expected) { if (!Object.is(actual, expected)) throw new Error(`Expected ${expected}, received ${actual}`); }
+function rejects(a, b) { let threw = false; try { addValues(a, b); } catch { threw = true; } if (!threw) throw new Error('Expected rejection'); }
+const cases = [
+  ['numeric strings', () => equal(addValues('2', '3'), 5)],
+  ['negative number', () => equal(addValues(-2, 3), 1)],
+  ['decimals', () => equal(addValues('1.5', '2.5'), 4)],
+  ['zero', () => equal(addValues(0, 0), 0)],
+  ['empty input', () => rejects('', 3)],
+  ['invalid string', () => rejects('hello', 3)],
+  ['boolean', () => rejects(true, 3)],
+  ['nonfinite number', () => rejects(Infinity, 3)],
+  ['overflow', () => rejects(Number.MAX_VALUE, Number.MAX_VALUE)]
+];
+for (const [label, check] of cases) {
+  const item = document.createElement('li');
+  try { check(); item.textContent = `PASS: ${label}`; }
+  catch (error) { failures++; item.textContent = `FAIL: ${label} — ${error.message}`; }
+  document.querySelector('#checks').append(item);
+}
+document.querySelector('#summary').textContent = `${cases.length - failures} passed, ${failures} failed`;

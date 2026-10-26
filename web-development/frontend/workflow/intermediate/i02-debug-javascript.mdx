@@ -1,0 +1,78 @@
+---
+title: "Debug a calculation with breakpoints"
+description: "Observe input types and step through a failing event handler."
+---
+
+## What you will learn
+
+Observe input types and step through a failing event handler.
+
+
+## Before you begin
+
+Complete the JavaScript lessons on values, functions, and events. Use the starter practice page. Enter 2 and 3 in the two fields and press Add. The intentionally broken result is 23.
+
+## Understand the idea
+
+An input's `.value` is a string. JavaScript's `+` joins strings when string concatenation applies. Logging the final result alone can hide where the wrong type entered the calculation. A breakpoint pauses execution so you can inspect values before the result is produced.
+
+## Worked example
+
+Open Sources, locate app.js, and set a breakpoint inside the submit handler before the result is assigned. Submit the form, inspect the two values and their types, then step into addValues in logic.js. Resume when finished.
+
+The starter contains:
+
+```javascript
+export function addValues(a, b) {
+  return a + b;
+}
+```
+
+A possible contract is to accept finite numbers and non-empty numeric strings, while rejecting other values. Convert and validate at this boundary:
+
+```javascript
+function numeric(value) {
+  if (typeof value !== 'number' && typeof value !== 'string') {
+    throw new Error('Enter two finite numbers.');
+  }
+  if (typeof value === 'string' && value.trim() === '') {
+    throw new Error('Enter two finite numbers.');
+  }
+  const number = Number(value);
+  if (!Number.isFinite(number)) throw new Error('Enter two finite numbers.');
+  return number;
+}
+export function addValues(a, b) {
+  const total = numeric(a) + numeric(b);
+  if (!Number.isFinite(total)) throw new Error('The result is too large.');
+  return total;
+}
+```
+
+The supplied handler catches errors and shows their message in a status paragraph. Keep user-visible feedback; do not silently replace every invalid input with zero.
+
+## Practice challenge
+
+Repair logic.js and test 2+3, -2+3, 1.5+2.5, and an empty field. Record the type observation that explained the original defect.
+
+<Accordion title="Need a hint?">
+
+Number("") becomes zero, so conversion alone cannot enforce the non-empty contract.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Use the contract above or an equivalent explicit parser. Expected totals are 5, 1, and 4. An empty field produces a validation message, not a total. Remove the breakpoint or resume execution before your final retest.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I observed the string inputs while paused.
+- [ ] I can explain concatenation versus addition.
+- [ ] I tested invalid input as well as a normal case.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/intermediate/i01-inspect-css">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/intermediate/i03-network-and-errors">Next</a>
+</div>

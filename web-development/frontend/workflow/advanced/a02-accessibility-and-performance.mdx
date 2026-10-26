@@ -1,0 +1,62 @@
+---
+title: "Review usability and performance"
+description: "Use browser evidence and manual checks to prioritise improvements."
+---
+
+## What you will learn
+
+Use browser evidence and manual checks to prioritise improvements.
+
+
+## Before you begin
+
+Use your repaired practice site, then apply the same checks to your portfolio. Keep the browser version, viewport, and test conditions in your record.
+
+## Understand the idea
+
+Automated audits surface useful signals, but a score does not prove that someone can use your site. Begin with an actual visitor task. A performance result is also tied to the device, network, and cache conditions under which it was measured.
+
+## Worked example
+
+Use only the keyboard to reach each input, submit a calculation, reload the list, and follow a link. Check that labels identify fields and focus remains visible. Use the browser's accessibility information to inspect names and roles. Test at 320 CSS pixels, 200% zoom, and 400% zoom, recording overlap or loss of content.
+
+Run a Lighthouse audit on your local page. Choose one relevant finding, locate the responsible source, make a focused improvement, and rerun under the same settings. For an image issue in your portfolio, inspect its transfer size in Network and its displayed dimensions before choosing a smaller asset. Avoid treating a changed score alone as proof of a meaningful improvement.
+
+Use this record format:
+
+```text
+Task: Enter two numbers and read the result using the keyboard.
+Environment: browser/version, viewport, zoom, network conditions.
+Observed problem: ...
+Source cause and repair: ...
+Retest result: ...
+Not tested: screen-reader interaction unless actually checked.
+```
+
+<Note>Device emulation is a useful layout check; it does not reproduce every behaviour of a physical phone or assistive technology.</Note>
+
+## Practice challenge
+
+Perform a keyboard journey and one measured improvement on your portfolio. Keep the original and revised evidence; record any audit items you did not address.
+
+<Accordion title="Need a hint?">
+
+Prioritise a defect that blocks a real task, such as missing focus or an oversized image, instead of chasing every score point.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+A useful report names the element, source rule or asset, and retest. For example: a focus outline was removed; restoring a contrasting focus-visible outline allowed the keyboard user to locate the Add button. Do not claim a screen-reader pass from this observation alone.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I recorded a complete keyboard journey.
+- [ ] I compared measurements under matching conditions.
+- [ ] I stated which checks remain untested.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/advanced/a01-regression-tests">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/advanced/a03-preview-and-release">Next</a>
+</div>

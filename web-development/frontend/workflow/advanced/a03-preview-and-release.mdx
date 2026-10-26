@@ -1,0 +1,61 @@
+---
+title: "Prepare a preview and a release"
+description: "Separate local checks, public previews, and production deployment."
+---
+
+## What you will learn
+
+Separate local checks, public previews, and production deployment.
+
+
+## Before you begin
+
+Complete the test and usability review. Use a copy of your repaired site or portfolio for deployment. A Google account and your own Firebase project are needed for cloud practice. If unavailable, complete the local release plan and mark cloud deployment Not practised.
+
+## Understand the idea
+
+A release is a specific, reviewed version. A preview lets reviewers test it before publishing it at the main site URL. Preview URLs are public and may expire. Configuration belongs to a chosen project; confirm the project ID before each cloud operation.
+
+## Worked example
+
+Create a release folder with a `public` directory containing only the website files. Keep templates, private notes, and the local server outside public. For this lab copy index.html, styles.css, app.js, logic.js, items.json, tests.html, and tests.js. The lab intentionally publishes its harmless logic checks because index.html links to tests.html. If you choose to exclude those two test files, also remove that link and verify the page again.
+
+Follow the internal [Firebase setup guide](/web-development/frontend/capstone/deployment) to install the CLI and initialise Hosting. Choose public as the directory, no SPA rewrites, and preserve your index.html. After local checks, replace YOUR_PROJECT_ID below:
+
+```bash
+firebase hosting:channel:deploy workflow-review --project YOUR_PROJECT_ID
+```
+
+Verify the preview URL, form, JSON request, and any direct page URLs. Record feedback. When ready to publish your own project:
+
+```bash
+firebase deploy --only hosting --project YOUR_PROJECT_ID
+```
+
+Use templates/RELEASE.md to record the source commit, project ID, preview expiry, checks, live URL, and a recovery plan. A shared project still needs its maintainer's release approval. If a release fails, restore a known good Hosting release or repair and redeploy, then verify the result.
+
+## Practice challenge
+
+Prepare a release manifest listing public files and excluded files. Test the local version, then create a preview if you have an account. Explain how you would recover from a broken release.
+
+<Accordion title="Need a hint?">
+
+A successful upload command is not a complete check. Open the deployed site and follow a visitor journey.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The manifest includes runtime HTML/CSS/JS/JSON and any linked assets. It excludes .git, review notes, credentials, and serve.mjs. The record names the tested commit and project; recovery refers to a previously verified release, followed by a browser retest.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I know which files become public.
+- [ ] My preview checks or cloud-access limitation are recorded.
+- [ ] My release plan includes verification and recovery.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/advanced/a02-accessibility-and-performance">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/advanced/checkpoint">Next</a>
+</div>

@@ -1,0 +1,10 @@
+* { box-sizing: border-box; }
+body { font: 1rem/1.6 system-ui, sans-serif; color: #202124; background: #fff; margin: 1rem; }
+main { max-width: 60rem; margin-inline: auto; }
+.panel { width: 900px; padding: 1rem; border: 1px solid #747775; border-radius: .5rem; }
+label { display: block; }
+input { display: block; width: 100%; max-width: 24rem; padding: .6rem; font: inherit; }
+button { margin-block: 1rem; padding: .6rem 1rem; font: inherit; color: white; background: #174ea6; border: 2px solid #174ea6; border-radius: .3rem; }
+button:disabled { opacity: .65; }
+:focus-visible { outline: 3px solid #9c3e00; outline-offset: 3px; }
+a { color: #174ea6; }

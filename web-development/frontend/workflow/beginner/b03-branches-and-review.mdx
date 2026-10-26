@@ -1,0 +1,67 @@
+---
+title: "Branches and a review request"
+description: "Isolate a change, describe it clearly, and prepare for a pull request."
+---
+
+## What you will learn
+
+Isolate a change, describe it clearly, and prepare for a pull request.
+
+
+## Before you begin
+
+Use your committed practice repository from the previous lesson. Begin with a clean `git status`. A branch names a line of work; it does not create another folder of files.
+
+## Understand the idea
+
+A feature branch lets you collect a focused change without moving the main branch. A pull request asks someone to review that change before integration. The destination repository and base branch must match the maintainers' instructions.
+
+## Worked example
+
+```bash
+git switch -c docs/run-instructions
+```
+
+Improve README.md with the expected local URL and how to stop the server, then:
+
+```bash
+git diff
+git add README.md
+git diff --cached
+git commit -m "docs: explain how to run the practice site"
+git diff main...HEAD
+```
+
+Use `templates/PULL_REQUEST.md` from the pack to describe the problem, resulting behaviour, and checks. Do not claim a test passed unless you ran it.
+
+For a real GitHub practice submission, create an empty repository in your own account. Copy its clone URL from GitHub, run `git remote add origin YOUR_REPOSITORY_URL`, and verify `git remote -v`. Replace the placeholder; do not type it literally. Authenticate using the supported sign-in method for your Git installation. Push your initial main branch with `git push -u origin main`, then your feature branch with `git push -u origin docs/run-instructions`. Open a pull request from that branch to main. Keep this in your practice repository, not the shared hub.
+
+<Tip>If you do not have a GitHub account, complete the local branch and a written review request now. Record remote collaboration as not practised and return to it when you can use an account.</Tip>
+
+After a real review, respond to each requested change, make another focused commit, and push the same branch. Maintainers control shared-project merging. Before later work, switch to main and use `git pull --ff-only` when a remote is configured; if it refuses, inspect the history with a mentor rather than forcing an overwrite.
+
+## Practice challenge
+
+Prepare a review request for your README improvement. Include one reproducible check, the base/feature branches, and one limitation. Ask a peer to follow the instructions.
+
+<Accordion title="Need a hint?">
+
+A reviewer needs to know what changed and how to reproduce it, not every command you typed.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Problem: the README omitted the server directory. Change: added the parent-folder command and URL. Check: followed it from a fresh extraction and loaded the heading. Limitation: only Chrome tested. Base main, feature docs/run-instructions.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] My feature branch contains only the intended change.
+- [ ] My review request includes actual checks.
+- [ ] I distinguish local preparation from a submitted pull request.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/beginner/b02-git-snapshots">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/beginner/checkpoint">Next</a>
+</div>

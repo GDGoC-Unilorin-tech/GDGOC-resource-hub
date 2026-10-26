@@ -1,0 +1,33 @@
+import { addValues } from './logic.js';
+document.querySelector('#calculator').addEventListener('submit', event => {
+  event.preventDefault();
+  const a = document.querySelector('#first').value;
+  const b = document.querySelector('#second').value;
+  const result = document.querySelector('#result');
+  try { result.textContent = `Total: ${addValues(a, b)}`; }
+  catch (error) { result.textContent = error.message; }
+});
+const reload = document.querySelector('#reload');
+async function load() {
+  if (reload.disabled) return;
+  reload.disabled = true;
+  const status = document.querySelector('#status');
+  const list = document.querySelector('#items');
+  list.replaceChildren();
+  status.textContent = 'Loading items…';
+  try {
+    const response = await fetch('./item.json');
+    if (!response.ok) throw new Error('Could not load items. Try Reload items.');
+    const items = await response.json();
+    if (!Array.isArray(items) || !items.every(item => typeof item === 'string')) throw new Error('Items must be a list of text values.');
+    for (const text of items) {
+      const item = document.createElement('li');
+      item.textContent = text;
+      list.append(item);
+    }
+    status.textContent = items.length ? `${items.length} items loaded.` : 'No items yet.';
+  } catch (error) { status.textContent = error.message; }
+  finally { reload.disabled = false; }
+}
+reload.addEventListener('click', load);
+load();

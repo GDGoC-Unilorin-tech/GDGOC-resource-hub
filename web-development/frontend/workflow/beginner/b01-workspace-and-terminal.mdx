@@ -1,0 +1,59 @@
+---
+title: "Your workspace and terminal"
+description: "Locate your project, separate source files from downloads, and run a local server."
+---
+
+## What you will learn
+
+Locate your project, separate source files from downloads, and run a local server.
+
+
+## Before you begin
+
+You should be able to create an HTML page. Use your existing editor, Chrome, and a terminal. Install a supported Node.js runtime and Git using your computer's normal software setup; check `node --version` and `git --version`. Ask a mentor if either command is unavailable. A GitHub account is only needed for the later collaboration exercise.
+
+Download the [workflow practice pack](/assets/workflow/workflow-practice-pack.zip) and extract it into a new folder. It contains `starter`, `solution`, `templates`, and `serve.mjs`. Keep it outside the Resource Hub checkout. The starter deliberately has three bugs for the Intermediate stage.
+
+## Understand the idea
+
+A terminal operates in a current folder. A relative path starts there. An editor's open folder and a terminal's current folder can differ. Check before running commands. Source files are the files you edit; a ZIP is a packaged copy and does not update itself when you edit the originals.
+
+## Worked example
+
+In PowerShell, navigate to the extracted pack and inspect it:
+
+```powershell
+Get-Location
+Get-ChildItem
+node serve.mjs starter
+```
+
+The supplied dependency-free server prints a localhost address. Open that address, then stop the server with Ctrl+C when finished. To inspect the suggested implementation later, run `node serve.mjs solution`. The server binds only to your machine and serves the chosen directory. If its port is occupied, use `node serve.mjs starter 4174`.
+
+<Note>For this course, use HTTP rather than double-clicking index.html. JavaScript modules and fetched JSON need a suitable server context. Keep the terminal running while using the page.</Note>
+
+## Practice challenge
+
+Create your practice folder, start the starter server, and identify index.html, styles.css, app.js, and items.json. Change the page heading in your editor, save, and reload. Record the current folder and URL.
+
+<Accordion title="Need a hint?">
+
+If the browser shows the old heading, check the file you edited, the server directory, and whether the file was saved.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The heading changes after reloading the localhost page. The terminal remains in the extracted pack; the server serves starter. An editor change to solution/index.html cannot change the starter page.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I can identify the folder my terminal uses.
+- [ ] I can start and stop the local server.
+- [ ] I can distinguish starter and solution files.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/beginner/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/beginner/b02-git-snapshots">Next</a>
+</div>

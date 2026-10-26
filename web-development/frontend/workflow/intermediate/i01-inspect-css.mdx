@@ -1,0 +1,60 @@
+---
+title: "Inspect and repair a layout"
+description: "Use Elements and computed styles to trace a width problem to its source."
+---
+
+## What you will learn
+
+Use Elements and computed styles to trace a width problem to its source.
+
+
+## Before you begin
+
+Complete Beginner and the basic CSS course. Restart the server from the pack folder with `node serve.mjs starter`. Open the page and choose Inspect from the browser's context menu.
+
+## Understand the idea
+
+The Elements panel shows the live DOM. Styles shows matching declarations, including overridden ones; Computed shows the resulting values. A temporary DevTools edit is an experiment, not necessarily a saved source change. Reload to distinguish the two.
+
+## Worked example
+
+Set the viewport to 320 CSS pixels with device emulation. The starter's panel is wider than the screen:
+
+```css
+.panel { width: 900px; padding: 1rem; }
+```
+
+Select `.panel` and inspect its box model. Try disabling the fixed width. Observe how the overflow changes, then implement a lasting fix in styles.css:
+
+```css
+* { box-sizing: border-box; }
+.panel { width: 100%; max-width: 56rem; padding: 1rem; }
+```
+
+Reload and check again at 320 and 1280 pixels. A fixed width can work on your laptop while cutting off content for a narrower viewport. Do not hide overflow as a substitute for finding its cause.
+
+## Practice challenge
+
+Repair the panel width in the starter. Record the original computed width, the source rule, the change, and narrow/wide retests.
+
+<Accordion title="Need a hint?">
+
+A browser experiment that disappears on reload has not fixed the file.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+The 900px declaration causes overflow. A fluid width constrained by max-width fits its parent, while border-box includes padding. Save those rules in styles.css and verify after reload.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I identified the responsible rule.
+- [ ] My change persists after reload.
+- [ ] I checked a narrow and a wide viewport.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/intermediate/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/intermediate/i02-debug-javascript">Next</a>
+</div>

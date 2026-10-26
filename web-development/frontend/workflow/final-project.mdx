@@ -1,0 +1,45 @@
+---
+title: "Final challenge: maintain and ship your portfolio"
+description: "Demonstrate a complete workflow on your own frontend project."
+---
+
+
+## Your challenge
+
+Choose a real, reproducible problem in your HTML/CSS/JavaScript portfolio. Create a focused branch, investigate the cause, implement the repair, verify it, prepare a review request, and release the reviewed result to your own hosting project when available. Use the [capstone review](/web-development/frontend/capstone/review) to assess the portfolio itself; this challenge assesses how you maintain it.
+
+## Required evidence
+
+| Deliverable | Acceptance criterion |
+| --- | --- |
+| Defect report | Clear reproduction steps, expected/actual results, and source cause |
+| Focused change | Diff contains the repair and related tests without unrelated edits |
+| Verification | Regression check fails before and passes after; manual visitor journey recorded |
+| Review request | Problem, change, actual checks, limitations, and response to peer feedback |
+| Release record | Source commit, public manifest, preview checks, release status, recovery plan |
+
+Choose a defect with an observable outcome. If it is purely visual, use a reproducible manual regression check instead of an artificial function test. You must explain why your chosen check is appropriate.
+
+## Completion checklist
+
+- [ ] A peer can reproduce the original problem from my report.
+- [ ] My repair addresses its cause.
+- [ ] I checked the fixed case and at least one boundary or failure case.
+- [ ] My review request matches the actual diff.
+- [ ] I recorded feedback, changes, and retests.
+- [ ] My release was verified, or cloud work is explicitly marked incomplete.
+
+<Accordion title="Need a hint?">
+Start with a narrow issue such as a broken request path, overflowing card, or calculation accepting an empty value. Avoid redesigning the whole portfolio in the same change.
+</Accordion>
+
+<Accordion title="Suggested approach">
+For a broken JSON path, capture the failed URL and status, correct the path, and verify normal, empty, and failed responses. Keep retry available. Record the changed source file and preview journey. The practice pack demonstrates this approach, but use evidence from your own project.
+</Accordion>
+
+After review, use [the contribution pathway](/web-development/frontend/contribution-pathway) to discuss a maintainer-approved Resource Hub task.
+
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/advanced/project">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/further-learning">Next</a>
+</div>

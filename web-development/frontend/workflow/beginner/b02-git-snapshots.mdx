@@ -1,0 +1,75 @@
+---
+title: "Save focused changes with Git"
+description: "Inspect working changes, stage selected files, and create readable commits."
+---
+
+## What you will learn
+
+Inspect working changes, stage selected files, and create readable commits.
+
+
+## Before you begin
+
+Complete the workspace lesson. Use only the extracted `starter` directory for this exercise. Do not initialise Git inside someone else's project or inside another repository.
+
+## Understand the idea
+
+Git stores a history of snapshots. Your working files can differ from the last commit. The staging area selects what the next commit will contain. A commit is local; it does not upload anything to GitHub. GitHub hosts repositories and review conversations; Git itself is a separate version-control tool.
+
+## Worked example
+
+From the extracted pack, stop the server and enter `starter`:
+
+```bash
+cd starter
+git init -b main
+git config user.name "YOUR_NAME"
+git config user.email "YOUR_COMMIT_EMAIL"
+git status
+git add index.html styles.css app.js logic.js tests.html tests.js items.json
+git diff --cached
+git commit -m "chore: add workflow practice starter"
+git log --oneline -3
+```
+
+Replace the identity placeholders with the name and email you want attached to commits. These settings apply only to this practice repository. Authentication to a hosting service is separate.
+
+Edit the heading, save, then run `git diff`. Stage only `index.html`, inspect `git diff --cached`, and commit with a message describing the change. `git diff` shows unstaged changes; `git diff --cached` shows the next snapshot. Untracked files appear in `git status` but not in an ordinary diff until staged.
+
+Create a `.gitignore` file for generated or private files before adding them. For this exercise it can contain:
+
+```text
+node_modules/
+.env
+.env.*
+```
+
+Ignoring a file does not remove it from existing history. Keep secrets out of the practice project. Avoid staging everything without reviewing it.
+
+Include `.gitignore` in your next documentation commit: inspect it, then stage it with README.md using `git add README.md .gitignore` so it is not left untracked at the end of the exercise.
+
+## Practice challenge
+
+Make one heading commit and one README commit. In README.md describe how to run the site from the parent pack folder. Show a clean git status and explain the two snapshots.
+
+<Accordion title="Need a hint?">
+
+Inspect git status before and after staging. A file can have both staged and unstaged changes if you edit it again.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Stage index.html and commit the heading first. Then create and stage README.md and commit the instructions. git log shows two separate changes; git status reports a clean working tree after both commits.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I can distinguish working files, staging, and commits.
+- [ ] I inspected each staged diff.
+- [ ] My commits describe separate changes.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/beginner/b01-workspace-and-terminal">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/beginner/b03-branches-and-review">Next</a>
+</div>

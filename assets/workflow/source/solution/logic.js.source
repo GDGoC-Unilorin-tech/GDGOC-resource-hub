@@ -1,0 +1,12 @@
+function numeric(value) {
+  if (typeof value !== 'number' && typeof value !== 'string') throw new Error('Enter two finite numbers.');
+  if (typeof value === 'string' && value.trim() === '') throw new Error('Enter two finite numbers.');
+  const number = Number(value);
+  if (!Number.isFinite(number)) throw new Error('Enter two finite numbers.');
+  return number;
+}
+export function addValues(a, b) {
+  const total = numeric(a) + numeric(b);
+  if (!Number.isFinite(total)) throw new Error('The result is too large.');
+  return total;
+}

@@ -1,0 +1,60 @@
+---
+title: "Write checks that catch regressions"
+description: "Turn a repaired bug into a repeatable test."
+---
+
+## What you will learn
+
+Turn a repaired bug into a repeatable test.
+
+
+## Before you begin
+
+Complete the Intermediate repairs. Keep the server running and open tests.html from the same starter directory. This page imports the same logic.js used by the UI.
+
+## Understand the idea
+
+A regression is behaviour that breaks after previously working. Test observable requirements: input and expected output, or a user action and its outcome. A function test is fast and precise; it cannot prove that the HTML labels, focus, or network UI work. Use both automated checks and a manual journey.
+
+## Worked example
+
+The supplied runner counts failures and shows PASS or FAIL for every case. Its assertions throw on mismatch so a failure cannot look like a successful check:
+
+```javascript
+function equal(actual, expected) {
+  if (!Object.is(actual, expected)) {
+    throw new Error(`Expected ${expected}, received ${actual}`);
+  }
+}
+equal(addValues('2', '3'), 5);
+```
+
+Start with the repaired calculation. Temporarily put the old `return a + b` implementation back, reload tests.html, and confirm at least the numeric-string case fails. Restore your repair and rerun. This is a controlled check in your practice repository, not a change to deploy.
+
+The test suite also checks empty values, invalid strings, booleans, non-finite values, and overflow. Record which requirements these cases cover. Add UI checks for form submission and reload recovery in templates/TEST_RECORD.md.
+
+## Practice challenge
+
+Add one new test for whitespace around a numeric string, prove it passes, and record one UI requirement the function tests cannot establish.
+
+<Accordion title="Need a hint?">
+
+Use the same exported function as the app; duplicating a correct implementation in the test would test the copy instead.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+A check such as equal(addValues(" 2 ", "3"), 5) should pass. Keyboard access and visible status updates still require browser checks. A deliberately regressed parser must make the appropriate test fail.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I saw a test fail for the original defect.
+- [ ] All required checks pass after restoring the repair.
+- [ ] I recorded manual checks separately.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/advanced/overview">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/advanced/a02-accessibility-and-performance">Next</a>
+</div>

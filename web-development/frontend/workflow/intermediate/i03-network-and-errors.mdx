@@ -1,0 +1,60 @@
+---
+title: "Trace missing data in Network"
+description: "Distinguish request failure, invalid data, and an empty successful response."
+---
+
+## What you will learn
+
+Distinguish request failure, invalid data, and an empty successful response.
+
+
+## Before you begin
+
+Use the starter page through HTTP. Its list initially fails to load. Open Network before clicking Reload items so the new request is recorded.
+
+## Understand the idea
+
+A request URL identifies the resource the browser actually asked for. The status and response help separate a wrong path from invalid JSON or an unexpected data shape. A successful HTTP response does not guarantee useful data. Likewise an empty list is not a connection failure.
+
+## Worked example
+
+The starter requests `item.json`, while the file is named `items.json`. Inspect the failed request and compare its URL with your files. Repair the fetch path in app.js, preserving the existing response checks:
+
+```javascript
+const response = await fetch('./items.json');
+if (!response.ok) throw new Error('Could not load items. Try Reload items.');
+const items = await response.json();
+if (!Array.isArray(items) || !items.every(item => typeof item === 'string')) {
+  throw new Error('Items must be a list of text values.');
+}
+```
+
+The supplied page writes values using textContent and shows a status message. Its Reload button is disabled during a request, preventing overlapping loads in this small lab. The capstone demonstrates cancellation when concurrent requests are needed.
+
+Temporarily change items.json to `[]`, reload, and observe the empty-state message. Then try `{}`: the shape check should reject it. Restore the original data. Network throttling can help you see the loading state; reset throttling afterward.
+
+## Practice challenge
+
+Fix the URL and collect evidence for a normal list, empty array, and invalid object. Restore the data and retest reload.
+
+<Accordion title="Need a hint?">
+
+Do not remove response.ok or validation just to make an error message disappear.
+
+</Accordion>
+
+<Accordion title="View a suggested solution">
+
+Correcting item.json to items.json returns three list entries. [] gives No items yet. {} gives the data-shape error. Restoring the original array returns three entries again.
+
+</Accordion>
+
+## Completion checklist
+
+- [ ] I recorded the failing URL and status.
+- [ ] I distinguish empty data from an error.
+- [ ] I restored the original dataset and settings.
+<div className="lesson-navigation" role="navigation" aria-label="Lesson navigation">
+  <a className="lesson-nav-button lesson-nav-previous" href="/web-development/frontend/workflow/intermediate/i02-debug-javascript">Previous</a>
+  <a className="lesson-nav-button lesson-nav-next" href="/web-development/frontend/workflow/intermediate/checkpoint">Next</a>
+</div>

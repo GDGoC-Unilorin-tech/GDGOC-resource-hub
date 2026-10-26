@@ -1,6 +1,6 @@
 # Resource Hub Structure and Contributor Guide
 
-Updated: 22 October 2026 (frontend capstone and contribution pathway)
+Updated: 22 October 2026 (Frontend Tools & Workflow course)
 
 ## Purpose and current scope
 
@@ -20,7 +20,8 @@ This guide describes the current repository structure and the standards for exte
 | Frontend roadmap | Overview, prerequisites, learning order, and links to skill courses | Keep aligned with course availability |
 | Frontend capstone | Seven pages covering brief, integration, milestones, testing, Firebase deployment, review, and references; integrated solution ZIP | Learner and maintainer review; keep evidence and examples aligned |
 | Contribution pathway | Evidence checklist, task proposal, and contribution workflow | Technical Innovation & Development team confirms available tasks and reviewers |
-| Frameworks and tools | Landing pages | Develop after the core foundations, with prerequisites |
+| Frontend Tools & Workflow | 21 pages: overview, 3 stage overviews, 9 lessons, 3 checkpoints, 3 stage projects, final challenge, and references; downloadable repair lab | Learner review and integration into the portfolio workflow |
+| Frameworks | Landing pages | Develop after the core foundations, with prerequisites |
 | Backend, databases, cloud, and other paths | Existing landing/resource pages retained | Restructure their curricula in later phases |
 
 A visible tab or page does not mean its course is finished. Keep planned content clearly labelled. JavaScript now follows the same learning pattern. HTML Intermediate and Advanced now include stage overviews, topic-specific experiments and answer explanations, checkpoint solutions and test tables, and project assessment rubrics. CSS now follows the same pattern across all three levels, with isolated runnable examples and a continuing portfolio.
@@ -233,7 +234,7 @@ For larger navigation/content changes, also use the installed CLI's validation a
 2. Review the completed CSS course with learners and preserve the shared portfolio through JavaScript.
 3. Review the completed JavaScript course and coordinate portfolio integration with HTML/CSS owners.
 4. Review the implemented frontend capstone, integrated example, and assessment evidence with learners and the Lead.
-5. Expand frameworks and workflow content, then remaining tracks.
+5. Review the implemented Tools & Workflow course with learners, then develop framework courses and remaining tracks.
 6. Confirm the contribution pathway with the technical team.
 
 Keep foundational courses distinct from frameworks and tools. Useful external references supplement the internal teaching at the end of each course.
@@ -471,6 +472,26 @@ The following inventory mirrors `docs.json` as of the update date. Links point t
 
 - **Frontend workflow**
   - [Frontend tools and workflow](web-development/frontend/tools-and-workflow.mdx)
+  - [Beginner: organise and collaborate](web-development/frontend/workflow/beginner/overview.mdx)
+  - [Your workspace and terminal](web-development/frontend/workflow/beginner/b01-workspace-and-terminal.mdx)
+  - [Save focused changes with Git](web-development/frontend/workflow/beginner/b02-git-snapshots.mdx)
+  - [Branches and a review request](web-development/frontend/workflow/beginner/b03-branches-and-review.mdx)
+  - [Checkpoint: organise and collaborate](web-development/frontend/workflow/beginner/checkpoint.mdx)
+  - [A reviewed practice repository](web-development/frontend/workflow/beginner/project.mdx)
+  - [Intermediate: investigate and repair](web-development/frontend/workflow/intermediate/overview.mdx)
+  - [Inspect and repair a layout](web-development/frontend/workflow/intermediate/i01-inspect-css.mdx)
+  - [Debug a calculation with breakpoints](web-development/frontend/workflow/intermediate/i02-debug-javascript.mdx)
+  - [Trace missing data in Network](web-development/frontend/workflow/intermediate/i03-network-and-errors.mdx)
+  - [Checkpoint: investigate and repair](web-development/frontend/workflow/intermediate/checkpoint.mdx)
+  - [Repair the practice site](web-development/frontend/workflow/intermediate/project.mdx)
+  - [Advanced: verify and release](web-development/frontend/workflow/advanced/overview.mdx)
+  - [Write checks that catch regressions](web-development/frontend/workflow/advanced/a01-regression-tests.mdx)
+  - [Review usability and performance](web-development/frontend/workflow/advanced/a02-accessibility-and-performance.mdx)
+  - [Prepare a preview and a release](web-development/frontend/workflow/advanced/a03-preview-and-release.mdx)
+  - [Checkpoint: verify and release](web-development/frontend/workflow/advanced/checkpoint.mdx)
+  - [Prepare a reviewed release](web-development/frontend/workflow/advanced/project.mdx)
+  - [Final challenge: maintain and ship your portfolio](web-development/frontend/workflow/final-project.mdx)
+  - [Workflow further learning](web-development/frontend/workflow/further-learning.mdx)
 
 ### Backend
 
@@ -527,3 +548,8 @@ The Resource Hub sidebar now has a Frontend Capstone group after Learning roadma
 - [From learning to contribution](web-development/frontend/contribution-pathway.mdx)
 
 The capstone integrates the HTML/CSS portfolio and JavaScript explorer. Assets live in `assets/capstone/solution/`; regenerate the ZIP with `python assets/capstone/build_archives.py`. Keep `.source` suffixes in the repository. Downloads contain a publishable `public/` folder and review instructions outside it. Firebase steps are learner-run instructions; no hosting project or deployment is provisioned by the hub. Readiness uses an observable rubric and evidence; team assignments and releases still require maintainer review. No automated grading, progress account, or stage lock is implemented.
+
+
+## Workflow course maintenance
+
+The Tools tab keeps the existing tools-and-workflow overview URL. Lessons under `web-development/frontend/workflow/` progress through Beginner, Intermediate, and Advanced, with a checkpoint and project at each stage. Preserve the reading order in docs.json. The final challenge applies workflow skills to the learner’s portfolio and links back to the capstone. Google-affiliated references stay on further-learning.mdx. Git/GitHub are explicitly described as independent products. Practice sources live under assets/workflow/source; keep .source suffixes and regenerate the ZIP with its build script. Do not “repair” intentional starter failures when editing the worked solution. Cloud/remote tasks need learner accounts; locally prepared evidence must not be labelled a completed remote action.

@@ -503,9 +503,49 @@
       {
         "groups": [
           {
-            "group": "Frontend workflow",
+            "group": "Start workflow",
             "pages": [
               "web-development/frontend/tools-and-workflow"
+            ]
+          },
+          {
+            "group": "Beginner",
+            "pages": [
+              "web-development/frontend/workflow/beginner/overview",
+              "web-development/frontend/workflow/beginner/b01-workspace-and-terminal",
+              "web-development/frontend/workflow/beginner/b02-git-snapshots",
+              "web-development/frontend/workflow/beginner/b03-branches-and-review",
+              "web-development/frontend/workflow/beginner/checkpoint",
+              "web-development/frontend/workflow/beginner/project"
+            ]
+          },
+          {
+            "group": "Intermediate",
+            "pages": [
+              "web-development/frontend/workflow/intermediate/overview",
+              "web-development/frontend/workflow/intermediate/i01-inspect-css",
+              "web-development/frontend/workflow/intermediate/i02-debug-javascript",
+              "web-development/frontend/workflow/intermediate/i03-network-and-errors",
+              "web-development/frontend/workflow/intermediate/checkpoint",
+              "web-development/frontend/workflow/intermediate/project"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "web-development/frontend/workflow/advanced/overview",
+              "web-development/frontend/workflow/advanced/a01-regression-tests",
+              "web-development/frontend/workflow/advanced/a02-accessibility-and-performance",
+              "web-development/frontend/workflow/advanced/a03-preview-and-release",
+              "web-development/frontend/workflow/advanced/checkpoint",
+              "web-development/frontend/workflow/advanced/project"
+            ]
+          },
+          {
+            "group": "Build and explore",
+            "pages": [
+              "web-development/frontend/workflow/final-project",
+              "web-development/frontend/workflow/further-learning"
             ]
           }
         ],
